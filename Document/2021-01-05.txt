@@ -1,0 +1,10 @@
+Today, I have work on which Document you have Shared in that I have face Problem While Cloning through Private Repository when copy repo Name it Shows this Repository is Private you have to Add your SSH key to Cloning, Also face problem in what is SSH key and it's use because I have Already Repository in my github but in that I have not add SSH key, Also Don't know diffrent between commit and push, So I'm find out Solutions and Uses of that problems.
+
+Also learn initializing git, 
+                checking Status, 
+                Adding files in github, 
+                making commits, 
+                creating-merge branch, 
+                cloneing repo, 
+                git log command,
+                checking currunt branch  
