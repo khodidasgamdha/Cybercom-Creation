@@ -40,7 +40,7 @@ git diff --staged
 file status life cycle :
 
     untracked	     unmodified     modified	      	     staged
-	|		|		|			|		
+	|		|		|		        |		
 	| Add file ->	| Edit file ->	| Stage the file ->	|
 	|		|		|			|
 	|<- Remove file |        <--  Commit changes		|
