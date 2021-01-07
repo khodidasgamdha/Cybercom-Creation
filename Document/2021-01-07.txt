@@ -1,0 +1,26 @@
+git mv [old_file] [new_file]
+	= This is use for rename the file
+
+git rm --cached [file_name]
+	= This is use for untrack the file
+
+git log --pretty=oneline
+	= This is use for display the commit in oneline
+	= Also there is " short, full, etc.
+
+git log --pretty=format:"%n -- %an"
+	= This is use for display the commit in perticular format
+
+git log --since=n.days/weeks/months/years
+	= This is use for display the commit in some perticular time period where n = 1, 2, ...
+
+git commit -amend
+	= This is use for change the old commit
+
+git revert [commit_hash]
+	= Revert to perticular commit
+
+git revert -e [commit_hash]
+	= This is use for change the revert commit message 
+
+Also learn merege some perticualr file of one branch to another one
