@@ -1,0 +1,10 @@
+learn about bootstrap like how Bootstrap works and how to implement in our project, 
+Also learn about their functions like 
+	navbar, 
+	grid layout,
+	CDN links,
+	Card,
+	Carousel,
+	Button,
+	Button Group,
+	Progress etc.
