@@ -7,10 +7,10 @@ var john_mass = 100;
 var john_height = 160;
 
 // Calculate Mark's BMI
-var mark_BMI = mark_mass/mark_height^2;
+var mark_BMI = mark_mass/(mark_height*mark_height);
 
 // Calculate John's BMI
-var john_BMI = john_mass/john_height^2;
+var john_BMI = john_mass/(john_height*john_height);
 
 // Compare BMI and Store boolean value in result variable
 var result = mark_BMI > john_BMI;
