@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.row {
+    margin: 100px 154px 0;
+}
+
+.card-body {
+    border: 2px solid silver;
+    padding: 2px;
+}
+
+.card-img {
+    width: 215px;
+    height: 315px;
+    background-color: rgb(32, 30, 30);
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    padding-top: 140px;
+    margin-bottom: 0;
+}
+
+.card-text {
+    font-size: 15px;
+    font-family: serif;
+    background-color: silver;
+    text-align: center;
+    width: 215px;
+    margin: 0 0 20px 0;
+
+}
+
+.text {
+    margin: 50px 154px 0;
+    text-align: center;
+}
