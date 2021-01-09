@@ -1,10 +1,11 @@
 table {
     margin: 100px 600px 0;
+    border: 2px solid rgb(221, 221, 220);
 }
 
 td {
-    border: 5px solid rgb(221, 221, 220);
-    padding: 30px 80px 30px 0;
+    border: 2px solid rgb(221, 221, 220);
+    padding: 30px 50px 30px 0;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 25px;
 }
