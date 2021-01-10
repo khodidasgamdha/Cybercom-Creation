@@ -1,0 +1,12 @@
+table {
+    margin: 100px 400px 0;
+    border: 2px solid silver;
+    box-shadow: 1px 1px 5px 5px rgb(163, 162, 162);
+}
+
+td, th {
+    border: 2px solid silver;
+    padding: 2px 5px;
+    text-align: center;
+    vertical-align: top;
+}
