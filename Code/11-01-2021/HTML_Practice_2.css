@@ -1,0 +1,42 @@
+#heading {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#quota {
+    margin: 20px 350px 0;
+    text-align: center;
+    color: rgb(153, 153, 153);
+    text-shadow: 0.3px 0.3px rgb(99, 99, 99);
+}
+
+.row {
+    margin: 20px 200px 0;
+}
+
+.card-img-top {
+    width: 80px;
+    height: 80px;
+    margin: 5px 80px;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.card-title {
+    color: rgb(107, 107, 107);
+    text-shadow: 0.5px 0.5px rgb(80, 79, 79);
+}
+
+h6 {
+    font-weight: bold;
+    text-shadow: 0.5px 0.5px rgb(99, 99, 99);
+}
+
+.card-text {
+    font-size: 12px;
+    margin-top: -7px;
+    color: rgb(153, 153, 153);
+    text-shadow: 0.3px 0.3px rgb(99, 99, 99);
+}

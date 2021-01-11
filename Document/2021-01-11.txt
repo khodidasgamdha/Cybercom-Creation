@@ -1,0 +1,6 @@
+Learn about 
+	ternory operator,
+	Truthy and Falsy Values,
+	operation on Array, 
+	work on practices.  
+	
