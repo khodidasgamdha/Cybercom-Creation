@@ -5,27 +5,28 @@ var array = ["eat", "sleep", "run", "walk"];
 var array2 = new Array("eat", "sleep", "run", "walk");
 
 // empty array
-var array3 = [ ];
+var array3 = [];
 
 // array containing number values
-var array4 = [ 2, 4, 6, 8];
+var array4 = [2, 4, 6, 8];
 
 // array containing string values
-var array5 = [ 'eat', 'work', 'sleep', 'walk'];
+var array5 = ["eat", "work", "sleep", "walk"];
 
 // multiple data types array
-var array6 = ['work', 'exercise', 1, false];
+var array6 = ["work", "exercise", 1, false];
 
 // array with array, function, object
 var array7 = [
-    {
-        'task1': 'exercise',
-        'task2': 'walk'
-    },
-    [1, 2 ,3],
-    function hello() { 
-        console.log('hello')
-    }
+  {
+    task1: "exercise",
+    task2: "walk",
+  },
+  [1, 2, 3],
+  function hello() {
+    console.log("hello");
+  },
+  
 ];
 
 // push method
