@@ -1,0 +1,6 @@
+How code execude in javascript
+Hoisting
+Scoping and Scope chain
+this keyword
+object and properties
+loops
