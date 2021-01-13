@@ -1,0 +1,41 @@
+Document Object Model And Event Handaling
+
+DOM :
+	Change all the HTML elements in the page
+	Change all the HTML attributes in the page
+	Change all the CSS styles in the page
+	Remove existing HTML elements and attributes
+	Add new HTML elements and attributes
+	React to all existing HTML events in the page
+	Create new HTML events in the page
+
+
+Mouse Events :
+	onchange  	An HTML element has been changed
+	onclick	              The user clicks an HTML element
+	onmouseover	The user moves the mouse over an HTML element
+	onmouseout	The user moves the mouse away from an HTML element
+	onkeydown	The user pushes a keyboard key
+	onload	    	The browser has finished loading the page
+
+
+HTML Events :
+	getElementById()
+	getElementByTagName()
+	getElementByClass()
+
+
+Changing HTML :
+	element.innerHTML
+	element.attribute
+	element.style.property
+	element.setAttribute
+
+
+Adding and Deleting Element :
+	document.createElement()
+	document.removeChild()
+	document.appendChild()
+	document.replaceChild()
+	document.write()
+
