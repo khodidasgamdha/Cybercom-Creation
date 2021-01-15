@@ -1,0 +1,30 @@
+body {
+    font-family: serif;
+}
+
+h1 {
+    margin: 50px 0 50px 500px;
+    font-weight: bold;
+    font-size: 45px;
+}
+
+table {
+    margin-left: 500px;
+    border: 1px solid;
+}
+
+th {
+    text-align: center;
+    background-color: rgb(228, 225, 225);
+    font-weight: bold;
+}
+
+th, td {
+    border: 1px solid;
+}
+
+img {
+    width: 100px;
+    height: 120px;
+    padding: 2px;
+}
