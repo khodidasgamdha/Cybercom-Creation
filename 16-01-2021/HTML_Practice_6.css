@@ -1,0 +1,50 @@
+img {
+    height: 90px;
+    width: 500px;
+    margin: 60px 500px 25px;
+}
+
+form {
+    margin: 0 560px;
+}
+
+input, textarea {
+    padding: 12px 150px 12px 55px;
+    border: 2px solid rgb(223, 222, 222);
+    margin-top: 15px;
+}
+
+#full_name {
+    background-image: url('user.svg');
+    background-size: 17px 17px;
+    background-position: 20px 17px;
+    background-repeat: no-repeat;
+}
+
+#email {
+    background-image: url('email.svg');
+    background-size: 17px 17px;
+    background-position: 20px 17px;
+    background-repeat: no-repeat;
+}
+
+#contact_number {
+    background-image: url('phone.svg');
+    background-size: 17px 17px;
+    background-position: 20px 17px;
+    background-repeat: no-repeat;
+}
+
+#comment {
+    background-image: url('comment.svg');
+    background-size: 17px 17px;
+    background-position: 20px 17px;
+    background-repeat: no-repeat;
+}
+
+.btn {
+    margin: 30px 0 0 120px;
+    border-radius: 20px;
+    padding: 5px 30px;
+    box-shadow: 10px 12px 30px rgb(66, 139, 202);
+}
