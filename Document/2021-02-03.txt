@@ -1,0 +1,1 @@
+Learn About Angular Fundamental Parts like Components, Templates, Directives, Services, Dependency Injection, Property Binding, Attribute Binding, Class Binding, Style Binding, Event Binding, Template Variable and Pipes
