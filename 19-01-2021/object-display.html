@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Store in localStorage</title>
+</head>
+<body>
+    
+    <!-- display data here from localstorage -->
+    <div id="data"></div>
+
+    <script>
+
+        // data object
+        var object1 = {
+            name: 'khodidas',
+            age: 20,
+            email: 'abc@gmail.com',
+            mobile: 9876543210
+        }
+
+        var object2 = {
+            name: 'Akash',
+            age: 20,
+            email: 'akash@gmail.com',
+            mobile: 9873216540
+        }
+
+        // create arr in which object is stored
+        var arr = [];
+        arr.push(object1);
+        arr.push(object2);
+
+        // store arr in localstorage
+        localStorage.setItem('arr',JSON.stringify(arr))
+
+        // store data in table formate
+        var tbl = "<table border='1'>";
+        for (var i = 0; i < arr.length; i++) {
+            tbl += "<tr>";
+            tbl += "<td>"+arr[i].name+"</td>";
+            tbl += "<td>"+arr[i].age+"</td>";
+            tbl += "<td>"+arr[i].email+"</td>";
+            tbl += "<td>"+arr[i].mobile+"</td>";
+            tbl += "</tr>";       
+        }
+        tbl += "</table>";
+
+        // store this table in where id is data 
+        document.getElementById("data").innerHTML = tbl;
+
+    </script>
+
+</body>
+</html>
