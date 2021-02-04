@@ -1,0 +1,1 @@
+Today I Learn about ngIf, Hidden Properties, ngSwitchCase, ngFor, Change Detection, ngClass, ngStyle, Types of forms, ngModel, Adding Validation and Validation Errors. 
