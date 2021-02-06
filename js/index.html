@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+
+    <!-- sidebar -->
+    <nav>
+        <ul>
+            <h5><label id="name">Hello, </label></h5>
+            <li>
+                <a href="index.html">Dashboard</a>
+            </li>
+            <li>
+                <a href="user.html">User</a>
+            </li>
+            <li>
+                <a href="#">Login Session</a>
+            </li>
+            <li>
+                <a href="login.html" onclick="logout();">Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- heading -->
+    <h1 id="heading">Dashoard</h1>
+    
+    <!-- boxes -->
+    <div class="align">
+        <div class="box1">
+            <label class="label">User < 18 Years</label><br><br>
+            <label class="label1" id="under18"></label>
+        </div>
+
+        <div class="box2">
+            <label class="label">18-50 Years Users</label><br><br>
+            <label class="label1" id="Under50"></label>
+        </div>
+
+        <div class="box3">
+            <label class="label">Users > 50 Years</label><br><br>
+            <label class="label1" id="above50"></label>
+        </div>
+    </div>
+
+    <!-- birthday -->
+    <div class="bday-100">
+        <label class="bday">Today's is</label>
+        <label class="bday"></label>
+        <label class="bday"> Birthday.</label>
+    </div>
+
+    <script src="js/user.js"></script>
+
+    <script>
+        // set user name
+        document.getElementById("name").innerHTML = "Hello, " + sessionStorage.getItem("name");
+        
+        // add user count
+        ageUnder18();
+        document.getElementById("under18").innerHTML = localStorage.getItem("ageUnder18");
+        document.getElementById("Under50").innerHTML = localStorage.getItem("age18to50");
+        document.getElementById("above50").innerHTML = localStorage.getItem("ageAbove50");
+
+        if (localStorage.getItem('arrayUser')) {
+            array_user2 = JSON.parse(localStorage.getItem('arrayUser'));
+        }
+    </script>
+
+</body>
+</html>

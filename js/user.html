@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <h5><label id="name">Hello, </label></h5>
+            <li>
+                <a href="index.html">Dashboard</a>
+            </li>
+            <li>
+                <a href="user.html">User</a>
+            </li>
+            <li>
+                <a href="#">Login Session</a>
+            </li>
+            <li>
+                <a href="login.html" onclick="logout();">Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <h1 id="heading">Add User</h1>
+
+    <div class="inputUser">
+        <input type="text" name="name" id="name1" placeholder="Name" class="inputVal" />
+        <input type="text" name="email" id="email" placeholder="Email" class="inputVal" />
+        <input type="password" name="password" id="password" placeholder="Password" class="inputVal" />
+        <input type="date" name="birthDate" id="birthDate" placeholder="Date Of Birth" class="inputVal" />
+    </div>
+
+    <input type="button" id="addUser" class="btn" name="login" value="Add User" onclick="addUser();" />
+
+    <h1 id="heading">User List</h1>
+
+    <script src="js/user.js"></script>
+
+    <script type="text/javascript">
+        document.write('<table id="table" border="1" class="table table-data2" id="table-user">');
+        document.write('<thread>');
+        document.write('<th>Name</th>');
+        document.write('<th>Email</th>');
+        document.write('<th>Password</th>');
+        document.write('<th>Birthdate</th>');
+        document.write('<th>Age</th>');
+        document.write('<th colspan="2">Actions</th>');
+        document.write('</thread>');
+        document.write('<tbody>');
+        document.write('<tr>');
+
+        var arrayUser = localStorage.getItem('arrayUser');
+        var items = JSON.parse(arrayUser);
+        arrayUser = items;
+
+        if (arrayUser) {
+            for (var i = 0; i < arrayUser.length; i++) {
+                document.write('<td>' + arrayUser[i].name + '</td>');
+                document.write('<td>' + arrayUser[i].email + '</td>');
+                document.write('<td>' + arrayUser[i].password + '</td>');
+                document.write('<td>' + arrayUser[i].userbirthDate + '</td>');
+                document.write('<td>' + getAge(arrayUser[i].userbirthDate) + '</td>');
+                document.write('<td><a href="#" name="edit" id="edit" value="' + i + '" onClick="editData(' + arrayUser[i].index + ')">Edit</a></td>');
+                document.write('<td>');
+                document.write("<a href='#' onClick='deleteData(" + arrayUser[i].index + ")'>Delete</a>");
+                document.write("</td>");
+                document.write('</tr>');
+            }
+        }
+        function deleteData(index) {
+            var items = localStorage.getItem('arrayUser');
+            var arrayUser = JSON.parse(items);
+            var index_of;
+
+            for (var i = 0; i < arrayUser.length; i++) {
+                index_of = arrayUser.indexOf(arrayUser[i]);
+                arrayUser.splice(index, 1);
+                localStorage.setItem('arrayUser', JSON.stringify(arrayUser));
+                location.reload();
+                break;
+            }
+            for (var j = 0; j < arrayUser.length; j++) {
+                index_of = arrayUser.indexOf(arrayUser[j]);
+                if (index_of != arrayUser[j].index) {
+                    arrayUser[j].index = index_of;
+                }
+            }
+            localStorage.setItem('arrayUser', JSON.stringify(arrayUser));
+            location.reload();
+        }
+
+        // edit function
+        function editData(index) {
+            var array_user1 = localStorage.getItem('arrayUser');
+            var items = JSON.parse(array_user1);
+
+            let link = document.querySelector("#edit");
+            let target1 = link.getAttribute('value');
+            link.setAttribute('value', index);
+
+            for (var j = 0; j < items.length; j++) {
+                if (index == items[j].index) {
+                    document.getElementById('name1').value = items[j].name;
+                    document.getElementById('email').value = items[j].email;
+                    document.getElementById('password').value = items[j].password;
+                    document.getElementById('birthDate').value = items[j].userbirthDate;
+                    document.getElementById("addUser").value = "Update";
+                }
+            }
+        }
+        document.write('</tbody></table>');	
+
+        // set admin nama
+        document.getElementById("name").innerHTML = "Hello, " + sessionStorage.getItem("name");
+    </script>
+
+</body>
+
+    <!-- js file -->
+    <script src="js/user.js"></script>
+
+</html>

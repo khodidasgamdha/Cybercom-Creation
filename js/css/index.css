@@ -1,0 +1,81 @@
+/* dashboard */
+h5{
+    font-size: 20px;
+    color: #ffffff;
+}
+nav {
+    height: 100%;
+    width: 22%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #b45f06;
+}
+nav a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #ffffff;
+}
+nav a:hover {
+    color: gray;
+}
+.birthday {
+    margin-left: 30%;
+    text-align: center;
+    font-size: 50px;
+    color: brown;
+}
+.align {
+    margin-left: 500px;
+    display: flex;
+    text-align: center;   
+}
+.box1 {
+    background-color: #fddcbc;
+    min-width: 220px;
+    min-height: 100px;
+    border: 1px solid black;
+
+}
+.box2 {
+    background-color: #c1b3e4;
+    min-width: 220px;
+    min-height: 100px;
+    border: 1px solid black;
+    margin-left: 100px;
+}
+.box3 {
+    background-color: #ffd2d2;
+    min-width: 220px;
+    min-height: 100px;
+    border: 1px solid black;
+    margin-left: 100px;
+}
+.bday-100 {
+    margin-left: 50%;
+    margin-top: 150px;
+}
+.bday {
+    font-size: 30px;
+}
+
+
+/* User Add Page */
+#heading {
+    margin: 10px 0 0 420px;
+}
+.inputUser {
+    margin: 60px 0 0 430px;
+    height: 50px;
+}
+.inputVal {
+    width: 200px;
+    margin-right: 20px;
+}
+.btn {
+    width: 150px;
+    margin-left: 76%;
+}
+.table {
+    margin: 10px 0 0 400px;;
+}
