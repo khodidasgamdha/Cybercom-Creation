@@ -1,5 +1,5 @@
 var arrayUser = [];
-var hasMatch = false;
+var match = false;
 
 // logout function
 function logout() {
@@ -36,8 +36,8 @@ function addUser() {
 
     // if update data
     if (document.getElementById("addUser").value == "Update") {
-        var array_user1 = localStorage.getItem('arrayUser');
-        var item = JSON.parse(array_user1);
+        var arrayUser1 = localStorage.getItem('arrayUser');
+        var item = JSON.parse(arrayUser1);
         let link = document.querySelector("#edit");
         let target1 = link.getAttribute('value');
 
@@ -54,17 +54,16 @@ function addUser() {
         }
     }
 
-    // if delete data
+    // if adding data
     if (document.getElementById("addUser").value == "Add User") {
         var index = 0;
         if (localStorage.getItem('arrayUser')) {
             arrayUser = JSON.parse(localStorage.getItem('arrayUser'));
         }
 
-        for (var i = 0; i < arrayUser.length; i++) {
-            index = arrayUser.indexOf(arrayUser[i]) + 1;
+        for (var t = 0; t < arrayUser.length; t++) {
+            index = arrayUser.indexOf(arrayUser[t]) + 1;
         }
-        index;
         var name = document.getElementById('name1').value;
         var uemail = document.getElementById('email').value;
         var upwd = document.getElementById('password').value;
@@ -78,21 +77,22 @@ function addUser() {
             userbirthDate: userbirthDate
         };
 
-        // check exsiting user or not
-        function check_user_register() {
+        // check exixt or not
+        function checkUser() {
             for (var index1 = 0; index1 < arrayUser.length; ++index1) {
                 var temp = arrayUser[index1];
                 if (temp.email == uemail) {
-                    hasMatch = true;
+                    match = true;
                     alert("user already exist with same email");
                     break;
                 }
             }
         }
-        check_user_register();
-        if (hasMatch === false) {
+
+        // add user data
+        checkUser();
+        if (match === false) {
             arrayUser.push(user);
-            console.log(arrayUser);
             localStorage.setItem("arrayUser", JSON.stringify(arrayUser));
             alert("User added");
             location.reload();

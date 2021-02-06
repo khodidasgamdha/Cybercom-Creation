@@ -9,18 +9,10 @@
     <nav>
         <ul>
             <h5><label id="name">Hello, </label></h5>
-            <li>
-                <a href="index.html">Dashboard</a>
-            </li>
-            <li>
-                <a href="user.html">User</a>
-            </li>
-            <li>
-                <a href="#">Login Session</a>
-            </li>
-            <li>
-                <a href="login.html" onclick="logout();">Logout</a>
-            </li>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="user.html">User</a></li>
+            <li><a href="userSession.html">Login Session</a></li>
+            <li><a href="login.html" onclick="logout()">Logout</a></li>
         </ul>
     </nav>
 
@@ -46,10 +38,8 @@
     </div>
 
     <!-- birthday -->
-    <div class="bday-100">
-        <label class="bday">Today's is</label>
-        <label class="bday"></label>
-        <label class="bday"> Birthday.</label>
+    <div class="bday">
+        <h3>Today's is Birthday.</h3>
     </div>
 
     <script src="js/user.js"></script>
@@ -60,13 +50,9 @@
         
         // add user count
         ageUnder18();
-        document.getElementById("under18").innerHTML = localStorage.getItem("ageUnder18");
-        document.getElementById("Under50").innerHTML = localStorage.getItem("age18to50");
-        document.getElementById("above50").innerHTML = localStorage.getItem("ageAbove50");
-
-        if (localStorage.getItem('arrayUser')) {
-            array_user2 = JSON.parse(localStorage.getItem('arrayUser'));
-        }
+        document.getElementById("under18").innerHTML = localStorage.getItem("ageUnder18") + " Users";
+        document.getElementById("Under50").innerHTML = localStorage.getItem("age18to50") + " Users";
+        document.getElementById("above50").innerHTML = localStorage.getItem("ageAbove50") + " Users";
     </script>
 
 </body>

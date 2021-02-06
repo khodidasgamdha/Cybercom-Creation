@@ -8,8 +8,8 @@
     <!-- css File -->
     <link href="css/style.css" rel="stylesheet">
 
-        <!-- Bootstrap CSS link -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- Bootstrap CSS link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <!-- title -->
     <title>Register Page</title>
@@ -29,7 +29,6 @@
             <div class="align1">
                 <input type="email" class="input" id="email" name="email" placeholder="email" required />
             </div>
-
 
             <div class="align1">
                 <input type="password" class="input" id="password" name="password" placeholder="Password" required />
@@ -63,12 +62,10 @@
             </div>
 
             <div class="align1">
-                <input type="checkbox" name="tc" id="tc"
-                    onchange="document.getElementById('submit').disabled = !this.checked;"> Terms & Coditions.
+                <input type="checkbox" name="tc" id="tc" onchange="document.getElementById('submit').disabled = !this.checked;"> Terms & Coditions.
             </div>
 
-            <input type="submit" class="btn btn-primary" disabled="disabled" name="submit" id="submit" value="REGISTER"
-                onclick="addUser();" />
+            <input type="submit" class="btn btn-primary" disabled="disabled" name="submit" id="submit" value="REGISTER" onclick="addUser();" />
 
         </div>
     </form>

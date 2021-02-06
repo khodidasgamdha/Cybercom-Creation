@@ -2,6 +2,7 @@ var array = [];
 var match = false;
 var temp;
 
+// check validation
 function checkAuthentication() {
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;

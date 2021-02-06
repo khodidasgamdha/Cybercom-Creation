@@ -1,6 +1,7 @@
 var array = [];
 var match = false;
 
+// get value
 function addUser() {
     var sName = document.getElementById('name').value;
     var sEmail = document.getElementById('email').value;
@@ -9,11 +10,7 @@ function addUser() {
     var sCity = document.getElementById('city').value;
     var sState = document.getElementById('state').value;
 
-        
-    // if(sPwd !== sCPwd) {
-    //     alert("Does not match password and confirm password!");
-    // }
-
+    // creating object
     var admin = {
         name: sName,
         email: sEmail,
@@ -21,9 +18,13 @@ function addUser() {
         city: sCity,
         state: sState
     };
+
+    // fetch array data
     if (localStorage.getItem('array')) {
         array = JSON.parse(localStorage.getItem('array'));
     }
+
+    // check if exist or not
     function checkUser() {
         for (var index = 0; index < array.length; ++index) {
             var temp = array[index];
@@ -35,6 +36,7 @@ function addUser() {
         }
     }
     
+    // if valid add data and redirect to login page
     checkUser();
     if (match === false) {
         array.push(admin);

@@ -1,48 +1,50 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="css/index.css" />
-</head>
 
+    <!-- title -->
+    <title>User</title>
+
+    <!-- css file link -->
+    <link rel="stylesheet" href="css/user.css" />
+
+</head>
 <body>
 
+    <!-- sidebar -->
     <nav>
         <ul>
             <h5><label id="name">Hello, </label></h5>
-            <li>
-                <a href="index.html">Dashboard</a>
-            </li>
-            <li>
-                <a href="user.html">User</a>
-            </li>
-            <li>
-                <a href="#">Login Session</a>
-            </li>
-            <li>
-                <a href="login.html" onclick="logout();">Logout</a>
-            </li>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="user.html">User</a></li>
+            <li><a href="userSession.html">Login Session</a></li>
+            <li><a href="login.html" onclick="logout();">Logout</a></li>
         </ul>
     </nav>
 
+    <!-- heading -->
     <h1 id="heading">Add User</h1>
 
+    <!-- input user data -->
     <div class="inputUser">
         <input type="text" name="name" id="name1" placeholder="Name" class="inputVal" />
         <input type="text" name="email" id="email" placeholder="Email" class="inputVal" />
         <input type="password" name="password" id="password" placeholder="Password" class="inputVal" />
         <input type="date" name="birthDate" id="birthDate" placeholder="Date Of Birth" class="inputVal" />
     </div>
-
     <input type="button" id="addUser" class="btn" name="login" value="Add User" onclick="addUser();" />
 
+    <!-- user list heading -->
     <h1 id="heading">User List</h1>
 
+    <!-- js file -->
     <script src="js/user.js"></script>
 
+    <!-- js code -->
     <script type="text/javascript">
-        document.write('<table id="table" border="1" class="table table-data2" id="table-user">');
+
+        // show user data table
+        document.write('<table id="table">');
         document.write('<thread>');
         document.write('<th>Name</th>');
         document.write('<th>Email</th>');
@@ -54,6 +56,7 @@
         document.write('<tbody>');
         document.write('<tr>');
 
+        // fetch user data
         var arrayUser = localStorage.getItem('arrayUser');
         var items = JSON.parse(arrayUser);
         arrayUser = items;
@@ -72,22 +75,24 @@
                 document.write('</tr>');
             }
         }
+
+        // delete data
         function deleteData(index) {
             var items = localStorage.getItem('arrayUser');
             var arrayUser = JSON.parse(items);
-            var index_of;
+            var indexOf;
 
             for (var i = 0; i < arrayUser.length; i++) {
-                index_of = arrayUser.indexOf(arrayUser[i]);
+                indexOf = arrayUser.indexOf(arrayUser[i]);
                 arrayUser.splice(index, 1);
                 localStorage.setItem('arrayUser', JSON.stringify(arrayUser));
                 location.reload();
                 break;
             }
             for (var j = 0; j < arrayUser.length; j++) {
-                index_of = arrayUser.indexOf(arrayUser[j]);
-                if (index_of != arrayUser[j].index) {
-                    arrayUser[j].index = index_of;
+                indexOf = arrayUser.indexOf(arrayUser[j]);
+                if (indexOf != arrayUser[j].index) {
+                    arrayUser[j].index = indexOf;
                 }
             }
             localStorage.setItem('arrayUser', JSON.stringify(arrayUser));
@@ -96,9 +101,8 @@
 
         // edit function
         function editData(index) {
-            var array_user1 = localStorage.getItem('arrayUser');
-            var items = JSON.parse(array_user1);
-
+            var arrayUser1 = localStorage.getItem('arrayUser');
+            var items = JSON.parse(arrayUser1);
             let link = document.querySelector("#edit");
             let target1 = link.getAttribute('value');
             link.setAttribute('value', index);
@@ -115,7 +119,7 @@
         }
         document.write('</tbody></table>');	
 
-        // set admin nama
+        // set admin name
         document.getElementById("name").innerHTML = "Hello, " + sessionStorage.getItem("name");
     </script>
 
