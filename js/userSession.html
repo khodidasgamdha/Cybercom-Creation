@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+
+    <!-- sidebar -->
+    <nav>
+        <ul>
+            <h5><label id="name">Hello, </label></h5>
+            <li>
+                <a href="index.html">Dashboard</a>
+            </li>
+            <li>
+                <a href="user.html">User</a>
+            </li>
+            <li>
+                <a href="userSession.html">Login Session</a>
+            </li>
+            <li>
+                <a href="login.html" onclick="logout();">Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <script>
+       
+       // set user name
+        document.getElementById("name").innerHTML = "Hello, " + sessionStorage.getItem("name");
+       
+    </script>
+
+</body>
+</html>
