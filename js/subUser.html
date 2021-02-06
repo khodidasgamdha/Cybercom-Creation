@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- title -->
+    <title>User Login</title>
+
+    <!-- css link -->
+    <link rel="stylesheet" href="css/index.css" />
+
+</head>
+<body>
+
+    <!-- sidebar -->
+    <nav>
+        <ul>
+            <h5><label id="name1">Hello, </label></h5>
+            <li><a href="subUser.html">Dashboard</a></li>
+            <li><a href="login.html" onclick="logout();">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- welcome quota -->
+    <h1 style="margin-left: 600px;">Welcome to Cyebrcom Creation</h1>
+
+    <!-- js -->
+    <script>
+        // logout function
+        function logout() {
+            sessionStorage.clear();
+        }
+
+        // get user name
+        document.getElementById("name1").innerHTML = "Hello " + sessionStorage.getItem("name");
+    </script>
+
+</body>
+
+</html>

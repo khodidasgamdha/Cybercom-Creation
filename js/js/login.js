@@ -23,8 +23,21 @@ function checkAuthentication() {
 
     checkUser();
     if (match == false) {
-        match = false;
-        alert("Invalid email and password!");
+
+        // check for sun user
+        if (localStorage.getItem('arrayUser')) {
+            array = JSON.parse(localStorage.getItem('arrayUser'));
+        }
+        
+        checkUser();
+        if (match == false) {
+            match = false;
+            alert("Invalid email and password!");
+        }
+        else {
+            sessionStorage.setItem("name", temp.name);
+            window.location.href = "subUser.html";
+        }
     }
     else {
         sessionStorage.setItem("name", temp.name);
