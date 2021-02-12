@@ -1,0 +1,33 @@
+<h1 id="title">Angular Practice</h1><hr>
+
+<!-- Directive Example -->
+<h3>Directive Example</h3>
+<input type="text" [appInput]="'uppercase'" class="form-control container"><hr>
+
+<!-- Ṭemplate Driven Form -->
+<app-template-dform></app-template-dform><hr>
+
+<!-- Reactive Form -->
+<app-reactive-form></app-reactive-form><hr>
+
+<!-- Sweet Alerty Box -->
+<app-sweet-aleart></app-sweet-aleart><hr>
+
+<!-- Toastr Notification -->
+<app-toastr></app-toastr><hr>
+
+<!-- Image Compress -->
+<app-img-compress></app-img-compress><hr>
+
+<!-- JSON Post -->
+<app-post></app-post><hr>
+
+<!-- Course Add and Delete on click -->
+<app-new-course></app-new-course><hr>
+
+<!-- Parent to Child & use of Service Data -->
+<app-child1>
+  <ng-container select=".child">
+    <li *ngFor="let id of contactMethod">{{ id.name }}</li>
+  </ng-container>
+</app-child1>

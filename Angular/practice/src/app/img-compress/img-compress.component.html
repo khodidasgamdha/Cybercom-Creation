@@ -1,0 +1,7 @@
+<h3>Image Compress Exaample</h3><br>
+
+<div class="container d-flex justify-content-around">
+    <button class="btn btn-primary" (click)="compressFile()">Upload and Compress Image</button>
+    <img *ngIf="imgResultBeforeCompress" [src]="imgResultBeforeCompress" alt="">
+    <img *ngIf="imgResultAfterCompress" [src]="imgResultAfterCompress" alt="">
+</div>

@@ -1,0 +1,61 @@
+<h3>Template Driven Form Example</h3>
+
+<!-- form -->
+<form #f="ngForm" class="container">
+
+  <!-- first name -->
+  <div class="form-group">
+    <label for="firstName">First Name :</label><br>
+    <input required minlength="3" maxlength="10" pattern="banana" name="firstName" ngModel #firstName="ngModel" type="text" id="firstName" class="form-control">
+    
+    <!-- errors -->
+    <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+      <div *ngIf="firstName.errors.required">Enter First Name</div>
+      <div *ngIf="firstName.errors.minlength">Enter Minimum {{ firstName.errors.minlength.requiredLength }} Char..</div>
+      <div *ngIf="firstName.errors.maxlength">Enter Minimum {{ firstName.errors.maxlength.requiredLength }} Char..</div>
+      <div *ngIf="firstName.errors.pattern">First Name Not Match with Pattern</div>
+    </div>
+  
+  </div>
+
+  <!-- comment -->
+  <div>
+    <label for="comment">Comment : </label>
+    <textarea id="comment" ngModel name="comment" cols="30" rows="10" class="form-control"></textarea>
+  </div>
+
+  <!-- checkbox -->
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ngModel name="isAccepted"> accecpt Terms & Condition.
+    </label>
+  </div>
+
+  <!-- options -->
+  <div class="form-control">
+    <label for="contactMethod">Contact Method :</label>
+    <select ngModel name="contactMethod" id="contactMethod">
+      <option value="" disabled selected>---Select Method---</option>
+      <option *ngFor="let method of contactMethod" [value]="method.id">{{ method.name }}</option>
+    </select>
+  </div>
+
+  <!-- ṛadio button -->
+  <div *ngFor="let method of rMethods" class="radio">
+    <label for="">
+      <input ngModel type="radio" name="contactMethod2" [value]="method.id"> {{ method.name }}
+    </label>
+  </div>
+
+  <!-- json value -->
+  <p>
+    {{ f.value | json }}
+  </p>
+
+  <!-- button -->
+  <button class="btn btn-primary" type="submit" [disabled]="!f.valid" (click)="log1(firstName.value)">Submit</button>
+
+  <!-- display data -->
+  {{fn}}
+
+</form>
