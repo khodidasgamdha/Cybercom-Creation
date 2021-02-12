@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactService } from '../contact.service';
+import { ContactService } from '../service/contact.service';
 
 @Component({
   selector: 'app-child1',

@@ -9,6 +9,7 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { SweetAleartComponent } from './sweet-aleart/sweet-aleart.component';
 import { ImgCompressComponent } from './img-compress/img-compress.component';
 import { ToastrComponent } from './toastr/toastr.component';
+import { PostComponent } from './post/post.component';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,10 +17,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 
-import { ContactService } from './contact.service';
+import { ContactService } from './service/contact.service';
 import {NgxImageCompressService} from 'ngx-image-compress';
-import { PostComponent } from './post/post.component';
-import { from } from 'rxjs';
+import { PostService } from './service/post.service';
 
 @NgModule({
   declarations: [
@@ -43,6 +43,7 @@ import { from } from 'rxjs';
     HttpClientModule
   ],
   providers: [
+    PostService,
     ContactService,
     NgxImageCompressService
   ],
