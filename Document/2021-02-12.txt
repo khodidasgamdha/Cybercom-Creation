@@ -1,0 +1,1 @@
+Today I learned about Extracting Service, Handaling Errors, Unexpected Errors, Expected Errors, Throwing Application Specific Errors and Handing Bad request. 
