@@ -10,7 +10,7 @@ export class SweetAleartComponent {
 
   // alert box
   simpleAlert(){
-    Swal.fire('Hello world!');
+    Swal.fire('Alert!');
   }
   
   // sucess box
@@ -30,7 +30,7 @@ export class SweetAleartComponent {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, keep it'
+      cancelButtonText: 'No, keep it!'
     }).then((result) => {
       if (result.value) {
         Swal.fire(

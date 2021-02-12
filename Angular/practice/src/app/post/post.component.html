@@ -5,15 +5,13 @@
     <!-- input field -->
     <input (keyup.enter)="createPost(title)" #title type="text" class="form-control">
     <ul class="list-group">
-        
+       
         <!-- all post -->
-        <li *ngFor="let post of posts" class="list-group-item">
+        <li *ngFor="let post of posts" class="list-group-item d-flex">
             {{ post.title }}
-
             <!-- update and delete button -->
-            <button (click)="updatePost(post)" class="btn btn-primary btn-sm">Update</button>
+            <button (click)="updatePost(post)" class="btn btn-primary btn-sm ml-auto">Update</button>
             <button (click)="deletePost(post)" class="btn btn-danger btn-sm">Delete</button>
-        
         </li>
     
     </ul>

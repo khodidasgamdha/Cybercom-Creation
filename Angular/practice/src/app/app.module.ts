@@ -10,6 +10,7 @@ import { SweetAleartComponent } from './sweet-aleart/sweet-aleart.component';
 import { ImgCompressComponent } from './img-compress/img-compress.component';
 import { ToastrComponent } from './toastr/toastr.component';
 import { PostComponent } from './post/post.component';
+import { custPipe } from './custom.pipe';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -32,7 +33,8 @@ import { PostService } from './service/post.service';
     SweetAleartComponent,
     ImgCompressComponent,
     ToastrComponent,
-    PostComponent
+    PostComponent,
+    custPipe
   ],
   imports: [
     BrowserModule,

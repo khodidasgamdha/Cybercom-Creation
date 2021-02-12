@@ -10,6 +10,7 @@ export class Child1Component implements OnInit {
 
   public data = [];
 
+  // service --------------------------------------------------
   // dependency Injection
   constructor(private contact: ContactService ) { }
 
@@ -17,5 +18,9 @@ export class Child1Component implements OnInit {
     // store service data to local array
     this.data = this.contact.serviceWorks();
   }
+
+  // custom pipe -----------------------------------------------
+  mob = 'This is Custom Pipe...';
+
 
 }
