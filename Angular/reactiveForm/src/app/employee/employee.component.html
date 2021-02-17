@@ -5,39 +5,39 @@
 
     <!-- first row -->
     <div class="form-row">
-        <!-- firstname -->
+        <!-- firstName -->
         <div class="form-group col-sm-4">
-            <label for="firstname" id="require">First Name</label>
+            <label for="firstName" id="require">First Name</label>
             <input 
-                formControlName="firstname" 
-                id="firstname" 
+                formControlName="firstName" 
+                id="firstName" 
                 type="text" 
                 class="form-control">
 
             <!-- errors -->
-            <div *ngIf="firstname.touched && firstname.invalid" class="alert alert-danger">
-                <div *ngIf="firstname.errors.required">Enter First Name</div>
-                <div *ngIf="firstname.errors.minlength">Enter Minimum {{ firstname.errors.minlength.requiredLength }} Character</div>
-                <div *ngIf="firstname.errors.maxlength">Only {{ firstname.errors.maxlength.requiredLength }} Character Allowed</div>
-                <div *ngIf="firstname.errors.pattern">Please, Enter Valid First Name</div>
+            <div *ngIf="firstName.touched && firstName.invalid" class="alert alert-danger">
+                <div *ngIf="firstName.errors.required">Enter First Name</div>
+                <div *ngIf="firstName.errors.minlength">Enter Minimum {{ firstName.errors.minlength.requiredLength }} Character</div>
+                <div *ngIf="firstName.errors.maxlength">Only {{ firstName.errors.maxlength.requiredLength }} Character Allowed</div>
+                <div *ngIf="firstName.errors.pattern">Please, Enter Valid First Name</div>
             </div>
         </div>
 
-        <!-- lastname -->
+        <!-- lastName -->
         <div class="form-group col-sm-4">
-            <label for="lastname" id="require">Last Name</label>
+            <label for="lastName" id="require">Last Name</label>
             <input 
-                formControlName="lastname" 
-                id="lastname" 
+                formControlName="lastName" 
+                id="lastName" 
                 type="text" 
                 class="form-control">
 
             <!-- errors -->
-            <div *ngIf="lastname.touched && lastname.invalid" class="alert alert-danger">
-                <div *ngIf="lastname.errors.required">Enter Last Name</div>
-                <div *ngIf="lastname.errors.minlength">Enter Minimum {{ lastname.errors.minlength.requiredLength }} Character</div>
-                <div *ngIf="lastname.errors.maxlength">Only {{ lastname.errors.maxlength.requiredLength }} Character Allowed</div>
-                <div *ngIf="lastname.errors.pattern">Please, Enter Valid Last Name</div>
+            <div *ngIf="lastName.touched && lastName.invalid" class="alert alert-danger">
+                <div *ngIf="lastName.errors.required">Enter Last Name</div>
+                <div *ngIf="lastName.errors.minlength">Enter Minimum {{ lastName.errors.minlength.requiredLength }} Character</div>
+                <div *ngIf="lastName.errors.maxlength">Only {{ lastName.errors.maxlength.requiredLength }} Character Allowed</div>
+                <div *ngIf="lastName.errors.pattern">Please, Enter Valid Last Name</div>
             </div>
         </div>
 
@@ -53,7 +53,7 @@
             <!-- errors -->
             <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
                 <div *ngIf="email.errors.required">Enter Email</div>
-                <div *ngIf="email.errors.email || email.errors.pattern">Please, Enter Valid Email</div>
+                <div *ngIf="email.errors.pattern">Please, Enter Valid Email</div>
             </div>
         </div>
     </div>
@@ -98,16 +98,17 @@
     <div class="form-row">
         <!-- Designation -->
         <div class="form-group col-sm-4">
-            <label for="designation" id="require">Designation</label>
-            <input 
-                formControlName="designation" 
-                id="designation" 
-                type="text" 
-                class="form-control">
+            <label for="designation" id="require">Designation</label><br>
+            <select 
+                name="designation" 
+                formControlName="designation">
+              <option selected disabled value="">---- Select Designation ----</option>
+              <option *ngFor="let desg of job" [value]="desg.id">{{ desg.name }}</option>
+            </select>
 
             <!-- errors -->
             <div *ngIf="designation.touched && designation.invalid" class="alert alert-danger">
-                <div *ngIf="designation.errors.required">Enter Designation</div>
+                <div *ngIf="designation.errors.required">Select Designation</div>
             </div>
         </div>
 
@@ -166,31 +167,23 @@
         <!-- city -->
         <div class="form-group col-sm-4">
             <label for="city">City</label>
-            <input 
-                formControlName="city"
-                id="city" 
-                type="text" 
-                class="form-control">
-
-            <!-- errors -->
-            <div *ngIf="city.touched && city.invalid" class="alert alert-danger">
-                <div *ngIf="city.errors.pattern">Please, Enter Proper City</div>
-            </div>
+            <select 
+                name="city"
+                formControlName="city">
+                <option selected disabled value="">-------- Select City --------</option>
+                <option *ngFor="let city of cityes" [value]="city.id">{{ city.name }}</option>
+            </select>
         </div>
 
         <!-- state -->
         <div class="form-group col-sm-4">
             <label for="state">State</label>
-            <input 
-                formControlName="state"
-                id="state" 
-                type="text" 
-                class="form-control">
-
-            <!-- errors -->
-            <div *ngIf="state.touched && state.invalid" class="alert alert-danger">
-                <div *ngIf="state.errors.pattern">Please, Enter Proper State</div>
-            </div>
+            <select 
+                name="state"
+                formControlName="state">
+                <option selected disabled value="">-------- Select State --------</option>
+                <option *ngFor="let state of states" [value]="state.id">{{ state.name }}</option>
+            </select>
         </div>
 
         <!-- Pin code -->

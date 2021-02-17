@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../service/post.service';
-import { ToastrService } from 'ngx-toastr';
 import { AppError } from '../error/app-error';
 import { NotFoundError } from '../error/not-found-error';
 import { BadInput } from '../error/bad-input';
@@ -15,15 +14,12 @@ export class PostComponent implements OnInit {
   
   posts: any[];
 
-  constructor(private service: PostService, private toastr: ToastrService) { }
+  constructor(private service: PostService) { }
 
   // geting data from service and put in array
   ngOnInit() {
-    this.service.getPost()
-    .subscribe(
-      response => { (this.posts = response as []) },
-      error => { this.toastr.error('Network issue !!', error); }
-    );
+    this.service.getAll()
+    .subscribe( posts => this.posts = posts as [] );
   }
 
   // create new post  
@@ -31,10 +27,10 @@ export class PostComponent implements OnInit {
     let post = { title: input.value };
     input.value = '';
 
-    this.service.createPost(post)
+    this.service.create(post)
     .subscribe(
-      response => {
-        (post['id'] = (response as [])['id']), 
+      newPost => {
+        (post['id'] = newPost['id']), 
         this.posts.splice(0, 0, post);
       },
       (error: AppError) => {
@@ -43,34 +39,37 @@ export class PostComponent implements OnInit {
           // this.form.setErrors(error.json());
         }
         else
-          this.toastr.error('An Unexpected Error occurred !!');
+          throw error;
       }
     );
   }
 
   // update post
   updatePost(post) {
-    this.service.updatePost(post)
-    .subscribe(response => {
-      console.log(response);
-    });
+    this.service.update(post)
+    .subscribe(
+      updatedPost => {
+      console.log(updatedPost);
+      }
+    );
   }
 
   // delete post
   deletePost(post) {
-    this.service.deletePost(post.id)
+    this.service.delete(post.id)
     .subscribe(
-      (responce) => {
+      () => {
         let index = this.posts.indexOf(post);
         this.posts.splice(index, 1);
       },
       (error: AppError) => {
         if(error instanceof NotFoundError)
-          this.toastr.error('This Post Aleardy Deleted !!');
+          alert('Already deleted !');
         else
-          this.toastr.error('An Unexpected Error occurred !!');
+          throw error;
       }
     );
+    // this.service.delete(post.id);
   }
 
 }

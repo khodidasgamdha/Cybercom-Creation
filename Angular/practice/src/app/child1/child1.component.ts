@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ContactService } from '../service/contact.service';
 
 @Component({
@@ -7,6 +7,9 @@ import { ContactService } from '../service/contact.service';
   styleUrls: ['./child1.component.css']
 })
 export class Child1Component implements OnInit {
+
+  @Input('ip') ipStr;
+  // @Output() opStr = new EventEmitter();
 
   public data = [];
 

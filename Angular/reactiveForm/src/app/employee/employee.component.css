@@ -19,6 +19,13 @@ label {
     font-weight: bold;
 }
 
+select {
+    width: 230px;
+    height: 37px;
+    border: none;
+    border-radius: 5px;
+}
+
 .form-control.ng-touched.ng-invalid{
     border-left: 5px solid red; 
 }

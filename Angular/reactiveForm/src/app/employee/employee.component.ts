@@ -14,21 +14,20 @@ export class EmployeeComponent {
   // form builder method
   constructor(fb: FormBuilder) {
     this.form = fb.group({
-      firstname: ['', [
+      firstName: ['', [
         Validators.required,
         Validators.minLength(3),
-        Validators.maxLength(10),
+        Validators.maxLength(15),
         Validators.pattern("^[a-zA-Z]+(?: [a-z|A-Z]+)*$")
       ]],
-      lastname: ['', [
+      lastName: ['', [
         Validators.required,
         Validators.minLength(3),
-        Validators.maxLength(10),
+        Validators.maxLength(15),
         Validators.pattern("^[a-zA-Z]+(?: [a-z|A-Z]+)*$")
       ]],
       email: ['', [
         Validators.required,
-        Validators.email,
         Validators.pattern('^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;')
       ]],
       contactNumber: ['', [
@@ -46,8 +45,8 @@ export class EmployeeComponent {
       experience: ['', Validators.required],
       joiningDate: ['', Validators.required],
       address: ['', Validators.minLength(25)],
-      city: [],
-      state: [],
+      city: [''],
+      state: [''],
       pincode: ['', [
         Validators.minLength(6),
         Validators.maxLength(6),
@@ -73,6 +72,7 @@ export class EmployeeComponent {
     });
   }
 
+  // designation option value
   job = [
     { id: 1, name: 'Full-Stack Developer' },
     { id: 2, name: 'Front end Developer' },
@@ -80,15 +80,33 @@ export class EmployeeComponent {
     { id: 4, name: 'HR' },
     { id: 5, name: 'Manager' }
   ];
+
+  // cityes option value
+  cityes = [
+    { id: 1, name: 'Mumbai' },
+    { id: 2, name: 'Delhi' },
+    { id: 3, name: 'Ahemdabad' },
+    { id: 4, name: 'Surat' },
+    { id: 5, name: 'Rajkot' }
+  ];
+
+  // state option value
+  states = [
+    { id: 1, name: 'Maharastra' },
+    { id: 2, name: 'Delhi' },
+    { id: 3, name: 'Gujarat' },
+    { id: 4, name: 'Rajsthan' },
+    { id: 5, name: 'Madhya Pradesh' }
+  ];
   
   // get firstname
-  get firstname() {
-    return this.form.get('firstname');
+  get firstName() {
+    return this.form.get('firstName');
   }
   
   // get lastname
-  get lastname() {
-    return this.form.get('lastname');
+  get lastName() {
+    return this.form.get('lastName');
   }
   
   // get email
@@ -124,16 +142,6 @@ export class EmployeeComponent {
   // get address
   get address() {
     return this.form.get('address');
-  }
-  
-  // get city
-  get city() {
-    return this.form.get('city');
-  }
-  
-  // get state
-  get state() {
-    return this.form.get('state');
   }
   
   // get pincode

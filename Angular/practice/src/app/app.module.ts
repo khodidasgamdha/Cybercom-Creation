@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { InputDirective } from './input.directive';
@@ -21,6 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ContactService } from './service/contact.service';
 import {NgxImageCompressService} from 'ngx-image-compress';
 import { PostService } from './service/post.service';
+import { AppErrorHandeler } from './error/app-error-handeler';
+import { RoutingComponent } from './routing/routing.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { PostService } from './service/post.service';
     ImgCompressComponent,
     ToastrComponent,
     PostComponent,
-    custPipe
+    custPipe,
+    RoutingComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { PostService } from './service/post.service';
   providers: [
     PostService,
     ContactService,
-    NgxImageCompressService
+    NgxImageCompressService,
+    { provide: ErrorHandler, useClass: AppErrorHandeler }
   ],
   bootstrap: [AppComponent]
 })

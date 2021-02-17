@@ -8,6 +8,6 @@ export class custPipe implements  PipeTransform {
     
     transform(value: String) {
         if(!value) return null;
-        else return value.slice(0, 20);
+        else return value.slice(0, 22);
     }
 }
