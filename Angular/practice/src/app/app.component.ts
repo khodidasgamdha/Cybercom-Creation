@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  ip = "From Parents...";
+  
   // ng-container
   contactMethod = [
     { id: 1, name: 'Email1' },
