@@ -1,0 +1,15 @@
+<h5>Department Detail</h5>
+
+<p>you seleted Department with id {{ departmentId }}.</p>
+
+<p>
+    <button (click)="showOverview()">Overview</button>
+    <button (click)="showContact()">Contact</button>
+</p>
+<router-outlet></router-outlet>
+
+<button (click)="goPrevious()">Previous</button>
+<button (click)="goNext()">Next</button><br>
+
+<button (click)="gotoDepartment()">Back</button> 
+<button (click)="submit()">Submit</button> 

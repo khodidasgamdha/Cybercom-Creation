@@ -22,7 +22,7 @@ import { ContactService } from './service/contact.service';
 import {NgxImageCompressService} from 'ngx-image-compress';
 import { PostService } from './service/post.service';
 import { AppErrorHandeler } from './error/app-error-handeler';
-import { RoutingComponent } from './routing/routing.component';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,7 @@ import { RoutingComponent } from './routing/routing.component';
     ToastrComponent,
     PostComponent,
     custPipe,
-    RoutingComponent
+    routingComponents,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +45,8 @@ import { RoutingComponent } from './routing/routing.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [
     PostService,
