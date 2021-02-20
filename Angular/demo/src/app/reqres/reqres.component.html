@@ -3,7 +3,7 @@
     <div class="card col-sm-12" style="width: 18rem;" *ngFor='let posts of posts.data'>
     <img class="card-img-top" [src]='posts.avatar' alt="Card image cap">
     <div class="card-body">
-      <p class="card-text">Name : {{posts.first_name}} {{posts.last_name}}</p>
+      <h5 class="card-text">{{posts.first_name}} {{posts.last_name}}</h5>
       <p class="card-text">Email : {{posts.email}}</p>
     </div>
   </div>
