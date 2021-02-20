@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { EmployeeComponent } from './employee/employee.component';
-import { CMSComponent } from './cms/cms.component';
-import { CompanyComponent } from './company/company.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
+import { EmployeeComponent } from './module/employee/employee.component';
+import { CMSComponent } from './module/cms/cms.component';
+import { CompanyComponent } from './module/company/company.component';
+import { NotFoundComponent } from './module/not-found/not-found.component';
+import { HomeComponent } from './auth guard/home/home.component';
+import { LoginComponent } from './auth guard/login/login.component';
 import { AuthGuard } from './service/auth-guard.service'
+import { ReqresComponent } from './reqres/reqres.component';
+import { ReqresLoginComponent } from './reqres-login/reqres-login.component';
 
 
 const routes: Routes = [
     { 
         path: '', 
-        redirectTo: '/login', 
-        pathMatch: 'full' 
+        // component: ReqresComponent
+        component: ReqresLoginComponent
     },
     {
         path: 'home',
@@ -29,17 +31,17 @@ const routes: Routes = [
     { 
         path: 'employee', 
         component: EmployeeComponent,
-        loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule),
+        loadChildren: () => import('./module/employee/employee.module').then(m => m.EmployeeModule),
     },
     { 
         path: 'cms', 
         component: CMSComponent,
-        loadChildren: () => import('./cms/cms.module').then(m => m.CmsModule),
+        loadChildren: () => import('./module/cms/cms.module').then(m => m.CmsModule),
     },
     { 
         path: 'company', 
         component: CompanyComponent,
-        loadChildren: () => import('./company/company.module').then(m => m.CompanyModule),
+        loadChildren: () => import('./module/company/company.module').then(m => m.CompanyModule),
     },
     { 
         path: '**', 
