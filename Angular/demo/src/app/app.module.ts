@@ -27,8 +27,8 @@ import { ReqresLoginComponent } from './reqres-login/reqres-login.component';
   ],
   providers: [
     UrlService,
-    ErrorHandler
-    // {provide: ErrorHandler, useClass: globalErrorHandler}
+    ErrorHandler,
+    {provide: ErrorHandler, useClass: globalErrorHandler}
   ],
   bootstrap: [AppComponent]
 })

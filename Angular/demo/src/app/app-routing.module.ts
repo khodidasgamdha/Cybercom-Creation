@@ -13,19 +13,18 @@ import { ReqresLoginComponent } from './reqres-login/reqres-login.component';
 const routes: Routes = [
     { 
         path: '', 
-        redirectTo: '/login',
+        redirectTo: '/',
         pathMatch: 'full'
     },  
+    {
+        path: '',
+        component: HomeComponent,
+        data: { title: 'Home' }
+    },
     { 
         path: 'login', 
         component: ReqresLoginComponent
     },  
-    {
-        path: 'home',
-        component: HomeComponent,
-        canActivate: [AuthGuard],
-        data: { title: 'Home' }
-    },
     { 
         path: 'listuser', 
         component: ReqresComponent,

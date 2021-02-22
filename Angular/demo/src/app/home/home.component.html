@@ -1,4 +1,69 @@
-<div class="container">    
-    <h1>You are successfully logged in</h1> 
-    <button class="btn btn-danger" (click)="logout()">Log Out</button>
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark container">
+
+    <!-- link -->
+    <a class="navbar-brand" href="#">Khodidas Gamdha</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- links -->
+    <div class="collapse navbar-collapse justify-content-end nav-pills" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+
+            <!-- home -->
+            <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/']" routerLinkActive="active">Home</a>
+            </li>
+
+            <!-- list user -->
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/listuser']">List User</a>
+            </li>
+
+            <!-- employee -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Employee
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" [routerLink]="['/employee']">Employee</a>
+                    <a class="dropdown-item" [routerLink]="['/employee/add-employee']">Add Employee</a>
+                    <a class="dropdown-item" [routerLink]="['/employee/employee-list']">List Employee</a>
+                </div>
+            </li>
+
+            <!-- cms -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    CMS
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" [routerLink]="['/cms']">CMS</a>
+                    <a class="dropdown-item" [routerLink]="['/cms/add-cms']">Add CMS</a>
+                    <a class="dropdown-item" [routerLink]="['/cms/cms-list']">List CMS</a>
+                </div>
+            </li>
+
+            <!-- company -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Company
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" [routerLink]="['/company']">Company</a>
+                    <a class="dropdown-item" [routerLink]="['/company/company-configuration']">Company Configuration</a>
+                </div>
+            </li>
+
+            <!-- login logout -->
+            <button class="btn btn-danger btn-sm" (click)="logout()" *ngIf="isAuthenticated()">Log Out</button>
+            <button class="btn btn-success btn-sm" [routerLink]="['/login']" *ngIf="! isAuthenticated()">Login</button>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <h3 *ngIf="isAuthenticated()">You are successfully logged in...</h3>
+    <h3 *ngIf="! isAuthenticated()">You are not Logged in...</h3>
 </div>

@@ -10,6 +10,8 @@
                 type="text" 
                 name="userName" 
                 class="form-control" />
+
+            <!-- error -->
             <div *ngIf="userName.touched && userName.invalid" class="alert alert-danger">
                 <div *ngIf="userName.errors.required">Please, Enter UserName</div>
             </div>
@@ -23,6 +25,8 @@
                 type="password" 
                 name="password" 
                 class="form-control" />  
+
+            <!-- error -->
             <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
                 <div *ngIf="password.errors.required">Please, Enter Password</div>
             </div>  

@@ -16,7 +16,11 @@ export class HomeComponent implements OnInit {
   // logout
   logout() {
     localStorage.removeItem('currentUser');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
+  }
+
+  isAuthenticated() {
+    return !!localStorage.getItem('currentUser');
   }
   
 }

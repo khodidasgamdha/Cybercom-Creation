@@ -17,13 +17,16 @@ export class ReqresLoginComponent {
   constructor(fb: FormBuilder, 
               private service: UrlService, 
               private router: Router) {
+    
+    // form
     this.form = fb.group({
       userName: ['', Validators.required],
       password: ['', Validators.required]
     });
     if (localStorage.getItem('currentUser') !== null) {  
-      this.router.navigate(['']);  
-    }  
+      this.router.navigate(['/login']);  
+    }
+
   }
 
   // get userName
@@ -45,13 +48,14 @@ export class ReqresLoginComponent {
         if(res.token) {
           console.log(res.token);
           localStorage.setItem('currentUser', "loggedin");
-          this.router.navigate(['/home']);
+          this.router.navigate(['/']);
         }
       },
       (error: Response) => {
         if (error instanceof BadInput) {
           alert('wrong password or username');
         }
+        else throw error;
       })
   }
 }

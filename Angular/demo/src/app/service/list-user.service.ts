@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { catchError } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { throwError } from 'rxjs';
 import { AppError } from '../error/app-error';
 import { BadInput } from '../error/bad-input';
 import { NotFoundError } from '../error/not-found-error';
@@ -26,7 +26,8 @@ export class ListUserService {
   // add data of username & password
   addData(data: any) {
     return this.http.post(this.url + "login", data)
-      .pipe(map(Response=>Response),
+      .pipe(
+        map(Response=>Response),
         catchError((this.handleError))
       );
   }
@@ -34,12 +35,12 @@ export class ListUserService {
   // error handeler
   private handleError(error: Response) {
     if (error.status === 400)
-      return Observable.throw(new BadInput(error));
+      return throwError(new BadInput());
 
     if (error.status === 404) 
-        return Observable.throw(new NotFoundError());
+        return throwError(new NotFoundError());
 
-    return Observable.throw(new AppError(error));
+    return throwError(new AppError(error));
   }
 
 }
