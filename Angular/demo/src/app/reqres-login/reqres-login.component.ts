@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-
+import { Router } from '@angular/router';
+import { UrlService } from '../service/url.service';
+import {BadInput } from '../error/bad-input';
+ 
 @Component({
   selector: 'app-reqres-login',
   templateUrl: './reqres-login.component.html',
@@ -11,11 +14,16 @@ export class ReqresLoginComponent {
   form;
 
   // form builder method
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder, 
+              private service: UrlService, 
+              private router: Router) {
     this.form = fb.group({
       userName: ['', Validators.required],
       password: ['', Validators.required]
-    })
+    });
+    if (localStorage.getItem('currentUser') !== null) {  
+      this.router.navigate(['']);  
+    }  
   }
 
   // get userName
@@ -28,8 +36,22 @@ export class ReqresLoginComponent {
     return this.form.get('password');
   }
 
-  login(userName, password) {
-    console.log(userName, password);
-  }
+  // login and get token
+  login() {
+    let data = { "email" : this.userName?.value, "password" : this.password?.value};
 
+    this.service.addData(data)
+      .subscribe((res:any) => {
+        if(res.token) {
+          console.log(res.token);
+          localStorage.setItem('currentUser', "loggedin");
+          this.router.navigate(['/home']);
+        }
+      },
+      (error: Response) => {
+        if (error instanceof BadInput) {
+          alert('wrong password or username');
+        }
+      })
+  }
 }

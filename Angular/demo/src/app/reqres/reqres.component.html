@@ -1,10 +1,12 @@
-<button class="btn btn-primary m-3" (click)="getData()">Get List Data</button>
-<div class="card-group">
-    <div class="card col-sm-12" style="width: 18rem;" *ngFor='let posts of posts.data'>
-    <img class="card-img-top" [src]='posts.avatar' alt="Card image cap">
+<!-- for getting all data -->
+<button class="btn btn-primary m-3" (click)="getData(page.value)">Get List Data</button>
+<input type="text" #page>
+<div class="card-group container">
+  <div class="card text-white bg-secondary m-3 col-sm-12" style="width: 18rem;" *ngFor='let post of posts.data'>
+    <p class="card-text">{{post.first_name}} {{post.last_name}}</p>
+    <img class="card-img-top" [src]='post.avatar' alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-text">{{posts.first_name}} {{posts.last_name}}</h5>
-      <p class="card-text">Email : {{posts.email}}</p>
+      <p class="card-text">{{post.email}}</p>
     </div>
   </div>
 </div>

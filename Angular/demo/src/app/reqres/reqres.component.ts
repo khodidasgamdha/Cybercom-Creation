@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { UrlService } from '../service/url.service';
 
 @Component({
@@ -9,14 +10,15 @@ import { UrlService } from '../service/url.service';
 export class ReqresComponent implements OnInit {
 
   posts: any = [];
+  user:any;
 
   constructor(private service: UrlService) { }
 
   ngOnInit() { }
 
-  // geting data from service and put in array
-  getData() {
-    this.service.getData()
+  // geting data from service
+  getData(pageNumber) {
+    this.service.getData(pageNumber)
     .subscribe( posts => this.posts = posts);
   }
 

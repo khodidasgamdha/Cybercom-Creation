@@ -1,6 +1,8 @@
 <div class="container">   
     <h2 id="heading" >Login</h2> 
-    <form [formGroup]="form" class="row">    
+    <form [formGroup]="form" class="row"> 
+        
+        <!-- username -->
         <div class="form-group col-md-12">    
             <label for="userName">Username</label>    
             <input 
@@ -12,6 +14,8 @@
                 <div *ngIf="userName.errors.required">Please, Enter UserName</div>
             </div>
         </div>    
+
+        <!-- password -->
         <div class="form-group col-md-12">    
             <label for="password">Password</label>    
             <input 
@@ -22,9 +26,11 @@
             <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
                 <div *ngIf="password.errors.required">Please, Enter Password</div>
             </div>  
-        </div>    
+        </div>  
+        
+        <!-- login -->
         <div class="form-group col-md-3">    
-            <button (click)="login(userName.value, password.value)" class="btn btn-success">Login</button>    
+            <button class="btn btn-success" (click)="login()">Login</button>    
         </div>    
     </form>    
-</div>  
+</div>
