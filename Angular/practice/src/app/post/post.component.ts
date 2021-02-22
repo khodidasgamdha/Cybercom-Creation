@@ -12,14 +12,14 @@ import { BadInput } from '../error/bad-input';
 
 export class PostComponent implements OnInit {
   
-  posts: any[];
+  posts: any = [];
 
   constructor(private service: PostService) { }
 
   // geting data from service and put in array
   ngOnInit() {
     this.service.getAll()
-    .subscribe( posts => this.posts = posts as [] );
+    .subscribe( posts => this.posts = posts);
   }
 
   // create new post  
