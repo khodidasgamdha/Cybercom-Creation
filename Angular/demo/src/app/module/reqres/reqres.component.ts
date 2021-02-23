@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { UrlService } from '../service/url.service';
+import { ListUserService } from '../../core/services/list-user/list-user.service';
 
 @Component({
   selector: 'app-reqres',
@@ -10,16 +9,19 @@ import { UrlService } from '../service/url.service';
 export class ReqresComponent implements OnInit {
 
   posts: any = [];
-  user:any;
 
-  constructor(private service: UrlService) { }
+  constructor(private service: ListUserService) { }
 
   ngOnInit() { }
 
   // geting data from service
   getData(pageNumber) {
     this.service.getData(pageNumber)
-    .subscribe( posts => this.posts = posts);
+      .subscribe( posts => {
+        if(posts["data"]) {
+          this.posts = posts
+        }
+      });
   }
 
 }

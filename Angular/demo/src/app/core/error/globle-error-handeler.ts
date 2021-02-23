@@ -9,10 +9,10 @@ export class globalErrorHandler  implements ErrorHandler {
 
     handleError(error : any) {
         if(error instanceof HttpResponse){
-            alert('something wrong with server ');
+            alert('something wrong with server');
         }
         else{
-            alert(`${error.message}  shows error`); 
+            alert('${error.message}'); 
         }
     }
 

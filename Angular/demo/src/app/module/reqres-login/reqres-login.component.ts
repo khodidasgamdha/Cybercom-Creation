@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UrlService } from '../service/url.service';
-import {BadInput } from '../error/bad-input';
+import { LoginService } from '../../core/services/login/login.service';
+import { Observable } from 'rxjs';
  
 @Component({
   selector: 'app-reqres-login',
@@ -15,7 +15,7 @@ export class ReqresLoginComponent {
 
   // form builder method
   constructor(fb: FormBuilder, 
-              private service: UrlService, 
+              private service: LoginService, 
               private router: Router) {
     
     // form
@@ -46,16 +46,13 @@ export class ReqresLoginComponent {
     this.service.addData(data)
       .subscribe((res:any) => {
         if(res.token) {
-          console.log(res.token);
+          console.log(res.token); // for showing purpose
           localStorage.setItem('currentUser', "loggedin");
           this.router.navigate(['/']);
         }
       },
       (error: Response) => {
-        if (error instanceof BadInput) {
-          alert('wrong password or username');
-        }
-        else throw error;
+        Observable.throw(error);
       })
   }
 }
