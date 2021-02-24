@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { EmployeeComponent } from './employee/employee.component';
-import { PanNumberDirective } from './pan-number.directive';
+import { PanNumberDirective } from './core/directive/pan-number.directive';
 
 @NgModule({
   declarations: [

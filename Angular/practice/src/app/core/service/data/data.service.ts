@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { AppError } from '../error/app-error';
-import { NotFoundError } from '../error/not-found-error';
-import { BadInput } from '../error/bad-input';
+import { AppError } from '../../error/app-error';
+import { NotFoundError } from '../../error/not-found-error';
+import { BadInput } from '../../error/bad-input';
 
 @Injectable()
 export class DataService {

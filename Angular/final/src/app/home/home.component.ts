@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   
   constructor(private userService: UserListService) { }
 
+  // store data in local variable
   ngOnInit(): void {
     this.userService.getUser().subscribe(response => {
       if(response["data"]){

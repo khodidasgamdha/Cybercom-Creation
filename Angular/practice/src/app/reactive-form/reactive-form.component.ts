@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { UsernameValidators } from '../username.validation';
+import { UsernameValidators } from '../core/validation/username.validation';
 
 @Component({
   selector: 'app-reactive-form',
