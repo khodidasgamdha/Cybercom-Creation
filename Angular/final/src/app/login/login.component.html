@@ -1,0 +1,40 @@
+<div class="container">   
+    <h2 id="heading" >Login</h2> 
+    <form [formGroup]="form" class="row"> 
+        
+        <!-- username -->
+        <div class="form-group col-md-12">    
+            <label for="userName">Username</label>    
+            <input 
+                formControlName="userName" 
+                type="text" 
+                name="userName" 
+                class="form-control" />
+
+            <!-- error -->
+            <div *ngIf="userName.touched && userName.invalid" class="alert alert-danger">
+                <div *ngIf="userName.errors.required">Please, Enter UserName</div>
+            </div>
+        </div>    
+
+        <!-- password -->
+        <div class="form-group col-md-12">    
+            <label for="password">Password</label>    
+            <input 
+                formControlName="password" 
+                type="password" 
+                name="password" 
+                class="form-control" />  
+
+            <!-- error -->
+            <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+                <div *ngIf="password.errors.required">Please, Enter Password</div>
+            </div>  
+        </div>  
+        
+        <!-- login -->
+        <div class="form-group col-md-3">    
+            <button class="btn btn-success" (click)="login()">Login</button>    
+        </div>    
+    </form>    
+</div>

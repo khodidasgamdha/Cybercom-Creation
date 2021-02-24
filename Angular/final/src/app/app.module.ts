@@ -11,12 +11,18 @@ import { AccountModule } from './module/account/account.module';
 import { CmsModule } from './module/cms/cms.module';
 import { ProductsModule } from './module/products/products.module';
 import { UsersModule } from './module/users/users.module';
+import { LoginComponent } from './login/login.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthGuardService } from './core/services/auth/auth-guard.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    PageComponent
+    PageComponent,
+    LoginComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -25,9 +31,14 @@ import { UsersModule } from './module/users/users.module';
     AccountModule,
     CmsModule,
     ProductsModule,
-    UsersModule
+    UsersModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [UserListService],
+  providers: [
+    UserListService,
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
