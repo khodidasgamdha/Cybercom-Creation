@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CanComponentDeactivate } from '../../../core/services/can-deactivate/can-deactivate.guard';
 
 @Component({
   selector: 'app-my-account',
   templateUrl: './my-account.component.html',
   styleUrls: ['./my-account.component.css']
 })
-export class MyAccountComponent implements OnInit {
+export class MyAccountComponent implements CanComponentDeactivate {
 
   constructor() { }
 
-  ngOnInit(): void {
+  canDeactivate(): Observable<boolean> | boolean {
+    return confirm('Are you sure you want to Navigate ?');
   }
-
+  
 }
