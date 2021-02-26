@@ -12,7 +12,7 @@ export class MyAccountComponent implements CanComponentDeactivate {
   constructor() { }
 
   canDeactivate(): Observable<boolean> | boolean {
-    return confirm('Are you sure you want to Navigate ?');
+    return confirm(`Are you sure you want to Navigate ? \n Press 'OK' if Yes `);
   }
   
 }
