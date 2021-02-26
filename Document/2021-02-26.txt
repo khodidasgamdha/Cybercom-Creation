@@ -1,0 +1,1 @@
+Today I do work on diffrent types of routing, explore some idea about unit testing, how to connect database and also get idea about how to create crud app in angular.
