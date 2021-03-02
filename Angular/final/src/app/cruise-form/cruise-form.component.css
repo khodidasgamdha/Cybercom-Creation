@@ -1,0 +1,48 @@
+.required {
+    color: red;
+}
+
+input, select {
+    border-radius: 0;
+}
+
+#date, #name, #contact {
+    display: inline-flex;
+}
+
+#dateOfCruise {
+    margin-right: 30px;
+    width: 200px;
+}
+
+h5 {
+    margin-top: 20px;
+}
+
+label {
+    font-size: 12px;
+}
+
+#lbl {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+#time, select {
+    width: 60px;
+    height: 37px;
+    border-color: darkgrey;
+    margin-right: 25px;
+}
+
+#participants {
+    width: 120px;
+}
+
+#nm, #number {
+    margin-right: 30px;;
+}
+
+#number {
+    width: 80px;
+}

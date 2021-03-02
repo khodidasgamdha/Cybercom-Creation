@@ -1,0 +1,236 @@
+<!-- form -->
+<form [formGroup]="form" class="container" id="form">
+
+    <h4>Cruise Specifics</h4><hr>
+    <div class="form-group">
+    
+        <!-- dateOfCruise -->
+        <div formArrayName="dateOfCruise">
+            <h5>Date Of Cruise <span class="required">*</span></h5>
+
+            <!-- dateOfCruise's group -->
+            <div id="date" *ngFor="let quantity of dateOfCruise.controls; let i=index" [formGroupName]="i">
+        
+                <!-- month -->
+                <div id="dateOfCruise">
+                    <input 
+                        formControlName="month"
+                        type="date" 
+                        class="form-control">
+                    <label for="month">Month</label>
+                    {{curruntDate | date: 'LL - dd - yyyy'}}
+                </div>
+
+                <!-- day -->
+                <!-- <div id="dateOfCruise">
+                    <input 
+                        formControlName="day"
+                        type="date" 
+                        class="form-control">
+                    <label for="day">Day</label>
+                    {{curruntDate | date: 'dd'}}
+                </div> -->
+            
+                <!-- year -->
+                <!-- <div id="dateOfCruise">
+                    <input 
+                        formControlName="year"
+                        type="date" 
+                        class="form-control">
+                    <label for="year">Year</label>
+                    {{curruntDate | date: 'yyyy'}}
+                </div> -->
+
+                <!-- hour -->
+                <div id="time">
+                    <select class="form-control">
+                      <option *ngFor="let hr of hour" [value]="hr">{{ hr }}</option>
+                    </select>
+                    <label for="hour">Hour</label>
+                    {{curruntDate | date: 'hh'}}
+                </div>
+            
+                <!-- minutes -->
+                <div id="time">
+                    <select class="form-control">
+                      <option *ngFor="let minute of mimutes" [value]="minute">{{ minute }}</option>
+                    </select>
+                    <label for="minutes">Minutes</label>
+                    {{curruntDate | date: 'mm'}}
+                </div>
+
+                <!-- am pm -->
+                <div>
+                    <select name="AmPm">
+                        <option value="PM" selected>PM</option>
+                        <option value="AM">AM</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Participants -->
+        <div>
+            <h5>No. of Participants <span class="required">*</span></h5>
+            <input
+                formControlName="participants" 
+                id="participants"
+                type="text"
+                class="form-control"
+                placeholder="ex: 23">
+    
+            <!-- errors -->
+            <div *ngIf="participants.touched && participants.invalid" class="alert alert-danger">
+                <div *ngIf="participants.errors.required">This field is required.</div>
+            </div>
+        </div>
+
+        <!-- food -->
+        <div>
+            <h5>Food Request</h5>
+            <input 
+                type="checkbox" 
+                formControlName="food" 
+                name="breakfast" 
+                value="breakfast">
+            <label id="lbl" for="breakfast">Breakfast</label><br>
+
+            <input 
+                type="checkbox" 
+                formControlName="food" 
+                name="lunch" 
+                value="lunch">
+            <label id="lbl" for="lunch">Lunch</label><br>
+
+            <input 
+                type="checkbox" 
+                formControlName="food" 
+                name="dinner" 
+                value="dinner">
+            <label id="lbl" for="vehicle3">Dinner</label>
+        </div>
+
+        <!-- contact -->
+        <div>
+            <h5>Want to add contact information?</h5>
+            <input 
+                type="radio" 
+                formControlName="contact" 
+                name="contact" 
+                value="yes">
+            <label id="lbl" for="yes">Yes</label><br>
+
+            <input 
+                type="radio" 
+                formControlName="contact" 
+                name="contact" 
+                value="no">
+            <label id="lbl" for="no">No</label>
+        </div><hr>
+
+        <!-- Contact Informations -->
+        <div *ngIf="contact.value == 'yes'">
+            <h4>Contact Informations</h4><hr>
+
+            <!-- Name -->
+            <div formArrayName="name">
+                <h5>Full Name <span class="required">*</span></h5>
+
+                <!-- name's group -->
+                <div *ngFor="let nam of name.controls; let i=index" [formGroupName]="i">
+
+                    <!-- row set -->
+                    <div id="name">
+                        <!-- first Name -->
+                        <div id="nm">
+                            <input
+                                formControlName="firstName"
+                                type="text"
+                                class="form-control">
+                            <label for="firstName">First Name</label>
+                        </div>
+
+                        <!-- last Name -->
+                        <div id="nm">
+                            <input
+                                formControlName="lastName"
+                                type="text"
+                                class="form-control">
+                            <label for="lastName">Last Name</label>
+                        </div>
+                    </div>
+
+                    <!-- name errors -->
+                    <div *ngIf="name.touched && name.invalid" class="alert alert-danger">This field is required.</div>
+
+                </div>
+
+            </div>
+
+            <!-- email -->
+            <div>
+                <h5>Email <span class="required">*</span></h5>
+
+                <!-- email input -->
+                <input
+                    formControlName="email"
+                    type="email"
+                    class="form-control"
+                    placeholder="ex: myname@example.com">
+            
+                <!-- email errors -->
+                <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+                    <div *ngIf="email.errors.required">This field is required.</div>
+                </div>
+
+            </div>
+
+            <!-- phone -->
+            <div formArrayName="phone">
+                <h5>Phone Number <span class="required">*</span></h5>
+
+                <!-- phone's group -->
+                <div *ngFor="let phn of phone.controls; let i=index" [formGroupName]="i">
+
+                    <!-- row set -->
+                    <div  id="contact">
+                        <!-- code -->
+                        <div id="number">
+                            <input
+                                formControlName="code" 
+                                type="text"
+                                class="form-control">
+                            <label for="code">Area Code</label>
+                        </div>
+
+                        <!-- number -->
+                        <div>
+                            <input
+                                formControlName="number" 
+                                type="text"
+                                class="form-control">
+                            <label for="number">Phone Number</label>
+                        </div>
+                    </div>
+
+                    <!-- phone errors -->
+                    <div *ngIf="phone.touched && phone.invalid" class="alert alert-danger">This field is required.</div>
+
+                </div>
+
+            </div>
+
+            <!-- addtional request -->
+            <div>
+                <h5>Addtional Requests</h5>
+                <textarea name="addtional" id="addtional" cols="70" rows="5"></textarea>
+            </div>
+
+            <!-- submit -->
+            <button class="btn btn-primary">Submit</button>
+
+        </div>
+    </div>
+
+</form>
