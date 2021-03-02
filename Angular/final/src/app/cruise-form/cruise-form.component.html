@@ -1,73 +1,24 @@
 <!-- form -->
-<form [formGroup]="form" class="container" id="form">
+<form [formGroup]="form" class="container"  (ngSubmit)="onSubmit()">
 
     <h4>Cruise Specifics</h4><hr>
     <div class="form-group">
     
-        <!-- dateOfCruise -->
-        <div formArrayName="dateOfCruise">
+        <!-- date -->
+        <div>
             <h5>Date Of Cruise <span class="required">*</span></h5>
 
-            <!-- dateOfCruise's group -->
-            <div id="date" *ngFor="let quantity of dateOfCruise.controls; let i=index" [formGroupName]="i">
-        
-                <!-- month -->
-                <div id="dateOfCruise">
-                    <input 
-                        formControlName="month"
-                        type="date" 
-                        class="form-control">
-                    <label for="month">Month</label>
-                    {{curruntDate | date: 'LL - dd - yyyy'}}
-                </div>
-
-                <!-- day -->
-                <!-- <div id="dateOfCruise">
-                    <input 
-                        formControlName="day"
-                        type="date" 
-                        class="form-control">
-                    <label for="day">Day</label>
-                    {{curruntDate | date: 'dd'}}
-                </div> -->
-            
-                <!-- year -->
-                <!-- <div id="dateOfCruise">
-                    <input 
-                        formControlName="year"
-                        type="date" 
-                        class="form-control">
-                    <label for="year">Year</label>
-                    {{curruntDate | date: 'yyyy'}}
-                </div> -->
-
-                <!-- hour -->
-                <div id="time">
-                    <select class="form-control">
-                      <option *ngFor="let hr of hour" [value]="hr">{{ hr }}</option>
-                    </select>
-                    <label for="hour">Hour</label>
-                    {{curruntDate | date: 'hh'}}
-                </div>
-            
-                <!-- minutes -->
-                <div id="time">
-                    <select class="form-control">
-                      <option *ngFor="let minute of mimutes" [value]="minute">{{ minute }}</option>
-                    </select>
-                    <label for="minutes">Minutes</label>
-                    {{curruntDate | date: 'mm'}}
-                </div>
-
-                <!-- am pm -->
-                <div>
-                    <select name="AmPm">
-                        <option value="PM" selected>PM</option>
-                        <option value="AM">AM</option>
-                    </select>
-                </div>
+            <!-- date input-->
+            <div class="form-group" id="date">
+                <input class="form-control" type="datetime-local" formControlName="date">
+                <label for="date" class="form-label">&nbsp;&nbsp; Day--Month--Year &nbsp; Hour : Minute</label>
             </div>
 
+            <!-- date error -->
+            <div *ngIf="date && date.invalid && date.touched" class="alert alert-danger">
+                <div *ngIf="date.errors.required">Date is required.</div>
+            </div>
+            
         </div>
 
         <!-- Participants -->
@@ -83,6 +34,7 @@
             <!-- errors -->
             <div *ngIf="participants.touched && participants.invalid" class="alert alert-danger">
                 <div *ngIf="participants.errors.required">This field is required.</div>
+                <div *ngIf="participants.errors.pattern">Only Digit is Valid.</div>
             </div>
         </div>
 
@@ -176,12 +128,14 @@
                 <input
                     formControlName="email"
                     type="email"
+                    id="email"
                     class="form-control"
                     placeholder="ex: myname@example.com">
             
                 <!-- email errors -->
                 <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
                     <div *ngIf="email.errors.required">This field is required.</div>
+                    <div *ngIf="email.errors.email">Enter a valid e-mail address.</div>
                 </div>
 
             </div>
@@ -196,7 +150,7 @@
                     <!-- row set -->
                     <div  id="contact">
                         <!-- code -->
-                        <div id="number">
+                        <div id="code">
                             <input
                                 formControlName="code" 
                                 type="text"
@@ -205,7 +159,7 @@
                         </div>
 
                         <!-- number -->
-                        <div>
+                        <div id="number">
                             <input
                                 formControlName="number" 
                                 type="text"
@@ -224,11 +178,11 @@
             <!-- addtional request -->
             <div>
                 <h5>Addtional Requests</h5>
-                <textarea name="addtional" id="addtional" cols="70" rows="5"></textarea>
+                <textarea name="addtional" id="addtional" cols="58" rows="5"></textarea>
             </div>
 
             <!-- submit -->
-            <button class="btn btn-primary">Submit</button>
+            <input type="submit" class="btn btn-success m-2" [disabled]="form.invalid" value="submit">
 
         </div>
     </div>

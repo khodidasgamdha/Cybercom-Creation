@@ -2,17 +2,16 @@
     color: red;
 }
 
-input, select {
+#date, #email {
+    width: 440px;
+}
+
+input{
     border-radius: 0;
 }
 
-#date, #name, #contact {
+#name, #contact {
     display: inline-flex;
-}
-
-#dateOfCruise {
-    margin-right: 30px;
-    width: 200px;
 }
 
 h5 {
@@ -28,21 +27,18 @@ label {
     font-size: 14px;
 }
 
-#time, select {
-    width: 60px;
-    height: 37px;
-    border-color: darkgrey;
-    margin-right: 25px;
-}
-
 #participants {
     width: 120px;
 }
 
-#nm, #number {
-    margin-right: 30px;;
+#nm, #code {
+    margin-right: 30px;
+}
+
+#code {
+    width: 120px;
 }
 
 #number {
-    width: 80px;
+    width: 290px;
 }
