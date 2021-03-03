@@ -1,15 +1,22 @@
 <!-- heading -->
 <h1>User Information</h1>
 
+<!-- if not any data in array -->
+<div *ngIf="data.length == 0">
+  <h3 class="text-center">Oops, Data Not Found...</h3>
+</div>
+
 <!-- table -->
-<table class="table table-bordered table-hover">
+<table class="table table-bordered table-hover" *ngIf="data.length != 0">
+
+  <!-- header -->
   <thead class="table-success">
     <tr id="parent">
       <th colspan="4">Date</th>
       <th rowspan="2"id="mdl">Participants</th>
       <th colspan="3">Food</th>
       <th rowspan="2" id="mdl">Is Contact Information ?</th>
-      <th colspan="2">Full Name</th>
+      <th colspan="2">Name</th>
       <th rowspan="2" id="mdl">E-mail</th>
       <th colspan="2">Phone</th>
       <th rowspan="2" id="mdl">Additional Request</th>
@@ -28,6 +35,8 @@
       <th>Number</th>
     </tr>
   </thead>
+
+  <!-- data -->
   <tbody>
     <tr *ngFor="let dt of data;">
       <td>{{dt.cruis.date | date: 'MMMM'}}</td>
@@ -47,4 +56,5 @@
       <td>{{dt.contactInformation.additionalRequests}}</td>
     </tr>
   </tbody>
+  
 </table>
