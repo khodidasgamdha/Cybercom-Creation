@@ -1,0 +1,50 @@
+<!-- heading -->
+<h1>User Information</h1>
+
+<!-- table -->
+<table class="table table-bordered table-hover">
+  <thead class="table-success">
+    <tr id="parent">
+      <th colspan="4">Date</th>
+      <th rowspan="2"id="mdl">Participants</th>
+      <th colspan="3">Food</th>
+      <th rowspan="2" id="mdl">Is Contact Information ?</th>
+      <th colspan="2">Full Name</th>
+      <th rowspan="2" id="mdl">E-mail</th>
+      <th colspan="2">Phone</th>
+      <th rowspan="2" id="mdl">Additional Request</th>
+    </tr>
+    <tr id="child">
+      <th>Month</th>
+      <th>Day</th>
+      <th>Year</th>
+      <th>Time</th>
+      <th>Breakfast</th>
+      <th>Lunch</th>
+      <th>Dinner</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Code</th>
+      <th>Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dt of data;">
+      <td>{{dt.cruis.date | date: 'MMMM'}}</td>
+      <td>{{dt.cruis.date | date: 'dd'}}</td>
+      <td>{{dt.cruis.date | date: 'yyyy'}}</td>
+      <td>{{dt.cruis.date | date: 'shortTime'}}</td>
+      <td>{{dt.cruis.participants}}</td>
+      <td>{{dt.cruis.food.breakfast}}</td>
+      <td>{{dt.cruis.food.lunch}}</td>
+      <td>{{dt.cruis.food.dinner}}</td>
+      <td>{{dt.cruis.chooseOption}}</td>
+      <td>{{dt.contactInformation.fullName.firstName}}</td>
+      <td>{{dt.contactInformation.fullName.lastName}}</td>
+      <td>{{dt.contactInformation.email}}</td>
+      <td>{{dt.contactInformation.phone.code}}</td>
+      <td>{{dt.contactInformation.phone.number}}</td>
+      <td>{{dt.contactInformation.additionalRequests}}</td>
+    </tr>
+  </tbody>
+</table>

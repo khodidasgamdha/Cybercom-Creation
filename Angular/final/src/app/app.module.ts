@@ -17,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuardService } from './core/services/auth/auth-guard.service';
 import { CanDeactivateGuard } from './core/services/can-deactivate/can-deactivate.guard';
 import { CruiseFormComponent } from './cruise-form/cruise-form.component';
+import { RegistrationDetailsComponent } from './registration-details/registration-details.component';
+import { DataService } from './core/services/registration-detail/data.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { CruiseFormComponent } from './cruise-form/cruise-form.component';
     PageComponent,
     LoginComponent,
     PageNotFoundComponent,
-    CruiseFormComponent
+    CruiseFormComponent,
+    RegistrationDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { CruiseFormComponent } from './cruise-form/cruise-form.component';
   providers: [
     UserListService,
     AuthGuardService,
-    CanDeactivateGuard
+    CanDeactivateGuard,
+    DataService
   ],
   bootstrap: [AppComponent]
 })

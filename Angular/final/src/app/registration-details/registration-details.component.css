@@ -1,0 +1,28 @@
+table {
+    margin: 50px 0 0 20px;
+    width: 1500px;
+    text-align: center;
+}
+h1 {
+    margin-top: 50px;
+    font-family: serif;
+    font-weight: bold;
+    text-align: center;
+}
+#parent, #child, th {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border: 3px solid black;
+}
+#mdl {
+    vertical-align: middle;
+}
+#parent {
+    font-size: 18px;
+}
+#child {
+    font-size: 14px;
+}
+td {
+    font-size: 14px;
+    border: 2px solid black;
+}

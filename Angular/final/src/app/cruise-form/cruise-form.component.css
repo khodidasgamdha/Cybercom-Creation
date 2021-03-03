@@ -1,44 +1,37 @@
+form {
+    width: 500px;
+    background-color: honeydew;
+    border: 2px solid black;
+    margin: 20px auto;
+    border-radius: 5px;
+}
+
 .required {
     color: red;
 }
 
-#date, #email {
-    width: 440px;
-}
-
-input{
-    border-radius: 0;
-}
-
-#name, #contact {
-    display: inline-flex;
-}
-
 h5 {
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 label {
-    font-size: 12px;
+    font-size: 13px;
+    margin-left: 10px;
 }
 
-#lbl {
-    margin-left: 10px;
-    font-size: 14px;
+#date {
+    width: 300px;
 }
 
 #participants {
-    width: 120px;
+    width: 150px;
 }
 
-#nm, #code {
-    margin-right: 30px;
+#lbl {
+    font-size: 15px;
 }
 
 #code {
     width: 120px;
-}
-
-#number {
-    width: 290px;
+    margin-left: 18px;
 }
