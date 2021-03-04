@@ -19,6 +19,8 @@ import { CanDeactivateGuard } from './core/services/can-deactivate/can-deactivat
 import { CruiseFormComponent } from './cruise-form/cruise-form.component';
 import { RegistrationDetailsComponent } from './registration-details/registration-details.component';
 import { DataService } from './core/services/registration-detail/data.service';
+import { EncryptDecryptComponent } from './encrypt-decrypt/encrypt-decrypt.component';
+import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { DataService } from './core/services/registration-detail/data.service';
     LoginComponent,
     PageNotFoundComponent,
     CruiseFormComponent,
-    RegistrationDetailsComponent
+    RegistrationDetailsComponent,
+    EncryptDecryptComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { DataService } from './core/services/registration-detail/data.service';
     ProductsModule,
     UsersModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ClipboardModule
   ],
   providers: [
     UserListService,

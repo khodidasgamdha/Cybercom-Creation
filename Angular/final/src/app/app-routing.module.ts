@@ -2,16 +2,18 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from './core/services/auth/auth-guard.service';
 import { CruiseFormComponent } from './cruise-form/cruise-form.component';
+import { EncryptDecryptComponent } from './encrypt-decrypt/encrypt-decrypt.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PageComponent } from './page/page.component';
 import { RegistrationDetailsComponent } from './registration-details/registration-details.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/form', pathMatch: 'full' },
+  { path: '', redirectTo: '/encrypt-decrypt', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'page', component: PageComponent },
   { path: 'form', component: CruiseFormComponent },
+  { path: 'encrypt-decrypt', component: EncryptDecryptComponent },
   { path: 'registration-details', component: RegistrationDetailsComponent },
   { path: 'account', loadChildren: () => import('./module/account/account.module').then(m => m.AccountModule), canActivate: [AuthGuardService] },
   { path: 'cms', loadChildren: () => import('./module/cms/cms.module').then(m => m.CmsModule), canActivate: [AuthGuardService] },

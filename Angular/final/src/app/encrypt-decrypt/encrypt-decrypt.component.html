@@ -1,0 +1,34 @@
+<!-- heading -->
+<h3 class="container">Chilli Encryption Decryption App</h3>
+
+<div class="container">
+    <!-- card -->
+    <div class="card">
+
+        <!-- card header -->
+        <div class="card-header">
+            <h5>Encryption Decryption</h5>
+        </div>
+
+        <!-- card body -->
+        <div class="card-body">
+
+            <!-- input -->
+            <label class="card-title col-md-2">Enter Text</label>
+            <input 
+                type="text" 
+                #text 
+                class="col-md-6">
+
+            <!-- encryption decryption button -->
+            <button class="btn btn-danger btn-sm" (click)="encrypt(text.value)" type="button">Encrypt</button>&nbsp;
+            <button class="btn btn-success btn-sm" (click)="decrypt(text.value)" type="button">Decrypt</button>
+        </div>
+
+        <!-- if encrypted data then show this div -->
+        <div class="card-footer text-muted" *ngIf="txt">
+            <h5 #tex>{{txt}}</h5>
+            <button class="btn btn-info btn-sm" (click)="copy()">Copy</button>
+        </div>
+    </div>
+</div>

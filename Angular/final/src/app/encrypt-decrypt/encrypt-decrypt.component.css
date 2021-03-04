@@ -1,0 +1,13 @@
+h3 {
+    margin: 30px auto;
+}
+.card-header {
+    background-color: #24a0ed;
+    color: white;
+}
+label {
+    font-weight: bold;
+}
+button {
+    margin-left: 25px;
+}
