@@ -17,22 +17,25 @@ export class EncryptDecryptComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // encryption
   encrypt(data) {
     if(data){
       this.txt = CryptoJS.AES.encrypt(data.trim(), this.pwd.trim()).toString();
     }else {
-      alert('Please, Enter Text to Encrypt it..');
+      alert('Enter Text to Encrypt it.');
     }
   }
 
+  // decryption
   decrypt(data) {
     if(data) {
       this.txt = CryptoJS.AES.decrypt(data.trim(), this.pwd.trim()).toString(CryptoJS.enc.Utf8)
     }else {
-      alert('Please, Enter Encrypted Text to Decrypt it..');
+      alert('Enter Text to Decrypt it.');
     }
   }
 
+  // copy data
   copy() {
     this.clipboard.copy(this.txt);
   }
