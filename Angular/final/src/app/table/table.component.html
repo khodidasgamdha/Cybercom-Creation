@@ -1,0 +1,24 @@
+<!-- heading -->
+<h3>Color Pantone Information</h3>
+
+<!-- table -->
+<table class="table table-bordered table-striped container">
+  <thead class="table-primary">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Year</th>
+      <th>Color</th>
+      <th>Pantone Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of _userArray">
+      <th>{{user.id}}</th>
+      <td>{{user.name}}</td>
+      <td>{{user.year}}</td>
+      <td>{{user.color}}</td>
+      <td>{{user.pantone_value}}</td>
+    </tr>
+  </tbody>
+</table>

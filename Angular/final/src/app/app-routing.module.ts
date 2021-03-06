@@ -3,13 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from './core/services/auth/auth-guard.service';
 import { CruiseFormComponent } from './cruise-form/cruise-form.component';
 import { EncryptDecryptComponent } from './encrypt-decrypt/encrypt-decrypt.component';
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PageComponent } from './page/page.component';
 import { RegistrationDetailsComponent } from './registration-details/registration-details.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/encrypt-decrypt', pathMatch: 'full' },
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'page', component: PageComponent },
   { path: 'form', component: CruiseFormComponent },

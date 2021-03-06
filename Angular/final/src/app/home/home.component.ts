@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserListService } from '../core/services/users/user-list.service';
 
 @Component({
   selector: 'app-home',
@@ -8,17 +7,9 @@ import { UserListService } from '../core/services/users/user-list.service';
 })
 export class HomeComponent implements OnInit {
 
-  _userArray = [];
-  
-  constructor(private userService: UserListService) { }
+  constructor() { }
 
-  // store data in local variable
   ngOnInit(): void {
-    this.userService.getUser().subscribe(response => {
-      if(response["data"]){
-        this._userArray = response["data"];
-      }
-    })
   }
 
 }
