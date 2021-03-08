@@ -1,0 +1,13 @@
+Firebase :
+	Firebase is Google's Mobile Application Development platform that helps you build, improve, and grow your app. 
+
+	Firebase is a Backend as a Service (BaaS) that started as a YC11 startup and grew up into a next-generation app-development platform on Google Cloud Platform. ... Firebase frees developers to focus crafting fantastic user experiences. You don't need to manage servers. You don't need to write APIs.
+
+Services :
+	Authentication
+	Realtime Database
+ 	Cloud Firestore
+ 	Cloud Storage
+ 	Cloud Functions
+ 	Firebase Hosting
+ 	ML Kit
