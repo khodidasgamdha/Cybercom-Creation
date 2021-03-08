@@ -33,3 +33,11 @@ Technologies Used in PWA Development :
 Adding a service worker in Angular application is one of the step for turning an application into a progressive Web app.
 
 Opera Mini and IE do not support service workers.
+
+Follow the below steps
+
+         1> ng build --prod
+
+         2> cd dist/angular-pwa 
+
+         3> http-server
