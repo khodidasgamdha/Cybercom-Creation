@@ -1,3 +1,10 @@
+h1 {
+    margin-top: 30px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
 h2 {
     color: 	#428bca;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
 }

@@ -9,7 +9,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class ManageStudentComponent implements OnInit {
 
-  constructor( private  productssevice: StudentsService) { }
+  constructor( private  productsSevice: StudentsService) { }
 
   dataTitle = "Products List";
   feaching = false;
@@ -34,9 +34,6 @@ export class ManageStudentComponent implements OnInit {
         price:price.value
       }
       this.editMode = false; // false after update value
-      this.id.nativeElement.value = ''; // after update empty input boxes
-      this.name.nativeElement.value = '';
-      this.price.nativeElement.value = '';
     }else {
       this.products.push({
         id: id.value,
@@ -44,12 +41,15 @@ export class ManageStudentComponent implements OnInit {
         price:price.value
       })
     }
+    this.id.nativeElement.value = ''; // after update empty input boxes
+    this.name.nativeElement.value = '';
+    this.price.nativeElement.value = '';
     this.onSaveProduct();
   }
 
   // add product to firebase
   onSaveProduct(){
-    this.productssevice.saveProducts(this.products).subscribe( 
+    this.productsSevice.saveProducts(this.products).subscribe( 
       (response) =>  console.log(response),
       (err)=>console.log(err)
     )
@@ -58,8 +58,8 @@ export class ManageStudentComponent implements OnInit {
   // fetch products from firebase
   onFetchProduct(){
     this.feaching = true;
-    this.productssevice.fetchProducts().subscribe(
-       (response) => {
+    this.productsSevice.fetchProducts().subscribe(
+      (response) => {
         const data = JSON.stringify(response)
         this.products = JSON.parse(data)
         this.feaching = false;

@@ -1,9 +1,9 @@
 <div class="page-area">
     
     <!-- heading -->
-    <h2 class="text-center">
+    <h1 class="text-center">
         Manage Products
-    </h2>
+    </h1>
     <br>
 
     <!-- manage products -->
@@ -34,9 +34,9 @@
                     </div>
 
                     <!-- button -->
-                    <button type="button" class="btn btn-primary" (click)="onAddProduct(id,name,price)" > {{editMode? 'Update Product' : 'Add Product'}}</button> 
-                    <button type="button" class="btn btn-success mx-2" (click)="onSaveProduct()">Save Product</button>
-                    <button type="button" class="btn btn-info" (click)="onFetchProduct()"> Fetch Product </button>
+                    <button type="button" class="btn btn-sm btn-primary" (click)="onAddProduct(id,name,price)" > {{editMode? 'Update Product' : 'Add Product'}}</button> 
+                    <button type="button" class="btn btn-sm btn-success mx-2" (click)="onSaveProduct()">Save Product</button>
+                    <button type="button" class="btn btn-sm btn-info" (click)="onFetchProduct()"> Fetch Product </button>
 
                 </form>
             </div>
@@ -62,7 +62,7 @@
                             <td>{{product.name}}</td>
                             <td>{{product.price}}</td>
                             <td (click)="onEditProduct(i)" class="text-center"> 
-                                <a class="text-danger">
+                                <a class="text-info">
                                     <i class="fa fa-edit" aria-hidden="true"></i>
                                 </a>
                             </td>
