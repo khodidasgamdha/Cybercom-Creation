@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,17 +16,32 @@ export class StudentsService {
 
   // save product
   saveProducts(products: any[]) {
-    return this.http.put(this.url, products, { headers: this.headers });
+    try {
+      return this.http.put(this.url, products, { headers: this.headers });
+    }
+    catch(error) {
+      return Observable.throw(error);
+    }
   }
 
   // fetch product
   fetchProducts() {
-    return this.http.get(this.url);
+    try {
+      return this.http.get(this.url);
+    } 
+    catch (error) {
+      return Observable.throw(error);
+    }
   }
 
   //delete product
   deleteProduct() {
-    return this.http.delete(this.url);
+    try {
+      return this.http.delete(this.url);
+    } 
+    catch (error) {
+      return Observable.throw(error);
+    }
   }  
 
 }
