@@ -1,1 +1,25 @@
-<h1>PWA App !!!</h1>
+<h1 class="text-center m-5" >!! PWA App !!</h1>
+
+<h3 class="text-center m-5">Employee Details...</h3>
+
+<!-- this data also show when user offline(create dataGroup in ngsw-config.json file) -->
+<table class="table table-bordered table-hover container">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Age</th>
+            <th scope="col">Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor= "let dt of data">
+            <td>{{dt.id}}</td>
+            <td>{{dt.employee_name}}</td>
+            <td>{{dt.employee_salary}}</td>
+            <td>{{dt.employee_age}}</td>
+            <td>{{dt.profile_image}}</td>
+        </tr>
+    </tbody>
+</table> 
