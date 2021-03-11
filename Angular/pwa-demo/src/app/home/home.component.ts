@@ -11,7 +11,10 @@ import { EmployeeService } from '../core/services/dummy-data/employee.service';
 export class HomeComponent implements OnInit {
 
   data;
-  private readonly publicKey ="BJhcymvxluoFFk8OnPcLUvLroX_kLilcQO9NMWtATf6kNYRk3-fUekZieL_alsH63-XuEOOxTPbxTGG9KFJS6j0";
+  isSubscribed = false;
+  subscribe = 'You Subscribed Successfully !!';
+  unSubscribed = 'You Unsubscribed Successfully !!';
+  private readonly publicKey ="BAdYgm34jLaKw1bOx0bfmzKJmsk7ICkNRx9oTSJ7Ns51fBHqiYrMoE-P4lrB-ggFl8STY_0wlUlExYSotPHZY6g";
 
   constructor(
     private swUpdate: SwUpdate,
@@ -26,7 +29,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     // console notification data object
-    this.swPush.messages.subscribe(message => console.log(message));
+    // this.swPush.messages.subscribe(message => console.log(message));
 
     // click to redirect through notification
     this.swPush.notificationClicks.subscribe(
@@ -81,18 +84,41 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  // SwPush service
+  // SwPush service with Nodejs Backend
   pushSubscription() {
     if(!this.swPush.isEnabled) {
       console.log('Notification Not Enabled');
       return;
     }
-    this.swPush
-      .requestSubscription({
-        serverPublicKey: this.publicKey,
-      })
-        .then((sub) => console.log(JSON.stringify(sub)))
-        .catch((err) => console.log(err));
+    this.swPush.requestSubscription({
+      serverPublicKey: this.publicKey,
+    })
+    .then((sub) => console.log(JSON.stringify(sub)))
+    .catch((err) => console.log(err));
+    // this.swPush.unsubscribe().then(() => {});
+  }
+
+  // click to show notification
+  showNotification() {
+    Notification.requestPermission((result) => {
+      if (result === 'granted') {
+        navigator.serviceWorker.ready.then((registration) => {
+          registration.showNotification('Youtube', {
+            tag: 'Youtube',
+            body: this.isSubscribed ? this.subscribe : this.unSubscribed,
+            icon: 'http://simpleicon.com/wp-content/uploads/play.png',
+            vibrate: [20, 50, 10, 20, 20]
+          });
+        });
+      }
+    });
+
+    // change isSubscribe variable
+    if(this.isSubscribed) {
+      this.isSubscribed = false;
+    } else {
+      this.isSubscribed = true;
+    }
   }
 
   // store employee data in object
@@ -101,7 +127,7 @@ export class HomeComponent implements OnInit {
       if(response["data"]){
         this.data = response["data"];
       }
-    })
+    });
   }
 
 }

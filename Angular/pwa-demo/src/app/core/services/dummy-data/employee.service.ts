@@ -12,7 +12,7 @@ export class EmployeeService {
   // get employee data
   employeeData() {
     try {
-      return this.http.get('http://dummy.restapiexample.com/api/v1/employees')
+      return this.http.get('https://reqres.in/api/users?page=1');
     } 
     catch (error) {
       return Observable.throw(error);

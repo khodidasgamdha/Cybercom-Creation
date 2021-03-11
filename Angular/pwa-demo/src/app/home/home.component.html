@@ -2,24 +2,30 @@
 
 <h3 class="text-center m-5">Employee Details...</h3>
 
+<!-- subcribe unsubscribe btn -->
+<div class="d-flex justify-content-end container" id="btn">
+    <button *ngIf="!isSubscribed" class="btn btn-danger btn-sm" (click)="showNotification()">Subscribe</button>
+    <button *ngIf="isSubscribed" class="btn btn-danger btn-sm" (click)="showNotification()">Unsubscribe</button>
+</div>
+
 <!-- this data also show when user offline(create dataGroup in ngsw-config.json file) -->
 <table class="table table-bordered table-hover container">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">Id.</th>
-            <th scope="col">Name</th>
-            <th scope="col">Salary</th>
-            <th scope="col">Age</th>
+            <th scope="col">Id</th>
+            <th scope="col">Email</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
             <th scope="col">Image</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor= "let dt of data">
-            <td>{{dt.id}}</td>
-            <td>{{dt.employee_name}}</td>
-            <td>{{dt.employee_salary}}</td>
-            <td>{{dt.employee_age}}</td>
-            <td>{{dt.profile_image}}</td>
+            <th>{{dt.id}}</th>
+            <td>{{dt.email}}</td>
+            <td>{{dt.first_name}}</td>
+            <td>{{dt.last_name}}</td>
+            <td><img class="card-img-top" [src]='dt.avatar' alt="Card image cap"></td>
         </tr>
     </tbody>
 </table> 
