@@ -2,20 +2,20 @@ const webpush = require('web-push');
 
 // console.log(webpush.generateVAPIDKeys());
 
-const publicKey = 'BJhcymvxluoFFk8OnPcLUvLroX_kLilcQO9NMWtATf6kNYRk3-fUekZieL_alsH63-XuEOOxTPbxTGG9KFJS6j0';
-const privateKey = 'L5-VAs2m2VwOWRYluhdbGjMnJOGRE88HFn4WZdK8yl4';
+const publicKey = 'BAdYgm34jLaKw1bOx0bfmzKJmsk7ICkNRx9oTSJ7Ns51fBHqiYrMoE-P4lrB-ggFl8STY_0wlUlExYSotPHZY6g';
+const privateKey = 'sqT9IXJjzoxyl8wrSWPtiUUl7O4b2ycellElwNoXQuI';
 
 // object which get through pushSubscription method
 const sub = {
     endpoint:
-        "https://fcm.googleapis.com/fcm/send/ctg_d2U2fQA:APA91bFpsOyePmp2VjnVbjKXfRgLlbWfS4J1rDcbrvbHyuANGZyTbOy9cUxr3M7tJTF4wR3A54ZROdhbBtnA1DxhppOFgI-YYMYV_mjAKECWZ5jj3SVlW6hko39kPg9z3ZAVv12Wil9_",
+        "https://fcm.googleapis.com/fcm/send/e1gjbex_oF4:APA91bFlc_6uaG2ef9s9pyB4g5cdjE34exJGyE594_6EOHrWjsLpDZU4iePePP7m_UFlXx5yLH0k3Vy-18ObfKDyz9y59pVVUxDMfgHsw-RIeVYusWH87L9TT6kSKflv63qmKOStZqbF",
     expirationTime: null,
     keys: {
-        p256dh: 
-            "BKStCql2jyADvjER4xQ0KdIZcdUjg508blzk184FzwHe2hdon9cwLy8q_0yoTxnLVLp5Ho9iBvLxNmkpFvsbOjc",
+        p256dh:
+            "BC0TE5J01zAQSXRvJErQYtn8zU361PkNEpBOzCP9Fdc4MSBCIDKm4FyvGD85R4jS2stpJQoSHJn2LSA7bKeaqu4",
         auth:
-            "x7EToI-UXW3barb-Vw4-jg"
-    },
+            "GRPxmABWoWAiwEBZ-gpAbQ"
+    }
 };
 
 webpush.setVapidDetails('mailto:example@gmail.com', publicKey, privateKey);
