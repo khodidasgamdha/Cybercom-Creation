@@ -12,9 +12,9 @@ export class HomeComponent implements OnInit {
 
   data;
   isSubscribed = false;
-  subscribe = 'You Subscribed Successfully !!';
+  subscribed = 'You Subscribed Successfully !!';
   unSubscribed = 'You Unsubscribed Successfully !!';
-  private readonly publicKey ="BAdYgm34jLaKw1bOx0bfmzKJmsk7ICkNRx9oTSJ7Ns51fBHqiYrMoE-P4lrB-ggFl8STY_0wlUlExYSotPHZY6g";
+  private readonly publicKey ="BJp0Y8tAMRjCUGvFZcgHE-4eYJ15emm90SrztuzHGI8Oq1YsRS3hmusm2ELaH-5uA1Wm3JHw-qEvIzpKkuegROY";
 
   constructor(
     private swUpdate: SwUpdate,
@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     // console notification data object
-    // this.swPush.messages.subscribe(message => console.log(message));
+    // this.swPush.messages.subscribed(message => console.log(message));
 
     // click to redirect through notification
     this.swPush.notificationClicks.subscribe(
@@ -84,7 +84,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  // SwPush service with Nodejs Backend
+  // SwPush service with Nodejs Backend (purpose: retrive object in console)
   pushSubscription() {
     if(!this.swPush.isEnabled) {
       console.log('Notification Not Enabled');
@@ -95,7 +95,10 @@ export class HomeComponent implements OnInit {
     })
     .then((sub) => console.log(JSON.stringify(sub)))
     .catch((err) => console.log(err));
-    // this.swPush.unsubscribe().then(() => {});
+
+    // this.swPush.unsubscribe().then(() => {
+    // console.log('unsubscribe successfully');
+    // });
   }
 
   // click to show notification
@@ -105,20 +108,21 @@ export class HomeComponent implements OnInit {
         navigator.serviceWorker.ready.then((registration) => {
           registration.showNotification('Youtube', {
             tag: 'Youtube',
-            body: this.isSubscribed ? this.subscribe : this.unSubscribed,
+            "data": {url : "https://www.youtube.com/"},
+            body: this.isSubscribed ? this.subscribed : this.unSubscribed,
             icon: 'http://simpleicon.com/wp-content/uploads/play.png',
             vibrate: [20, 50, 10, 20, 20]
           });
         });
+      } else if (result === 'default') {
+        alert('Please, Allow to recive Notification..');
+      } else {
+        alert('Notification Blocked, Please Allow to recive it..');
       }
     });
 
     // change isSubscribe variable
-    if(this.isSubscribed) {
-      this.isSubscribed = false;
-    } else {
-      this.isSubscribed = true;
-    }
+    this.isSubscribed = !this.isSubscribed;
   }
 
   // store employee data in object

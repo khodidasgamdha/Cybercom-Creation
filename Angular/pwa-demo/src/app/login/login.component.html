@@ -1,0 +1,50 @@
+<div class="container">   
+    <h2 id="heading" >Login</h2> 
+    <form [formGroup]="form" class="row"> 
+        
+        <!-- username -->
+        <div class="form-group col-md-12">    
+            <label for="userName">Username</label>    
+            <input 
+                formControlName="userName" 
+                type="text" 
+                name="userName" 
+                class="form-control"
+                #userName />
+
+            <!-- error -->
+            <div *ngIf="userName.touched && userName.invalid" class="alert alert-danger">
+                <div *ngIf="userName.errors.required">Please, Enter Email</div>
+            </div> 
+        </div>    
+
+        <!-- password -->
+        <div class="form-group col-md-12">    
+            <label for="password">Password</label>    
+            <input 
+                formControlName="password" 
+                type="password" 
+                name="password" 
+                class="form-control"
+                #userPassword />  
+
+            <!-- error -->
+            <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+                <div *ngIf="password.errors.required">Please, Enter Password</div>
+            </div>  
+        </div>  
+        
+        <!-- login -->
+        <!-- Calling SignIn Api from AuthService -->
+        <div class="form-group row">
+            <div>
+                <button class="btn btn-success" (click)="authService.login(userName.value, userPassword.value)">Login</button> 
+            </div>
+            <div>
+                <span>Don't have an account ?<a routerLink="/registration"> Registration</a></span>
+            </div>  
+        </div>    
+    </form>
+
+
+</div>
