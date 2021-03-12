@@ -2,19 +2,19 @@ const webpush = require('web-push');
 
 // console.log(webpush.generateVAPIDKeys());
 
-const publicKey = 'BAdYgm34jLaKw1bOx0bfmzKJmsk7ICkNRx9oTSJ7Ns51fBHqiYrMoE-P4lrB-ggFl8STY_0wlUlExYSotPHZY6g';
-const privateKey = 'sqT9IXJjzoxyl8wrSWPtiUUl7O4b2ycellElwNoXQuI';
+const publicKey = 'BJp0Y8tAMRjCUGvFZcgHE-4eYJ15emm90SrztuzHGI8Oq1YsRS3hmusm2ELaH-5uA1Wm3JHw-qEvIzpKkuegROY';
+const privateKey = 'dpJqxvokZxhIgWTo8kd-4CHTwI_6N3SM45BH-eVXgy0';
 
 // object which get through pushSubscription method
 const sub = {
     endpoint:
-        "https://fcm.googleapis.com/fcm/send/e1gjbex_oF4:APA91bFlc_6uaG2ef9s9pyB4g5cdjE34exJGyE594_6EOHrWjsLpDZU4iePePP7m_UFlXx5yLH0k3Vy-18ObfKDyz9y59pVVUxDMfgHsw-RIeVYusWH87L9TT6kSKflv63qmKOStZqbF",
+        "https://fcm.googleapis.com/fcm/send/dau5pUEA3A0:APA91bFuCq_RLFGa-bX8W3CVMXv76ULHe4qtpUgJO4QbtPMiu2FQ4dEyJsbIYqQv8cs7n1DBB4VQ6IYomDNhNNwyjvwnqazqlklAEmCy8q5u4O_p4wd2m3d8Mwdt5BtZ5VN-vYsVUlLP",
     expirationTime: null,
     keys: {
-        p256dh:
-            "BC0TE5J01zAQSXRvJErQYtn8zU361PkNEpBOzCP9Fdc4MSBCIDKm4FyvGD85R4jS2stpJQoSHJn2LSA7bKeaqu4",
+        p256dh: 
+            "BG8VM-jz8yOgnUXpopeeCUcaHHumT-ES0g78Q578DH954IRp78DQPP07ikqPUoqkdkhk8jG81a7WK9bAdrKku1k",
         auth:
-            "GRPxmABWoWAiwEBZ-gpAbQ"
+            "RjxrRCMmfNkj7PoHgrCEGw"
     }
 };
 
@@ -30,4 +30,4 @@ const payLoad = {
 };
 
 // send notification
-webpush.sendNotification(sub, JSON.stringify(payLoad))
+webpush.sendNotification(sub, JSON.stringify(payLoad));
