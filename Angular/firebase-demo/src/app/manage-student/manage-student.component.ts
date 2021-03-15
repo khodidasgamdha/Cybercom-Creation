@@ -1,6 +1,6 @@
-import { StudentsService } from '../core/services/students.service';
+import { StudentsService } from '../core/services/students/students.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-manage-student',
@@ -9,85 +9,128 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class ManageStudentComponent implements OnInit {
 
-  constructor( private  productsSevice: StudentsService) { }
+  constructor( private  studentsSevice: StudentsService) { }
 
-  dataTitle = "Products List";
+  dataTitle = "Students List";
   feaching = false;
-  products =[]
+  students =[];
 
   @ViewChild('id') id: ElementRef;
   @ViewChild('name') name: ElementRef;
-  @ViewChild('price') price: ElementRef;
+  @ViewChild('school') school: ElementRef;
 
   editMode: boolean = false;
   editId: number;
 
+  // add student in array
+  onAddStudent(id ,name ,school){
 
-  // add product in array
-  onAddProduct(id ,name ,price){
-
-    // if edit mode is true then update value else add product
+    // if edit mode is true then update value else add student
     if(this.editMode) {
-      this.products[this.editId] = {
+      this.students[this.editId] = {
         id: id.value,
         name: name.value,
-        price:price.value
+        school:school.value
       }
       this.editMode = false; // false after update value
+
+      // sweet alert
+      Swal.fire(
+        'Success...', 
+        'Data Updated !!', 
+        'success'
+      );
+
     }else {
-      this.products.push({
+      this.students = this.students || []
+      this.students.push({
         id: id.value,
         name: name.value,
-        price:price.value
+        school:school.value
       })
+
+      // sweet alert
+      Swal.fire(
+        'Success...', 
+        'Data Added !!', 
+        'success'
+      );
+
     }
     this.id.nativeElement.value = ''; // after update empty input boxes
     this.name.nativeElement.value = '';
-    this.price.nativeElement.value = '';
-    this.onSaveProduct();
+    this.school.nativeElement.value = '';
   }
 
-  // add product to firebase
-  onSaveProduct(){
-    this.productsSevice.saveProducts(this.products).subscribe( 
+  // add student to firebase
+  onSaveStudent(){
+    this.studentsSevice.saveStudent(this.students).subscribe( 
       (response) =>  console.log(response),
       (err)=>console.log(err)
     )
+
+    // sweet alert
+    Swal.fire(
+      'Success...', 
+      'Data Saved to Firebase !!', 
+      'success'
+    );
+
   }
 
-  // fetch products from firebase
-  onFetchProduct(){
+  // fetch students from firebase
+  onFetchStudent(){
     this.feaching = true;
-    this.productsSevice.fetchProducts().subscribe(
+    this.studentsSevice.fetchStudent().subscribe(
       (response) => {
         const data = JSON.stringify(response)
-        this.products = JSON.parse(data)
+        this.students = JSON.parse(data)
         this.feaching = false;
       },
       (err)=>console.log(err) 
     )
   }
 
-  // edit product
-  onEditProduct(id) {
+  // edit student
+  onEditStudent(id) {
     this.editMode = true;
     this.editId = id;
-    this.id.nativeElement.value = this.products[id].id;
-    this.name.nativeElement.value = this.products[id].name;
-    this.price.nativeElement.value = this.products[id].price;
+    this.id.nativeElement.value = this.students[id].id;
+    this.name.nativeElement.value = this.students[id].name;
+    this.school.nativeElement.value = this.students[id].school;
   }
 
-  // delete product
-  onDeleteProduct(id){
-    if(confirm("Do you want to delete this product?")){
-      this.products.splice(id,1)
-      this.onSaveProduct();
-    }
+  // delete student
+  onDeleteStudent(id){
+    Swal.fire({
+      title: 'Are you sure want to Delete ?',
+      text: 'You will not be see any more!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it!'
+    }).then((result) => {
+      if (result.value) {
+        this.students.splice(id,1)
+        this.onSaveStudent();
+        Swal.fire(
+          'Deleted...',
+          'Data Deleted Successfully !!',
+          'success'
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled...',
+          'Your Data is Safe :)',
+          'error'
+        )
+      }
+    })
   }
 
   // on initialize
   ngOnInit(): void {
-    this.onFetchProduct();
+    this.onFetchStudent();
   }
 
 }

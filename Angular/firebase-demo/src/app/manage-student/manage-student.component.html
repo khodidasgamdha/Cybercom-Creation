@@ -1,47 +1,45 @@
 <div class="page-area">
     
     <!-- heading -->
-    <h1 class="text-center">
-        Manage Products
-    </h1>
-    <br>
+    <h1 class="text-center">Manage Students</h1>
 
-    <!-- manage products -->
+    <!-- manage students -->
     <div class="container border-top pt-5" >
         <div class="row">
 
-            <!-- add product -->
+            <!-- add student -->
             <div class="col-md-6">
-                <h2>Add Products</h2>
+                <h2>Add Students</h2>
                 <form>
 
-                    <!-- product id -->
+                    <!-- student id -->
                     <div class="form-group">
-                        <label for="id"> Product Id</label>
+                        <label for="id"> Id</label>
                      <input type="text" class="form-control" id="id" #id>
                     </div>
 
-                    <!-- product name -->
+                    <!-- student name -->
                     <div class="form-group">
-                        <label for="name"> Product Name</label>
+                        <label for="name"> Name</label>
                      <input type="text" class="form-control" id="name" #name>
                     </div>
 
-                    <!-- product price -->
+                    <!-- student school -->
                     <div class="form-group">
-                        <label for="price"> Product Price</label>
-                     <input type="text" class="form-control" id="price" #price>
+                        <label for="school"> School</label>
+                     <input type="text" class="form-control" id="school" #school>
                     </div>
 
                     <!-- button -->
-                    <button type="button" class="btn btn-sm btn-primary" (click)="onAddProduct(id,name,price)" > {{editMode? 'Update Product' : 'Add Product'}}</button> 
-                    <button type="button" class="btn btn-sm btn-success mx-2" (click)="onSaveProduct()">Save Product</button>
-                    <button type="button" class="btn btn-sm btn-info" (click)="onFetchProduct()"> Fetch Product </button>
+                    <button type="button" class="btn btn-sm btn-primary" (click)="onAddStudent(id,name,school)" > {{editMode? 'Update Student' : 'Add Student'}}</button> 
+                    <button type="button" class="btn btn-sm btn-success m-2" (click)="onSaveStudent()">Save to Firebase</button>
+                    <button type="button" class="btn btn-sm btn-warning mr-2" (click)="onFetchStudent()"> Fetch Student </button>
+                    <button type="button" class="btn btn-sm btn-info" routerLink="/firestore"> Go to FireStore CRUD</button>
 
                 </form>
             </div>
 
-            <!-- display product -->
+            <!-- display student -->
             <div class="col-md-6">
                 <h2>{{ dataTitle}}</h2>
                 <table class="table">
@@ -50,23 +48,23 @@
                             <th scope="col">No.</th>
                             <th scope="col">Id</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Price</th>
+                            <th scope="col">School</th>
                             <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody *ngIf="!feaching">
-                        <tr *ngFor= "let product of products ; index as i">
+                        <tr *ngFor= "let student of students ; index as i">
                             <th scope="row">{{i+1}}</th>
-                            <td>{{product.id}}</td>
-                            <td>{{product.name}}</td>
-                            <td>{{product.price}}</td>
-                            <td (click)="onEditProduct(i)" class="text-center"> 
+                            <td>{{student.id}}</td>
+                            <td>{{student.name}}</td>
+                            <td>{{student.school}}</td>
+                            <td (click)="onEditStudent(i)" class="text-center"> 
                                 <a class="text-info">
                                     <i class="fa fa-edit" aria-hidden="true"></i>
                                 </a>
                             </td>
-                            <td (click)="onDeleteProduct(i)" class="text-center"> 
+                            <td (click)="onDeleteStudent(i)" class="text-center"> 
                                 <a class="text-danger">
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                 </a>
@@ -79,7 +77,7 @@
                 <div *ngIf="feaching" class="text-center">
                     <div class="spinner-border text-success" role="status">
                         <span class="sr-only">Loading...</span>
-                    </div> Fetching Products...
+                    </div> Fetching Students...
                 </div>
 
             </div>

@@ -1,0 +1,88 @@
+<div class="page-area">
+    
+    <!-- heading -->
+    <h1 class="text-center">Manage Employees</h1>
+    
+
+    <!-- manage Employees -->
+    <div class="container border-top pt-5" >
+        <div class="row">
+
+            <!-- add Employee -->
+            <div class="col-md-6">
+                <h2>Add Employees</h2>
+                <form>
+
+                    <!-- Employee id -->
+                    <div class="form-group">
+                        <label for="id"> Id</label>
+                     <input type="text" class="form-control" id="id" [(ngModel)]='employee.id' name="id">
+                    </div>
+
+                    <!-- Employee name -->
+                    <div class="form-group">
+                        <label for="name"> Name</label>
+                     <input type="text" class="form-control" id="name" [(ngModel)]='employee.name' name="name">
+                    </div>
+
+                    <!-- Employee price -->
+                    <div class="form-group">
+                        <label for="designation"> Designation</label>
+                     <input type="text" class="form-control" id="designation" [(ngModel)]='employee.designation' name="designation">
+                    </div>
+
+                    <!-- button -->
+                    <button type="button" class="btn btn-sm btn-primary m-2" (click)="addEmployee()" *ngIf="!isUpdate">Add Employee</button> 
+                    <button type="button" class="btn btn-sm btn-success m-2" (click)="updateEmployee()" *ngIf="isUpdate">Update Employee</button>
+                    <button type="button" class="btn btn-sm btn-info" routerLink="/firebase"> Go to Firebase CRUD</button>
+
+                </form>
+            </div>
+
+            <!-- display Employee -->
+            <div class="col-md-6">
+                <h2>Employees List</h2>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Ddesignation</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor= "let employee of employees ; index as i">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{employee.id}}</td>
+                            <td>{{employee.name}}</td>
+                            <td>{{employee.designation}}</td>
+                            <td class="text-center"> 
+                                <a (click)="updateEmployee(employee.id)" class="text-info">
+                                    <i class="fa fa-edit" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                            <td (click)="deleteEmployee()" class="text-center"> 
+                                <a class="text-danger">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- loader -->
+                <!-- <div class="text-center">
+                    <div class="spinner-border text-success" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div> Fetching Employees...
+                </div> -->
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
