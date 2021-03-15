@@ -1,9 +1,43 @@
-<h1 class="text-center m-5" >!! PWA App !!</h1>
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark container">
 
+    <!-- link -->
+    <a class="navbar-brand" href="#">Khodidas Gamdha</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- links -->
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+
+            <!-- home -->
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/']" routerLinkActive="active">Home</a>
+            </li>
+
+            <!-- list user -->
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
+            </li>
+
+        </ul>
+
+        <!-- button -->
+        <button class="btn btn-sm btn-success" *ngIf="!isLogin()" [routerLink]="['/login']">Login</button>
+        <button class="btn btn-sm btn-primary ml-2" *ngIf="!isLogin()" [routerLink]="['/registration']">Registration</button>
+        <button class="btn btn-sm btn-danger" *ngIf="isLogin()" (click)="authService.logOut()">Log Out</button>
+    
+    </div>
+</nav>
+
+<!-- heading -->
+<h1 class="text-center m-5" >!! PWA App !!</h1>
 <h3 class="text-center m-5">Employee Details...</h3>
 
 <!-- subcribe unsubscribe btn -->
-<div class="d-flex justify-content-end container" id="btn">
+<div class="d-flex justify-content-end container" id="subscribe">
     <button *ngIf="!isSubscribed" class="btn btn-danger btn-sm" (click)="showNotification()">Subscribe</button>
     <button *ngIf="isSubscribed" class="btn btn-danger btn-sm" (click)="showNotification()">Unsubscribe</button>
 </div>

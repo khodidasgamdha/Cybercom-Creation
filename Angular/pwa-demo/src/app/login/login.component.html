@@ -38,6 +38,7 @@
         <!-- Calling SignIn Api from AuthService -->
         <div class="form-group row">
             <div>
+                <button class="btn btn-info" routerLink="/home"> <- Back</button> 
                 <button class="btn btn-success" (click)="authService.login(userName.value, userPassword.value)">Login</button> 
             </div>
             <div>
@@ -45,6 +46,5 @@
             </div>  
         </div>    
     </form>
-
 
 </div>

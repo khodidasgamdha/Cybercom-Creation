@@ -1,6 +1,7 @@
 import { ApplicationRef, Component, OnInit } from '@angular/core';
 import { SwPush, SwUpdate } from '@angular/service-worker';
 import { interval } from 'rxjs';
+import { AuthService } from '../core/services/authentication/auth.service';
 import { EmployeeService } from '../core/services/dummy-data/employee.service';
 
 @Component({
@@ -20,7 +21,8 @@ export class HomeComponent implements OnInit {
     private swUpdate: SwUpdate,
     private employee: EmployeeService,
     private appRef: ApplicationRef,
-    private swPush: SwPush
+    private swPush: SwPush,
+    public authService: AuthService
   ) {
     this.updateClient();
     this.checkUpdate();
@@ -123,6 +125,11 @@ export class HomeComponent implements OnInit {
 
     // change isSubscribe variable
     this.isSubscribed = !this.isSubscribed;
+  }
+
+  // is login or not
+  isLogin() {
+    return !!localStorage.getItem('user');
   }
 
   // store employee data in object

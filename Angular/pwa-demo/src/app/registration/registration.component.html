@@ -1,26 +1,50 @@
-<div class="displayTable">
-    <div class="displayTableCell">
+<div class="container">   
+    <h2 id="heading" >Sign Up</h2> 
+    <form [formGroup]="form" class="row"> 
+        
+        <!-- username -->
+        <div class="form-group col-md-12">    
+            <label for="userName">Username</label>    
+            <input 
+                formControlName="userName" 
+                type="text" 
+                name="userName" 
+                class="form-control"
+                #userName />
 
-        <div class="authBlock">
-            <h3>Sign Up</h3>
+            <!-- error -->
+            <div *ngIf="userName.touched && userName.invalid" class="alert alert-danger">
+                <div *ngIf="userName.errors.required">Please, Enter Email</div>
+            </div> 
+        </div>    
 
-            <div class="formGroup">
-                <input type="email" class="formControl" placeholder="Email Address" #userEmail required>
+        <!-- password -->
+        <div class="form-group col-md-12">    
+            <label for="password">Password</label>    
+            <input 
+                formControlName="password" 
+                type="password" 
+                name="password" 
+                class="form-control"
+                #userPassword />  
+
+            <!-- error -->
+            <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+                <div *ngIf="password.errors.required">Please, Enter Password</div>
+            </div>  
+        </div>  
+        
+        <!-- login -->
+        <!-- Calling SignIn Api from AuthService -->
+        <div class="form-group row">
+            <div>
+                <button class="btn btn-info" routerLink="/home"> <- Back</button> 
+                <button class="btn btn-success" (click)="authService.registration(userName.value, userPassword.value)">Sign Up</button> 
             </div>
+            <div>
+                <span>Already have an account ? <span class="redirect" routerLink="/login">Log In</span></span>
+            </div>  
+        </div>    
+    </form>
 
-            <div class="formGroup">
-                <input type="password" class="formControl" placeholder="Password" #userPwd required>
-            </div>
-
-            <div class="formGroup">
-                <input type="button" class="btn btnPrimary" value="Sign Up"
-                    (click)="auth.registration(userEmail.value, userPwd.value)">
-            </div>
-
-            <div class="redirectToLogin">
-                <span>Already have an account? <span class="redirect" routerLink="/sign-in">Log In</span></span>
-            </div>
-        </div>
-
-    </div>
 </div>

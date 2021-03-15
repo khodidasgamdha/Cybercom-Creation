@@ -22,9 +22,6 @@ export class AuthService {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user'));
-      } else {
-        localStorage.setItem('user', null);
-        JSON.parse(localStorage.getItem('user'));
       }
     });
   }
@@ -45,6 +42,7 @@ export class AuthService {
   registration(email, password) {
     return this.afAuth.createUserWithEmailAndPassword(email, password)
       .then(result => {
+        this.router.navigate(['login']);
         this.setUserData(result.user);
       })
       .catch(err => {
@@ -52,18 +50,12 @@ export class AuthService {
       })
   }
 
-  // check is user is logged in or not
-  isLoggedIn() {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return user !== null;
-  }
-
   // logout
   logOut() {
     return this.afAuth.signOut()
       .then(() => {
         localStorage.removeItem('user');
-        this.router.navigate(['login']);
+        this.router.navigate(['home']);
       })
   }
 
