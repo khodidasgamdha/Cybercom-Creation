@@ -12,16 +12,9 @@ export class EmployeeService {
 
   // get employees
   getEmployee() {
-    return this.fireStore.collection('employees').snapshotChanges()
-    .pipe(
-      map(changes => {
-        return changes.map(a => {
-          const data = a.payload.doc.data() as Employee;
-          data.id = a.payload.doc.id;
-          return data;
-        })
-      })
-    );
+    return this.fireStore.collection('employees', ref =>
+      ref.orderBy('enrollment', 'asc')
+    ).snapshotChanges();
   }
 
   // add employee
@@ -36,7 +29,7 @@ export class EmployeeService {
 
   // delete employee
   deleteEmployee(id: String){
-    this.fireStore.doc('policies/' + id).delete();
+    this.fireStore.doc('employees/' + id).delete();
   }
 
 }

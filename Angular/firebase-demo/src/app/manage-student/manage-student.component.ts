@@ -37,12 +37,12 @@ export class ManageStudentComponent implements OnInit {
       // sweet alert
       Swal.fire(
         'Success...', 
-        'Data Updated !!', 
+        'Data Updated Successfully !!', 
         'success'
       );
 
     }else {
-      this.students = this.students || []
+      this.students = this.students || [];
       this.students.push({
         id: id.value,
         name: name.value,
@@ -52,7 +52,7 @@ export class ManageStudentComponent implements OnInit {
       // sweet alert
       Swal.fire(
         'Success...', 
-        'Data Added !!', 
+        'Data Added Successfully!!', 
         'success'
       );
 
@@ -64,10 +64,7 @@ export class ManageStudentComponent implements OnInit {
 
   // add student to firebase
   onSaveStudent(){
-    this.studentsSevice.saveStudent(this.students).subscribe( 
-      (response) =>  console.log(response),
-      (err)=>console.log(err)
-    )
+    this.studentsSevice.saveStudent(this.students).subscribe();
 
     // sweet alert
     Swal.fire(
