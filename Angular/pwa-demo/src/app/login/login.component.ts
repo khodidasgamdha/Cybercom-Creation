@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   ) {
     // form
     this.form = this.fb.group({
-      userName: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
@@ -24,9 +24,15 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // get userName
-  get userName() {
-    return this.form.get('userName');
+  // reset password
+  resetPassword() {
+    const email = prompt('Enter E-mail to Reset Password !!');
+    this.authService.ForgotPassword(email);
+  }
+
+  // get email
+  get email() {
+    return this.form.get('email');
   }
   
   // get password

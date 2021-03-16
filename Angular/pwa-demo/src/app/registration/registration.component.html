@@ -38,11 +38,17 @@
         <!-- Calling SignIn Api from AuthService -->
         <div class="form-group row">
             <div>
-                <button class="btn btn-info" routerLink="/home"> <- Back</button> 
-                <button class="btn btn-success" (click)="authService.registration(userName.value, userPassword.value)">Sign Up</button> 
+                <button type="button" class="btn btn-sm btn-info ml-5" routerLink="/home"> <- Back</button> 
+                <button type="button" class="btn btn-sm btn-success ml-2" (click)="authService.registration(userName.value, userPassword.value)">Sign Up</button> 
             </div>
+
+            <!-- Calling GoogleAuth Api from AuthService -->
+            <div class="formGroup">
+                <button type="button" class="btn btn-sm btn-danger ml-2" (click)="authService.googleAuth()">Sign Up with Google</button>
+            </div>
+
             <div>
-                <span>Already have an account ? <span class="redirect" routerLink="/login">Log In</span></span>
+                <span>Already have an account ? <a class="redirect" routerLink="/login">Log In</a></span>
             </div>  
         </div>    
     </form>

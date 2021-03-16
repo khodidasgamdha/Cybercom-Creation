@@ -3,7 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { User } from '../../interface/user';
-
+import firebase from 'firebase/app';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Injectable({
   providedIn: 'root'
 })
@@ -42,11 +43,28 @@ export class AuthService {
   registration(email, password) {
     return this.afAuth.createUserWithEmailAndPassword(email, password)
       .then(result => {
+        this.SendVerificationMail();
         this.router.navigate(['login']);
         this.setUserData(result.user);
       })
       .catch(err => {
         console.log(err.message);
+      })
+  }
+
+  // Sign in with Google
+  googleAuth() {
+    return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
+  }
+
+  // Auth logic to run auth providers
+  AuthLogin(provider) {
+    return this.afAuth.signInWithPopup(provider)
+      .then((result) => {
+        this.router.navigate(['home']);
+        this.setUserData(result.user);
+      }).catch(error => {
+        console.log(error)
       })
   }
 
@@ -56,6 +74,46 @@ export class AuthService {
       .then(() => {
         localStorage.removeItem('user');
         this.router.navigate(['home']);
+      })
+  }
+
+  // Send email verfificaiton when new user sign up
+  SendVerificationMail() {
+    return this.afAuth.currentUser.then(u => u.sendEmailVerification())
+      .then(() => {
+        Swal.fire({
+          title: 'Varification Mail Send !',
+          text: 'Click Resend if Not recive !',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, got it!',
+          cancelButtonText: 'No, Resend it!'
+        }).then((result) => {
+          if (result.value) {
+            Swal.fire(
+              'Success...',
+              `We have sent a confirmation email to ${this.userData.email} \n Please check your email and click on the link to verfiy your email address.`,
+              'success'
+            )
+          } else if (result.dismiss === Swal.DismissReason.cancel) {
+            this.SendVerificationMail();
+            Swal.fire(
+              'Success...',
+              'Mail Resend Successfully :)',
+              'success'
+            )
+          }
+        });
+      })
+  }
+
+  // Reset Forgot password
+  ForgotPassword(passwordResetEmail) {
+    return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
+      .then(() => {
+        alert('Password reset email sent, check your inbox.');
+      }).catch((error) => {
+        alert(error)
       })
   }
 

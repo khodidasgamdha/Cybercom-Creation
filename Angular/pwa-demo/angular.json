@@ -25,7 +25,8 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/sweetalert2/src/sweetalert2.scss"
             ],
             "scripts": []
           },

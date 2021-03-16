@@ -1,25 +1,25 @@
 <div class="container">   
     <h2 id="heading" >Login</h2> 
-    <form [formGroup]="form" class="row"> 
-        
+    <form [formGroup]="form"> 
+
         <!-- username -->
-        <div class="form-group col-md-12">    
-            <label for="userName">Username</label>    
+        <div class="form-group">    
+            <label for="email">Username</label>    
             <input 
-                formControlName="userName" 
+                formControlName="email" 
                 type="text" 
-                name="userName" 
+                name="email" 
                 class="form-control"
-                #userName />
+                #email />
 
             <!-- error -->
-            <div *ngIf="userName.touched && userName.invalid" class="alert alert-danger">
-                <div *ngIf="userName.errors.required">Please, Enter Email</div>
+            <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+                <div *ngIf="email.errors.required">Please, Enter Email</div>
             </div> 
         </div>    
 
         <!-- password -->
-        <div class="form-group col-md-12">    
+        <div class="form-group">    
             <label for="password">Password</label>    
             <input 
                 formControlName="password" 
@@ -38,13 +38,21 @@
         <!-- Calling SignIn Api from AuthService -->
         <div class="form-group row">
             <div>
-                <button class="btn btn-info" routerLink="/home"> <- Back</button> 
-                <button class="btn btn-success" (click)="authService.login(userName.value, userPassword.value)">Login</button> 
+                <button type="button" class="btn btn-sm btn-info ml-5" routerLink="/home"> <- Back</button> 
+                <button type="button" class="btn btn-sm btn-success ml-2" (click)="authService.login(email.value, userPassword.value)">Login</button> 
+                <button type="button" class="btn btn-sm btn-warning ml-2" (click)="resetPassword()">Forgot Password</button> 
             </div>
+
+            <!-- Calling GoogleAuth Api from AuthService -->
+            <div class="formGroup">
+                <button type="button" class="btn btn-sm btn-danger ml-2" (click)="authService.googleAuth()">Log in with Google</button>
+            </div>
+            
             <div>
                 <span>Don't have an account ?<a routerLink="/registration"> Registration</a></span>
             </div>  
         </div>    
     </form>
+
 
 </div>
