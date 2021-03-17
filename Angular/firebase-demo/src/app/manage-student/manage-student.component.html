@@ -42,6 +42,8 @@
             <!-- display student -->
             <div class="col-md-6">
                 <h2>{{ dataTitle}}</h2>
+
+                <!-- table -->
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
@@ -53,6 +55,8 @@
                             <th scope="col">Delete</th>
                         </tr>
                     </thead>
+
+                    <!-- display student data -->
                     <tbody *ngIf="!feaching">
                         <tr *ngFor= "let student of students ; index as i">
                             <th scope="row">{{i+1}}</th>

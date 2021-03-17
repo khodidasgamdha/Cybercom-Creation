@@ -1,4 +1,4 @@
-<div class="page-area">
+<div>
     
     <!-- heading -->
     <h1 class="text-center">Manage Employees</h1>
@@ -16,25 +16,45 @@
                     <!-- Employee id -->
                     <div class="form-group">
                         <label for="enrollment"> Enrollment No.</label>
-                     <input type="text" class="form-control" id="enrollment" [(ngModel)]='employee.enrollment' name="enrollment">
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="enrollment" 
+                            [(ngModel)]='employee.enrollment' 
+                            name="enrollment">
                     </div>
 
                     <!-- Employee name -->
                     <div class="form-group">
                         <label for="name"> Name</label>
-                     <input type="text" class="form-control" id="name" [(ngModel)]='employee.name' name="name">
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="name" 
+                            [(ngModel)]='employee.name' 
+                            name="name">
                     </div>
                     
                     <!-- Employee designation -->
                     <div class="form-group">
                         <label for="designation"> Designation</label>
-                        <input type="text" class="form-control" id="designation" [(ngModel)]='employee.designation' name="designation">
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="designation" 
+                            [(ngModel)]='employee.designation' 
+                            name="designation">
                     </div>
                     
                     <!-- Employee company -->
                     <div class="form-group">
                         <label for="company"> Company</label>
-                     <input type="text" class="form-control" id="company" [(ngModel)]='employee.company' name="company">
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="company" 
+                            [(ngModel)]='employee.company' 
+                            name="company">
                     </div>
                     
                     <!-- button -->
@@ -48,6 +68,8 @@
             <!-- display Employee -->
             <div class="col-md-8">
                 <h2>Employees List</h2>
+
+                <!-- table -->
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
@@ -60,6 +82,8 @@
                             <th scope="col">Delete</th>
                         </tr>
                     </thead>
+
+                    <!-- show data from firestore -->
                     <tbody>
                         <tr *ngFor= "let employee of employees ; index as i">
                             <th scope="row">{{i+1}}</th>
@@ -80,13 +104,6 @@
                         </tr>
                     </tbody>
                 </table>
-
-                <!-- loader -->
-                <!-- <div class="text-center">
-                    <div class="spinner-border text-success" role="status">
-                        <span class="sr-only">Loading...</span>
-                    </div> Fetching Employees...
-                </div> -->
 
             </div>
 
