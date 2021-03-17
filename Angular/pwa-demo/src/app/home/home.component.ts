@@ -95,7 +95,7 @@ export class HomeComponent implements OnInit {
     this.swPush.requestSubscription({
       serverPublicKey: this.publicKey,
     })
-    .then((sub) => console.log(JSON.stringify(sub)))
+    // .then((sub) => console.log(JSON.stringify(sub)))
     .catch((err) => console.log(err));
 
     // this.swPush.unsubscribe().then(() => {
@@ -113,6 +113,7 @@ export class HomeComponent implements OnInit {
             "data": {url : "https://www.youtube.com/"},
             body: this.isSubscribed ? this.subscribed : this.unSubscribed,
             icon: 'http://simpleicon.com/wp-content/uploads/play.png',
+            image: 'http://simpleicon.com/wp-content/uploads/play.png',
             vibrate: [20, 50, 10, 20, 20]
           });
         });

@@ -1,12 +1,6 @@
-nav {
-    margin-top: 10px;
-}
 th, td {
     text-align: center;
     vertical-align: middle;
-}
-#subscribe {
-    margin-bottom: 2px;
 }
 .card-img-top {
     width: 64px;

@@ -16,6 +16,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthService } from './core/services/authentication/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { MessagingService } from './core/services/notification/messaging.service';
 
 @NgModule({
   declarations: [
@@ -33,12 +35,14 @@ import { AngularFireModule } from '@angular/fire';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireMessagingModule,
     FormsModule,
     ReactiveFormsModule
   ],
   providers: [
     EmployeeService,
-    AuthService
+    AuthService,
+    MessagingService
   ],
   bootstrap: [AppComponent]
 })
