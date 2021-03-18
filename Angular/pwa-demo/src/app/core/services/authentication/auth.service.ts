@@ -22,7 +22,6 @@ export class AuthService {
       if(user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user'));
       }
     });
   }
@@ -122,9 +121,7 @@ export class AuthService {
     const userRef: AngularFirestoreDocument = this.afs.doc(`user/${user.uid}`);
     const userData: User = {
       uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL
+      email: user.email
     }
     return userRef.set(userData, {
       merge: true

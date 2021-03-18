@@ -6,17 +6,12 @@
     </div>
     
     <!-- card body -->
-    <div class="card-body row no-gutters" *ngIf="authService.userData as user">
-
-        <!-- image -->
-        <div class="col-md-4">
-            <img src="" class="card-img" alt="{{user.displayName}}">
-        </div>
+    <div class="card-body no-gutters" *ngIf="authService.userData as user">
         
         <!-- data -->
-        <div class="col-md-8">
+        <div>
             <div class="card-body">
-                <h5 class="card-title">Hello, {{(user.displayName) ? user.displayName : 'User'}}</h5>
+                <h5 class="card-title">Hello, User</h5>
                 <p><strong>ID:</strong> {{user.uid}}</p>
                 <p><strong>Email:</strong> {{user.email}}</p>
                 <p><strong>Email Verified:</strong> {{user.emailVerified}}</p>
