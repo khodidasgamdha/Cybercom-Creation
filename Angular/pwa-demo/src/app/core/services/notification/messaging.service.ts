@@ -22,7 +22,7 @@ export class MessagingService {
     this.angularFireMessaging.requestToken
       .subscribe(
         (token) => {
-          console.log(token);
+          // console.log(token);
         },
         (err) => {
           console.error('Unable to get permission to notify.', err);
@@ -50,10 +50,10 @@ export class MessagingService {
     };
     let notify: Notification = new Notification(title, options)
 
-    notify.onclick = event => {
+    notify.onclick = (event => {
       event.preventDefault();
       window.location.href = 'https://www.youtube.com/';
-    }
+    })
   }
 
 }
