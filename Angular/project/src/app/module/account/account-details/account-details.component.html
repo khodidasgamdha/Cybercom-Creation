@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <form action="" [formGroup]='form'>
+
+        <!-- name -->
+        <div class="form-group col-sm-4">
+            <label for="name">First Name</label>
+            <input 
+                type="text" 
+                formControlName="name" 
+                class="form-control">
+
+            <!-- errors -->
+            <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+                <div *ngIf="name.errors.required">Enter Name</div>
+            </div>
+        </div>
+
+        <!-- surname -->
+        <div class="form-group col-sm-4">
+            <label for="surname">Surname</label>
+            <input 
+                type="text" 
+                formControlName="surname" 
+                class="form-control">
+
+            <!-- errors -->
+            <div *ngIf="surname.touched && surname.invalid" class="alert alert-danger">
+                <div *ngIf="surname.errors.required">Enter Surname</div>
+            </div>
+        </div>
+
+        <!-- submit btn -->
+        <button class="btn btn-success btn-sm ml-5" (click)='submit()'>Submit</button>
+
+    </form>
+</div>
