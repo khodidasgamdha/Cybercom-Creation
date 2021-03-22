@@ -1,0 +1,192 @@
+<h1 id="heading" class="m-5">Text Input</h1><hr>
+
+<div class="container">
+    <div class="row">
+
+        <!-- add hideRequiredMarker in mat-form-field for hide required * -->
+        <!-- floatLabel = always => always show upper -->
+        <div class="col-lg-4">
+            <h3>floatLabel : always</h3>
+            <mat-form-field class="example-full-width" floatLabel="always">
+                <mat-label>Name</mat-label>
+                <input matInput type="text" required>
+            </mat-form-field>
+        </div>
+
+        <!-- floatLabel = auto => work auto  -->
+        <div class="col-lg-4">
+            <h3>floatLabel : auto</h3>
+            <mat-form-field class="example-full-width" floatLabel="auto">
+                <mat-label>Name</mat-label>
+                <input matInput type="text" required>
+            </mat-form-field>
+        </div>
+        
+        <!-- floatLabel = never => hide when enter value  -->
+        <div class="col-lg-4">
+            <h3>floatLabel : never</h3>
+            <mat-form-field class="example-full-width" floatLabel="never">
+                <mat-label>Name</mat-label>
+                <input matInput type="text" required>
+            </mat-form-field>
+        </div>
+        
+        <!--  color = accent -->
+        <div class="col-lg-6">
+            <h3>color : accent</h3>
+            <mat-form-field class="example-full-width" color='accent'>
+                <mat-label>Name</mat-label>
+                <input matInput type="text" required>
+            </mat-form-field>
+        </div>
+        
+        <!-- color = warn  -->
+        <div class="col-lg-6">
+            <h3>color : warn</h3>
+            <mat-form-field class="example-full-width" color='warn'>
+                <mat-label>Name</mat-label>
+                <input matInput type="text" required>
+            </mat-form-field>
+        </div>
+
+        <!--  appearance = fill => fill background -->
+        <div class="col-lg-6">
+            <h3>appearance : fill => fill background</h3>
+            <mat-form-field class="example-full-width" appearance='fill'>
+                <mat-label>Name</mat-label>
+                <input matInput type="text" required>
+            </mat-form-field>
+        </div>
+        
+        <!-- appearance = standard => standard display  -->
+        <div class="col-lg-6">
+            <h3>appearance : standard => standard display</h3>
+            <mat-form-field class="example-full-width" appearance='standard'>
+                <mat-label>Name</mat-label>
+                <input matInput type="text" required>
+            </mat-form-field>
+        </div>
+
+        <!--  appearance => outline => outline of input text -->
+        <div class="col-lg-6">
+            <h3>appearance : outline => outline of input text</h3>
+            <mat-form-field class="example-full-width" appearance='outline'>
+                <mat-label>Name</mat-label>
+                <input matInput type="text" required>
+            </mat-form-field>
+        </div>
+        
+        <!-- appearance = legacy => older than standard -->
+        <div class="col-lg-6">
+            <h3>appearance : legacy => older than standard</h3>
+            <mat-form-field class="example-full-width" appearance='legacy'>
+                <mat-label>Name</mat-label>
+                <input matInput type="text" required>
+            </mat-form-field>
+        </div>
+
+        <!-- error show instancly -->
+        <div class="col-lg-6">
+            <h3>Instance error msg show</h3>
+            <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput [formControl]="emailControl" [errorStateMatcher]="matcher" placeholder="Ex. pat@example.com">
+                <mat-hint>Errors appear instantly!</mat-hint>
+
+                <!-- error -->
+                <mat-error *ngIf="emailControl.hasError('email') && !emailControl.hasError('required')">
+                    Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="emailControl.hasError('required')">
+                    Email is <strong>required</strong>
+                </mat-error>
+
+            </mat-form-field>
+        </div>
+
+        <!-- error -->
+        <div class="col-lg-6">
+            <h3>Error msg show</h3>
+            <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput [formControl]="email" placeholder="Ex. abc@example.com">
+
+                <!-- error -->
+                <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+                    Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="email.hasError('required')">
+                    Email is <strong>required</strong>
+                </mat-error>
+
+            </mat-form-field>
+        </div>
+        
+        <!-- disabled -->
+        <div class="col-lg-4">
+            <h3>disabled input field</h3>
+            <mat-form-field class="example-full-width">
+                <mat-label>Company (disabled)</mat-label>
+                <input matInput disabled value="Google">
+            </mat-form-field>
+        </div>
+        
+        <!-- add mat-hint -->
+        <div class="col-lg-4">
+            <h3>add mat-hint</h3>
+            <mat-form-field class="example-full-width">
+                <mat-label>Name</mat-label>
+                <input matInput type="text" #name maxlength="5">
+                <mat-hint align='end'>{{name.value.length}}/5</mat-hint>
+            </mat-form-field>
+        </div>
+        
+        <!-- close button -->
+        <div class="col-lg-4">
+            <h3>set postfix button</h3>
+            <mat-form-field class="example-full-width">
+                <mat-label>Clearable input</mat-label>
+                <input matInput type="text" [(ngModel)]="value">
+                <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        
+        <!-- matPrefix -->
+        <div class="col-lg-4">
+            <h3>set Prefix to input</h3>
+            <mat-form-field class="example-full-width">
+                <mat-label>Telephone</mat-label>
+                <span matPrefix>+91 &nbsp;</span>
+                <input type="tel" matInput placeholder="555-555-1234">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+            </mat-form-field>
+        </div>
+        
+        <!-- textarea -->
+        <div class="col-lg-4">
+            <h3>simple textarea</h3>
+            <mat-form-field class="example-full-width">
+                <mat-label>Leave a comment</mat-label>
+                <textarea matInput placeholder="Ex. Enter Message ..."></textarea>
+            </mat-form-field>
+        </div>
+    
+    </div>
+</div>
+
+<!-- matInput Use with: color
+                        date
+                        datetime-local
+                        email
+                        month
+                        number
+                        password
+                        search
+                        tel
+                        text
+                        time
+                        url
+                        week
+                            -->
