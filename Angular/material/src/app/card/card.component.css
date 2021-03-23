@@ -1,0 +1,17 @@
+#heading {
+  text-align: center;
+  font-size: 40px;
+}
+.container {
+    padding-bottom: 20px;
+}
+.example-card {
+  max-width: 400px;
+}
+.example-header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
+button {
+    margin-left: 20px;
+}

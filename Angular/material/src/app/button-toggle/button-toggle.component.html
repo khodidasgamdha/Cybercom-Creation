@@ -1,0 +1,71 @@
+<h1 id="heading" class="m-5">Button Toggle</h1>
+<hr>
+
+<div class="container">
+    <div class="row">
+
+        <!-- default appearance -->
+        <div class="col-lg-12 row">
+
+            <div class="col-lg-6">
+                <p>Default appearance : </p>
+
+                <mat-button-toggle-group name="fontStyle" aria-label="Font Style" #group="matButtonToggleGroup">
+                    <mat-button-toggle value="bold">Bold</mat-button-toggle>
+                    <mat-button-toggle value="italic">Italic</mat-button-toggle>
+                    <mat-button-toggle value="underline">Underline</mat-button-toggle>
+                </mat-button-toggle-group>
+
+            </div>
+            <h3>Selected value : {{group.value}}</h3>
+        </div>
+
+        <!-- lagacy appearance -->
+        <div class="col-lg-12 row mt-5">
+
+            <div class="col-lg-6">
+                <p>Legacy appearance : </p>
+
+                <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style" #group2="matButtonToggleGroup">
+                    <mat-button-toggle value="bold">Bold</mat-button-toggle>
+                    <mat-button-toggle value="italic">Italic</mat-button-toggle>
+                    <mat-button-toggle value="underline">Underline</mat-button-toggle>
+                </mat-button-toggle-group>
+
+            </div>
+            <h3>Selected value : {{group2.value}}</h3>
+
+        </div>
+
+        <!-- with icon -->
+        <div class="col-lg-12 row mt-5">
+
+            <div class='col-lg-6'>
+                <p> With Icon : </p>
+
+                <mat-button-toggle-group #group3="matButtonToggleGroup">
+                    <mat-button-toggle value="left" aria-label="Text align left">
+                        <mat-icon>format_align_left</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle value="center" aria-label="Text align center">
+                        <mat-icon>format_align_center</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle value="right" aria-label="Text align right">
+                        <mat-icon>format_align_right</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle value="justify" disabled aria-label="Text align justify">
+                        <mat-icon>format_align_justify</mat-icon>
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            <h3>Selected value: {{group3.value}}</h3>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- 
+    appearance : default, lagacy
+    also use [formControl] and [(ngModel)] inside mat-button-toggle-group
+ -->
