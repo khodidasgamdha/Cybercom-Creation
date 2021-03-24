@@ -1,0 +1,8 @@
+#heading {
+    text-align: center;
+    font-size: 40px;
+}
+mat-grid-tile {
+    background: lightblue;
+    border: 2px solid black;
+}  

@@ -1,0 +1,37 @@
+<h1 id="heading" class="m-5">Grid List</h1>
+<hr>
+
+<div class="container">
+    <mat-grid-list cols="2" rowHeight="4:1">
+        <mat-grid-tile>
+            <mat-grid-tile-header>header</mat-grid-tile-header>
+            1
+            <mat-grid-tile-footer>footer</mat-grid-tile-footer>
+        </mat-grid-tile>
+        <mat-grid-tile>2</mat-grid-tile>
+        <mat-grid-tile>3</mat-grid-tile>
+        <mat-grid-tile>4</mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="4" rowHeight="100px" class="mt-5">
+        <mat-grid-tile 
+            *ngFor="let tile of tiles" 
+            [colspan]="tile.cols" 
+            [rowspan]="tile.rows"
+            [style.background]="tile.color">
+            {{tile.text}}
+        </mat-grid-tile>
+    </mat-grid-list>
+
+</div>
+
+<!-- 
+    mat-grid-list :
+                    cols
+                    rowHeight
+    mat-grid-tile :
+                    rowspan
+                    colspan
+    mat-grid-tile-header
+    mat-grid-tile-footer
+ -->

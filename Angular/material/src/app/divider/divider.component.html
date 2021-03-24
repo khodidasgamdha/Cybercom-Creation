@@ -1,0 +1,22 @@
+<h1 id="heading" class="m-5">Divider</h1>
+<hr>
+
+<div class="container">
+
+    <!-- list -->
+    <mat-list>
+        <mat-list-item>Item 1</mat-list-item>
+        <mat-divider></mat-divider>                 <!--divider-->
+        <mat-list-item>Item 2</mat-list-item>
+        <mat-divider [inset]="true"></mat-divider>  <!--after  alue show divider-->
+        <mat-list-item>Item 3</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Item 4</mat-list-item>
+    </mat-list>
+
+</div>
+
+<!-- 
+    [vertical]="true" => Add the vertical attribute in order to set whether or not the divider is vertically-oriented.
+    [inset]="true" => Add the inset attribute in order to set whether or not the divider is an inset divider.
+ -->

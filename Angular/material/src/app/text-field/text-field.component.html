@@ -1,4 +1,5 @@
-<h1 id="heading" class="m-5">Text Input</h1><hr>
+<h1 id="heading" class="m-5">Form Field / Input</h1>
+<hr>
 
 <div class="container">
     <div class="row">
@@ -21,7 +22,7 @@
                 <input matInput type="text" required>
             </mat-form-field>
         </div>
-        
+
         <!-- floatLabel = never => hide when enter value  -->
         <div class="col-lg-4">
             <h3>floatLabel : never</h3>
@@ -30,7 +31,7 @@
                 <input matInput type="text" required>
             </mat-form-field>
         </div>
-        
+
         <!--  color = accent -->
         <div class="col-lg-6">
             <h3>color : accent</h3>
@@ -39,7 +40,7 @@
                 <input matInput type="text" required>
             </mat-form-field>
         </div>
-        
+
         <!-- color = warn  -->
         <div class="col-lg-6">
             <h3>color : warn</h3>
@@ -57,7 +58,7 @@
                 <input matInput type="text" required>
             </mat-form-field>
         </div>
-        
+
         <!-- appearance = standard => standard display  -->
         <div class="col-lg-6">
             <h3>appearance : standard => standard display</h3>
@@ -75,7 +76,7 @@
                 <input matInput type="text" required>
             </mat-form-field>
         </div>
-        
+
         <!-- appearance = legacy => older than standard -->
         <div class="col-lg-6">
             <h3>appearance : legacy => older than standard</h3>
@@ -90,7 +91,8 @@
             <h3>Instance error msg show</h3>
             <mat-form-field class="example-full-width">
                 <mat-label>Email</mat-label>
-                <input type="email" matInput [formControl]="emailControl" [errorStateMatcher]="matcher" placeholder="Ex. pat@example.com">
+                <input type="email" matInput [formControl]="emailControl" [errorStateMatcher]="matcher"
+                    placeholder="Ex. pat@example.com">
                 <mat-hint>Errors appear instantly!</mat-hint>
 
                 <!-- error -->
@@ -121,7 +123,7 @@
 
             </mat-form-field>
         </div>
-        
+
         <!-- disabled -->
         <div class="col-lg-4">
             <h3>disabled input field</h3>
@@ -130,7 +132,7 @@
                 <input matInput disabled value="Google">
             </mat-form-field>
         </div>
-        
+
         <!-- add mat-hint -->
         <div class="col-lg-4">
             <h3>add mat-hint</h3>
@@ -140,7 +142,7 @@
                 <mat-hint align='end'>{{name.value.length}}/5</mat-hint>
             </mat-form-field>
         </div>
-        
+
         <!-- close button -->
         <div class="col-lg-4">
             <h3>set postfix button</h3>
@@ -152,7 +154,7 @@
                 </button>
             </mat-form-field>
         </div>
-        
+
         <!-- matPrefix -->
         <div class="col-lg-4">
             <h3>set Prefix to input</h3>
@@ -163,7 +165,7 @@
                 <mat-icon matSuffix>mode_edit</mat-icon>
             </mat-form-field>
         </div>
-        
+
         <!-- textarea -->
         <div class="col-lg-4">
             <h3>simple textarea</h3>
@@ -172,7 +174,55 @@
                 <textarea matInput placeholder="Ex. Enter Message ..."></textarea>
             </mat-form-field>
         </div>
-    
+
+        <!-- drop down -->
+        <div class="col-lg-4">
+            <h3>Dropdown Menu</h3>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label><mat-icon>power_settings_new</mat-icon> Select me</mat-label>
+                <mat-select>
+                    <mat-option value="option1">Option 1</mat-option>
+                    <mat-option value="option2">Option 2</mat-option>
+                    <mat-option value="option3">Option 3</mat-option>
+                </mat-select>
+                <mat-hint>lable with Icon</mat-hint>
+            </mat-form-field>
+        </div>
+
+        <!-- password -->
+        <div class="col-lg-4">
+            <h3>Password</h3>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter your password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        
+        <!-- enter suffix -->
+        <div class="col-lg-4">
+            <h3>Enter at end</h3>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Amount</mat-label>
+                <input matInput type="number" class="example-right-align">
+                <span matPrefix>$&nbsp;</span>
+                <span matSuffix>.00</span>
+            </mat-form-field>
+        </div>
+
+        <!-- size changes -->
+        <div class="col-lg-4">
+            <h3>Size Changes</h3>
+            <mat-form-field class="example-full-width" appearance="fill" [style.fontSize.px]="getFontSize()">
+                <mat-label>Font size</mat-label>
+                <input matInput type="number" placeholder="Ex. 12" [formControl]="fontSizeControl" min="10">
+                <span matSuffix>px</span>
+                <mat-error *ngIf="fontSizeControl.invalid">Min size: 10px</mat-error>
+            </mat-form-field>
+        </div>
+
     </div>
 </div>
 
@@ -189,4 +239,4 @@
                         time
                         url
                         week
-                            -->
+-->

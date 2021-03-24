@@ -1,0 +1,82 @@
+<h1 id="heading" class="m-5">List</h1>
+<hr>
+
+<div class="container">
+
+    <!-- simple list -->
+    <div>
+        <h3>Simple List :</h3>
+        <mat-list role="list" dense>
+            <mat-list-item role="listitem">Item 1</mat-list-item>
+            <mat-list-item role="listitem">Item 2</mat-list-item>
+            <mat-list-item role="listitem">Item 3</mat-list-item>
+        </mat-list>
+    </div>
+    <hr>
+
+    <!-- Selection list -->
+    <div class="row">
+        <div class="col-lg-6">
+            <h3>Selection List :</h3>
+            <mat-selection-list #shoes>
+                <mat-list-option *ngFor="let shoe of typesOfShoes">{{shoe}}</mat-list-option>
+            </mat-selection-list>
+    
+            <p>Options selected: {{shoes.selectedOptions.selected.length}}</p>
+        </div>
+
+        <div class="col-lg-6">
+            <h3>Selection List :</h3>
+            <mat-selection-list #shoess [multiple]="false">
+                <mat-list-option *ngFor="let shoe of typesOfShoes" [value]="shoe">{{shoe}}</mat-list-option>
+            </mat-selection-list>
+              
+            <p>Option selected: {{shoess.selectedOptions.selected[0]?.value}}</p>
+        </div>
+    </div>
+    <hr>
+
+    <!-- list with icon, matline -->
+    <div>
+        <h3>with Icon :</h3>
+        <mat-list>
+
+            <div mat-subheader>Folders</div>
+            <mat-list-item *ngFor="let folder of folders">
+                <mat-icon mat-list-icon>folder</mat-icon>
+                <div matLine>{{folder.name}}</div>
+                <div matLine> {{folder.updated | date}} </div>
+            </mat-list-item>
+            
+            <mat-divider></mat-divider>
+            
+            <div mat-subheader>Notes</div>
+            <mat-list-item *ngFor="let note of notes">
+                <mat-icon mat-list-icon>note</mat-icon>
+                <div mat-line>{{note.name}}</div>
+                <div mat-line> {{note.updated | date}} </div>
+            </mat-list-item>
+
+        </mat-list>
+    </div>
+    <hr>
+
+</div>
+
+<!-- 
+    mat-list
+    mat-list-item
+    mat-selection-list :
+                        [maltiple] => true if select multiple option
+                        mat-list-option
+    mat-action-list
+
+    mat-nav-list => When the list-items navigate somewhere, <mat-nav-list> should be used with <a mat-list-item> elements as the list items. The nav-list will be rendered using role="navigation"
+
+    matLine | mat-line              => for multiple line of mat-list-item add in every line
+    matListIcon | mat-list-icon     => for use of icon
+    matSubheader | mat-sab-header   => header of list
+    matListAvatar | mat-list-avatar => for use of img
+    
+    dense => Lists are also available in "dense layout" mode, which shrinks the font size and height of the list to suit UIs that may need to display more information. To enable this mode, add a dense attribute to the main mat-list tag.
+ -->
