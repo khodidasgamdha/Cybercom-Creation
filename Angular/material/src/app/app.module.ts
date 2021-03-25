@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TextFieldComponent } from './text-field/text-field.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge'
@@ -85,7 +86,8 @@ import { OtherComponent } from './other/other.component';
     MatRadioModule,
     MatSlideToggleModule,
     MatSliderModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

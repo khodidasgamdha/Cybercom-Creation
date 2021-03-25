@@ -1,6 +1,45 @@
-<h1 id="heading" class="m-5">Auto Complete</h1><hr>
+<h1 id="heading" class="m-5">Auto Complete</h1>
+<hr>
 
 <div class="container">
     <div class="row">
+
+        <!-- simple auto complete -->
+        <div class="col-lg-6">
+            <h3>Simple Auto Complete</h3>
+
+            <mat-form-field>
+                <mat-label>Number</mat-label>
+                <input type="text" placeholder="Pick one" aria-label="Number" matInput [matAutocomplete]="auto">
+
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of options" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+
+            </mat-form-field>
+        </div>
+        <div class="custom-wrapper-example" matAutocompleteOrigin #origin="matAutocompleteOrigin">
+            <input
+              matInput
+              [matAutocomplete]="auto"
+              [matAutocompleteConnectedTo]="origin">
+          </div>
+          
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+          </mat-autocomplete>
     </div>
 </div>
+
+<!-- 
+    mat-autocomplete
+    matAutocomplete
+    #auto="matAutocomplete"
+    #origin="matAutocompleteOrigin"
+    mat-option
+    displayWith
+    autoActiveFirstOption
+    matAutocompleteOrigin
+ -->

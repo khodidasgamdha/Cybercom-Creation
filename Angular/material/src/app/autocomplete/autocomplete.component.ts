@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
+export interface User {
+  name: string;
+}
 
 @Component({
   selector: 'app-autocomplete',
@@ -11,5 +16,7 @@ export class AutocompleteComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  options: string[] = ['One', 'Two', 'Three'];
 
 }
