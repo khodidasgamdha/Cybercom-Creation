@@ -13,9 +13,7 @@ export class UserListService {
   // get user
   getUser() {
     try {
-      return this.http.get("https://reqres.in/api/unknown").pipe(
-          map(data => data)
-        );
+      return this.http.get("https://reqres.in/api/unknown");
     }
     catch(error) {
       return Observable.throw(error);
