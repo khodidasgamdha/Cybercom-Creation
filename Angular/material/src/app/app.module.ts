@@ -12,11 +12,20 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { MatCardModule } from '@angular/material/card'
 import { MatDividerModule } from '@angular/material/divider'
+import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatGridListModule } from '@angular/material/grid-list'
 import { MatListModule } from '@angular/material/list'
 import { MatMenuModule } from '@angular/material/menu'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { MatSelectModule } from '@angular/material/select'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { BudgeComponent } from './budge/budge.component';
@@ -30,6 +39,7 @@ import { ListComponent } from './list/list.component';
 import { MenuComponent } from './menu/menu.component';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { OtherComponent } from './other/other.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +56,8 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
     ListComponent,
     MenuComponent,
     PaginatorComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    OtherComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +76,16 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
     MatListModule,
     MatMenuModule,
     MatProgressBarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSidenavModule,
+    MatProgressSpinnerModule,
+    MatToolbarModule,
+    MatTabsModule,
+    MatTooltipModule,
+    MatRadioModule,
+    MatSlideToggleModule,
+    MatSliderModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

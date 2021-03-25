@@ -9,6 +9,7 @@ import { DividerComponent } from './divider/divider.component';
 import { GridListComponent } from './grid-list/grid-list.component';
 import { ListComponent } from './list/list.component';
 import { MenuComponent } from './menu/menu.component';
+import { OtherComponent } from './other/other.component';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { TextFieldComponent } from './text-field/text-field.component';
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path: 'menu', component: MenuComponent},
   {path: 'paginator', component: PaginatorComponent},
   {path: 'progress-bar-spinner', component: ProgressBarComponent},
-  {path: 'form-field', component: TextFieldComponent}
+  {path: 'form-field', component: TextFieldComponent},
+  {path: 'other', component: OtherComponent}
 ];
 
 @NgModule({

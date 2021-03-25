@@ -1,0 +1,131 @@
+<h1 id="heading" class="m-5">Radio Button, Ripple, Slide Toggle, Slider, Snack Bar, Tabs</h1>
+<hr>
+
+<div class="container">
+    <div class="row">
+
+        <!-- radio button -->
+        <div class="col-lg-3">
+            <h3>Radio Button</h3>
+            <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" class="mr-3" labelPosition='before'>Option 1</mat-radio-button>
+                <mat-radio-button value="2">Option 2</mat-radio-button>
+            </mat-radio-group>              
+        </div>
+
+        <!-- slide toggle -->
+        <div class="col-lg-3">
+            <h3>Slide Toggle</h3>
+            <mat-slide-toggle color='primary' checked='true' disabled='false'>Slide me!</mat-slide-toggle>
+        </div>
+
+        <!-- slider -->
+        <div class="col-lg-3">
+            <h3>Slider</h3>
+            <mat-slider></mat-slider>
+        </div>
+
+        <!-- snack bar -->
+        <div class="col-lg-3">
+            <h3>Snack Bar</h3>
+            <button mat-raised-button (click)="openSnackBar()" aria-label="Show an example snack-bar" color='warn'>
+                Snack Bar
+            </button>
+        </div>
+
+        <!-- tabs -->
+        <div class="col-lg-6 mt-5">
+            <h3>Tabs</h3>
+
+            <mat-tab-group>
+                <mat-tab label="First">
+                    <ng-template mat-tab-label>
+                        <mat-icon>thumb_up</mat-icon>
+                        First
+                    </ng-template>
+                    <ng-template matTabContent>
+                        Tab 1 
+                    </ng-template>
+                </mat-tab>
+                <mat-tab label="Second"> Tab 2 </mat-tab>
+                <mat-tab label="Third"> Tab 3 </mat-tab>
+            </mat-tab-group>              
+        </div>
+
+        <!-- tab nav -->
+        <div class="col-lg-6 mt-5">
+            <h3>Tab Nav</h3>
+            <nav mat-tab-nav-bar>
+                <a mat-tab-link *ngFor="let link of links"
+                   (click)="activeLink = link"
+                   [active]="activeLink == link"> {{link}} </a>
+                <a mat-tab-link disabled>Disabled Link</a>
+            </nav>
+        </div>   
+
+        <!-- tooltip -->
+        <div class="col-lg-6 mt-5">
+            <h3>Tooltip</h3>
+            <button mat-raised-button
+                    matTooltip="Info about the Tooltip"
+                    aria-label="Button that shows a red tooltip">
+                Tooltip Action
+            </button>
+        </div>
+        
+        <!-- ripple -->
+        <div class="col-lg-6 mt-5">
+            <h3>Ripple</h3>
+            <div class="example-ripple-container mat-elevation-z4"
+                matRipple
+                matRippleCentered=true
+                matRippleDisabled=false
+                matRippleUnbounded=false
+                matRippleRadius=100
+                matRippleColor="green">
+                Click me
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 
+    mat-radio-group
+    mat-radio-button
+    labelPosition : before, after
+    
+    mat-slide-toggle : color, checked, disabled
+
+    mat-slider: min, 
+                max, 
+                step, 
+                value, 
+                vertical, 
+                invert, 
+                thumbLabel, 
+                tickInterval, 
+                disabled, 
+                displayWith
+
+    mat-tab-group : mat-align-tabs => start, center, end
+                    animationDuration
+    mat-tab
+    mat-tab-lable
+    mat-tab-nav-bar
+    mat-tab-link
+    matTabContent
+
+    matTooltip
+    matTooltipDisabled
+    matTooltipShowDelay
+    matTooltipHideDelay
+    matTooltipPosition
+    
+    matRipple
+    matRippleCentered
+    matRippleDisabled
+    matRippleUnbounded
+    matRippleRadius
+    matRippleColor
+ -->

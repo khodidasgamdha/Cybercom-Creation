@@ -1,52 +1,71 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark container mt-3">
-
-    <a class="navbar-brand" routerLink=''>Home</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse" id="navbarNav">
-        
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" routerLink='/autocomplete' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Auto Complete</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink='/budge' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Budge</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink='/button' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Button</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink='/button-toggle' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Button Toggle</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink='/card' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Card</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink='/divider' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Divider</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink='/grid-list' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Grid</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink='/list' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>List</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink='/menu' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Menu</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink='/paginator' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Paginator</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink='/progress-bar-spinner' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Progress Bar & Spinner</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink='/form-field' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Form Field / Input</a>
-            </li>
-        </ul>
-
-    </div>
-</nav>
+<div class="container mt-3">
+    <mat-toolbar color='primary'>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)='sideNav = !sideNav'>
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span class="ml-auto"><a routerLink='/' id="home">Khodidas Gamdha - Material UI</a></span>
+    </mat-toolbar>
+</div>
 <hr>
+
+<div *ngIf='sideNav'>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark container mt-3">
+    
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink='/autocomplete' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Auto Complete</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink='/budge' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Budge</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink='/button' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Button</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink='/button-toggle' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Button Toggle</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink='/card' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Card</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink='/divider' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Divider</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink='/grid-list' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Grid</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink='/list' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink='/menu' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink='/paginator' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Paginator</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink='/progress-bar-spinner' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Progress Bar & Spinner</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink='/form-field' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Form Field / Input</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink='/other' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>Other</a>
+                </li>
+            </ul>
+    
+        </div>
+    </nav>
+    <hr>
+</div>
+
+<!-- 
+    mat-toolbar
+    mat-toolbar-row
+ -->
