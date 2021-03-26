@@ -9,7 +9,7 @@ import { HomeComponent } from '../home/home.component';
 })
 export class Child1Component implements OnInit, AfterViewInit {
 
-  @Input('ip') ipStr;
+  @Input() ipStr;
   // @Output() opStr = new EventEmitter();
 
   public data = [];

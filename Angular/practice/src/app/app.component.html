@@ -26,7 +26,7 @@
 <app-new-course></app-new-course><hr>
 
 <!-- Parent to Child & use of Service Data -->
-<app-child1 [ip]="ip">
+<app-child1 [ipStr]="ip">
   <ng-container select=".child">
     <li *ngFor="let id of contactMethod">{{ id.name }}</li>
   </ng-container>
