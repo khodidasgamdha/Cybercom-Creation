@@ -9,3 +9,6 @@ a, button {
 nav {
     margin-top: 100px;
 }
+#hed, #ch {
+    text-align: center;
+}

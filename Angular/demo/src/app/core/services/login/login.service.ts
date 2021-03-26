@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
+  // userName = new Subject<any>();
+  userName = new BehaviorSubject<any>('Aman');
+  
   constructor(private http: HttpClient) { }
 
   // add data of username & password

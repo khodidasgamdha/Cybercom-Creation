@@ -3,11 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { EmployeeComponent } from './module/employee/employee.component';
 import { CMSComponent } from './module/cms/cms.component';
 import { CompanyComponent } from './module/company/company.component';
-import { NotFoundComponent } from './module/not-found/not-found.component';
-import { HomeComponent } from './module/home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './core/services/auth-guard/auth-guard.service'
-import { ReqresComponent } from './module/reqres/reqres.component';
-import { ReqresLoginComponent } from './module/reqres-login/reqres-login.component';
+import { ReqresComponent } from './reqres/reqres.component';
+import { ReqresLoginComponent } from './reqres-login/reqres-login.component';
 
 
 const routes: Routes = [

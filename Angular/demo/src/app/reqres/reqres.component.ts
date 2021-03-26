@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ListUserService } from '../../core/services/list-user/list-user.service';
+import { ListUserService } from '../core/services/list-user/list-user.service';
 
 @Component({
   selector: 'app-reqres',

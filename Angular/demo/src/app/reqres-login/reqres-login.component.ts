@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../../core/services/login/login.service';
+import { LoginService } from '../core/services/login/login.service';
 import { Observable } from 'rxjs';
  
 @Component({

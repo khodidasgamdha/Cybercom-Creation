@@ -1,0 +1,10 @@
+<div class="container mt-5 pt-2">
+    <h6>Component : Child-1</h6>
+    <h4>Name : {{name}}</h4>
+    <input type="text" #nm placeholder="Name">
+    <br><br>
+    <button class="btn btn-sm btn-success ml-2" (click)='updateName(nm.value)'>Update</button>
+</div>
+
+<!-- content of parent component inside child component selector show here -->
+<ng-content></ng-content>

@@ -67,3 +67,22 @@
     <h3 *ngIf="isAuthenticated()">You are successfully logged in...</h3>
     <h3 *ngIf="! isAuthenticated()">You are not Logged in...</h3>
 </div>
+
+<!-- render, subject, behaviour subject exaxmple -->
+<div class="container">
+
+    <!-- subject / behaviour subject -->
+    <div id="hed" class="mt-5" #rndr> <!--use #rndr for render-->
+        <h3>Subject / Behaviour Subject Example</h3>
+        <h6>Change Name in One Component Changes Affect in both Component</h6>
+        <p>Background color with the help of Render2</p>
+    </div>
+
+    <div class="row">
+        <app-child1 class="col-lg-6">
+            <h6 #ab class="mt-2" id="ch">ContentChild with Render example</h6> <!--Using ContentView access DOM Object in child component-->
+        </app-child1>
+        <app-child2 class="col-lg-6"></app-child2>
+    </div>
+
+</div>
