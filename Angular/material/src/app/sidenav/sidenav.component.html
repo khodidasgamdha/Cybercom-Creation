@@ -1,0 +1,127 @@
+<h1 id="heading" class="m-5">Side Nav</h1>
+<hr>
+
+<div class="container">
+
+    <mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop.value">
+
+        <!-- nav link -->
+        <mat-drawer #drawer [mode]="mode.value">
+            <ul class="navbar-nav">
+                <li>
+                    <a class="nav-link" routerLink='/autocomplete' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>
+                        <mat-icon>auto_graph</mat-icon> Auto Complete
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" routerLink='/badge' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>
+                        <mat-icon>badge</mat-icon> Badge
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" routerLink='/button' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>
+                        <mat-icon>dialpad</mat-icon> Button
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" routerLink='/button-toggle' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>
+                        <mat-icon>toggle_off</mat-icon> Button Toggle
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" routerLink='/card' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>
+                        <mat-icon>credit_card</mat-icon> Card
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" routerLink='/chips' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>
+                        <mat-icon>memory</mat-icon> Chips
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" routerLink='/divider' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>
+                        <mat-icon>safety_divider</mat-icon> Divider
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" routerLink='/expansion-paginator' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>
+                        <mat-icon>admin_panel_settings</mat-icon> Expansion Panel & Paginator
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" routerLink='/grid-list' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>
+                        <mat-icon>grid_3x3</mat-icon> Grid
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" routerLink='/list' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>
+                        <mat-icon>list</mat-icon> List
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" routerLink='/menu' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>
+                        <mat-icon>menu</mat-icon> Menu
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" routerLink='/progress-bar-spinner' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>
+                        <mat-icon>bar_chart</mat-icon> Progress Bar & Spinner
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" routerLink='/side-nav' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>
+                        <mat-icon>navigation</mat-icon> Side Nav
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" routerLink='/form-field' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>
+                        <mat-icon>input</mat-icon> Form Field / Input
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" routerLink='/other' routerLinkActive='active' [routerLinkActiveOptions]='{ exact: true }'>
+                        <mat-icon>merge_type</mat-icon> Other
+                    </a>
+                </li>
+            </ul>
+        </mat-drawer>
+
+        <!-- change side nab action -->
+        <mat-drawer-content>
+
+            <!-- mode -->
+            <mat-form-field>
+                <mat-label>Sidenav mode</mat-label>
+                <mat-select #mode value="side">
+                    <mat-option value="side">Side</mat-option>
+                    <mat-option value="over">Over</mat-option>
+                    <mat-option value="push">Push</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <!-- hasBackdrop -->
+            <mat-form-field>
+                <mat-label>Has backdrop</mat-label>
+                <mat-select #hasBackdrop>
+                    <mat-option>Unset</mat-option>
+                    <mat-option [value]="true">True</mat-option>
+                    <mat-option [value]="false">False</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <button mat-raised-button (click)="drawer.toggle()">Toggle drawer</button>
+
+        </mat-drawer-content>
+
+    </mat-drawer-container>
+
+</div>
+
+<!-- 
+    mat-drawer-container
+    mat-drawer-content
+    mat-drawer
+    mode
+    drawer
+    hasBackdrop
+ -->

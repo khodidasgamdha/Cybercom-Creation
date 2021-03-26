@@ -1,0 +1,151 @@
+<h1 id="heading" class="m-5">Expansion Panel</h1>
+<hr>
+
+<div class="container">
+
+    <!-- basic expansion panel -->
+    <div>
+        <h3>Simple Expansion</h3>
+
+        <mat-accordion>
+
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        This is the expansion title
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        This is a summary of the content
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p>This is the primary content of the panel.</p>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Self aware panel
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p>I'm visible because I am open</p>
+            </mat-expansion-panel>
+
+        </mat-accordion>
+
+    </div>
+
+    <!-- action bar -->
+    <div class="mt-5">
+        <h3>Action Bar</h3>
+
+        <mat-accordion>
+
+            <!-- step 0 -->
+            <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Personal data
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Type your name and age
+                        <mat-icon>account_circle</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <mat-form-field>
+                    <mat-label>First name</mat-label>
+                    <input matInput>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Age</mat-label>
+                    <input matInput type="number" min="1">
+                </mat-form-field>
+
+                <mat-action-row>
+                    <button mat-raised-button color="primary" (click)="nextStep()">Next</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+
+            <!-- step 1 -->
+            <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Destination
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Type the country name
+                        <mat-icon>map</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <mat-form-field>
+                    <mat-label>Country</mat-label>
+                    <input matInput>
+                </mat-form-field>
+
+                <mat-action-row>
+                    <button mat-raised-button color="warn" (click)="prevStep()">Previous</button>
+                    <button mat-raised-button color="primary" (click)="nextStep()">Next</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+
+            <!-- step 3 -->
+            <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Surname
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        What is your Surname
+                        <mat-icon>account_circle</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <mat-form-field>
+                    <mat-label>Surname</mat-label>
+                    <input matInput>
+                </mat-form-field>
+
+                <mat-action-row>
+                    <button mat-raised-button color="warn" (click)="prevStep()">Previous</button>
+                    <button mat-raised-button color="primary" (click)="nextStep()">End</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+
+        </mat-accordion>
+    </div>
+
+    <!-- paginator -->
+    <div class="mt-5">
+        <h3>Paginator</h3>
+        <mat-paginator [length]="100"
+                       [pageSize]="10"
+                       [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+    </div>
+
+</div>
+
+<!-- 
+    mat-accordion
+    mat-expansion-panel
+    mat-expansion-panel-header
+    mat-expansion-description
+    mat-expansion-title
+    matExpansionPanelContent
+
+    hideToggle => hide open close button
+    opened
+    disabled
+    multi => true : multiple open at time
+             false : only one open at time
+
+    mat-paginator
+    length
+    pageSize
+    pageSizeOptions
+ -->

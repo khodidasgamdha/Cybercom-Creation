@@ -12,7 +12,9 @@ import { MatBadgeModule } from '@angular/material/badge'
 import { MatButtonModule } from '@angular/material/button'
 import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { MatCardModule } from '@angular/material/card'
+import { MatChipsModule } from '@angular/material/chips'
 import { MatDividerModule } from '@angular/material/divider'
+import { MatExpansionModule } from '@angular/material/expansion'
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatGridListModule } from '@angular/material/grid-list'
 import { MatListModule } from '@angular/material/list'
@@ -20,6 +22,7 @@ import { MatMenuModule } from '@angular/material/menu'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { MatSelectModule } from '@angular/material/select'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -38,9 +41,11 @@ import { DividerComponent } from './divider/divider.component';
 import { GridListComponent } from './grid-list/grid-list.component';
 import { ListComponent } from './list/list.component';
 import { MenuComponent } from './menu/menu.component';
-import { PaginatorComponent } from './paginator/paginator.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { OtherComponent } from './other/other.component';
+import { ChipsComponent } from './chips/chips.component';
+import { ExpansionComponent } from './expansion/expansion.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
@@ -56,9 +61,11 @@ import { OtherComponent } from './other/other.component';
     GridListComponent,
     ListComponent,
     MenuComponent,
-    PaginatorComponent,
     ProgressBarComponent,
-    OtherComponent
+    OtherComponent,
+    ChipsComponent,
+    ExpansionComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -72,11 +79,14 @@ import { OtherComponent } from './other/other.component';
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
+    MatChipsModule,
     MatDividerModule,
+    MatExpansionModule,
     MatGridListModule,
     MatListModule,
     MatMenuModule,
     MatProgressBarModule,
+    MatPaginatorModule,
     MatSelectModule,
     MatSidenavModule,
     MatProgressSpinnerModule,

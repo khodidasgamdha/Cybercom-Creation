@@ -1,0 +1,115 @@
+<h1 id="heading" class="m-5">Chips</h1>
+<hr>
+
+<div class="container">
+    <div class="row">
+
+        <!-- basic chips -->
+        <div class="col-lg-6">
+            <h3>Basic Chips</h3>
+
+            <mat-chip-list aria-label="Fish selection">
+                <mat-chip>One fish</mat-chip>
+                <mat-chip>Two fish</mat-chip>
+                <mat-chip color="primary" selected>Primary fish</mat-chip>
+                <mat-chip color="accent" selected>Accent fish</mat-chip>
+            </mat-chip-list>  
+
+        </div>
+
+        <!-- chips with input -->
+        <div class="col-lg-6">
+            <h3>Chips with Input</h3>
+
+            <mat-form-field class="example-chip-list">
+
+                <!-- lable -->
+                <mat-label>Favorite Fruits</mat-label>
+
+                <!-- chip list -->
+                <mat-chip-list #chipList aria-label="Fruit selection">
+
+                    <!-- entered chip -->
+                    <mat-chip *ngFor="let fruit of fruits" 
+                              selectable='true' 
+                              removable="true" 
+                              (removed)="removeFruits(fruit)">
+                      {{fruit.name}}
+
+                      <!-- remove icon -->
+                      <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
+                    </mat-chip>
+
+                    <!-- input field -->
+                    <input placeholder="New fruit..."
+                           matInput
+                           [matChipInputFor]="chipList"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addFruits($event)">
+                </mat-chip-list>
+
+            </mat-form-field>
+        </div>
+
+        <!-- drag and drop -->
+        <div class="col-lg-6 mt-5">
+            <h3>Drag & Drop</h3>
+            <mat-chip-list cdkDropList 
+                           cdkDropListOrientation="horizontal"
+                           (cdkDropListDropped)="drop($event)">
+              <mat-chip cdkDrag *ngFor="let fruit of fruits">
+                {{fruit.name}}
+              </mat-chip>
+            </mat-chip-list>
+        </div>
+
+        <!-- autocomplete chips -->
+        <div class="col-lg-6 mt-5">
+            <h3>Auto Complete Chips</h3>
+            
+            <mat-form-field class="example-chip-list">
+                <mat-label>Favorite Bikes</mat-label>
+                <mat-chip-list #chipList aria-label="Bike selection">
+                  <mat-chip *ngFor="let bike of bikes"
+                            selectable="true"
+                            removable="true"
+                            (removed)="removeBikes(bike)">
+                    {{bike}}
+                    <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
+                  </mat-chip>
+                  <input placeholder="New Bike..."
+                         #bikeInput
+                         [formControl]="bikeCtrl"
+                         [matAutocomplete]="auto"
+                         [matChipInputFor]="chipList"
+                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                         (matChipInputTokenEnd)="addBikes($event)">
+                </mat-chip-list>
+
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                  <mat-option *ngFor="let bike of filteredBike | async" [value]="bike">
+                    {{bike}}
+                  </mat-option>
+                </mat-autocomplete>
+
+              </mat-form-field>           
+        </div>
+
+    </div>
+</div>
+
+<!-- 
+    mat-chip-list
+    mat-chip : selectable, removable
+    matChipRemove
+    matChipInputFor
+    matChipInputSeparatorKeyCodes
+    matChipInputAddOnBlur
+    matChipInputTokenEnd
+    
+    cdkDrag
+    cdkDropList
+    cdkDropListOrientation
+    cdkDropListDropped
+ -->
