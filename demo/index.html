@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script type="text/css" src="./style.css"></script>
+    <title>Vue Js</title>
+</head>
+
+<body>
+    <div id="vue-app">
+        <h1>{{quota()}}</h1>
+        <h3>First Name : {{firstName}}</h3>
+        <h3>Last Name : {{lastName}}</h3>
+        <h3><a :href="tutorial">Tutorial On youtube</a></h3>
+        <h3>Function : {{time()}}</a></h3>
+        <h3>Computed : {{now}}</h3>
+        <ol>
+            <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id">
+            </todo-item>
+        </ol>
+    </div>
+    <div id="app">
+        <p>{{ foo }}</p>
+        <!-- this will no longer update `foo`! -->
+        <button v-on:click="foo = 'baz'">Change it</button>
+    </div>
+
+    <script type="text/javascript" src="./main.js"></script>
+</body>
+
+</html>
