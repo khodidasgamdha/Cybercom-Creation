@@ -1,1 +1,0 @@
-Today I Learned about Sweet Alert 2, toastr, image compresser, JSON Placeholder, Getting data From Website and Creating data.
