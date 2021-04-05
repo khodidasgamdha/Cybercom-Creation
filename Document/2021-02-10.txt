@@ -1,1 +1,0 @@
-Today I give SQL Test and also do practice on Asynchronous Operation in reactive Form, Showing loader Image in Asynchronous function, Validation on Submit form, Nested Form Group, Form Array and Form Builder.

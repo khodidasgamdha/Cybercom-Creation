@@ -1,1 +1,0 @@
-Today I Learned abouth Routes with multiple Parameter, Subscribing to multiple Observation, Switch Map Operator and Programming Navigation.
