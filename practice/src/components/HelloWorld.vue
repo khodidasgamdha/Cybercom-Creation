@@ -1,6 +1,7 @@
 <template>
     <div>
         <!-- binding -->
+        <hr>
         <h2>{{ name }}</h2>
         <h2 v-text="text"></h2>
         <hr />
@@ -94,8 +95,16 @@
         <h1>{{ fullNm }}</h1>
         <button @click="changeName">Change Name</button><hr>
 
+        <!-- watchers -->
+        <h1>Volume Tracker</h1>
+        <h3>Currunt Volume : {{ volume }}</h3>
+        <div>
+            <button @click="volume += 2">Increase</button>
+            <button @click="volume -= 2">Decrease</button>
+        </div><hr>
+
         <!-- raw html -->
-        <h2 v-html="html"></h2><hr>
+        <h2 v-html="html"></h2>
     </div>
 </template>
 
@@ -138,7 +147,8 @@ export default {
             on: 'V-once',
             pre: 'v-pre',
             a: 'Virat',
-            b: 'Kohli'
+            b: 'Kohli',
+            volume: 0
         };
     },
     methods: {
@@ -172,11 +182,18 @@ export default {
                 this.b = name[1]
             }
         }
+    },
+    watch: {
+        volume(newValue, oldValue) {
+            if(newValue > oldValue && newValue === 16) {
+                alert('Higher Volumn Danger for Ear !!');
+            }
+        }
     }
 };
 </script>
 
-<style>
+<style scoped>
 h2,
 button {
     margin-bottom: 30px;

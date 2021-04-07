@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Home id="abcd" name='Khodidas' :like='50' />
 
         <!-- show form daat -->
         <div>
@@ -84,8 +85,13 @@
 </template>
 
 <script>
+import Home from './Home'
+
 export default {
     name: 'Form',
+    components: {
+        Home,
+    },
     data() {
         return {
             formData: {
@@ -113,7 +119,6 @@ export default {
 <style scoped>
 div {
     margin: 20px auto;
-    text-align: left;
 }
 #firstName, 
 #lastName, 
@@ -124,5 +129,6 @@ div {
 }
 label {
     display: flex;
+    justify-content: center;
 }
 </style>
