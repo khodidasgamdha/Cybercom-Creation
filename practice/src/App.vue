@@ -1,5 +1,7 @@
 <template>
     <div id="app">
+
+        <!-- nav -->
         <div id="nav">
             <li>
                 <router-link to="/">Home</router-link>
@@ -11,14 +13,30 @@
                 <router-link to="/form">Form</router-link>
             </li>
         </div>
+
+        <!-- provide inject -->
         <h3>User Name : {{ username }}</h3>
         <componentA />
+        <hr>
+
+        <!-- slot -->
+        <Slots>
+            <template v-slot:named>
+                hi
+            </template>
+            <template v-slot:default='slotProp'>
+                {{ slotProp.firstName }} {{ slotProp.lastName }}
+            </template>
+        </Slots>
+
         <router-view></router-view>
+
     </div>
 </template>
 
 <script>
 import componentA from './components/component-A'
+import Slots from './components/slot'
 
 export default {
     name: "App",
@@ -28,7 +46,8 @@ export default {
         }
     },
     components: {
-        componentA
+        componentA,
+        Slots,
     },
     provide() {
         return {

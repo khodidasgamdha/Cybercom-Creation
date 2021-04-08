@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Home id="abcd" name='Khodidas' :like='50' />
+        <Home name='Khodidas' :like='50' />
 
         <!-- show form daat -->
         <div>
@@ -37,7 +37,7 @@
                 <input 
                     type="number" 
                     id="phoneNumber" 
-                    v-model.trim.number="formData.phoneNo">
+                    v-model.trim.number.lazy="formData.phoneNo">
             </div>
 
             <!-- position -->

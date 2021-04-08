@@ -7,7 +7,7 @@
         <hr />
 
         <!-- id bind -->
-        <h2 v-bind:id="headingId">Bind Id</h2>
+        <h2 :id="headingId">Bind Id</h2>
         <hr />
 
         <!-- class bind -->
@@ -52,6 +52,7 @@
           <h2>Anthany</h2>
         </template>
 
+        <!-- directives -->
         <h2 v-show="num === 0">Using v-show</h2>
         <h2 v-if="num === 0">Using v-if</h2>
         <hr />
@@ -70,11 +71,14 @@
         </h3>
         <hr />
 
-        <!-- add students -->
+        <!-- add & remove students -->
         <template>
             <h1><input type="text" v-model="student" /></h1>
             <button @click="add">Add Student</button>
-            <li v-for="name in students" :key="name.index">{{ name }}</li>
+            <li v-for="name in students" :key="name.index">
+                {{ name }}
+                <button @click="remove">Remove</button>
+            </li>
         </template>
 
         <!-- click event -->
@@ -157,6 +161,9 @@ export default {
         },
         add() {
             this.students.push(this.student);
+        },
+        remove() {
+            this.students.splice(this.student, 1);
         },
         callMethod() {
             console.log('Method Call');
