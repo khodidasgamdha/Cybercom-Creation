@@ -19,6 +19,7 @@
                 <input 
                     type="text" 
                     id="firstName" 
+                    ref="inputRef"
                     v-model.trim.lazy="formData.firstName">
             </div>
 
@@ -43,7 +44,7 @@
             <!-- position -->
             <div>
                 <label for="position">Position</label>
-                <select id="position"  v-model="formData.position">
+                <select id="position" v-model="formData.position">
                     <option value="" disabled>Select Postion</option>
                     <option v-for="position in positions" :key="position" :value="position">{{ position }}</option>
                 </select>
@@ -112,6 +113,9 @@ export default {
             alert('Form Submited Successfully !!')
             console.log(this.formData);
         }
+    },
+    mounted() {
+        this.$refs.inputRef.focus()
     }
 }
 </script>

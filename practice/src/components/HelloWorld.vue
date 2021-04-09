@@ -1,7 +1,6 @@
 <template>
     <div>
         <!-- binding -->
-        <hr>
         <h2>{{ name }}</h2>
         <h2 v-text="text"></h2>
         <hr />
