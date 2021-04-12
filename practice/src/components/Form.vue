@@ -20,7 +20,8 @@
                     type="text" 
                     id="firstName" 
                     ref="inputRef"
-                    v-model.trim.lazy="formData.firstName">
+                    v-model.trim.lazy="formData.firstName"
+                    required>
             </div>
 
             <!-- last name -->

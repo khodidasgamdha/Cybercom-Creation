@@ -35,7 +35,7 @@
 
         <!-- slot -->
         <Slots>
-            <template v-slot:named>
+            <template #named>
                 hi
             </template>
             <template v-slot:default='slotProp'>

@@ -3,7 +3,7 @@
 
         <!-- slot -->
         <div>
-            <slot name="named">hii</slot>
+            <p slot="named">hii</p>
         </div>
         <div>
             <h3 v-for="name in names" :key="name.firstName">
