@@ -4,7 +4,7 @@
 	</div>
 </template>
 
-<sīcript>
+<script>
 export default {
     name: 'TabA'
 }
