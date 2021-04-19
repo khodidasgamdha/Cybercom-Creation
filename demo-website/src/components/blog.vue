@@ -1,48 +1,8 @@
 <template>
     <div>
-        <v-container>
 
-            <!-- heading -->
-            <h1 class="text-center display-2" id="heading">Blog</h1>
-            
-            <v-row>
-                <v-col v-for="blog in blogs" :key="blog.title" md="4">
-                    
-                    <!-- card -->
-                    <v-card>
-
-                        <!-- image & title -->
-                        <v-img class="white--text align-end" :src="blog.image">
-                            <v-card-title> {{ blog.title }} </v-card-title>
-                        </v-img>
-
-                        <!-- date -->
-                        <v-card-subtitle class="pb-0">
-                            {{ blog.date }}
-                        </v-card-subtitle>
-
-                        <!-- subtitle & blog details -->
-                        <v-card-text class="text--primary">
-                            <h3 class="title">{{ blog.quota }}</h3>
-                            <h3 class="body-2" v-trim>{{ blog.details }}</h3>
-                        </v-card-text>
-
-                        <!-- buttons -->
-                        <v-card-actions>
-                            <v-btn small color="primary" class="white--text" elevation="5"> Share </v-btn>
-                            <v-btn small color="success" elevation="5">
-                                <router-link :to="`/blog/${blog.title}`" class="white--text">
-                                     View more...
-                                </router-link> 
-                            </v-btn>
-                        </v-card-actions>
-                
-                    </v-card>
-                </v-col>
-
-            </v-row>
-
-        </v-container> 
+        <!-- blogs -->
+        <BlogPost :data="blogs" />
 
         <!-- contact banner -->
         <Contactbanner />
@@ -52,11 +12,13 @@
 
 <script>
 import Contactbanner from "./contact-banner";
+import BlogPost from "./blog-post";
 
 export default {
     name: "Blog",
     components: {
         Contactbanner,
+        BlogPost
     },
     data() {
         return {
@@ -129,21 +91,12 @@ export default {
                     id: '9',
                     image: "https://picsum.photos/400/200",
                     title: "Top 10 Australian beaches (Blog - 9)",
-                    date: "22 May, 2021",
+                    date: "22 May, 2022",
                     quota: "Blog",
                     details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis. Sollicitudin tempor id eu nisl nunc mi. Quis commodo odio aenean sed adipiscing diam donec. Feugiat nibh sed pulvinar proin gravida hendrerit. Metus dictum at tempor commodo ullamcorper a. Id diam maecenas ultricies mi eget mauris. Ipsum faucibus vitae aliquet nec ullamcorper sit amet risus nullam. Imperdiet sed euismod nisi porta lorem. Elementum nisi quis eleifend quam adipiscing vitae.Nunc sed velit dignissim sodales. Amet luctus venenatis lectus magna fringilla urna porttitor rhoncus dolor. Nunc congue nisi vitae suscipit tellus mauris. Purus faucibus ornare suspendisse sed nisi lacus sed viverra. Praesent elementum facilisis leo vel fringilla. Facilisis sed odio morbi quis commodo odio aenean sed. Sit amet venenatis urna cursus eget nunc. Aenean et tortor at risus viverra adipiscing at in. Platea dictumst quisque sagittis purus sit amet. Viverra nam libero justo laoreet sit amet cursus sit. Amet consectetur adipiscing elit duis tristique sollicitudin nibh sit amet. Sed tempus urna et pharetra. Pellentesque id nibh tortor id aliquet lectus. Diam vel quam elementum pulvinar. Mollis nunc sed id semper risus in hendrerit gravida. Consectetur libero id faucibus nisl tincidunt eget nullam non nisi.Consectetur adipiscing elit ut aliquam purus sit amet luctus. Platea dictumst quisque sagittis purus. Ut faucibus pulvinar elementum integer enim neque volutpat ac tincidunt. Massa placerat duis ultricies lacus sed turpis tincidunt. Felis donec et odio pellentesque diam volutpat. Id nibh tortor id aliquet lectus proin nibh nisl. Tincidunt ornare massa eget egestas purus viverra. Feugiat in fermentum posuere urna nec. Lacus sed viverra tellus in. Fames ac turpis egestas integer. At auctor urna nunc id cursus metus aliquam. Quisque sagittis purus sit amet volutpat consequat mauris. Quam adipiscing vitae proin sagittis nisl rhoncus. Sed odio morbi quis commodo odio aenean. Auctor augue mauris augue neque. Elementum nisi quis eleifend quam adipiscing vitae proin. Lectus magna fringilla urna porttitor.A condimentum vitae sapien pellentesque habitant morbi. Elit duis tristique sollicitudin nibh sit amet. Nulla facilisi etiam dignissim diam quis enim lobortis. Nulla malesuada pellentesque elit eget gravida cum. Cursus metus aliquam eleifend mi in. Hac habitasse platea dictumst vestibulum. Pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum odio. Nisl nunc mi ipsum faucibus vitae aliquet nec. Fringilla est ullamcorper eget nulla facilisi etiam. Aenean et tortor at risus. Turpis nunc eget lorem dolor sed viverra ipsum. Nunc sed id semper risus in. In nisl nisi scelerisque eu ultrices vitae auctor eu augue. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Turpis tincidunt id aliquet risus. Elementum sagittis vitae et leo duis ut diam. Sed arcu non odio euismod lacinia at quis risus. Nunc sed velit dignissim sodales. Proin libero nunc consequat interdum variIn massa tempor nec feugiat nisl pretium. Amet tellus cras adipiscing enim eu. Volutpat odio facilisis mauris sit amet massa. Mollis aliquam ut porttitor leo. Varius quam quisque id diam vel quam elementum pulvinar etiam. Quis varius quam quisque id diam. Morbi tincidunt augue interdum velit euismod in. Varius vel pharetra vel turpis nunc eget. Enim ut tellus elementum sagittis vitae. Lorem donec massa sapien faucibus. Nisl tincidunt eget nullam non nisi est sit amet. Volutpat diam ut venenatis tellus in. Ac orci phasellus egestas tellus rutrum. Dui vivamus arcu felis bibendum ut tristique et egestas. Consectetur adipiscing elit ut aliquam purus sit amet luctus. Suspendisse faucibus interdum posuere lorem.",
                 },
             ],
         };
-    },
-    directives: {
-        trim: {
-            inserted: function (el) {
-                var str = el.innerHTML;
-                var resultString = str.substr(0, 100) + "...";
-                el.innerHTML = resultString
-            }
-        }
     }
 };
 </script>

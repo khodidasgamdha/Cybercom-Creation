@@ -1,7 +1,7 @@
 <template>
     <v-main>
 
-        <!-- headind -->
+        <!-- heading -->
         <h1 class="display-2 text-center" id="contact">
             {{ title }}
         </h1>
@@ -50,13 +50,13 @@
                         <!-- message -->
                         <v-textarea
                             v-model="formData['message']"
+                            :error-messages="messageErrors"
                             label="Message"
                             hint="Hint text"
-                            :error-messages="messageErrors"
                             required
                             filled
-                            @input="$v.formData.subject.$touch()"
-                            @blur="$v.formData.subject.$touch()"
+                            @input="$v.formData.message.$touch()"
+                            @blur="$v.formData.message.$touch()"
                         ></v-textarea>
 
                         <!-- checkbox -->
@@ -164,7 +164,7 @@ export default {
             if (!this.$v.formData.subject.$dirty) return errors;
             !this.$v.formData.subject.maxLength &&
                 errors.push("Subject must be at most 20 characters long");
-            !this.$v.formData.subject.required &&
+            !this.$v .formData.subject.required &&
                 errors.push("Subject is required.");
             return errors;
         },

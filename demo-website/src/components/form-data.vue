@@ -46,7 +46,8 @@ export default {
                 { text: "Name", value: "name" },
                 { text: "E-mail", value: "email" },
                 { text: "Subject", value: "subject" },
-                { text: "Message", value: "checkbox" },
+                { text: "Message", value: "message" },
+                { text: "Checkbox", value: "checkbox" },
             ],
         };
     },

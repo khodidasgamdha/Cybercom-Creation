@@ -10,6 +10,9 @@
                 <router-link to="/blog" class="white--text"> Blog </router-link>
             </v-btn>
             <v-btn plain class="my-2">
+                <router-link to="/user" class="white--text"> User </router-link>
+            </v-btn>
+            <v-btn plain class="my-2">
                 <router-link to="/form-data" class="white--text"> Form Data </router-link>
             </v-btn>
             <v-btn plain class="my-2">

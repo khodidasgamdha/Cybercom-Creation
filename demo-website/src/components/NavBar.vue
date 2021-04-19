@@ -17,6 +17,9 @@
                 <router-link to="/blog" class="white--text" active-class="active" exact> Blog </router-link>
             </v-btn>
             <v-btn plain>
+                <router-link to="/user" class="white--text" active-class="active" exact> User </router-link>
+            </v-btn>
+            <v-btn plain>
                 <router-link to="/form-data" class="white--text" active-class="active" exact> Form Data </router-link>
             </v-btn>
             <v-btn plain>
