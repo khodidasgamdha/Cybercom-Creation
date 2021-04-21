@@ -3,7 +3,8 @@
     <v-container>
       <!-- heading -->
       <h1 class="display-1 text-center mt-5 mb-5">Weather App</h1>
-      <!-- card -->
+
+      <!-- display data -->
       <v-card color="blue-grey darken-2">
         <v-card-text class="white--text">
           <v-layout>
@@ -40,7 +41,7 @@
               </v-flex>
             </v-flex>
             <v-flex class="text-center">
-              <!-- card -->
+              <!-- card-3 -->
               <v-flex>
                 <h4>Other</h4>
                 <h3 class="headline mt-5">

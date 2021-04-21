@@ -1,6 +1,11 @@
 <template>
   <v-app>
+    <!-- notification -->
+    <no-ssr>
+      <notifications group="notify" />
+    </no-ssr>
     <v-main>
+      <!-- toolbar -->
       <v-toolbar color="deep-purple" dark flat>
         <v-app-bar-nav-icon></v-app-bar-nav-icon>
         <v-toolbar-title>Nuxt js</v-toolbar-title>
@@ -15,6 +20,9 @@
           <v-btn color="deep-purple" plain>
             <n-link to="/quiz"> Quiz App </n-link>
           </v-btn>
+          <v-btn v-if="$auth()" id="logout" plain @click="logout">
+            Logout
+          </v-btn>
         </v-toolbar-items>
       </v-toolbar>
       <nuxt />
@@ -23,7 +31,15 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    logout() {
+      this.$cookies.remove('token')
+      this.$store.commit('auth/setLoggedIn', false)
+      this.$router.push('/admin/login')
+    },
+  },
+}
 </script>
 
 <style scoped>

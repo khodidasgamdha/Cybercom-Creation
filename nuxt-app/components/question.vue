@@ -1,0 +1,107 @@
+<template>
+  <v-card class="mt-5">
+    <!-- questions -->
+    <v-card-title class="deep-purple lighten-3 white-text">
+      <h1 class="headline">{{ item.question }}</h1>
+    </v-card-title>
+    <v-card-text>
+      <v-container>
+        <v-radio-group v-model="choosen">
+          <v-radio
+            :label="item.option1"
+            :color="answerColor()"
+            :value="item.option1"
+          ></v-radio>
+          <v-radio
+            :label="item.option2"
+            :color="answerColor()"
+            :value="item.option2"
+          ></v-radio>
+          <v-radio
+            :label="item.option3"
+            :color="answerColor()"
+            :value="item.option3"
+          ></v-radio>
+          <v-radio
+            :label="item.option4"
+            :color="answerColor()"
+            :value="item.option4"
+          ></v-radio>
+        </v-radio-group>
+
+        <!-- submit button -->
+        <v-layout>
+          <v-btn
+            color="purple darken-2"
+            dark
+            small
+            outlined
+            @click="handleAnswer"
+            >Submit</v-btn
+          >
+        </v-layout>
+      </v-container>
+    </v-card-text>
+  </v-card>
+</template>
+
+<script>
+export default {
+  props: {
+    item: {
+      type: Object,
+      default: () => {},
+    },
+    id: {
+      type: String,
+      default: '',
+    },
+  },
+  data() {
+    return {
+      choosen: '',
+      result: null,
+    }
+  },
+  methods: {
+    handleAnswer() {
+      this.$axios
+        .$get(
+          `/answers.json?orderBy="question_id"&startAt="${this.id}"&endAt="${this.id}"`
+        )
+        .then((res) => {
+          const answer = Object.values(res)[0].answer
+          this.verifyAnswer(answer)
+        })
+    },
+    verifyAnswer(answer) {
+      this.result = answer === this.choosen
+      if (this.result) {
+        this.$notify({
+          group: 'notify',
+          type: 'success',
+          title: 'Success',
+          duration: 2000,
+          text: 'Yeahh Correct Answer !!',
+        })
+      } else {
+        this.$notify({
+          group: 'notify',
+          type: 'error',
+          title: 'Wrong',
+          duration: 2000,
+          text: 'Oops Wrong Answer !!',
+        })
+      }
+    },
+    answerColor() {
+      if (this.result === null) {
+        return 'black'
+      }
+      return this.result ? 'green' : 'red'
+    },
+  },
+}
+</script>
+
+<style></style>

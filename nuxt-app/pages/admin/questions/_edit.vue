@@ -4,16 +4,16 @@
       <v-flex xs8>
         <v-card>
           <v-card-title>
-            <h1 class="display-1">Add Questions</h1>
+            <h1 class="display-1">Edit Question</h1>
             <v-spacer></v-spacer>
             <n-link to="/admin/questions">
-              <v-btn small color="green darken-2" dark>All Questions</v-btn>
+              <v-btn small color="green darken-2" dark>Back</v-btn>
             </n-link>
           </v-card-title>
 
-          <!-- question -->
+          <!-- question card -->
           <v-card-text>
-            <form @submit.prevent="store">
+            <form @submit.prevent="update">
               <v-text-field
                 v-model="quiz.question"
                 label="Question"
@@ -66,7 +66,9 @@
                     label="Option 4"
                   ></v-radio>
                 </v-radio-group>
-                <v-btn class="indigo" block dark type="submit" small>Add</v-btn>
+                <v-btn class="indigo" block dark type="submit" small
+                  >Update</v-btn
+                >
               </v-flex>
             </form>
           </v-card-text>
@@ -89,23 +91,45 @@ export default {
         option4: '',
       },
       correct: '',
+      answer_id: '',
     }
   },
+  created() {
+    this.get()
+    this.getAnswer()
+  },
   methods: {
-    store() {
+    get() {
       this.$axios
-        .post(`/questions.json`, this.quiz)
-        .then((result) => this.storeAnswer(result.data.name))
+        .get(`/questions/${this.$route.params.edit}.json`)
+        .then((result) => (this.quiz = result.data))
         .catch((err) => console.log(err.responce.data))
     },
-    storeAnswer(id) {
+    update() {
       this.$axios
-        .post(`/answers.json`, {
-          question_id: id,
+        .$patch(`/questions/${this.$route.params.edit}.json`, this.quiz)
+        .then((res) => this.updateAnswer())
+        .catch((err) => console.log(err.response.data))
+    },
+    getAnswer() {
+      this.$axios
+        .$get(
+          `/answers.json?orderBy="question_id"&startAt="${this.$route.params.edit}"&endAt="${this.$route.params.edit}"`
+        )
+        .then((res) => {
+          this.correct = Object.values(res)[0].answer
+          this.answer_id = Object.keys(res)[0]
+        })
+        .catch((err) => console.log(err.response.data))
+    },
+    updateAnswer() {
+      this.$axios
+        .patch(`/answers/${this.answer_id}.json`, {
+          question_id: this.$route.params.edit,
           answer: this.correct,
         })
-        .then((result) => this.$router.push('/admin/questions'))
-        .catch((err) => console.log(err.responce.data))
+        .then((res) => this.$router.push('/admin/questions'))
+        .catch((err) => console.log(err.response.data))
     },
   },
 }

@@ -18,7 +18,11 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    '@/plugins/ability',
+    '@/plugins/axios',
+    { src: '@/plugins/notify', ssr: false },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -40,6 +44,7 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     '@nuxtjs/dotenv',
+    'cookie-universal-nuxt',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
