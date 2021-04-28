@@ -45,4 +45,7 @@ export default {
     margin-left: 0.5rem;
     text-decoration: none;
 }
+a.nuxt-link-exact-active {
+    color: #000;
+}
 </style>
