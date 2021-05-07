@@ -3,7 +3,9 @@
         <!-- refresh data -->
         <div>
             <h4>{{ content }}</h4>
-            <v-btn small @click="refresh" elevation="10"> Refresh </v-btn>
+            <v-btn small @click="$nuxt.refresh()" elevation="10">
+                Refresh
+            </v-btn>
         </div>
 
         <!-- rendered side -->
@@ -67,11 +69,6 @@ export default {
             this.$nuxt.$loading.start()
             setTimeout(() => this.$nuxt.$loading.finish(), 500)
         })
-    },
-    methods: {
-        refresh() {
-            this.$nuxt.refresh()
-        },
     },
     fetchDelay: 2000,
 }

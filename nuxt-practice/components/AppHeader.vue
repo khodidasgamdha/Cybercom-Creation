@@ -9,7 +9,7 @@
                 <nuxt-link to="/user">User</nuxt-link>
             </li>
             <li>
-                <nuxt-link to="/abcd">_Slug</nuxt-link>
+                <nuxt-link to="/123">_Slug</nuxt-link>
             </li>
         </ul>
     </header>
