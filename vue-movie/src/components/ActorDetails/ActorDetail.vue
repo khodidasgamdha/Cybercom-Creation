@@ -1,5 +1,5 @@
 <template>
-    <div class="px-2 py-10">
+    <div class="container mx-auto px-2 py-10">
 
         <!-- details -->
         <div class="border-b border-gray-500 pb-10">

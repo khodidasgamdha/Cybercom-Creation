@@ -6,7 +6,7 @@
             <div v-for="(image, index) in images" :key="index">
                 <img 
                     @click="openImageModel(image)"
-                    :src="Image" 
+                    :src="Image(image)" 
                     alt="movieImage" 
                     class="hover:opacity-50 transition easy-in-out duration-250" />
                 <span class="text-gray-400">{{ Math.round(image.vote_average, 2) }} &#11088;</span> 
@@ -22,11 +22,6 @@ export default {
             required: true
         }
     },
-    computed: {
-        Image() {
-            return `https://image.tmdb.org/t/p/w500/${this.image.file_path}`
-        }
-    },
     methods: {
         openImageModel(image) {
             let imagePath = '';
@@ -36,6 +31,9 @@ export default {
                 imagePath = 'https://via.placeholder.com/280x158'
             }
             this.$emit('onImageClick', imagePath)
+        },
+        Image(image) {
+            return `https://image.tmdb.org/t/p/w500/${image.file_path}`
         }
     }
 };

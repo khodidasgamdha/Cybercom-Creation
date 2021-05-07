@@ -1,6 +1,6 @@
 <template>
-    <div class="container mx-auto">
-        <div class="flex justify-between border-b border-gray-500">
+    <div>
+        <div class="container mx-auto flex justify-between border-b border-gray-500">
             <Navbar />
             <Search />
         </div>

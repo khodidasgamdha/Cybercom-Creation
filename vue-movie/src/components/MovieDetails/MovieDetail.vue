@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container mx-auto">
         <div class="flex mt-20 border-b border-gray-500">
             
             <!-- image -->
