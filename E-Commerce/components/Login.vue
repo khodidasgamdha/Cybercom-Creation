@@ -93,11 +93,8 @@ export default {
             return errors
         },
         token() {
-            return this.$store.state.token
+            return this.$store.state.userInfo
         },
-        user() {
-            return this.$store.state.user
-        }
     },
 
     methods: {
@@ -119,7 +116,7 @@ export default {
         },
         handleToken(token) {
             this.$cookies.set('token', token)
-            this.$store.commit('token/setToken', token)
+            this.$store.commit('userInfo/setToken', token)
             this.$store.commit('auth/setLoggedIn', true)
             this.$router.push('/')
             this.getUserInfo()
