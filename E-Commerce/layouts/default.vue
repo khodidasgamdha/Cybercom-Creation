@@ -1,9 +1,10 @@
 <template>
     <v-app>
         <!-- notification -->
-        <!-- <no-ssr>
-            <notifications group="notify" />
-        </no-ssr> -->
+        <no-ssr>
+            <notifications class="notify" group="notify" />
+        </no-ssr>
+
         <v-main>
             <!-- toolbar -->
             <v-toolbar color="light-blue darken-1 pl-16 pr-16" dark flat>
@@ -11,20 +12,16 @@
                 <v-toolbar-title>E-Commerce</v-toolbar-title>
                 <v-spacer></v-spacer>
 
-                <!-- menu -->
-                <v-toolbar-items class="hidden-sm-and-down">
-                    <!-- home -->
+                <!-- routes -->
+                <v-toolbar-items v-for="route in routes" :key="route.name">
                     <v-btn class="mr-3" text>
-                        <n-link to="/"> Home </n-link>
+                        <n-link :to="route.path"> {{ route.name }} </n-link>
                     </v-btn>
+                </v-toolbar-items>
 
-                    <!-- products -->
-                    <v-btn class="mr-2" text>
-                        <n-link to="/products"> Products </n-link>
-                    </v-btn>
-
+                <v-toolbar-items>
                     <!-- login -->
-                    <v-btn class="mr-3" v-if="!$auth()" text>
+                    <v-btn class="mr-2" v-if="!$auth()" text>
                         <n-link to="/login"> Login </n-link>
                     </v-btn>
 
@@ -33,9 +30,10 @@
                         Logout
                     </v-btn>
 
+                    <!-- cart -->
                     <v-badge
-                        :content="cartItems.length"
-                        :value="cartItems.length"
+                        :content="cartQuantities"
+                        :value="cartQuantities"
                         color="black"
                         overlap
                         class="mt-5"
@@ -44,11 +42,32 @@
                             <v-icon>mdi-cart</v-icon>
                         </n-link>
                     </v-badge>
-
                 </v-toolbar-items>
             </v-toolbar>
 
             <nuxt />
+
+            <v-footer class="mt-10" color="primary lighten-1" padless>
+                <v-row justify="center" no-gutters>
+                    <v-btn
+                        v-for="route in routes"
+                        :key="route.name"
+                        color="white"
+                        text
+                        class="my-2"
+                        :to="`${route.path}`"
+                    >
+                        {{ route.name }}
+                    </v-btn>
+                    <v-col
+                        class="primary lighten-2 py-4 text-center white--text"
+                        cols="12"
+                    >
+                        {{ new Date().getFullYear() }} —
+                        <strong>Vuetify</strong>
+                    </v-col>
+                </v-row>
+            </v-footer>
         </v-main>
     </v-app>
 </template>
@@ -57,7 +76,14 @@
 import { mapGetters } from 'vuex'
 
 export default {
-    computed: mapGetters('cart', ['cartItems']),
+    data: () => ({
+        routes: [
+            { name: 'Home', path: '/' },
+            { name: 'Products', path: '/products' },
+            { name: 'Admin', path: '/admin' },
+        ],
+    }),
+    computed: mapGetters('cart', ['cartQuantities']),
     methods: {
         logout() {
             this.$cookies.remove('token')
@@ -74,5 +100,8 @@ export default {
 a {
     text-decoration: none;
     color: white;
+}
+.notify {
+    margin-top: 70px;
 }
 </style>

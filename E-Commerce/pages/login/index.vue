@@ -1,30 +1,42 @@
 <template>
     <div class="container">
-        <div>
+        <v-row justify="center" class="mt-5">
+            <v-sheet>
+                <v-switch
+                    v-model="login"
+                    inset
+                    :label="login ? 'Already Sign Up - Login' : 'New User - Registeration'"
+                ></v-switch>
+            </v-sheet>
+        </v-row>
+        <div v-if="!login">
             <Login />
         </div>
-        <div>
+        <div v-if="login">
             <Registration />
         </div>
     </div>
 </template>
 
 <script>
-import Login from '../../components/Login'
-import Registration from '../../components/Registration'
+import Login from '../../components/auth/Login'
+import Registration from '../../components/auth/Registration'
 
 export default {
     components: {
         Login,
-        Registration
+        Registration,
     },
     data() {
         return {
-            login: true
+            login: false,
         }
-    }
+    },
 }
 </script>
 
 <style>
+#login {
+    color: green;
+}
 </style>

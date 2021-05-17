@@ -38,16 +38,22 @@
             <!-- cart & favorite -->
             <div class="ml-auto">
                 <v-card-actions class="mr-3">
-                    <v-icon class="mr-3" dense>mdi-heart</v-icon>
-                    <v-icon dense @click="addToCart(product)">mdi-cart</v-icon>
+                    <v-icon class="mr-3" dense @click="updateProd(product)"
+                        >mdi-pencil</v-icon
+                    >
+                    <v-icon dense @click="deleteProd(product)"
+                        >mdi-delete</v-icon
+                    >
                 </v-card-actions>
             </div>
+
         </div>
-        
     </v-card>
 </template>
 
 <script>
+import { db } from '../../firebase'
+
 export default {
     props: {
         product: {
@@ -55,8 +61,19 @@ export default {
         },
     },
     methods: {
-        addToCart(product) {
-            this.$store.commit('cart/addToCart', product)
+        updateProd(product) {
+            this.$router.push(`/admin/update/${product.id}`)
+        },
+        deleteProd(product) {
+            db.collection(`products/${product.category}/${product.subCategory}`)
+                .doc(product.id)
+                .delete()
+                .then(() => {
+                    console.log("Product Successfully Deleted !!");
+                })
+                .catch((error) => {
+                    console.error('Error removing document: ', error)
+                })
         },
     },
 }
