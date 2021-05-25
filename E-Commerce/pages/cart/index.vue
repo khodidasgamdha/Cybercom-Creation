@@ -19,6 +19,8 @@
                 <v-card elevation="2">
                     <v-card-title class="headline">Price Details</v-card-title>
                     <v-divider></v-divider>
+
+                    <!-- pricing -->
                     <v-card-text class="row mx-auto">
                         <div>
                             <p class="subtitle-1">
@@ -38,15 +40,20 @@
                         </div>
                     </v-card-text>
                     <v-divider></v-divider>
+                    
+                    <!-- total amount -->
                     <v-card-title class="row mx-auto">
                         <span>Total Amount</span>
                         <span class="ml-auto">&#x20B9; {{Math.round((cartTotal - cartTotal / 10) * 100) / 100}}</span>
                     </v-card-title>
                     <v-divider></v-divider>
+                    
+                    <!-- saved money -->
                     <v-card-text>
                         <span class="subtitle-1" id="grn"
                             >You will save &#x20B9; {{ Math.round(cartTotal * 10) / 100 }} on this order</span>
                     </v-card-text>
+
                 </v-card>
             </div>
         </div>

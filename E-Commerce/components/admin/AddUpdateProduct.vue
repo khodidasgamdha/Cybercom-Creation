@@ -1,10 +1,10 @@
 <template>
     <div class="container mx-auto">
-        <form class="mt-10">
+        <form class="container mt-10">
 
-            <div class="row">
+            <v-layout row justify-space-between>
                 <!-- name  -->
-                <div class="col-sm-6">
+                <v-flex xs12 md6 class="px-3">
                     <v-text-field
                         v-model="product.name"
                         :error-messages="nameErrors"
@@ -16,9 +16,10 @@
                         @input="$v.product.name.$touch()"
                         @blur="$v.product.name.$touch()"
                     ></v-text-field>
-                </div>
+                </v-flex>
+
                 <!-- image -->
-                <div class="col-sm-6">
+                <v-flex xs12 md6 class="px-3">
                     <v-text-field
                         v-model="product.img"
                         :error-messages="imgErrors"
@@ -29,12 +30,12 @@
                         @input="$v.product.img.$touch()"
                         @blur="$v.product.img.$touch()"
                     ></v-text-field>
-                </div>
-            </div>
+                </v-flex>
+            </v-layout>
 
-            <div class="row">
+            <v-layout row justify-space-between>
                 <!-- brand -->
-                <div class="col-sm-6">
+                <v-flex xs12 md6 class="px-3">
                     <v-text-field
                         v-model="product.brandName"
                         :error-messages="brandNameErrors"
@@ -46,9 +47,10 @@
                         @input="$v.product.brandName.$touch()"
                         @blur="$v.product.brandName.$touch()"
                     ></v-text-field>
-                </div>
+                </v-flex>
+
                 <!-- category -->
-                <div class="col-sm-6">
+                <v-flex xs12 md6 class="px-3">
                     <v-select
                         v-model="product.category"
                         :items="categories"
@@ -60,12 +62,12 @@
                         @input="$v.product.category.$touch()"
                         @blur="$v.product.category.$touch()"
                     ></v-select>
-                </div>
-            </div>
+                </v-flex>
+            </v-layout>
 
-            <div class="row">
+            <v-layout row justify-space-between>
                 <!-- product type -->
-                <div class="col-md-4">
+                <v-flex xs12 md4 class="px-3">
                     <v-select
                         v-model="product.subCategory"
                         :items="subCategories"
@@ -77,9 +79,10 @@
                         @input="$v.product.subCategory.$touch()"
                         @blur="$v.product.subCategory.$touch()"
                     ></v-select>
-                </div>
+                </v-flex>
+
                 <!-- price -->
-                <div class="col-md-4">
+                <v-flex xs12 md4 class="px-3">
                     <v-text-field
                         v-model.number="product.price"
                         :error-messages="priceErrors"
@@ -91,9 +94,10 @@
                         @input="$v.product.price.$touch()"
                         @blur="$v.product.price.$touch()"
                     ></v-text-field>
-                </div>
+                </v-flex>
+                
                 <!-- rating -->
-                <div class="col-md-4">
+                <v-flex xs12 md4 class="px-3">
                     <v-text-field
                         v-model.number="product.rating"
                         :error-messages="ratingErrors"
@@ -105,8 +109,8 @@
                         @input="$v.product.rating.$touch()"
                         @blur="$v.product.rating.$touch()"
                     ></v-text-field>
-                </div>
-            </div>
+                </v-flex>
+            </v-layout>
 
             <!-- discription -->
             <div>
@@ -122,28 +126,26 @@
                 <!-- add product -->
                 <v-btn
                     v-if="type === 'Add Product'"
-                    width="215"
-                    class="primary"
+                    class="primary col-md-2 col-sm-5"
                     elevation="20"
                     @click="addProd(product)"
                 >
                     {{ type }}
                 </v-btn>
+
                 <!-- update product -->
                 <v-btn
                     v-else
-                    width="215"
-                    class="primary"
+                    class="primary col-md-3 col-sm-5"
                     elevation="20"
                     @click="updateProd(product)"
                 >
                     {{ type }}
                 </v-btn>
+
                 <!-- clear -->
                 <v-btn
-                    width="215"
-                    class="ml-auto"
-                    color="warning"
+                    class="warning ml-auto col-md-2 col-sm-5"
                     elevation="20"
                     @click="clear"
                 >
@@ -289,14 +291,14 @@ export default {
         },
         clear() {
             this.$v.$reset();
-            (this.product.name = ''),
-            (this.product.img = ''),
-            (this.product.brandName = ''),
-            (this.product.category = ''),
-            (this.product.subCategory = ''),
-            (this.product.price = ''),
-            (this.product.rating = ''),
-            (this.product.description = '')
+            this.product.name = '',
+            this.product.img = '',
+            this.product.brandName = '',
+            this.product.category = '',
+            this.product.subCategory = '',
+            this.product.price = '',
+            this.product.rating = '',
+            this.product.description = ''
         },
     },
 }

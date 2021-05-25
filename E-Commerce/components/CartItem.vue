@@ -47,7 +47,6 @@
                 </v-card-actions>
             </div>
         </div>
-
         
     </v-card>
 </template>

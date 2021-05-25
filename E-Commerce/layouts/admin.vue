@@ -11,9 +11,7 @@
                         <v-list-item>
                             <!-- admin image -->
                             <v-list-item-avatar class="ml-3">
-                                <img
-                                    src="https://i.pravatar.cc/45?img=12"
-                                />
+                                <img src="https://i.pravatar.cc/45?img=12" />
                             </v-list-item-avatar>
                             
                             <!-- Nane -->

@@ -1,5 +1,5 @@
 <template>
-    <v-card class="col-md-3 mx-auto mb-10" max-width="280" elevation="5">
+    <v-card class="col-md-3 mx-auto mb-10" max-width="280" max-height="450" elevation="5">
 
         <!-- image -->
         <n-link :to="`/products/${product.category}/${product.subCategory}/${product.id}`">

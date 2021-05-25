@@ -8,12 +8,12 @@
                 <!-- name -->
                 <div class="row mx-5 py-5">
                     <h1>{{ i }}</h1>
-                    <v-btn color="primary" class="rounded-0 ml-auto">View all</v-btn>
+                    <v-btn color="primary" class="rounded-0 ml-auto" :to="`/products/${i}`">View all</v-btn>
                 </div>
                 <v-divider></v-divider>
 
                 <!-- slider -->
-                <v-slide-group v-model="model">
+                <v-slide-group>
                     <v-slide-item v-for="prod in product" :key="prod.name">
                         <v-card class="ma-4" :to="prod.path">
                             <img
@@ -22,29 +22,25 @@
                                 max-height="220"
                                 width="200"
                             />
-                            <v-card-text class="text-center"
-                                ><b>{{ prod.name }}</b></v-card-text
-                            >
+                            <v-card-text class="text-center"><b>{{ prod.name }}</b></v-card-text>
                         </v-card>
                     </v-slide-item>
                 </v-slide-group>
             
-
                 <!-- brands -->
                 <div class="row ma-auto">
                     <div v-for="n in brands[i]" :key="n" class="mx-auto mb-10">
                         <v-card
                             color="#909090"
                             elevation="5"
-                            rounded="xl"
+                            rounded="md"
                             height="150"
                             width="200"
                         >
                             <v-card-subtitle
                                 class="headline mx-auto pt-15"
                                 align="middle"
-                                ><b>{{ n }}</b></v-card-subtitle
-                            >
+                            ><b>{{ n }}</b></v-card-subtitle>
                         </v-card>
                     </div>
                 </div>

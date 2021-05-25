@@ -1,5 +1,7 @@
 <template>
     <div class="container">
+
+        <!-- switch between login & registration -->
         <v-row justify="center" class="mt-5">
             <v-sheet>
                 <v-switch
@@ -15,6 +17,7 @@
         <div v-if="login">
             <Registration />
         </div>
+
     </div>
 </template>
 
@@ -36,7 +39,4 @@ export default {
 </script>
 
 <style>
-#login {
-    color: green;
-}
 </style>

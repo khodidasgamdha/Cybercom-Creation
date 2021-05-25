@@ -98,7 +98,7 @@ export default {
         this.$store.dispatch('products/productDetail', {
             category: location.pathname.split('/')[2], 
             subCategory: location.pathname.split('/')[3],
-            id: this.$route.params.id
+            id: this.$route.params.productDetail
         })
     },
     methods: {

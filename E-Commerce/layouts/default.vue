@@ -6,10 +6,19 @@
         </no-ssr>
 
         <v-main>
-            <!-- toolbar -->
-            <v-toolbar color="light-blue darken-1 pl-16 pr-16" dark flat>
+            <!-- navbar -->
+                <v-toolbar color="primary pl-16 pr-16" dark flat>
                 <v-app-bar-nav-icon></v-app-bar-nav-icon>
                 <v-toolbar-title>E-Commerce</v-toolbar-title>
+                <v-spacer></v-spacer>
+
+                <!-- Search -->
+                <v-text-field
+                    hide-details
+                    prepend-icon="mdi-magnify"
+                    single-line
+                    placeholder="Search for products, brands and more"
+                ></v-text-field>
                 <v-spacer></v-spacer>
 
                 <!-- routes -->
@@ -26,9 +35,11 @@
                     </v-btn>
 
                     <!-- logout -->
-                    <v-btn class="mr-2" v-if="$auth()" @click="logout" text>
-                        Logout
-                    </v-btn>
+                    <v-btn 
+                        class="mr-2" 
+                        v-if="$auth()" 
+                        @click="logout" text
+                    > Logout </v-btn>
 
                     <!-- cart -->
                     <v-badge
@@ -39,7 +50,7 @@
                         class="mt-5"
                     >
                         <n-link to="/cart">
-                            <v-icon>mdi-cart</v-icon>
+                            <v-icon>mdi-cart</v-icon> Cart
                         </n-link>
                     </v-badge>
                 </v-toolbar-items>
@@ -47,7 +58,8 @@
 
             <nuxt />
 
-            <v-footer class="mt-10" color="primary lighten-1" padless>
+            <!-- footer -->
+            <v-footer class="mt-10" color="primary" padless>
                 <v-row justify="center" no-gutters>
                     <v-btn
                         v-for="route in routes"
@@ -59,15 +71,13 @@
                     >
                         {{ route.name }}
                     </v-btn>
-                    <v-col
-                        class="primary lighten-2 py-4 text-center white--text"
-                        cols="12"
-                    >
+                    <v-col class="primary py-4 text-center white--text" cols="12">
                         {{ new Date().getFullYear() }} —
-                        <strong>Vuetify</strong>
+                        <strong>Khodidas Gamdha</strong>
                     </v-col>
                 </v-row>
             </v-footer>
+
         </v-main>
     </v-app>
 </template>
