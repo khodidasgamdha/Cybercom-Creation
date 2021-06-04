@@ -45,7 +45,7 @@ const animals = [
         stock: 14,
         onSale: false,
         slug: "chameleons",
-        category: "2",
+        category: "1",
     },
     {
         id: "3",
@@ -61,7 +61,7 @@ const animals = [
         stock: 14,
         onSale: false,
         slug: "dolphin",
-        category: "3",
+        category: "2",
     },
     {
         id: "4",
@@ -77,7 +77,7 @@ const animals = [
         stock: 14,
         onSale: false,
         slug: "gorilla",
-        category: "4",
+        category: "2",
     },
     {
         id: "5",
@@ -93,7 +93,7 @@ const animals = [
         stock: 14,
         onSale: false,
         slug: "horse",
-        category: "4",
+        category: "3",
     },
     {
         id: "6",
@@ -109,7 +109,7 @@ const animals = [
         stock: 14,
         onSale: false,
         slug: "kangaroo",
-        category: "4",
+        category: "3",
     },
     {
         id: "7",
