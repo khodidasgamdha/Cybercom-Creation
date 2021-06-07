@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon Directive/date.js"
+    "start": "nodemon Mocks/index.js"
   },
   "keywords": [],
   "author": "",

@@ -27,7 +27,7 @@ const typeDefs = gql`
 // Resolvers
 const resolvers = {
     Query: {
-        hello: (parent, args, context) => {
+        hello: () => {
             return "Hello world!";
         },
     },

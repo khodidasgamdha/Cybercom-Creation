@@ -11,6 +11,10 @@ const typeDefs = gql`
         createPost(post: PostAndMediaInput): Post
     }
 
+    type Query {
+        getPost: Post
+    }
+
     input PostAndMediaInput {
         title: String
         body: String
@@ -23,7 +27,12 @@ const typeDefs = gql`
 const resolvers = {
     Mutation: {
         createPost: (_, payload) => {
-            console.log(payload);
+            return payload
+        }
+    },
+    Query: {
+        getPost: () => {
+            console.log("HI");
         }
     }
 };
