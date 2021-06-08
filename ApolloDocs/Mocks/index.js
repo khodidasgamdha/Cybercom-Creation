@@ -23,6 +23,7 @@ const server = new ApolloServer({
     typeDefs,
     resolvers,
     mocks,
+    mockEntireSchema: false, // To keep the existing resolvers
 });
 
 server.listen().then(({ url }) => {

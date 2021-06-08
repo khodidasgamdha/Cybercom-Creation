@@ -26,8 +26,8 @@ const typeDefs = gql`
 
 const resolvers = {
     Mutation: {
-        createPost: (_, payload) => {
-            return payload
+        createPost: (_, { post }) => {
+            return post
         }
     },
     Query: {
