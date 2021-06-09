@@ -31,7 +31,8 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     // graphQl
-    '@nuxtjs/apollo'
+    '@nuxtjs/apollo',
+    '@nuxtjs/axios'
   ],
 
   apollo: {
