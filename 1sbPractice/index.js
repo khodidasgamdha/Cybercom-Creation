@@ -48,20 +48,29 @@ const typeDefs = gql`
         Category: String
         Brand: String
     }
+
+    type CTLProduct {
+        lable: String
+        ads: [Product!]!
+    }
     
     type Query {
-        getSimillarProducts: [Product!]!
         getPersonalizationProducts: [Product!]!
+        getSimillarProducts: [Product!]!
+        getCTLProducts: [CTLProduct!]!
     }
 `;
 
 const resolvers = {
     Query: {
+        getPersonalizationProducts: async (_, __, { dataSources }) => {
+            return dataSources.countriesAPI.getPersonalizationProducts();
+        },
         getSimillarProducts: async (_, __, { dataSources }) => {
             return dataSources.countriesAPI.getSimillarProducts();
         },
-        getPersonalizationProducts: async (_, __, { dataSources }) => {
-            return dataSources.countriesAPI.getPersonalizationProducts();
+        getCTLProducts: async (_, __, { dataSources }) => {
+            return dataSources.countriesAPI.getCTLProducts();
         },
     },
 };
