@@ -26,10 +26,12 @@
                     <v-card max-width="321" height="546" :elevation="hover ? 10 : 2">
                         
                         <!-- image -->
-                        <v-img 
-                            :src="product.src"
-                            :alt="product.title"
-                        ></v-img>
+                        <n-link :to="`/bedroom/bedroom-sets/${product.title}`">
+                            <v-img 
+                                :src="product.src"
+                                :alt="product.title"
+                            ></v-img>
+                        </n-link>
 
                         <!-- button -->
                         <v-row class="mx-2">
@@ -56,9 +58,11 @@
                         </v-row>
                         
                         <!-- title -->
-                        <p class="mt-5 mx-2 black--text subtitle-1 mb-1">
-                            {{ product.title }}
-                        </p>
+                        <n-link :to="`/bedroom/bedroom-sets/${product.title}`" class="text-decoration-none black--text">
+                            <p :class="hover ? 'primary--text' : 'black-text'" class="mt-5 mx-2 subtitle-1 mb-1">
+                                {{ product.title }}
+                            </p>
+                        </n-link>
 
                         <!-- subtitle -->
                         <p
@@ -71,7 +75,7 @@
                         <!-- web id -->
                         <p
                             v-else
-                            class="mx-2 subtitle-2 font-weight-medium grey--text mb-1"
+                            class="mx-2 subtitle-2 font-weight-light grey--text mb-1"
                         >
                             Web Id: 
                             <span class="font-weight-bold">
@@ -100,7 +104,7 @@
                         <!-- regular price -->
                         <div v-else class="ml-5">
                             <div class="special-price row my-2">
-                                <span class=" black--text ml-2">
+                                <span class=" black--text ml-2 mr-n3">
                                     {{ product.specialPrice }}
                                 </span>
                                 <div id="specialPriceLabel" class="mx-n3"></div>
@@ -108,7 +112,7 @@
                         </div>
 
                         <!-- review -->
-                        <v-row no-gutters class="mx-2 my-n1">
+                        <v-row v-if="product.numberOfRating != 0" no-gutters class="mx-2 my-n1">
                             <v-col cols="4">
                                 <v-rating
                                     v-model="product.rating"
@@ -282,7 +286,7 @@ export default {
                 this.products['bedroom-sets'].sort((a, b) => a.price < b.price ? -1 : 1)
             }
             if (type === 'Price:High-Low') {
-                this.products['bedroom-sets'].sort((a, b) => a.price < b.price ? -1 : 1).reverse()
+                this.products['bedroom-sets'].sort((a, b) => a.price > b.price ? -1 : 1)
             }
         },
     },
@@ -291,7 +295,7 @@ export default {
 <style scoped>
 .special-price {
     border: 1px solid red;
-    width: 165px;
+    width: 153px;
 }
 #specialPriceLabel {
     background: url("https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/sprite_v2.png?va8ef6d04") -515px -524px no-repeat;

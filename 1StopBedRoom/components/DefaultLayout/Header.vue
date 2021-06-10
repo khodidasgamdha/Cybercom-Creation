@@ -99,14 +99,14 @@
                             class="onHoverBtn"
                             v-on="on"
                         >
-                            <nuxt-link :to="`/${link.link}`" class="text-decoration-none">{{
-                                link.linkTitle
-                            }}</nuxt-link>
+                            <nuxt-link :to="`/${link.link}`" class="text-decoration-none">
+                                {{ link.linkTitle }}
+                            </nuxt-link>
                         </v-btn>
                     </template>
 
                     <!-- sublinks -->
-                    <v-card max-width="800" flat tile>
+                    <v-card max-width="500" flat tile>
                         <v-row no-gutters class="pl-3 pr-3">
                             <v-col
                                 v-for="(item, i) in subCategoryLinks[link.link]"
@@ -116,10 +116,10 @@
                                 <v-btn text tile>
                                     <nuxt-link
                                         :to="`/${link.link}/'${item.link}`"
-                                        class="black--text body-2 text-decoration-none"
+                                        class="black--text caption text-decoration-none"
                                     >
                                         {{ item.linkTitle }}
-                                    </nuxt-link>{{subCategoryLinks[link.link].length}}
+                                    </nuxt-link>
                                 </v-btn>
                             </v-col>
                         </v-row>
@@ -140,20 +140,19 @@
             <v-container fluid>
                 <v-fab-transition>
                     <v-btn
-                        color="blue"
+                        color="grey lighten-2"
                         fixed
-                        dark
                         bottom
                         right
                         fab
                         @click="
                             $vuetify.goTo(0, {
                                 easing: 'easeInCubic',
-                                duration: '2000',
+                                duration: '1000',
                             })
                         "
                     >
-                        <v-icon>mdi-arrow-up</v-icon>
+                        <v-icon class="mt-2" large>mdi-apple-keyboard-control</v-icon>
                     </v-btn>
                 </v-fab-transition>
             </v-container>

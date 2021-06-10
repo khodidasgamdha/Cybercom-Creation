@@ -4,7 +4,7 @@
         <!-- links -->
         <v-breadcrumbs :items="links" class="mt-n10"></v-breadcrumbs>
         
-        <v-layout class="mt-3" no-gutters>
+        <v-layout no-gutters>
             <v-flex md3>
                 <Filters />
             </v-flex>
@@ -18,7 +18,8 @@
 
 <script>
 import Filters from '~/components/SubCategory/Filters'
-import ProductCards from '~/components/SubCategory/ProductCards.vue'
+import ProductCards from '~/components/SubCategory/ProductCards'
+
 export default {
     components: { Filters, ProductCards },
     data() {
