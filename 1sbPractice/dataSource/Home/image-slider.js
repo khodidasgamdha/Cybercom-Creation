@@ -1,0 +1,92 @@
+module.exports = [
+    {
+        imgUrl: "https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/shopbycat/bedroom_sets.jpg",
+        alt: "bedroom_sets",
+        name: "Bedroom Sets",
+        link: "/bedroom/bedroom-sets",
+    },
+    {
+        imgUrl: "https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/shopbycat/beds.jpg",
+        alt: "beds",
+        name: "Beds",
+        link: "/bedroom/beds",
+    },
+    {
+        imgUrl: "https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/shopbycat/nightstand_v2.jpg",
+        alt: "night_stands",
+        name: "Night Stands",
+        link: "/bedroom/nightstands",
+    },
+    {
+        imgUrl: "https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/shopbycat/chests_v2.jpg",
+        alt: "chests",
+        name: "Chests",
+        link: "/bedroom/chests",
+    },
+    {
+        imgUrl: "https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/shopbycat/sofa.jpg",
+        alt: "sofas",
+        name: "Sofas",
+        link: "/living/living-room-sets",
+    },
+    {
+        imgUrl: "https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/shopbycat/loveseats_v1.jpg",
+        alt: "loveseats",
+        name: "Loveseats",
+        link: "/living/loveseats",
+    },
+    {
+        imgUrl: "https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/shopbycat/sectional-sofa_v1.jpg",
+        alt: "sectionals",
+        name: "Sectionals",
+        link: "/living/sectionals",
+    },
+    {
+        imgUrl: "https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/shopbycat/dinning-table_v1.jpg",
+        alt: "dining_tables",
+        name: "Dining Tables",
+        link: "/dining/dining-tables",
+    },
+    {
+        imgUrl: "https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/shopbycat/dining_chairs.jpg",
+        alt: "dining_chairs",
+        name: "Dining Chairs",
+        link: "/dining/chairs",
+    },
+    {
+        imgUrl: "https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/shopbycat/kids_furniture.jpg",
+        alt: "kids_furniture",
+        name: "Kids Furniture",
+        link: "/bedroom/kids-furniture",
+    },
+    {
+        imgUrl: "https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/shopbycat/mattress.jpg",
+        alt: "mattress",
+        name: "Mattress",
+        link: "/bedroom/mettress",
+    },
+    {
+        imgUrl: "https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/shopbycat/Barstool.jpg",
+        alt: "barstools",
+        name: "Barstools",
+        link: "/bar-furniture/barstools",
+    },
+    {
+        imgUrl: "https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/shopbycat/lamp.jpg",
+        alt: "lamps",
+        name: "Lamps",
+        link: "/lighting/lamp-sets",
+    },
+    {
+        imgUrl: "https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/shopbycat/chair_v1.jpg",
+        alt: "chairs",
+        name: "Chairs",
+        link: "/living-room-furniture/chairs",
+    },
+    {
+        imgUrl: "https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/shopbycat/ottomans.jpg",
+        alt: "ottomans",
+        name: "Ottomans",
+        link: "/living-room-furniture/ottomans",
+    },
+];
