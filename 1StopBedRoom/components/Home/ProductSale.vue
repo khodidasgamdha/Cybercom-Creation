@@ -2,10 +2,10 @@
     <div class="mx-10">
 
         <!-- title -->
-        <p class="headline mt-5 font-weight-light">{{ title }}</p>
+        <p class="headline mt-5 font-weight-light">{{ products.title }}</p>
         
         <v-row no-gutters>
-            <v-col v-for="(item, i) in cardData" :key="i">
+            <v-col v-for="(item, i) in products.products" :key="i">
                 <v-card class="mx-1" height="300" width="230" tile flat>
                     
                     <!-- image -->
@@ -73,8 +73,9 @@
 <script>
 export default {
     props: {
-        cardData: { type: Array, default: null },
-        title: { type: String, default: null },
+        // cardData: { type: Array, default: null },
+        // title: { type: String, default: null },
+        products: { type: Object, requires: true }
     },
 }
 </script>

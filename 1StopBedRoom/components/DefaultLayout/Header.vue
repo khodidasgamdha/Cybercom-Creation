@@ -20,7 +20,6 @@
 
         <!-- 2nd header -->
         <v-row class="secondHeader mt-10 px-14 justify-space-around">
-
             <!-- image -->
             <v-col md="3">
                 <nuxt-link to="/">
@@ -34,14 +33,26 @@
 
             <!-- search -->
             <v-col md="4">
-                <p class=" white--text body-2">
+                <p class="white--text body-2">
                     <n-link to="/">
-                        <span class="caption text-decoration-underline white--text">
+                        <span
+                            class="
+                                caption
+                                text-decoration-underline
+                                white--text
+                            "
+                        >
                             36 Month Financing*
                         </span>
                     </n-link>
                     <n-link to="/" class="ml-8">
-                        <span class="caption text-decoration-underline white--text">
+                        <span
+                            class="
+                                caption
+                                text-decoration-underline
+                                white--text
+                            "
+                        >
                             Track My Order
                         </span>
                     </n-link>
@@ -59,36 +70,118 @@
 
             <!-- other -->
             <v-col md="4">
-                <span class="caption white--text">FREE HOME DELIVERY AVAILABLE NATIONWIDE*</span>
+                <span class="caption white--text"
+                    >FREE HOME DELIVERY AVAILABLE NATIONWIDE*</span
+                >
                 <div class="mt-3">
-
                     <!-- review -->
-                    <img 
-                        src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/1sb-general/1sb-testimonials-stars.png?va49360aa" 
+                    <img
+                        src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/1sb-general/1sb-testimonials-stars.png?va49360aa"
                         alt="review"
-                    >
+                    />
 
                     <!-- sign in -->
-                    <v-btn to="/" text class="ml-5">
-                        <v-icon color="white" large>mdi-account</v-icon>
-                        <span class="white--text text-capitalize ml-2">Sign In</span>
-                    </v-btn>
+                    <v-menu rounded="0" open-on-hover offset-y>
+                        <!-- button -->
+                        <template #activator="{ on, attrs }">
+                            <v-btn
+                                to="/customer/account/login"
+                                text
+                                class="ml-5"
+                                v-on="on"
+                                v-bind="attrs"
+                            >
+                                <v-icon color="white" large>mdi-account</v-icon>
+                                <span class="white--text text-capitalize ml-2"
+                                    >Sign In</span
+                                >
+                            </v-btn>
+                        </template>
+
+                        <!-- list -->
+                        <v-card flat width="250" height="281" class="rounded-0">
+                            <div class="grey lighten-2">
+                                <v-btn
+                                    class="
+                                        text-capitalize
+                                        px-16
+                                        rounded-0
+                                        mx-8
+                                        my-4
+                                        orange
+                                        darken-2
+                                    "
+                                    to="/customer/account/login"
+                                    dark
+                                    dense
+                                    >Sign In</v-btn
+                                >
+                                <p class="text-center body-2 pb-3">
+                                    <span>New Customer ?</span>
+                                    <n-link
+                                        to="/customer/account/create"
+                                        class="
+                                            primary--text
+                                            text-decoration-none
+                                        "
+                                        >Sign Up</n-link
+                                    >
+                                </p>
+                            </div>
+                            <div v-for="(item, i) in signInMenu" :key="i">
+                                <v-row class="justify-center">
+                                    <v-col md="2">
+                                        <v-icon>mdi-{{ item.icon }}</v-icon>
+                                    </v-col>
+                                    <v-col md="8">
+                                        <n-link
+                                            :to="item.link"
+                                            class="
+                                                text-decoration-none
+                                                black--text
+                                            "
+                                            >{{ item.title }}</n-link
+                                        >
+                                    </v-col>
+                                </v-row>
+                                <v-divider class="my-2"></v-divider>
+                            </div>
+                        </v-card>
+                    </v-menu>
 
                     <!-- cart -->
-                    <v-btn to="/" text class="ml-5">
-                        <v-icon color="white" large>mdi-cart</v-icon>
-                        <span class="white--text text-capitalize ml-2">Cart</span>
-                    </v-btn>
-                    
+                    <v-menu rounded="0" open-on-hover offset-y>
+                        <!-- button -->
+                        <template #activator="{ on, attrs }">
+                            <v-btn
+                                to="/"
+                                text
+                                class="ml-5"
+                                v-on="on"
+                                v-bind="attrs"
+                            >
+                                <v-icon color="white" large>mdi-cart</v-icon>
+                                <span class="white--text text-capitalize ml-2"
+                                    >Cart</span
+                                >
+                            </v-btn>
+                        </template>
+
+                        <v-card flat width="400" class="pa-3">
+                            <p>RECENTLY ADDED ITEM(S)</p>
+                            <p class="mb-0">
+                                You have no items in your shopping cart.
+                            </p>
+                        </v-card>
+                    </v-menu>
                 </div>
             </v-col>
         </v-row>
 
         <!-- 3rd header -->
         <v-app-bar color="thirdHeader" class="px-8" height="45">
-            <div v-for="(link, index) in links" :key="index">
+            <div v-for="(link, index) in NavbarLinks" :key="index">
                 <v-menu rounded="0" open-on-hover offset-y>
-
                     <!-- main links -->
                     <template #activator="{ on, attrs }">
                         <v-btn
@@ -99,32 +192,62 @@
                             class="onHoverBtn"
                             v-on="on"
                         >
-                            <nuxt-link :to="`/${link.link}`" class="text-decoration-none">
+                            <nuxt-link
+                                :to="`/${link.link}`"
+                                class="text-decoration-none"
+                            >
                                 {{ link.linkTitle }}
                             </nuxt-link>
                         </v-btn>
                     </template>
 
                     <!-- sublinks -->
-                    <v-card max-width="500" flat tile>
-                        <v-row no-gutters class="pl-3 pr-3">
-                            <v-col
-                                v-for="(item, i) in subCategoryLinks[link.link]"
-                                :key="i"
-                                :cols="subCategoryLinks[link.link].length > 10 ? '6' : '12'"
-                            >
-                                <v-btn text tile>
-                                    <nuxt-link
-                                        :to="`/${link.link}/'${item.link}`"
-                                        class="black--text caption text-decoration-none"
+                    <v-card
+                        :max-width="link.subCategoryLinks.length > 10 ? 750 : 500"
+                        flat
+                    >
+                        <v-row class="mb-0">
+                            <!-- links -->
+                            <v-col>
+                                <v-row no-gutters>
+                                    <v-col
+                                        v-for="(item, i) in link.subCategoryLinks"
+                                        :key="i"
+                                        :md="link.subCategoryLinks.length > 10 ? '6' : '12'"
                                     >
-                                        {{ item.linkTitle }}
-                                    </nuxt-link>
-                                </v-btn>
+                                        <v-btn text tile>
+                                            <nuxt-link
+                                                :to="`/${link.link}/'${item.link}`"
+                                                class="
+                                                    black--text
+                                                    caption
+                                                    text-decoration-none
+                                                "
+                                            >
+                                                {{ item.linkTitle }}
+                                            </nuxt-link>
+                                        </v-btn>
+                                    </v-col>
+                                </v-row>
+                            </v-col>
+
+                            <!-- image -->
+                            <v-col
+                                :md="link.subCategoryLinks.length > 10 ? '4' : '6'"
+                            >
+                                <v-card
+                                    flat
+                                    class="px-3 pt-3 rounded-0 grey lighten-2"
+                                    width="250"
+                                    height="100%"
+                                >
+                                    <v-img :src="link.image"> </v-img>
+                                    <p class="caption mt-2">{{ link.info }}</p>
+                                </v-card>
                             </v-col>
                         </v-row>
+                        
                     </v-card>
-
                 </v-menu>
             </div>
         </v-app-bar>
@@ -152,7 +275,9 @@
                             })
                         "
                     >
-                        <v-icon class="mt-2" large>mdi-apple-keyboard-control</v-icon>
+                        <v-icon class="mt-2" large
+                            >mdi-apple-keyboard-control</v-icon
+                        >
                     </v-btn>
                 </v-fab-transition>
             </v-container>
@@ -161,254 +286,50 @@
 </template>
 
 <script>
+import gql from 'graphql-tag'
+
+const GET_NAVBAR_LINKS = gql`
+    query GET_NAVBAR_LINKS {
+        NavbarLinks {
+            linkTitle
+            link
+            image
+            info
+            subCategoryLinks {
+                linkTitle
+                link
+            }
+        }
+    }
+`
+
 export default {
+    apollo: {
+        NavbarLinks: {
+            query: GET_NAVBAR_LINKS,
+            prefetch: true,
+        },
+    },
     data() {
         return {
-            links: [
-                { linkTitle: 'Bedroom', link: 'bedroom' },
-                { linkTitle: 'Living Room', link: 'living' },
-                { linkTitle: 'Dining & Kitchen', link: 'dining' },
-                { linkTitle: 'Office', link: 'office' },
-                { linkTitle: 'Bar & Game Room', link: 'barfurniture' },
-                { linkTitle: 'Accessories', link: 'accessories' },
-                { linkTitle: 'Outdoor', link: 'outdoors' },
-                { linkTitle: 'Shop By Brand', link: 'brands' },
+            signInMenu: [
+                {
+                    icon: 'account',
+                    title: 'My Account',
+                    link: '/customer/account/welcome',
+                },
+                {
+                    icon: 'cart',
+                    title: 'Order Status',
+                    link: '/sales/guest/form',
+                },
+                {
+                    icon: 'account',
+                    title: 'Help Center',
+                    link: '/shipping-and-delivery',
+                },
+                { icon: 'cart', title: 'My Cart', link: '/checkout/cart' },
             ],
-            subCategoryLinks: {
-                bedroom: [
-                    { linkTitle: 'Bedroom Sets', link: 'bedroom-sets' },
-                    { linkTitle: 'Beds', link: 'beds' },
-                    { linkTitle: 'Nightstands', link: 'nightstands' },
-                    { linkTitle: 'Dressers', link: 'dressers' },
-                    { linkTitle: 'Dresser Mirrors', link: 'mirrors' },
-                    { linkTitle: 'Chests', link: 'chests' },
-                    { linkTitle: 'Bedroom Benches', link: 'benches' },
-                    { linkTitle: 'Bed Frames & Headboards', link: 'frames' },
-                    {
-                        linkTitle: 'Armoires and Wardrobes',
-                        link: 'armoires-n-wardrobes',
-                    },
-                    { linkTitle: 'Bedroom Vanities', link: 'vanities' },
-                    { linkTitle: 'Media Chests', link: 'media-chests' },
-                    { linkTitle: 'Jewelry Armoires', link: 'jewelry-armoires' },
-                    {
-                        linkTitle: 'Day Beds and Futons',
-                        link: 'day-beds-n-futons',
-                    },
-                    {
-                        linkTitle: 'Kids and Youth Furniture',
-                        link: 'kids-youth-furniture',
-                    },
-                    { linkTitle: 'Mattresses', link: 'mattresses' },
-                    { linkTitle: 'Pillows', link: 'pillows' },
-                    {
-                        linkTitle: 'Bedding and Comforter Sets',
-                        link: 'bedding-n-comforter-sets',
-                    },
-                ],
-                living: [
-                    { linkTitle: 'Living Room Sets', link: 'living-room-sets' },
-                    { linkTitle: 'Sectionals', link: 'sectionals' },
-                    { linkTitle: 'Sofas', link: 'sofas' },
-                    { linkTitle: 'Loveseats', link: 'loveseats' },
-                    {
-                        linkTitle: 'Reclining Loveseats',
-                        link: 'reclining-loveseats',
-                    },
-                    { linkTitle: 'Sleeper Sofas', link: 'sleeper-sofas' },
-                    {
-                        linkTitle: 'Recliners and Rockers',
-                        link: 'recliners-n-rockers',
-                    },
-                    { linkTitle: 'Theater Seating', link: 'theater-seating' },
-                    { linkTitle: 'Chairs', link: 'chairs' },
-                    { linkTitle: 'Accent Chairs', link: 'accent-chairs' },
-                    { linkTitle: 'Chaises', link: 'chaises' },
-                    { linkTitle: 'Ottomans', link: 'ottomans' },
-                    { linkTitle: 'Futons', link: 'futons' },
-                    {
-                        linkTitle: 'Leather Furniture',
-                        link: 'leather-furniture',
-                    },
-                    {
-                        linkTitle: 'Occasional Table Sets',
-                        link: 'occasional-table-sets',
-                    },
-                    { linkTitle: 'Sofa Tables', link: 'sofa-tables' },
-                    {
-                        linkTitle: 'Accent Chests and Cabinets',
-                        link: 'accent-chests-n-cabinets',
-                    },
-                    { linkTitle: 'Console Tables', link: 'console-tables' },
-                    {
-                        linkTitle: 'Coffee and Cocktail Tables',
-                        link: 'coffe-n-cooktail-tables',
-                    },
-                    { linkTitle: 'End Tables', link: 'end-tables' },
-                    { linkTitle: 'Accent Tables', link: 'accent-tables' },
-                    { linkTitle: 'Side Tables', link: 'side-tables' },
-                    {
-                        linkTitle: 'Rugs and Accessories',
-                        link: 'rugs-n-accessories',
-                    },
-                    {
-                        linkTitle: 'Entertainment Centers and Walls',
-                        link: 'entertainment-center-n-walls',
-                    },
-                    {
-                        linkTitle: 'TV Stands and TV Consoles',
-                        link: 'tv-stands-n-tv-consoles',
-                    },
-                    {
-                        linkTitle: 'CD and DVD Media Storage',
-                        link: 'cd-n-dvd-media-storage',
-                    },
-                ],
-                dining: [
-                    { linkTitle: 'Dining Sets', link: 'dining-sets' },
-                    { linkTitle: 'Dinette Sets', link: 'dinette-sets' },
-                    { linkTitle: 'Dining Chairs', link: 'dining-chairs' },
-                    { linkTitle: 'Dining Tables', link: 'dining-tables' },
-                    { linkTitle: "Baker's Racks", link: 'banker-racks' },
-                    { linkTitle: 'Dining Benches', link: 'dining-benches' },
-                    { linkTitle: 'China Cabinets', link: 'china-cabinets' },
-                    {
-                        linkTitle: 'Curios & Displays',
-                        link: 'curios-n-displays',
-                    },
-                    {
-                        linkTitle: 'Kitchen Island, Kitchen Cart',
-                        link: 'kitchen-island-cart',
-                    },
-                    {
-                        linkTitle: 'Servers, Sideboards & Buffets',
-                        link: 'servers-sideboards-buffets',
-                    },
-                ],
-                office: [
-                    { linkTitle: 'Home Office Sets', link: 'home-office-sets' },
-                    { linkTitle: 'Office Chairs', link: 'office-chairs' },
-                    { linkTitle: 'Desks & Hutches', link: 'desks-n-hutches' },
-                    {
-                        linkTitle: 'Modular Office Furniture',
-                        link: 'modular-office-furniture',
-                    },
-                    { linkTitle: 'Conference Room', link: 'conference-room' },
-                    {
-                        linkTitle: 'Filing Cabinets and Storage',
-                        link: 'filing-cabinets-n-storage',
-                    },
-                    {
-                        linkTitle: 'Bookcases, Book Shelves',
-                        link: 'bookcases-book-shelves',
-                    },
-                    {
-                        linkTitle: 'Office Accessories',
-                        link: 'office-accessories',
-                    },
-                    { linkTitle: 'Miscellaneous', link: 'miscellaneous' },
-                ],
-                barfurniture: [
-                    { linkTitle: 'Home Bar Sets', link: 'home-bar-sets' },
-                    {
-                        linkTitle: 'Bistro and Bar Table Sets',
-                        link: 'bistro-n-bar-table-sets',
-                    },
-                    { linkTitle: 'Game Table Sets', link: 'game-table-sets' },
-                    {
-                        linkTitle: 'Bar Tables and Pub Tables',
-                        link: 'bar-tables-n-pub-tables',
-                    },
-                    { linkTitle: 'Barstools', link: 'barstools' },
-                    { linkTitle: 'Wine Racks', link: 'wine-racks' },
-                    { linkTitle: 'Game Tables', link: 'game-tables' },
-                    { linkTitle: 'Game Room Chairs', link: 'game-room-chairs' },
-                    {
-                        linkTitle: 'Bar and Wine Cabinets',
-                        link: 'bar-n-wine-cabinets',
-                    },
-                ],
-                accessories: [
-                    { linkTitle: 'Rugs', link: 'rugs' },
-                    { linkTitle: 'Wall Art', link: 'wall-art' },
-                    {
-                        linkTitle: 'Accent and Storage Benches',
-                        link: 'accent-n-storge-benches',
-                    },
-                    { linkTitle: 'Accent Mirrors', link: 'accent mirrors' },
-                    { linkTitle: 'Curios', link: 'curios' },
-                    {
-                        linkTitle: 'Pillows and Throws',
-                        link: 'pillows-n-throws',
-                    },
-                    {
-                        linkTitle: 'Decorative Accessories',
-                        link: 'decorative-accessories',
-                    },
-                    {
-                        linkTitle: 'Entryway Furniture',
-                        link: 'entryway-furniture',
-                    },
-                    {
-                        linkTitle: 'Storage and Organization',
-                        link: 'storage-n-organization',
-                    },
-                    { linkTitle: 'Etageres', link: 'etageres' },
-                    { linkTitle: 'Clocks', link: 'clocks' },
-                    {
-                        linkTitle: 'Artificial Plants',
-                        link: 'artificial-plants',
-                    },
-                    { linkTitle: 'Picture Frames', link: 'picture-frames' },
-                    { linkTitle: 'Lighting', link: 'lighting' },
-                    {
-                        linkTitle: 'Desk and Buffet Lamps',
-                        link: 'desk-n-buffet-lamps',
-                    },
-                    { linkTitle: 'Lamp Sets', link: 'lamp-sets' },
-                    { linkTitle: 'Floor Lamps', link: 'floor-lamps' },
-                    { linkTitle: 'Pendant Lighting', link: 'pendant-lighting' },
-                    { linkTitle: 'Wall Sconces', link: 'wall-sconeces' },
-                    {
-                        linkTitle: 'Bathroom Furniture',
-                        link: 'bathroom-furniture',
-                    },
-                ],
-                outdoors: [
-                    {
-                        linkTitle: 'Outdoor Conversation Sets',
-                        link: 'outdoor-conversation-sets',
-                    },
-                    {
-                        linkTitle: 'Outdoor Dining Furniture',
-                        link: 'outdoor-dining-furniture',
-                    },
-                    { linkTitle: 'Outdoor Tables', link: 'outdoor-tables' },
-                    { linkTitle: 'Outdoor Chairs', link: 'outdoor-chairs' },
-                    {
-                        linkTitle: 'Outdoor Sofas & Loveseats',
-                        link: 'outdoor-sofas-n-loveseats',
-                    },
-                    {
-                        linkTitle: 'Outdoor Chaise Loungers',
-                        link: 'outdoor-chaise-loungers',
-                    },
-                    {
-                        linkTitle: 'Outdoor Bar Furniture',
-                        link: 'outdoor-bar-furniture',
-                    },
-                    {
-                        linkTitle: 'Outdoor Accessories',
-                        link: 'outdoor-accessories',
-                    },
-                    {
-                        linkTitle: 'Outdoor Fireplaces',
-                        link: 'outdoor-fireplaces',
-                    },
-                    { linkTitle: 'Outdoor Benches', link: 'outdoor-benches' },
-                    { linkTitle: 'Outdoor Ottomans', link: 'outdoor-ottomans' },
-                ],
-            },
         }
     },
 }
@@ -424,7 +345,8 @@ a:hover {
     color: #003980;
 }
 .secondHeader {
-    background: url("https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/header_img.png?v4b3a5475") 0 0 repeat;
+    background: url('https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/header_img.png?v4b3a5475')
+        0 0 repeat;
 }
 .thirdHeader {
     background-color: #003980 !important;

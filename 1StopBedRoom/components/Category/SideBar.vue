@@ -11,9 +11,9 @@
         <div v-for="(link, i) in productLinks" :key="i" class="pt-1">
             <nuxt-link
                 class="black--text text-decoration-none"
-                :to="`${$route.params.category}/${link}`"
+                :to="`${$route.params.category}/${link.link}`"
             >
-                <span class="body-2 font-weight-light">{{ link }}</span>
+                <span class="body-2 font-weight-light">{{ link.linkTitle }}</span>
             </nuxt-link>
         </div>
 

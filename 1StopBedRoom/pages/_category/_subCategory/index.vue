@@ -24,8 +24,6 @@ export default {
     components: { Filters, ProductCards },
     data() {
         return {
-            product: this.$route.params.categoty,
-            subCategory: this.$route.params.subCategory,
             links: [
                 {
                     text: 'Home',

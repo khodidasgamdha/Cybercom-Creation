@@ -1,11 +1,12 @@
 <template>
     <div class="mx-16">
+
         <!-- links -->
         <v-breadcrumbs :items="links" class="mt-n10"></v-breadcrumbs>
 
         <v-row>
             <!-- info -->
-            <v-col md="8">
+            <v-col md="8" sm="12">
                 <!-- title -->
                 <p class="mb-0">
                     <span class="title"
@@ -96,45 +97,67 @@
                         <!-- bed size -->
                         <v-row class="mt-0">
                             <v-col md="3">
-                                <span class="body-2 grey--text">Bee Size:</span>
+                                <span class="body-2 grey--text">Bed Size:</span>
                             </v-col>
                             <v-col>
                                 <v-btn-toggle
                                     dense
-                                    outlined
-                                    color="primary"
+                                    v-for="(item, i) in bedSize"
+                                    :key="i"
                                 >
-                                    <v-btn class="body-2 text-capitalize">
-                                        Twin
-                                    </v-btn>
-                                    <v-btn class="body-2 text-capitalize">
-                                        Full
+                                    <v-btn class="body-2 text-capitalize mx-1" :value="item.value">
+                                        {{ item.title }}
                                     </v-btn>
                                 </v-btn-toggle>
                             </v-col>
                         </v-row>
 
                         <!-- set selection -->
-                        <v-row class="mt-0 mb-5">
+                        <v-row class="mt-0">
                             <v-col md="3">
                                 <span class="body-2 grey--text">Set Selection:</span>
                             </v-col>
                             <v-col>
                                 <v-btn-toggle
                                     dense
-                                    outlined
-                                    color="primary"
+                                    v-for="(item, i) in setSize"
+                                    :key="i"
                                 >
-                                    <v-btn class="body-2 text-capitalize">
-                                        2-Piece Set
-                                    </v-btn>
-                                    <v-btn class="body-2 text-capitalize">
-                                        4-Piece Set
-                                    </v-btn>
-                                    <v-btn class="body-2 text-capitalize">
-                                        Build Your Own
+                                    <v-btn class="body-2 text-capitalize mx-1" :value="item.value">
+                                        {{ item.title }}
                                     </v-btn>
                                 </v-btn-toggle>
+                            </v-col>
+                        </v-row>
+
+                        <!-- set -->
+                        <v-row class="mt-0">
+                            <v-col md="3">
+                                <span class="body-2 grey--text">Collection:</span>
+                            </v-col>
+                            <v-col class="caption">
+                                <v-row>
+                                    <v-col md="4">1x  Sleigh Bed</v-col>
+                                    <v-col md="6">Sku: B733-183-52S-53</v-col>
+                                </v-row>
+                                <v-row class="mt-n5">
+                                    <v-col md="4">1x  Nightstand</v-col>
+                                    <v-col md="6">Sku: B733-91</v-col>
+                                </v-row>
+                                <v-row class="mt-n5">
+                                    <v-col md="auto">
+                                        <img 
+                                            src="https://cdn.1stopbedrooms.com/media/catalog/product/cache/1/thumbnail/73x/cc0ec2d91bc4dd8becc1b9167d5c2be1/l/e/lettner-light-gray-youth-storage-sleigh-bedroom-set_qb13271770_4.jpg" 
+                                            alt=""
+                                        >
+                                    </v-col>
+                                    <v-col md="auto">
+                                        <img 
+                                            src="https://cdn.1stopbedrooms.com/media/catalog/product/cache/1/thumbnail/73x/cc0ec2d91bc4dd8becc1b9167d5c2be1/l/e/lettner-light-gray-youth-storage-sleigh-bedroom-set_qb13271770_4.jpg" 
+                                            alt=""
+                                        >
+                                    </v-col>
+                                </v-row>
                             </v-col>
                         </v-row>
 
@@ -158,7 +181,7 @@
             </v-col>
 
             <!-- price -->
-            <v-col md="4">
+            <v-col md="4" sm="12">
                 <v-card align="center" width="390">
                     <p class="body-2 py-1 grey lighten-3">Today's Price</p>
 
@@ -178,7 +201,7 @@
                             Your Saving :
                         </v-col>
                         <v-col md="3">
-                            -$33.90
+                            <span class="light-green accent-1 font-weight-bold rounded-xl py-1 px-2">-$33.90</span>
                         </v-col>
                     </v-row>
 
@@ -265,7 +288,7 @@
         </v-row>
 
         <v-row>
-            <v-col md="8">
+            <v-col md="8" sm="12">
 
                 <v-row class="mx-5" v-for="i in 5" :key="i">
 
@@ -291,47 +314,57 @@
                         <!-- price -->
                         <p class="mb-0">
                             <span class="title">$585.10</span>
-                            <span class="body-2 grey--text text-decoration-line-through">$699.00</span>
-                            <span class="body-2 ml-3">$115.00</span>
+                            <span v-if="i&1 == 1" class="body-2 grey--text text-decoration-line-through">$699.00</span>
+                            <span v-if="i&1 == 1" class="caption font-weight-bold ml-3 light-green accent-1 rounded-xl py-1 px-2">Save -$115.00</span>
                         </p>
 
                         <!-- discount -->
-                        <p class="caption font-italic mb-1">*Set discount applied</p>
+                        <p v-if="i&1 == 1" class="caption font-italic mb-1">*Set discount applied</p>
                         
                         <!-- sizes -->
-                        <div>
+                        <div v-if="i&1 == 1">
                             <p class="font-weight-bold caption mb-1">Bed Size:</p>
                             <v-btn-toggle
                                 dense
-                                outlined
-                                color="primary"
+                                v-for="(item, i) in bedSize"
+                                :key="i"
                             >
-                                <v-btn class="body-2 text-capitalize">
-                                    Twin
-                                </v-btn>
-                                <v-btn class="body-2 text-capitalize">
-                                    Full
+                                <v-btn class="body-2 text-capitalize mx-1" :value="item.value">
+                                    {{ item.title }}
                                 </v-btn>
                             </v-btn-toggle>
                         </div>
 
                     </v-col>
                     <v-spacer></v-spacer>
-                    <v-col md="auto">
-                        <v-btn outlined color="primary" class="body-2 text-capitalize">
+                    <v-col v-if="!added" md="auto">
+                        <v-btn outlined color="primary" class="body-2 text-capitalize" @click="added = true">
                             Add
                         </v-btn>
+                    </v-col>
+                    <v-col v-else md="2">
+                        <v-icon small color="primary">mdi-check-all</v-icon>
+                        <span class="caption primary--text">Added</span>
+                        <v-select
+                            v-model="quantity"
+                            :items="quantities"
+                            outlined
+                            dense
+                            class="mb-n5"
+                        ></v-select>
+                        <v-icon small color="primary">mdi-delete</v-icon>
+                        <v-btn text @click="added = false" small class="ml-n3 primary--text text-lowercase text-decoration-underline">remove</v-btn>
                     </v-col>
                 </v-row>
 
                 <!-- expansion panel -->
                 <v-expansion-panels flat>
                     <v-expansion-panel
-                      v-for="(item,i) in 6"
+                      v-for="(item,i) in info"
                       :key="i"
                     >
                         <v-expansion-panel-header class="title">
-                            Item
+                            {{ item }}
                         </v-expansion-panel-header>
                         <v-expansion-panel-content>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -348,7 +381,7 @@
                 
                 <v-card class="rounded-0" flat width="390">
                     <p class="pl-2 body-2 py-2 grey lighten-3">
-                        <v-icon small>mdi-arrow-right</v-icon>
+                        <v-icon small>mdi-chevron-right</v-icon>
                         <span>1x </span>
                         <span>Light Gray Twin Storage Sleigh Bed</span>
                     </p>
@@ -411,15 +444,15 @@
 
         <ProductSuggestion
             title="You May Also Like"
-            :products="getPersonalizationProducts"
+            :products="PersonalizationProducts"
         />
         <ProductSuggestion
             title="Similar Items"
-            :products="getSimillarProducts"
+            :products="SimillarProducts"
         />
         <ProductSuggestion
             title="Complete The Look"
-            :products="CTLProducts"
+            :products="CTLProduct"
         />
     </div>
 </template>
@@ -430,7 +463,7 @@ import gql from 'graphql-tag'
 
 const GET_PERSONALIZATION_PRODUCTS = gql `
     query GET_PERSONALIZATION_PRODUCTS {
-        getPersonalizationProducts {
+        PersonalizationProducts {
             sku
             similarityScore
             reviewsCount
@@ -444,9 +477,8 @@ const GET_PERSONALIZATION_PRODUCTS = gql `
 `
 const GET_SIMILLAR_PRODUCTS = gql `
     query GET_SIMILLAR_PRODUCTS {
-        getSimillarProducts {
+        SimillarProducts {
             sku
-            similarityScore
             reviewsCount
             reviewsAverage
             price
@@ -458,7 +490,7 @@ const GET_SIMILLAR_PRODUCTS = gql `
 `
 const GET_CTL_PRODUCTS = gql `
     query GET_CTL_PRODUCTS {
-        getCTLProducts {
+        CTLProducts {
             ads {
                 sku
                 similarityScore
@@ -478,15 +510,15 @@ export default {
         ProductSuggestion,
     },
     apollo: {
-        getPersonalizationProducts: {
+        PersonalizationProducts: {
             query: GET_PERSONALIZATION_PRODUCTS,
             prefetch: true,
         },
-        getSimillarProducts: {
+        SimillarProducts: {
             query: GET_SIMILLAR_PRODUCTS,
             prefetch: true,
         },
-        getCTLProducts: {
+        CTLProducts: {
             query: GET_CTL_PRODUCTS,
             prefetch: true,
         },
@@ -494,7 +526,19 @@ export default {
     data() {
         return {
             callUs: false,
-            CTLProducts: [],
+            added: false,
+            quantity: 1,
+            quantities: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            CTLProduct: [],
+            bedSize: [
+                { title: 'Twin', value: 'twin' },
+                { title: 'Full', value: 'full' },
+            ],
+            setSize: [
+                { title: '2-Piece Set', value: '2-piece' },
+                { title: '4-Piece Set', value: '4-piece' }, 
+                { title: 'Build Your Own', value: 'build-own' }, 
+            ],
             productImage: "https://cdn.1stopbedrooms.com/media/catalog/product/cache/1/image/440x/cc0ec2d91bc4dd8becc1b9167d5c2be1/l/e/lettner-light-gray-youth-storage-sleigh-bedroom-set_qb13271770_4.jpg",
             links: [
                 {
@@ -511,6 +555,11 @@ export default {
                     text: 'Bedroom Sets',
                     disabled: false,
                     href: '/bedroom/bedroom-sets',
+                },
+                {
+                    text: 'Sku: B733-183-52S-53-ROOM',
+                    disabled: true,
+                    href: '/bedroom/bedroom-sets/a',
                 },
             ],
             cards: [
@@ -590,12 +639,13 @@ export default {
                     name: 'Ottomans',
                 },
             ],
+            info: ['Discription', 'Weight & Dimention', 'Specifications', 'Brand', 'Reviews', 'Shipping']
         }
     },
     mounted() {
-        this.getCTLProducts.forEach(product => {
+        this.CTLProducts.forEach(product => {
             product.ads.forEach(element => {
-                this.CTLProducts.push(element)
+                this.CTLProduct.push(element)
             });
         })
     }

@@ -10,10 +10,10 @@
             </v-col>
 
             <!-- links -->
-            <v-col>
-                <p class="headline">Get to Know Us</p>
+            <v-col v-for="(item, i) in FooterLinks" :key="i">
+                <p class="headline">{{ item.title }}</p>
                 <div
-                    v-for="(item, i) in footerLinks.knowUs"
+                    v-for="(item, i) in item.links"
                     :key="i"
                     class="my-1"
                 >
@@ -24,27 +24,7 @@
                             font-weight-light
                             secondary--text
                         "
-                        >{{ item.title }}</nuxt-link
-                    >
-                </div>
-            </v-col>
-
-            <!-- links -->
-            <v-col>
-                <p class="headline">Customer Service</p>
-                <div
-                    v-for="(item, i) in footerLinks.customerService"
-                    :key="i"
-                    class="my-1"
-                >
-                    <nuxt-link
-                        :to="item.link"
-                        class="
-                            text-decoration-none
-                            font-weight-light
-                            secondary--text
-                        "
-                        >{{ item.title }}</nuxt-link
+                        >{{ item.linkTitle }}</nuxt-link
                     >
                 </div>
             </v-col>
@@ -52,7 +32,11 @@
             <!-- buttons -->
             <v-col>
                 <p class="headline">Contact Us</p>
-                <v-btn color="primary" class="mt-5 px-16" large
+                <v-btn 
+                    color="primary" 
+                    class="mt-5 px-16" 
+                    large
+                    to="/contact-us"
                     ><v-icon class="mr-2">mdi-message-processing</v-icon> Message
                 </v-btn>
                 <v-btn
@@ -87,40 +71,29 @@
 </template>
 
 <script>
+import gql from 'graphql-tag'
+
+const GET_FOOTER_LINKS = gql `
+    query GET_FOOTER_LINKS {
+        FooterLinks {
+            title
+            links {
+                linkTitle
+                link
+            }
+        }
+    }
+`
+
 export default {
+    apollo: {
+        FooterLinks: {
+            query: GET_FOOTER_LINKS,
+            prefetch: true,
+        },
+    },
     data() {
         return {
-            footerLinks: {
-                knowUs: [
-                    { title: 'About Us', link: 'about-us' },
-                    { title: 'The 1Stop Advantage', link: 'advantages' },
-                    {
-                        title: 'Sell on 1StopBedrooms',
-                        link: 'sell-on-1stepbedrooms',
-                    },
-                    { title: 'Careers', link: 'careers' },
-                    {
-                        title: 'Social Responsibility',
-                        link: 'social-responsibility',
-                    },
-                    { title: 'Reviews', link: 'reviews' },
-                    { title: 'A Note on COVID-19', link: 'covid-19' },
-                ],
-                customerService: [
-                    { title: 'My Account', link: 'my-account' },
-                    { title: 'My Orders', link: 'my-orders' },
-                    { title: 'Track My Order', link: 'track-my-orders' },
-                    { title: 'Help Center', link: 'help-center' },
-                    { title: 'Return Policy', link: 'return-policy' },
-                    {
-                        title: 'Shipping & Delivery',
-                        link: 'shipping-n-delivery',
-                    },
-                    { title: 'Coupons', link: 'coupons' },
-                    { title: 'Price Match', link: 'price-match' },
-                    { title: 'Financing', link: 'financing' },
-                ],
-            },
             icons: [
                 'mdi-facebook',
                 'mdi-instagram',

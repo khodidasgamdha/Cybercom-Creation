@@ -28,7 +28,7 @@
                         <v-checkbox
                             v-model="item.typeValue"
                             :label="item.title"
-                            @click="query(filterProduct, index)"
+                            @click="query(filterProduct)"
                             class="my-n2"
                         ></v-checkbox>
                     </div>
@@ -44,7 +44,7 @@ export default {
     data() {
         return {
             panel: [0, 1, 2, 3, 4, 5, 6],
-            queryObj: [],
+            queryObj: {},
             params: [],
             filters: [
                 {
@@ -198,11 +198,12 @@ export default {
         }
     },
     methods: {
-        query(filter, i) {
+        query(filter) {
             const arr = filter.types.filter((val) => {
                 return val.typeValue === true
             })
             this.queryObj[filter.myKey] = arr.map((val) => val.id)
+            console.log(this.queryObj);
             this.$router.push({ query: this.queryObj })
         },
     },
