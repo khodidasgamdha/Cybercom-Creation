@@ -38,6 +38,11 @@ const GET_SALE_PRODUCTS = gql `
 `
 
 export default {
+    head() {
+        return {
+            title: '1StopBedrooms | Buy Bedroom Furniture Sets | Free Delivery'
+        }
+    },
     components: { 
         Carousal, 
         ImageSlider, 

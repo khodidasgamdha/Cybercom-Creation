@@ -110,6 +110,11 @@
 <script>
 export default {
     layout: 'login',
+    head() {
+        return {
+            title: 'Customer Login'
+        }
+    },
     data() {
         return {
             show1: false,

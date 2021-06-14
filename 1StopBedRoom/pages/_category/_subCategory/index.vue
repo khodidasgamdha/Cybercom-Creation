@@ -21,6 +21,11 @@ import Filters from '~/components/SubCategory/Filters'
 import ProductCards from '~/components/SubCategory/ProductCards'
 
 export default {
+    head() {
+        return {
+            title: 'Ideal Bedroom Sets to Choose for 2021 at 1StopBedrooms'
+        }
+    },
     components: { Filters, ProductCards },
     data() {
         return {

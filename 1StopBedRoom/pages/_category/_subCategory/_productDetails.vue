@@ -462,8 +462,8 @@ import ProductSuggestion from '~/components/ProductDetails/ProductSuggestion'
 import gql from 'graphql-tag'
 
 const GET_PERSONALIZATION_PRODUCTS = gql `
-    query GET_PERSONALIZATION_PRODUCTS {
-        PersonalizationProducts {
+    query GET_PERSONALIZATION_PRODUCTS($webId: String!) {
+        PersonalizationProducts(webId: $webId) {
             sku
             similarityScore
             reviewsCount
@@ -476,8 +476,8 @@ const GET_PERSONALIZATION_PRODUCTS = gql `
     }
 `
 const GET_SIMILLAR_PRODUCTS = gql `
-    query GET_SIMILLAR_PRODUCTS {
-        SimillarProducts {
+    query GET_SIMILLAR_PRODUCTS($webId: String!) {
+        SimillarProducts(webId: $webId) {
             sku
             reviewsCount
             reviewsAverage
@@ -489,8 +489,8 @@ const GET_SIMILLAR_PRODUCTS = gql `
     },
 `
 const GET_CTL_PRODUCTS = gql `
-    query GET_CTL_PRODUCTS {
-        CTLProducts {
+    query GET_CTL_PRODUCTS($webId: String!) {
+        CTLProducts(webId: $webId) {
             ads {
                 sku
                 similarityScore
@@ -506,6 +506,11 @@ const GET_CTL_PRODUCTS = gql `
 `
 
 export default {
+    head() {
+        return {
+            title: 'Lettner Light Gray Youth Storage Sleigh Bedroom Set - 1StopBedrooms'
+        }
+    },
     components: {
         ProductSuggestion,
     },
@@ -513,14 +518,29 @@ export default {
         PersonalizationProducts: {
             query: GET_PERSONALIZATION_PRODUCTS,
             prefetch: true,
+            variables() {
+                return {
+                    webId: "qb13271770"
+                }
+            }
         },
         SimillarProducts: {
             query: GET_SIMILLAR_PRODUCTS,
             prefetch: true,
+            variables() {
+                return {
+                    webId: "qb13271770"
+                }
+            }
         },
         CTLProducts: {
             query: GET_CTL_PRODUCTS,
             prefetch: true,
+            variables() {
+                return {
+                    webId: "qb13271770"
+                }
+            }
         },
     },
     data() {

@@ -24,8 +24,8 @@ import SideBar from '~/components/Category/SideBar'
 import gql from 'graphql-tag'
 
 const CATEGORY_PRODUCTS = gql`
-    query CATEGORY_PRODUCTS {
-        Category(type: "living") {
+    query CATEGORY_PRODUCTS($category: String!) {
+        Category(type: $category) {
             title
             productLinks {
                 linkTitle
@@ -41,10 +41,21 @@ const CATEGORY_PRODUCTS = gql`
 `
 
 export default {
+    head() {
+        return {
+            title: 'Bedroom Furniture - 1StopBedrooms'
+        }
+    },
     components: { ProductImage, SideBar },
     apollo: {
         Category: {
             query: CATEGORY_PRODUCTS,
+            prefetch: true,
+            variables() {
+                return {
+                    category: this.$route.params.category || 'bedroom',
+                }
+            },
         },
     },
     data() {

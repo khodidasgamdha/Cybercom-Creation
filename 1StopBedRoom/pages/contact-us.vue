@@ -264,6 +264,11 @@
 import GoogleMap from '~/components/GoogleMap'
 
 export default {
+    head() {
+        return {
+            title: 'Submit a Request - Help Center'
+        }
+    },
     components: { GoogleMap },
     data() {
         return {

@@ -148,8 +148,8 @@
 import gql from 'graphql-tag'
 
 const GET_SIMILLAR_PRODUCTS = gql `
-    query GET_SIMILLAR_PRODUCTS {
-        SimillarProducts {
+    query GET_SIMILLAR_PRODUCTS($webId: String!) {
+        SimillarProducts(webId: $webId) {
             sku
             reviewsCount
             reviewsAverage
@@ -170,6 +170,11 @@ export default {
         SimillarProducts: {
             query: GET_SIMILLAR_PRODUCTS,
             prefetch: true,
+            variables() {
+                return {
+                    webId: "qb13271770"
+                }
+            }
         },
     },
     data() {

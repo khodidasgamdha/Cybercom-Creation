@@ -145,6 +145,11 @@
 <script>
 export default {
     layout: 'login',
+    head() {
+        return {
+            title: 'Create New Customer Account'
+        }
+    },
     data() {
         return {
             show1: false,

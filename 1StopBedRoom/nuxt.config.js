@@ -3,7 +3,7 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - 1StopBedroom',
+    titleTemplate: '%s',
     title: '1StopBedroom',
     meta: [
       { charset: 'utf-8' },
