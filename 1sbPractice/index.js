@@ -118,9 +118,9 @@ const typeDefs = gql`
     }
 
     type Query {
-        PersonalizationProducts: [Product!]!
-        SimillarProducts: [Product!]!
-        CTLProducts: [CTLProduct!]!
+        PersonalizationProducts(webId: String!): [Product!]!
+        SimillarProducts(webId: String!): [Product!]!
+        CTLProducts(webId: String!): [CTLProduct!]!
         SaleProduct: [SaleProduct!]!
         ShopByRoom: [ShopByRoom!]!
         ImageSlider: [ImageSlider!]!
@@ -132,14 +132,14 @@ const typeDefs = gql`
 
 const resolvers = {
     Query: {
-        PersonalizationProducts: async (_, __, { dataSources }) => {
-            return dataSources.countriesAPI.getPersonalizationProducts();
+        PersonalizationProducts: async (_, { webId }, { dataSources }) => {
+            return dataSources.countriesAPI.getPersonalizationProducts(webId);
         },
-        SimillarProducts: async (_, __, { dataSources }) => {
-            return dataSources.countriesAPI.getSimillarProducts();
+        SimillarProducts: async (_, { webId }, { dataSources }) => {
+            return dataSources.countriesAPI.getSimillarProducts(webId);
         },
-        CTLProducts: async (_, __, { dataSources }) => {
-            return dataSources.countriesAPI.getCTLProducts();
+        CTLProducts: async (_, { webId }, { dataSources }) => {
+            return dataSources.countriesAPI.getCTLProducts(webId);
         },
         SaleProduct: () => {
             return saleProducts;
