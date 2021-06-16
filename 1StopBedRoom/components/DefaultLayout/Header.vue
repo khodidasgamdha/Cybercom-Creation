@@ -154,7 +154,7 @@
                         <!-- button -->
                         <template #activator="{ on, attrs }">
                             <v-btn
-                                to="/"
+                                to="/checkout/cart"
                                 text
                                 class="ml-5"
                                 v-on="on"

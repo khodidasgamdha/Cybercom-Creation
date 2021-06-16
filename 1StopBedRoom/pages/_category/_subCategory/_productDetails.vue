@@ -10,12 +10,11 @@
                 <!-- title -->
                 <p class="mb-0">
                     <span class="title"
-                        >Lettner Light Gray Youth Storage Sleigh Bedroom
-                        Set</span
+                        >{{ product.description }}</span
                     >
                     <span>by</span>
                     <n-link class="text-decoration-none font-italic" to="/"
-                        >Ashley</n-link
+                        >{{ product.brand }}</n-link
                     >
                 </p>
 
@@ -28,7 +27,7 @@
                             class="mx-1"
                             color="secondary"
                         ></v-divider>
-                        <span class="body-2">Web ID : QB13271770</span>
+                        <span class="body-2">Web ID : {{ product.sku }}</span>
                     </v-col>
                     
                     <v-col md="auto">
@@ -80,7 +79,7 @@
                                 <span class="body-2 grey--text">Brand:</span>
                             </v-col>
                             <v-col>
-                                <span class="primary--text">Ashley</span>
+                                <span class="primary--text">{{ product.brand }}</span>
                             </v-col>
                         </v-row>
 
@@ -191,7 +190,7 @@
                             Regular Price :
                         </v-col>
                         <v-col md="3">
-                            $619.00
+                            {{ product.originalPrice }}
                         </v-col>
                     </v-row>
 
@@ -201,7 +200,7 @@
                             Your Saving :
                         </v-col>
                         <v-col md="3">
-                            <span class="light-green accent-1 font-weight-bold rounded-xl py-1 px-2">-$33.90</span>
+                            <span class="light-green accent-1 font-weight-bold rounded-xl py-1 px-2">-$200.00</span>
                         </v-col>
                     </v-row>
 
@@ -211,7 +210,7 @@
                     <div class="ml-5">
                         <div class="special-price row my-2">
                             <span class="title black--text ml-2 mr-n3">
-                                $619.00
+                                {{ product.price }}
                             </span>
                             <div id="specialPriceLabel" class="mx-n3"></div>
                         </div>
@@ -256,7 +255,11 @@
                             ></v-text-field>
                         </v-col>
                         <v-col md="auto" class="pb-0">
-                            <v-btn dark class="orange darken-4 body-2 text-capitalize rounded-0 px-12">
+                            <v-btn 
+                                dark 
+                                class="orange darken-4 body-2 text-capitalize rounded-0 px-12"
+                                @click="addToCart(product)"
+                            >
                                     Add to Cart
                             </v-btn>
                         </v-col>
@@ -383,7 +386,7 @@
                     <p class="pl-2 body-2 py-2 grey lighten-3">
                         <v-icon small>mdi-chevron-right</v-icon>
                         <span>1x </span>
-                        <span>Light Gray Twin Storage Sleigh Bed</span>
+                        <span>{{ product.description }}</span>
                     </p>
 
                     <!-- ragular price -->
@@ -392,7 +395,7 @@
                             Total :
                         </v-col>
                         <v-col md="auto">
-                            $619.00
+                            {{ product.originalPrice }}
                         </v-col>
                     </v-row>
 
@@ -402,7 +405,7 @@
                             Saving :
                         </v-col>
                         <v-col md="auto" class="red--text">
-                            -$33.90
+                            -$200.00
                         </v-col>
                     </v-row>
 
@@ -412,7 +415,7 @@
                             Final Price :
                         </v-col>
                         <v-col md="auto">
-                            $585.10
+                            {{ product.price }}
                         </v-col>
                     </v-row>
 
@@ -431,7 +434,11 @@
                             ></v-text-field>
                         </v-col>
                         <v-col md="auto" class="pb-0">
-                            <v-btn dark class="orange darken-4 body-2 text-capitalize rounded-0 px-12">
+                            <v-btn 
+                                dark 
+                                class="orange darken-4 body-2 text-capitalize rounded-0 px-12"
+                                @click="addToCart(product)"
+                            >
                                 Add to Cart
                             </v-btn>
                         </v-col>
@@ -485,6 +492,7 @@ const GET_SIMILLAR_PRODUCTS = gql `
             originalPrice
             imageUrl
             description
+            brand
         }
     },
 `
@@ -549,6 +557,7 @@ export default {
             added: false,
             quantity: 1,
             quantities: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            product: {},
             CTLProduct: [],
             bedSize: [
                 { title: 'Twin', value: 'twin' },
@@ -659,7 +668,17 @@ export default {
                     name: 'Ottomans',
                 },
             ],
-            info: ['Discription', 'Weight & Dimention', 'Specifications', 'Brand', 'Reviews', 'Shipping']
+            info: ['Discription', 'Weight & Dimention', 'Specifications', 'Brand', 'Reviews', 'Shipping'],
+            productInfo: {
+                quantity: 1,
+                product: {
+                    id: "qb1225358",
+                    title: "Lettner Light Gray Sleigh Bedroom Set",
+                    brand: "Signature Design by Ashley",
+                    imageUrl: "https://cdn.1stopbedrooms.com/media/catalog/product/b/7/b733-31-36-46-78-76-99-92_4.jpg",
+                    price: "1366.02",
+                }
+            }
         }
     },
     mounted() {
@@ -668,7 +687,16 @@ export default {
                 this.CTLProduct.push(element)
             });
         })
-    }
+        this.SimillarProducts.forEach(item => {
+            if(item.sku == this.$route.params.productDetails) this.product = item;
+        })
+        console.log(this.product);
+    },
+    methods: {
+        addToCart(product) {
+            this.$store.commit('cart/addToCart', product)
+        },
+    },
 }
 </script>
 
@@ -683,7 +711,7 @@ export default {
 }
 .special-price {
     border: 1px solid red;
-    width: 160px;
+    width: 170px;
 }
 #specialPriceLabel {
     background: url("https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/sprite_v2.png?va8ef6d04") -515px -524px no-repeat;

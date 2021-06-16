@@ -5,6 +5,7 @@
             src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/aboutonestop/images/1SB_partner_with_us.jpg"
             alt=""
             width="100%"
+            class="mb-n2"
         />
 
         <v-layout>

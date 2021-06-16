@@ -26,7 +26,7 @@
                     <v-card max-width="321" height="435" :elevation="hover ? 10 : 2">
                         
                         <!-- image -->
-                        <n-link :to="`/bedroom/bedroom-sets/${product.description}`">
+                        <n-link :to="`/bedroom/bedroom-sets/${product.sku}`">
                             <v-img 
                                 :src="product.imageUrl"
                                 :alt="product.description"
@@ -59,7 +59,7 @@
                         
                         <!-- title -->
                         <v-card flat height="60">
-                            <n-link :to="`/bedroom/bedroom-sets/${product.description}`" class="text-decoration-none black--text">
+                            <n-link :to="`/bedroom/bedroom-sets/${product.sku}`" class="text-decoration-none black--text">
                                 <p :class="hover ? 'primary--text' : 'black-text'" class="mx-2 subtitle-1 mb-1">
                                     {{ product.description }}
                                 </p>
