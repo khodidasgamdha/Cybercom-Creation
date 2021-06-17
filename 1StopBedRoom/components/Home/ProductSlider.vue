@@ -6,7 +6,7 @@
         
         <v-sheet>
             <v-slide-group show-arrows>
-                <v-slide-item v-for="(item, i) in ShopByRoom" :key="i">
+                <v-slide-item v-for="(item, i) in shopByRoom" :key="i">
                     <v-card class="mx-1" height="434" width="275" tile flat>
                         
                         <!-- image -->
@@ -54,7 +54,7 @@ import gql from 'graphql-tag'
 
 const SHOP_BY_ROOM = gql `
     query SHOP_BY_ROOM {
-        ShopByRoom {
+        shopByRoom {
             imgUrl
             title
             subCategory {
@@ -67,7 +67,7 @@ const SHOP_BY_ROOM = gql `
 
 export default {
     apollo: {
-        ShopByRoom: {
+        shopByRoom: {
             query: SHOP_BY_ROOM,
             prefetch: true,
         },

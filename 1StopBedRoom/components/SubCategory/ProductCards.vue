@@ -21,7 +21,7 @@
         </v-row>
 
         <v-row class="mb-5">
-            <v-col v-for="(product, i) in SimillarProducts" :key="i">
+            <v-col v-for="(product, i) in simillarProducts" :key="i">
                 <v-hover v-slot="{ hover }">
                     <v-card max-width="321" height="435" :elevation="hover ? 10 : 2">
                         
@@ -149,7 +149,7 @@ import gql from 'graphql-tag'
 
 const GET_SIMILLAR_PRODUCTS = gql `
     query GET_SIMILLAR_PRODUCTS($webId: String!) {
-        SimillarProducts(webId: $webId) {
+        simillarProducts(webId: $webId) {
             sku
             reviewsCount
             reviewsAverage
@@ -167,7 +167,7 @@ const GET_SIMILLAR_PRODUCTS = gql `
 
 export default {
     apollo: {
-        SimillarProducts: {
+        simillarProducts: {
             query: GET_SIMILLAR_PRODUCTS,
             prefetch: true,
             variables() {
@@ -186,10 +186,10 @@ export default {
     methods: {
         sortProducts(type) {
             if (type === 'Price:Low-High') {
-                this.SimillarProducts.sort((a, b) => a.price < b.price ? -1 : 1)
+                this.simillarProducts.sort((a, b) => a.price < b.price ? -1 : 1)
             }
             if (type === 'Price:High-Low') {
-                this.SimillarProducts.sort((a, b) => a.price > b.price ? -1 : 1)
+                this.simillarProducts.sort((a, b) => a.price > b.price ? -1 : 1)
             }
         },
     },

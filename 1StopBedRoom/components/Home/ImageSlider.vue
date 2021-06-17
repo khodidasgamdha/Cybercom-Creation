@@ -2,7 +2,7 @@
 <template>
     <v-sheet class="mx-auto mx-5">
         <v-slide-group show-arrows>
-            <v-slide-item v-for="(item, i) in ImageSlider" :key="i">
+            <v-slide-item v-for="(item, i) in imageSlider" :key="i">
                 <v-card class="ma-4" tile flat width="110">
                     <n-link :to="item.link">
                         <v-img
@@ -25,7 +25,7 @@ import gql from 'graphql-tag'
 
 const IMAGE_SLIDER = gql`
     query IMAGE_SLIDER {
-        ImageSlider {
+        imageSlider {
             imgUrl
             alt
             name
@@ -36,7 +36,7 @@ const IMAGE_SLIDER = gql`
 
 export default {
     apollo: {
-        ImageSlider: {
+        imageSlider: {
             query: IMAGE_SLIDER,
             prefetch: true,
         },

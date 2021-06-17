@@ -249,7 +249,7 @@
                         </v-col>
                         <v-col md="2" class="pb-0">
                             <v-text-field
-                                label="1"
+                                v-model="productQuantity"
                                 dense
                                 outlined
                             ></v-text-field>
@@ -258,7 +258,7 @@
                             <v-btn 
                                 dark 
                                 class="orange darken-4 body-2 text-capitalize rounded-0 px-12"
-                                @click="addToCart(product)"
+                                @click="addToCart(product, productQuantity)"
                             >
                                     Add to Cart
                             </v-btn>
@@ -428,7 +428,7 @@
                         </v-col>
                         <v-col md="2" class="pb-0">
                             <v-text-field
-                                label="1"
+                                v-model="productQuantity"
                                 dense
                                 outlined
                             ></v-text-field>
@@ -437,7 +437,7 @@
                             <v-btn 
                                 dark 
                                 class="orange darken-4 body-2 text-capitalize rounded-0 px-12"
-                                @click="addToCart(product)"
+                                @click="addToCart(product, product, productQuantity)"
                             >
                                 Add to Cart
                             </v-btn>
@@ -451,11 +451,11 @@
 
         <ProductSuggestion
             title="You May Also Like"
-            :products="PersonalizationProducts"
+            :products="personalizationProducts"
         />
         <ProductSuggestion
             title="Similar Items"
-            :products="SimillarProducts"
+            :products="simillarProducts"
         />
         <ProductSuggestion
             title="Complete The Look"
@@ -470,7 +470,7 @@ import gql from 'graphql-tag'
 
 const GET_PERSONALIZATION_PRODUCTS = gql `
     query GET_PERSONALIZATION_PRODUCTS($webId: String!) {
-        PersonalizationProducts(webId: $webId) {
+        personalizationProducts(webId: $webId) {
             sku
             similarityScore
             reviewsCount
@@ -484,7 +484,7 @@ const GET_PERSONALIZATION_PRODUCTS = gql `
 `
 const GET_SIMILLAR_PRODUCTS = gql `
     query GET_SIMILLAR_PRODUCTS($webId: String!) {
-        SimillarProducts(webId: $webId) {
+        simillarProducts(webId: $webId) {
             sku
             reviewsCount
             reviewsAverage
@@ -523,7 +523,7 @@ export default {
         ProductSuggestion,
     },
     apollo: {
-        PersonalizationProducts: {
+        personalizationProducts: {
             query: GET_PERSONALIZATION_PRODUCTS,
             prefetch: true,
             variables() {
@@ -532,7 +532,7 @@ export default {
                 }
             }
         },
-        SimillarProducts: {
+        simillarProducts: {
             query: GET_SIMILLAR_PRODUCTS,
             prefetch: true,
             variables() {
@@ -557,6 +557,7 @@ export default {
             added: false,
             quantity: 1,
             quantities: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            productQuantity: 1,
             product: {},
             CTLProduct: [],
             bedSize: [
@@ -669,16 +670,6 @@ export default {
                 },
             ],
             info: ['Discription', 'Weight & Dimention', 'Specifications', 'Brand', 'Reviews', 'Shipping'],
-            productInfo: {
-                quantity: 1,
-                product: {
-                    id: "qb1225358",
-                    title: "Lettner Light Gray Sleigh Bedroom Set",
-                    brand: "Signature Design by Ashley",
-                    imageUrl: "https://cdn.1stopbedrooms.com/media/catalog/product/b/7/b733-31-36-46-78-76-99-92_4.jpg",
-                    price: "1366.02",
-                }
-            }
         }
     },
     mounted() {
@@ -687,14 +678,13 @@ export default {
                 this.CTLProduct.push(element)
             });
         })
-        this.SimillarProducts.forEach(item => {
+        this.simillarProducts.forEach(item => {
             if(item.sku == this.$route.params.productDetails) this.product = item;
         })
-        console.log(this.product);
     },
     methods: {
-        addToCart(product) {
-            this.$store.commit('cart/addToCart', product)
+        addToCart(product, quantity) {
+            this.$store.commit('cart/addToCart', { product, quantity })
         },
     },
 }

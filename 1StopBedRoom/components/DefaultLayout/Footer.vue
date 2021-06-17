@@ -10,7 +10,7 @@
             </v-col>
 
             <!-- links -->
-            <v-col v-for="(item, i) in FooterLinks" :key="i">
+            <v-col v-for="(item, i) in footerLinks" :key="i">
                 <p class="headline">{{ item.title }}</p>
                 <div
                     v-for="(item, i) in item.links"
@@ -75,7 +75,7 @@ import gql from 'graphql-tag'
 
 const GET_FOOTER_LINKS = gql `
     query GET_FOOTER_LINKS {
-        FooterLinks {
+        footerLinks {
             title
             links {
                 linkTitle
@@ -87,7 +87,7 @@ const GET_FOOTER_LINKS = gql `
 
 export default {
     apollo: {
-        FooterLinks: {
+        footerLinks: {
             query: GET_FOOTER_LINKS,
             prefetch: true,
         },

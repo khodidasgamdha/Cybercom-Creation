@@ -5,65 +5,28 @@ export const state = () => ({
 })
 
 export const mutations = {
-  addToCart(state, product) {
+  addToCart(state, { product, quantity }) {
+    const qntty = parseInt(quantity)
     let productInCart = state.cartItems.find((item) => {
       return item.product.sku === product.sku
     })
 
     if (productInCart) {
-      productInCart.quantity++
+      productInCart.quantity += qntty;
     } else {
       state.cartItems.push({
         product,
-        quantity: 1,
+        quantity: qntty
       })
     }
-
-    // Vue.notify({
-    //   group: 'notify',
-    //   type: 'success',
-    //   title: 'Added',
-    //   duration: 5000,
-    //   heigth: 100,
-    //   text: 'Product Added in Cart Successfully !!',
-    // })
   },
 
-  decrementQuantity(state, product) {
-    let productInCart = state.cartItems.find((item) => {
-      return item.product.id === product.id
-    })
-
-    if (productInCart.quantity > 1) {
-      productInCart.quantity--
-    } else {
-      state.cartItems = state.cartItems.filter((item) => {
-        return item.product.id !== product.id
-      })
-    }
-    // Vue.notify({
-    //   group: 'notify',
-    //   type: 'warn',
-    //   title: 'Removed',
-    //   duration: 2000,
-    //   heigth: 100,
-    //   text: 'Product Removed from Cart Successfully !!',
-    // })
+  changeQuantity(state, { product, quantity }) {
+    product.quantity = quantity;
   },
 
   removeItem(state, product) {
-    state.cartItems = state.cartItems.filter((item) => {
-      console.log(product.product.price.split("$")[1]);
-      return item.product.sku !== product.product.sku
-    })
-    // Vue.notify({
-    //   group: 'notify',
-    //   type: 'warn',
-    //   title: 'Removed',
-    //   duration: 2000,
-    //   heigth: 100,
-    //   text: 'Product Removed from Cart Successfully !!',
-    // })
+    state.cartItems.splice(product.product.sku, 1)
   },
 }
 

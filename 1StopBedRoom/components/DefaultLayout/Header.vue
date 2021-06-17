@@ -160,18 +160,172 @@
                                 v-on="on"
                                 v-bind="attrs"
                             >
-                                <v-icon color="white" large>mdi-cart</v-icon>
+                                <v-badge 
+                                    color="orange darken-3" 
+                                    v-if="cartQuantities" 
+                                    overlap 
+                                    :content="cartQuantities"
+                                >
+                                    <v-icon color="white" large>
+                                        mdi-cart
+                                    </v-icon>
+                                </v-badge>
+                                <v-icon v-else color="white" large>
+                                        mdi-cart
+                                </v-icon>
                                 <span class="white--text text-capitalize ml-2"
                                     >Cart</span
                                 >
                             </v-btn>
                         </template>
 
-                        <v-card flat width="400" class="pa-3">
+                        <!-- if cart empty -->
+                        <v-card
+                            v-if="cartItems.length == 0"
+                            flat
+                            width="400"
+                            class="pa-3 rounded-0"
+                            style="border: 1px solid black"
+                        >
                             <p>RECENTLY ADDED ITEM(S)</p>
                             <p class="mb-0">
                                 You have no items in your shopping cart.
                             </p>
+                        </v-card>
+
+                        <!-- if cart not empty -->
+                        <v-card
+                            v-else
+                            class="rounded-0"
+                            flat
+                            width="410"
+                            style="border: 1px solid black"
+                        >
+                            <!-- cart number -->
+                            <p class="mb-0 grey lighten-2 pl-4 py-1">
+                                <span class="indigo--text"
+                                    >Your Cart Number:</span
+                                >
+                                <span class="orange--text">123456</span>
+                            </p>
+                            <p class="ml-4 mt-2 mb-0">RECENTLY ADDED ITEM(S)</p>
+
+                            <!-- products -->
+                            <v-list
+                                class="overflow-y-auto ml-4"
+                                max-height="400"
+                            >
+                                <div v-for="(item, i) in cartItems" :key="i">
+                                    <v-row>
+                                        <!-- image -->
+                                        <v-col cols="2">
+                                            <n-link
+                                                :to="`/bedroom/bedroom-sets/${item.product.sku}`"
+                                            >
+                                                <img
+                                                    :src="item.product.imageUrl"
+                                                    :alt="item.product.description"
+                                                    width="50"
+                                                />
+                                            </n-link>
+                                        </v-col>
+
+                                        <!-- title, items, delete, quantity -->
+                                        <v-col cols="7">
+                                            <n-link
+                                                :to="`/bedroom/bedroom-sets/${item.product.sku}`"
+                                                class="text-decoration-none"
+                                            >
+                                                <p
+                                                    class="
+                                                        caption
+                                                        mb-0
+                                                        indigo--text
+                                                    "
+                                                >
+                                                    {{ item.product.description }}
+                                                </p>
+                                            </n-link>
+                                            <v-row class="mb-n8">
+                                                <v-col cols="auto">
+                                                    <span class="caption">Qty: </span>
+                                                </v-col>
+                                                <v-col cols="3">
+                                                    <v-text-field
+                                                        :value="item.quantity"
+                                                        dense
+                                                        outlined
+                                                    ></v-text-field>
+                                                </v-col>
+                                                <v-col>
+                                                    <v-icon @click="removeItem(item)"
+                                                        >mdi-delete</v-icon
+                                                    >
+                                                </v-col>
+                                            </v-row>
+                                            <p class="mb-0 caption">
+                                                <span>{{ item.quantity }}x</span>
+                                                <span>{{ item.product.description }}</span>
+                                            </p>
+                                        </v-col>
+
+                                        <!-- price -->
+                                        <v-col cols="3">
+                                            <p class="caption font-weight-bold">
+                                                {{ item.product.price }}
+                                            </p>
+                                        </v-col>
+                                    </v-row>
+                                    <v-divider
+                                        v-if="cartItems.length != i + 1"
+                                        class="my-2 mr-2"
+                                    ></v-divider>
+                                </div>
+                            </v-list>
+
+                            <!-- total -->
+                            <p
+                                class="
+                                    mb-0
+                                    indigo--text
+                                    grey
+                                    lighten-2
+                                    pl-4
+                                    py-1
+                                "
+                            >
+                                CART SUB TOTAL: ${{ cartTotal }}
+                            </p>
+
+                            <!-- view cart & checkout button -->
+                            <v-row class="mx-2 my-1">
+                                <v-col cols="6">
+                                    <v-btn
+                                        class="text-capitalize rounded-0"
+                                        outlined
+                                        block
+                                        color="primary"
+                                        to="/checkout/cart"
+                                    >
+                                        View Cart
+                                    </v-btn>
+                                </v-col>
+                                <v-col cols="6">
+                                    <v-btn
+                                        class="
+                                            text-capitalize
+                                            orange
+                                            darken-4
+                                            rounded-0
+                                        "
+                                        dark
+                                        block
+                                        to="/onepage"
+                                    >
+                                        Checkout
+                                    </v-btn>
+                                </v-col>
+                            </v-row>
                         </v-card>
                     </v-menu>
                 </div>
@@ -179,8 +333,8 @@
         </v-row>
 
         <!-- 3rd header -->
-        <v-app-bar color="thirdHeader" class="px-8" height="45">
-            <div v-for="(link, index) in NavbarLinks" :key="index">
+        <v-app-bar class="px-8 thirdHeader" height="45">
+            <div v-for="(link, index) in navbarLinks" :key="index">
                 <v-menu rounded="0" open-on-hover offset-y>
                     <!-- main links -->
                     <template #activator="{ on, attrs }">
@@ -203,7 +357,9 @@
 
                     <!-- sublinks -->
                     <v-card
-                        :max-width="link.subCategoryLinks.length > 10 ? 750 : 500"
+                        :max-width="
+                            link.subCategoryLinks.length > 10 ? 750 : 500
+                        "
                         flat
                     >
                         <v-row class="mb-0">
@@ -211,9 +367,15 @@
                             <v-col>
                                 <v-row no-gutters>
                                     <v-col
-                                        v-for="(item, i) in link.subCategoryLinks"
+                                        v-for="(
+                                            item, i
+                                        ) in link.subCategoryLinks"
                                         :key="i"
-                                        :md="link.subCategoryLinks.length > 10 ? '6' : '12'"
+                                        :md="
+                                            link.subCategoryLinks.length > 10
+                                                ? '6'
+                                                : '12'
+                                        "
                                     >
                                         <v-btn text tile>
                                             <nuxt-link
@@ -233,7 +395,11 @@
 
                             <!-- image -->
                             <v-col
-                                :md="link.subCategoryLinks.length > 10 ? '4' : '6'"
+                                :md="
+                                    link.subCategoryLinks.length > 10
+                                        ? '4'
+                                        : '6'
+                                "
                             >
                                 <v-card
                                     flat
@@ -246,7 +412,6 @@
                                 </v-card>
                             </v-col>
                         </v-row>
-                        
                     </v-card>
                 </v-menu>
             </div>
@@ -286,11 +451,12 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex'
 import gql from 'graphql-tag'
 
 const GET_NAVBAR_LINKS = gql`
     query GET_NAVBAR_LINKS {
-        NavbarLinks {
+        navbarLinks {
             linkTitle
             link
             image
@@ -305,7 +471,7 @@ const GET_NAVBAR_LINKS = gql`
 
 export default {
     apollo: {
-        NavbarLinks: {
+        navbarLinks: {
             query: GET_NAVBAR_LINKS,
             prefetch: true,
         },
@@ -332,6 +498,10 @@ export default {
             ],
         }
     },
+    computed: mapGetters('cart', ['cartItems', 'cartQuantities', 'cartTotal']),
+    methods: {
+        ...mapMutations('cart', ['removeItem']),
+    },
 }
 </script>
 <style scoped>
@@ -341,7 +511,7 @@ export default {
 a {
     color: white;
 }
-a:hover {
+.thirdHeader a:hover {
     color: #003980;
 }
 .secondHeader {

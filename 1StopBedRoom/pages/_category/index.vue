@@ -6,12 +6,12 @@
         <!-- sidebar and products -->
         <v-layout no-gutters justify-space-around>
             <v-flex md2>
-                <SideBar :productLinks="Category.productLinks" />
+                <SideBar :productLinks="category.productLinks" />
             </v-flex>
             <v-flex md9>
                 <ProductImage
-                    :images="Category.img"
-                    :categories="Category.category"
+                    :images="category.img"
+                    :categories="category.category"
                 />
             </v-flex>
         </v-layout>
@@ -25,7 +25,7 @@ import gql from 'graphql-tag'
 
 const CATEGORY_PRODUCTS = gql`
     query CATEGORY_PRODUCTS($category: String!) {
-        Category(type: $category) {
+        category(type: $category) {
             title
             productLinks {
                 linkTitle
@@ -48,7 +48,7 @@ export default {
     },
     components: { ProductImage, SideBar },
     apollo: {
-        Category: {
+        category: {
             query: CATEGORY_PRODUCTS,
             prefetch: true,
             variables() {

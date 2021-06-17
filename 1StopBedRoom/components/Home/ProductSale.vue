@@ -73,8 +73,6 @@
 <script>
 export default {
     props: {
-        // cardData: { type: Array, default: null },
-        // title: { type: String, default: null },
         products: { type: Object, requires: true }
     },
 }

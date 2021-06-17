@@ -6,7 +6,7 @@
         <Features />
         <ProductSlider />
         <ProductSet />
-        <div v-for="(products, i) in SaleProduct" :key="i">
+        <div v-for="(products, i) in saleProduct" :key="i">
             <ProductSale :products="products" />
         </div>
     </div>
@@ -23,7 +23,7 @@ import gql from 'graphql-tag'
 
 const GET_SALE_PRODUCTS = gql `
     query GET_SALE_PRODUCTS {
-        SaleProduct {
+        saleProduct {
             title
             key
 	        products {
@@ -52,7 +52,7 @@ export default {
         ProductSale, 
     },
     apollo: {
-        SaleProduct: {
+        saleProduct: {
             query: GET_SALE_PRODUCTS,
             prefetch: true,
         },
