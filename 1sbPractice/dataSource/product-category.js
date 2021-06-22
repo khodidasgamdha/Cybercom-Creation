@@ -1,4 +1,4 @@
-module.exports = [
+const categoty = [
     {
         title: "bedroom",
         productLinks: [
@@ -205,3 +205,5 @@ module.exports = [
         ],
     },
 ];
+
+module.exports = categoty;

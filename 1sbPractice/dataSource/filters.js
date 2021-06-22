@@ -1,4 +1,4 @@
-module.exports = [
+const filters = [
     {
         title: "Product Types",
         key: "product_type",
@@ -147,3 +147,5 @@ module.exports = [
         ],
     },
 ];
+
+module.exports = filters;

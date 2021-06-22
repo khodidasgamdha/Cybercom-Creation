@@ -6,6 +6,7 @@ const imageSlider = require("./dataSource/Home/image-slider");
 const navbarLinks = require("./dataSource/Home/navbar-link");
 const footerLinks = require("./dataSource/Home/footer-link");
 const category = require("./dataSource/product-category");
+const policy = require("./dataSource/policy");
 
 const typeDefs = gql`
     type Product {
@@ -117,48 +118,105 @@ const typeDefs = gql`
         name: String
     }
 
+    type Policy {
+        pageInfo: PageInfo
+        content: Content
+        design: Design
+        metaData: MetaData
+    }
+
+    type PageInfo {
+        pageTitle: String
+        url: String
+        status: Boolean
+    }
+
+    type Content {
+        contentHeading: String
+        contentDetails: String
+    }
+
+    type Design {
+        layout: String
+        layout_update_xml: Reference
+    }
+
+    type Reference {
+        reference: [References]
+    }
+
+    type References {
+        action: Action
+        block: Block
+    }
+
+    type Action {
+        type: String
+        name: String
+    }
+
+    type Block {
+        action: BlockAction
+    }
+
+    type BlockAction {
+        block_id: String
+    }
+
+    type MetaData {
+        keywords: String
+        description: String
+    }
+
     type Query {
-        PersonalizationProducts(webId: String!): [Product!]!
-        SimillarProducts(webId: String!): [Product!]!
+        personalizationProducts(webId: String!): [Product!]!
+        simillarProducts(webId: String!): [Product!]!
         CTLProducts(webId: String!): [CTLProduct!]!
-        SaleProduct: [SaleProduct!]!
-        ShopByRoom: [ShopByRoom!]!
-        ImageSlider: [ImageSlider!]!
-        NavbarLinks: [NavbarLinks!]!
-        FooterLinks: [FooterLinks!]!
-        Category(type: String!): Category!
+        saleProduct: [SaleProduct!]!
+        shopByRoom: [ShopByRoom!]!
+        imageSlider: [ImageSlider!]!
+        navbarLinks: [NavbarLinks!]!
+        footerLinks: [FooterLinks!]!
+        category(type: String!): Category!
+        policy(url: String!): Policy
     }
 `;
 
 const resolvers = {
     Query: {
-        PersonalizationProducts: async (_, { webId }, { dataSources }) => {
+        personalizationProducts: async (_, { webId }, { dataSources }) => {
             return dataSources.countriesAPI.getPersonalizationProducts(webId);
         },
-        SimillarProducts: async (_, { webId }, { dataSources }) => {
+        simillarProducts: async (_, { webId }, { dataSources }) => {
             return dataSources.countriesAPI.getSimillarProducts(webId);
         },
         CTLProducts: async (_, { webId }, { dataSources }) => {
             return dataSources.countriesAPI.getCTLProducts(webId);
         },
-        SaleProduct: () => {
+        saleProduct: () => {
             return saleProducts;
         },
-        ShopByRoom: () => {
+        shopByRoom: () => {
             return shopByRoom;
         },
-        ImageSlider: () => {
+        imageSlider: () => {
             return imageSlider;
         },
-        NavbarLinks: () => {
+        navbarLinks: () => {
             return navbarLinks;
         },
-        FooterLinks: () => {
+        footerLinks: () => {
             return footerLinks;
         },
-        Category: (_, { type }) => {
+        category: (_, { type }) => {
             const result = category.find((cat) => {
                 return cat.title === type;
+            });
+            return result;
+        },
+        policy: (_, { url }) => {
+            const result = policy.find((item) => {
+                return item.pageInfo.url === url;
             });
             return result;
         },
