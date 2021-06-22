@@ -30,9 +30,9 @@ export default {
 .std {
     background: #f5f5f5;
     padding: 0 20px 30px;
-    /* float: left; */
+    float: left;
     width: 100%;
-    /* position: relative; */
+    position: relative;
     margin-bottom: 25px;
     min-height: 750px;
 }
@@ -520,6 +520,185 @@ select {
     width: 7px;
     height: 15px;
     background: url(https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/infographic_arrow.png?v521fb1dc) 0 0 no-repeat;
+}
+
+/* delivery option */
+.col1-layout div.col-main {
+    padding: 0;
+    margin: 0;
+}
+.free-white-main .sp-cnt {
+    float: left;
+    width: 100%;
+}
+.free-white-main .sp-main-cnt {
+    width: 100%;
+    float: left;
+    margin-bottom: 20px;
+}
+.free-white-main .sp-main-cnt .sp-cnt-lft {
+    float: left;
+    width: 59%;
+    margin-right: 1%;
+    padding: 0;
+    margin-top: 12px;
+    background: #f8f9fb;
+}
+.free-white-main .left-half {
+    width: 50%;
+    float: left;
+    padding-right: 0;
+    position: relative;
+}
+.free-white-main h1 {
+    font-weight: 700;
+    font-size: 16px;
+    background: #454545;
+    color: #fff;
+    line-height: 18px;
+    padding: 10px;
+    text-align: center;
+    min-height: 57px;
+}
+.free-white-main .left-half .top-title {
+    position: relative;
+    padding-top: 20px;
+}
+.free-white-main .sp-main-cnt .sp-cnt-lft .left-half h3 {
+    text-align: center;
+    background: #e7eaed;
+    line-height: 30px;
+}
+.free-white-main .sp-main-cnt .sp-cnt-lft ul {
+    padding: 15px 9px;
+    background: none;
+}
+.free-white-main .sp-main-cnt .sp-cnt-lft ul li {
+    font-size: 15px;
+    color: #222;
+    font-weight: 600;
+    list-style: none;
+    margin: 0 0 6px;
+    padding: 0 0 6px 15px;
+    background: url(https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/dot_img.png?vfe367883) 0 8px no-repeat;
+}
+.free-white-main .left-half .top-title:after {
+    position: absolute;
+    top: 50%;
+    z-index: 9;
+    right: -22.5px;
+    background: url(https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/vs_icon_v3.png?v77bd980f) 0 0 no-repeat;
+    width: 45px;
+    height: 45px;
+    content: "";
+    margin-top: -22px;
+}
+.free-white-main .left-half:last-child {
+    width: 50%;
+    float: right;
+    background: #e5e6e8;
+    min-height: 425px;
+}
+.free-white-main .sp-main-cnt .sp-cnt-lft ul li label {
+    font-size: 14px;
+    line-height: normal;
+    padding-top: 2px;
+    color: #001733;
+    font-weight: 500;
+}
+.free-white-main .sp-cnt .sp-main-cnt .sp-cnt-lft p {
+    margin: 0;
+    padding: 0 15px;
+    line-height: normal;
+    font-size: 14px;
+    font-weight: 400;
+}
+.free-white-main .sp-main-cnt .sp-cnt-rgt {
+    float: left;
+    width: 40%;
+    text-align: center;
+}
+.free-white-main .sp-cnt-rgt h4.main-ttl {
+    text-align: center;
+    margin: 0;
+    font-size: 16px;
+    color: #003980;
+}
+.free-white-main .sp-cnt-rgt h4 {
+    font-size: 14px;
+    margin: 0 0 10px 0;
+}
+.free-white-main .sp-cnt-rgt h4 span {
+    color: #f26122;
+}
+.free-white-main .grey-bg-btm {
+    background: #f7f9fb;
+    border: 1px solid #e8f1f9;
+    width: 100%;
+    float: left;
+    padding: 20px;
+}
+.free-white-main .grey-bg-btm .main-tbl td {
+    padding: 0 0 0 12px;
+}
+.free-white-main .grey-bg-btm .main-tbl .standard-delivery {
+    display: block;
+    border-bottom: 1px solid #c8d2db;
+    padding-bottom: 12px;
+}
+.free-white-main .grey-bg-btm .main-tbl .platinum-text {
+    display: block;
+    padding-top: 12px;
+}
+.free-white-main .grey-bg-btm .main-tbl .top-lft-tbl.top {
+    font-weight: bold;
+    font-size: 22px;
+    color: #454545;
+    background: #d7d7d7;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 24px;
+}
+.free-white-main .grey-bg-btm .main-tbl .top-rgt-tbl {
+    font-weight: bold;
+    font-size: 22px;
+    background: #003980;
+    color: #fff;
+    padding-top: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 24px;
+    padding: 0 50px;
+}
+.free-white-main .grey-bg-btm .main-tbl .top-rgt-tbl .break {
+    font-weight: bold;
+    font-size: 22px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+}
+.free-white-main .grey-bg-btm .main-tbl .top-rgt-tbl span {
+    display: block;
+    font-weight: 400;
+    text-transform: capitalize;
+    font-size: 18px;
+    margin-top: 3px;
+    line-height: normal;
+}
+.free-white-main .grey-bg-btm .main-tbl .top-lft-tbl.top:before {
+    background: url(https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/vs_icon_v3.png?v87e39d59) 0 0 no-repeat;
+    width: 52px;
+    height: 52px;
+    position: absolute;
+    bottom: -38px;
+    left: 50%;
+    content: "";
+    margin-left: -26px;
 }
 
 /* free shipping */

@@ -1,8 +1,12 @@
 <template>
     <v-app>
         <Header />
-        <Nuxt />
-        <Footer />
+        <v-main>
+            <Nuxt />
+        </v-main>
+        <v-footer>
+            <Footer />
+        </v-footer>
     </v-app>
 </template>
 

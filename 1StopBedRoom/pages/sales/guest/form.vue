@@ -21,7 +21,7 @@
                         label="Email Address"
                         outlined
                         dense
-                        :rules="[rules.required]"
+                        :rules="[rules.required, rules.email]"
                     ></v-text-field>
                 </v-col>
                 <v-col>
@@ -99,6 +99,7 @@ export default {
             orderNumber: '',
             rules: {
                 required: (v) => !!v || 'This field required.',
+                email: (v) => /\S+@\S+\.\S+/.test(v) || 'E-mail must be valid',
             },
         }
     },

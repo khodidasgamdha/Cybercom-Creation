@@ -24,7 +24,7 @@
                                     label="Email"
                                     outlined
                                     dense
-                                    :rules="[rules.required]"
+                                    :rules="[rules.required, rules.email]"
                                 ></v-text-field>
 
                                 <!-- password -->
@@ -123,6 +123,7 @@ export default {
             rules: {
                 required: (v) => !!v || 'This field required.',
                 minLenght: (v) => v.length >= 6 || 'Min 6 characters required',
+                email: (v) => /\S+@\S+\.\S+/.test(v) || 'E-mail must be valid',
             },
         }
     },

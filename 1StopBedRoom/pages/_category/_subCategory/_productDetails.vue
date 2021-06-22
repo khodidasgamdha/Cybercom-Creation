@@ -51,7 +51,7 @@
                             :src="productImage"
                             alt="image"
                         >
-                            <v-btn class="image" text></v-btn>
+                            <v-btn class="similarProduct" text></v-btn>
                         </v-img>
 
                         <!-- image slider -->
@@ -104,7 +104,7 @@
                                     v-for="(item, i) in bedSize"
                                     :key="i"
                                 >
-                                    <v-btn class="body-2 text-capitalize mx-1" :value="item.value">
+                                    <v-btn class="caption text-capitalize mx-1" :value="item.value">
                                         {{ item.title }}
                                     </v-btn>
                                 </v-btn-toggle>
@@ -122,7 +122,7 @@
                                     v-for="(item, i) in setSize"
                                     :key="i"
                                 >
-                                    <v-btn class="body-2 text-capitalize mx-1" :value="item.value">
+                                    <v-btn class="caption text-capitalize mx-1" :value="item.value">
                                         {{ item.title }}
                                     </v-btn>
                                 </v-btn-toggle>
@@ -208,11 +208,11 @@
 
                     <!-- regular price -->
                     <div class="ml-5">
-                        <div class="special-price row my-2">
-                            <span class="title black--text ml-2 mr-n3">
+                        <div class="row special-price my-2">
+                            <span class="title black--text">
                                 {{ product.price }}
                             </span>
-                            <div id="specialPriceLabel" class="mx-n3"></div>
+                            <div id="specialPriceLabel" class="ml-auto"></div>
                         </div>
                     </div>
 
@@ -225,8 +225,13 @@
 
                     <!-- EMI -->
                     <div class="body-2 my-2">
-                        <span>Starting at $21/mo with affirm</span>
-                        <n-link to="/" class="text-decoration-none">prequalify now</n-link>
+                        <span>Starting at $21/mo with</span>
+                        <img 
+                            src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/blue_logo-transparent_bg-v2.png" 
+                            alt="affirm"
+                            width="50"
+                        >
+                        <n-link to="/" class="text-decoration-none">learn more</n-link>
                     </div>
 
                     <!-- free shipping -->
@@ -542,7 +547,7 @@ export default {
                 { title: '4-Piece Set', value: '4-piece' }, 
                 { title: 'Build Your Own', value: 'build-own' }, 
             ],
-            productImage: "https://cdn.1stopbedrooms.com/media/catalog/product/cache/1/image/440x/cc0ec2d91bc4dd8becc1b9167d5c2be1/l/e/lettner-light-gray-youth-storage-sleigh-bedroom-set_qb13271770_4.jpg",
+            productImage: "",
             links: [
                 {
                     text: 'Home',
@@ -688,12 +693,8 @@ export default {
                 this.CTLProduct.push(element)
             });
         })
-        // this.product = this.simillarProducts.find(item => {
-        //     console.log(item.sku);
-        //     console.log("jdjdj" + this.$route.params.productDetails);
-        //     return item.sku == this.$route.params.productDetails
-        // })
-        this.product = this.simillarProducts[0];
+        this.product = this.simillarProducts[Math.round(Math.random()*(50-0)+0)];
+        this.productImage = this.product.imageUrl;
     },
     methods: {
         addToCart(product, quantity) {
@@ -704,7 +705,7 @@ export default {
 </script>
 
 <style>
-.image {
+.similarProduct {
     background: url("https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/syte-discovery/shop_similar_icon_v1.svg?v67ba9b3a") no-repeat;
     background-size: 89px 32px;
     width: 89px;
@@ -714,11 +715,11 @@ export default {
 }
 .special-price {
     border: 1px solid red;
-    width: 170px;
+    width: 178px;
 }
 #specialPriceLabel {
     background: url("https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/sprite_v2.png?va8ef6d04") -515px -524px no-repeat;
     width: 100px;
-    height: 31px;
+    height: 34px;
 }
 </style>

@@ -77,5 +77,6 @@ export default {
 <style>
 #footer {
     background: #f2f2f2;
+    width: 100%;
 }
 </style>

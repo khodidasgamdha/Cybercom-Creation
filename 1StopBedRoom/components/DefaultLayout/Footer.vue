@@ -1,6 +1,6 @@
 <template>
-    <div>
-        
+    <div id="footer">
+
         <!-- 1st footer -->
         <v-row class="abcd justify-center py-3 mt-2">
             <v-col cols="auto" class="align-self-center">
@@ -146,6 +146,9 @@ export default {
 </script>
 
 <style>
+#footer {
+    width: 100%;
+}
 .footer {
     background: #ebebeb;
 }

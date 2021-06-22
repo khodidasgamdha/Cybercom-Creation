@@ -155,18 +155,19 @@
                                                 label="Email"
                                                 outlined
                                                 dense
-                                                :rules="[rules.required]"
+                                                :rules="[rules.required, rules.email]"
                                             ></v-text-field>
                                         </v-col>
 
                                         <!-- phone number -->
                                         <v-col md="6" class="mt-n5">
                                             <v-text-field
-                                                v-model="contact.phoneNumber"
+                                                v-model.number="contact.phoneNumber"
                                                 label="Phone Number"
+                                                type="number"
                                                 outlined
                                                 dense
-                                                :rules="[rules.required]"
+                                                :rules="[rules.required, rules.phoneNumber]"
                                             ></v-text-field>
                                         </v-col>
 
@@ -376,7 +377,9 @@ export default {
             ],
             rules: {
                 required: (v) => !!v || 'This field required.',
-                minLenght: (v) => v.length >= 6 || 'Min 6 characters required',
+                minLenght: (v) => v.length >= 3 || 'Min 3 characters required',
+                email: (v) => /\S+@\S+\.\S+/.test(v) || 'E-mail must be valid',
+                phoneNumber: (v) => /^[6789]\d{9}$/.test(v) || 'Phone Number must be valid',
             },
         }
     },

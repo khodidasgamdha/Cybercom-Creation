@@ -1,11 +1,11 @@
 <template>
-    <div>
-        <div v-for="(link, i) in links" :key="i" class="mx-5 my-8">
-            <n-link :to="link.link" class="text-decoration-none black--text">{{
-                link.title
-            }}</n-link>
+    <v-navigation-drawer color="grey lighten-4 px-5 py-10" width="100%">
+        <div v-for="(item, index) in links" :key="index" class="my-6">
+            <nuxt-link :to="item.link" class="text-decoration-none black--text">
+                {{ item.title }}
+            </nuxt-link>
         </div>
-    </div>
+    </v-navigation-drawer>
 </template>
 
 <script>
@@ -31,13 +31,18 @@ export default {
 
 <style scoped>
 a.nuxt-link-exact-active {
-    font-weight: 600;
+    font-weight: 700;
+    display: block;
+    background-color: white;
+    padding: 10px 20px;
+    margin: 0;
+    border-radius: 5px;
 }
 a {
     font-size: 18px;
+    margin-left: 20px;
 }
 a:hover {
-    font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
 }
 </style>

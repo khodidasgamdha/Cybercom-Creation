@@ -99,7 +99,7 @@
                         </template>
 
                         <!-- list -->
-                        <v-card flat width="250" height="281" class="rounded-0">
+                        <v-card flat width="250" height="285" class="rounded-0">
                             <div class="grey lighten-2">
                                 <v-btn
                                     class="
@@ -145,7 +145,7 @@
                                         <span v-if="cartQuantities && i === 3">({{ cartQuantities }} items)</span>
                                     </v-col>
                                 </v-row>
-                                <v-divider class="my-2"></v-divider>
+                                <v-divider class="my-2" v-if="signInMenu.length != i+1"></v-divider>
                             </div>
                         </v-card>
                     </v-menu>
@@ -359,7 +359,7 @@
                     <!-- sublinks -->
                     <v-card
                         :max-width="
-                            link.subCategoryLinks.length > 10 ? 750 : 500
+                            link.subCategoryLinks.length > 10 ? 700 : 500
                         "
                         flat
                     >

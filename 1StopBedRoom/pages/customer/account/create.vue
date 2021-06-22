@@ -42,7 +42,7 @@
                                     placeholder="Email"
                                     outlined
                                     dense
-                                    :rules="[rules.required]"
+                                    :rules="[rules.required, rules.email]"
                                 ></v-text-field>
 
                                 <!-- password -->
@@ -64,7 +64,7 @@
                                     :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
                                     :rules="[
                                         rules.required,
-                                        rules.min,
+                                        rules.minLenght,
                                         rules.passwordMatch,
                                     ]"
                                     :type="show2 ? 'text' : 'password'"
@@ -164,6 +164,7 @@ export default {
             rules: {
                 required: (v) => !!v || 'This field required.',
                 minLenght: (v) => v.length >= 6 || 'Min 6 characters required',
+                email: (v) => /\S+@\S+\.\S+/.test(v) || 'E-mail must be valid',
                 passwordMatch: (v) =>
                     this.register.password === v || `Confirm Password doesn't match with Password`,
             },
