@@ -1,18 +1,18 @@
 <template>
     <div class="mx-16">
         <!-- links -->
-        <v-breadcrumbs :items="links" class="mt-n10"></v-breadcrumbs>
+        <v-breadcrumbs :items="links" class="mt-n4 px-0" v-if="policy.design.layout === '2 columns with left bar'"></v-breadcrumbs>
 
-        <v-row>
+        <v-row class="mt-7">
             <!-- sidebar -->
-            <v-col v-if="layoutSet()" cols="3" :order="order">
-                <v-card tile flat class="py-2 px-10 grey lighten-4">
+            <v-col cols="auto" v-if="policy.design.layout === '2 columns with left bar'">
+                <v-card width='300' tile flat class="py-2 px-10 mb-10 grey lighten-4">
                     <div
                         v-for="(item, i) of sidebarLinks"
                         :key="i"
                         class="my-4"
                     >
-                        <h4 class="text-uppercase">{{ item.heading }}</h4>
+                        <h4 class="text-uppercase heading">{{ item.heading }}</h4>
                         <div v-for="(link, j) of item.links" :key="j">
                             <nuxt-link
                                 :to="link.link"
@@ -31,17 +31,14 @@
             </v-col>
 
             <!-- policy -->
-            <v-col
-                >{{ policy }}
-                <Policy />
+            <v-col>
+                <Policy :policy="policy" />
             </v-col>
-
         </v-row>
     </div>
 </template>
 
 <script>
-// import { mapState } from 'vuex'
 import Policy from '~/components/Policy'
 import gql from 'graphql-tag'
 
@@ -90,30 +87,23 @@ export default {
             title: this.policy.pageInfo.pageTitle,
             meta: [
                 { charset: 'utf-8' },
-                { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+                {
+                    name: 'viewport',
+                    content: 'width=device-width, initial-scale=1',
+                },
                 {
                     hid: 'description',
                     name: 'description',
-                    content: this.policy ? this.policy.metaData.description : '',
+                    content: this.policy
+                        ? this.policy.metaData.description
+                        : '',
                 },
             ],
         }
     },
     scrollToTop: true,
-    apollo: {
-        policy: {
-            query: POLICY,
-            prefetch: true,
-            variables() {
-                return {
-                    url: this.$route.params.policy || 'return-policy',
-                }
-            },
-        },
-    },
     data() {
         return {
-            order: 0,
             links: [
                 {
                     text: 'Home',
@@ -161,7 +151,7 @@ export default {
                 {
                     heading: 'Shipping And Delivery',
                     links: [
-                        { title: 'COVID-19', link: 'covid-19' },
+                        { title: 'COVID-19', link: '/policy/covid19' },
                         {
                             title: 'Shipping Information',
                             link: '/policy/shipping-and-delivery',
@@ -170,7 +160,7 @@ export default {
                             title: 'Delivery Option',
                             link: '/policy/white-glove-delivery',
                         },
-                        { title: 'Track My Order', link: 'track-my-order' },
+                        { title: 'Track My Order', link: '/sales/guest/form' },
                         {
                             title: 'International Shipping',
                             link: '/policy/international-shipping',
@@ -230,28 +220,39 @@ export default {
             ],
         }
     },
-    // computed: {
-    //     ...mapState('policy', ['name', 'layout']),
-    // },
-    methods: {
-        layoutSet() {
-            if (this.layout === '1 column') {
-                return false
-            } else {
-                this.order = this.layout === '2 columns with right bar' ? 1 : 0
-                return true
-            }
-        },
+    async asyncData({ app, params }) {
+        const client = app.apolloProvider.defaultClient
+        const url = params.policy
+
+        const res = await client.query({
+            query: POLICY,
+            variables: {
+                url,
+            },
+        })
+        const policy = res.data.policy
+        return {
+            policy
+        }
     },
 }
 </script>
 
 <style scoped>
+* {
+    margin: 0;
+    padding: 0;
+}
 .sidebarLinks:hover {
-    color: rgb(4, 4, 211) !important;
+    color: #005CCB !important;
+}
+.heading {
+    color: #000;
+    font-size: 15px;
+    font-weight: 700;
 }
 .nuxt-link-exact-active {
     color: black !important;
-    border-bottom: 2px solid rgb(4, 4, 211);
+    border-bottom: 2px solid #005CCB;
 }
 </style>

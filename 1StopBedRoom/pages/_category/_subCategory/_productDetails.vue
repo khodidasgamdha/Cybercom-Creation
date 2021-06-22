@@ -2,7 +2,7 @@
     <div class="mx-16">
 
         <!-- links -->
-        <v-breadcrumbs :items="links" class="mt-n10"></v-breadcrumbs>
+        <v-breadcrumbs :items="links" class="mt-n4 px-0"></v-breadcrumbs>
 
         <v-row>
             <!-- info -->
@@ -453,10 +453,12 @@
             title="You May Also Like"
             :products="personalizationProducts"
         />
+        <v-divider></v-divider>
         <ProductSuggestion
             title="Similar Items"
             :products="simillarProducts"
         />
+        <v-divider></v-divider>
         <ProductSuggestion
             title="Complete The Look"
             :products="CTLProduct"
@@ -521,35 +523,6 @@ export default {
     },
     components: {
         ProductSuggestion,
-    },
-    apollo: {
-        personalizationProducts: {
-            query: GET_PERSONALIZATION_PRODUCTS,
-            prefetch: true,
-            variables() {
-                return {
-                    webId: "qb13271770"
-                }
-            }
-        },
-        simillarProducts: {
-            query: GET_SIMILLAR_PRODUCTS,
-            prefetch: true,
-            variables() {
-                return {
-                    webId: "qb13271770"
-                }
-            }
-        },
-        CTLProducts: {
-            query: GET_CTL_PRODUCTS,
-            prefetch: true,
-            variables() {
-                return {
-                    webId: "qb13271770"
-                }
-            }
-        },
     },
     data() {
         return {
@@ -672,15 +645,55 @@ export default {
             info: ['Discription', 'Weight & Dimention', 'Specifications', 'Brand', 'Reviews', 'Shipping'],
         }
     },
+    async asyncData({ app, params }) {
+        const client = app.apolloProvider.defaultClient
+        const webId = params.productDetails
+
+        // personalization products
+        const personalization = await client.query({
+            query: GET_PERSONALIZATION_PRODUCTS,
+            variables: {
+                webId,
+            },
+        })
+        const personalizationProducts = personalization.data.personalizationProducts
+
+        // similar products
+        const similar = await client.query({
+            query: GET_SIMILLAR_PRODUCTS,
+            variables: {
+                webId,
+            },
+        })
+        const simillarProducts = similar.data.simillarProducts
+
+        // CTL products
+        const ctl = await client.query({
+            query: GET_CTL_PRODUCTS,
+            variables: {
+                webId,
+            },
+        })
+        const CTLProducts = ctl.data.CTLProducts
+
+        return {
+            personalizationProducts,
+            simillarProducts,
+            CTLProducts
+        }
+    },
     mounted() {
         this.CTLProducts.forEach(product => {
             product.ads.forEach(element => {
                 this.CTLProduct.push(element)
             });
         })
-        this.simillarProducts.forEach(item => {
-            if(item.sku == this.$route.params.productDetails) this.product = item;
-        })
+        // this.product = this.simillarProducts.find(item => {
+        //     console.log(item.sku);
+        //     console.log("jdjdj" + this.$route.params.productDetails);
+        //     return item.sku == this.$route.params.productDetails
+        // })
+        this.product = this.simillarProducts[0];
     },
     methods: {
         addToCart(product, quantity) {

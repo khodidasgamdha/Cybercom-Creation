@@ -1,7 +1,7 @@
 <template>
     <div class="mx-16">
         <!-- links -->
-        <v-breadcrumbs :items="links" class="mt-n10"></v-breadcrumbs>
+        <v-breadcrumbs :items="links" class="mt-n4"></v-breadcrumbs>
 
         <!-- sidebar and products -->
         <v-layout no-gutters justify-space-around>
@@ -24,8 +24,8 @@ import SideBar from '~/components/Category/SideBar'
 import gql from 'graphql-tag'
 
 const CATEGORY_PRODUCTS = gql`
-    query CATEGORY_PRODUCTS($category: String!) {
-        category(type: $category) {
+    query CATEGORY_PRODUCTS($url: String!) {
+        category(type: $url) {
             title
             productLinks {
                 linkTitle
@@ -47,17 +47,6 @@ export default {
         }
     },
     components: { ProductImage, SideBar },
-    apollo: {
-        category: {
-            query: CATEGORY_PRODUCTS,
-            prefetch: true,
-            variables() {
-                return {
-                    category: this.$route.params.category || 'bedroom',
-                }
-            },
-        },
-    },
     data() {
         return {
             links: [
@@ -72,6 +61,22 @@ export default {
                     href: '/bedroom',
                 },
             ],
+        }
+    },
+    async asyncData({ app, params }) {
+        const client = app.apolloProvider.defaultClient
+        const url = params.category
+
+        const res = await client.query({
+            query: CATEGORY_PRODUCTS,
+            variables: {
+                url,
+            },
+        })
+        
+        const category = res.data.category
+        return {
+            category
         }
     },
 }

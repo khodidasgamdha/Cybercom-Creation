@@ -1,6 +1,43 @@
 <template>
-    <div class="pt-10" id="footer">
-        <v-row class="px-16 py-5 justify-space-betwen">
+    <div>
+        
+        <!-- 1st footer -->
+        <v-row class="abcd justify-center py-3 mt-2">
+            <v-col cols="auto" class="align-self-center">
+                <img
+                    src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/1sb-general/mail_icon_blue.png?v2b640889"
+                    alt=""
+                />
+            </v-col>
+            <v-col cols="auto">
+                <p class="headline font-weight-bold text-center mb-0">
+                    Be the <span class="logo"></span>st to know
+                </p>
+                <p class="mb-0 body-2">Get updates about our sales and more</p>
+            </v-col>
+            <v-col cols="3">
+                <v-text-field
+                    v-model="email"
+                    label="Email Address"
+                    outlined
+                    dense
+                    class="mb-n4 pt-2"
+                    :rules="[rules.required]"
+                ></v-text-field>
+            </v-col>
+            <v-col cols="auto" class="align-self-center">
+                <v-btn 
+                    class="text-capitalize primary px-10" 
+                    dark 
+                    large
+                    @click="submit()"
+                    >Sign Up</v-btn
+                >
+            </v-col>
+        </v-row>
+
+        <!-- 2nd footer -->
+        <v-row class="px-16 footer py-10 justify-space-between">
             <!-- image -->
             <v-col>
                 <v-img
@@ -12,11 +49,7 @@
             <!-- links -->
             <v-col v-for="(item, i) in footerLinks" :key="i">
                 <p class="headline">{{ item.title }}</p>
-                <div
-                    v-for="(item, i) in item.links"
-                    :key="i"
-                    class="my-1"
-                >
+                <div v-for="(item, i) in item.links" :key="i" class="my-1">
                     <nuxt-link
                         :to="item.link"
                         class="
@@ -32,12 +65,9 @@
             <!-- buttons -->
             <v-col>
                 <p class="headline">Contact Us</p>
-                <v-btn 
-                    color="primary" 
-                    class="mt-5 px-16" 
-                    large
-                    to="/contact-us"
-                    ><v-icon class="mr-2">mdi-message-processing</v-icon> Message
+                <v-btn color="primary" class="mt-5 px-16" large to="/contact-us"
+                    ><v-icon class="mr-2">mdi-message-processing</v-icon>
+                    Message
                 </v-btn>
                 <v-btn
                     large
@@ -50,7 +80,7 @@
             </v-col>
         </v-row>
 
-        <!-- 2nd footer -->
+        <!-- 3rd footer -->
         <v-card flat tile class="white lighten-1 text-center">
             <v-btn v-for="icon in icons" :key="icon" class="mx-3 mt-3" icon>
                 <v-icon size="24px">
@@ -73,7 +103,7 @@
 <script>
 import gql from 'graphql-tag'
 
-const GET_FOOTER_LINKS = gql `
+const GET_FOOTER_LINKS = gql`
     query GET_FOOTER_LINKS {
         footerLinks {
             title
@@ -94,6 +124,7 @@ export default {
     },
     data() {
         return {
+            email: '',
             icons: [
                 'mdi-facebook',
                 'mdi-instagram',
@@ -101,13 +132,34 @@ export default {
                 'mdi-twitter',
                 'mdi-youtube',
             ],
+            rules: {
+                required: (v) => !!v || 'This field required.',
+            },
         }
     },
+    methods: {
+        submit() {
+            console.log(this.email);
+        }
+    }
 }
 </script>
 
 <style>
-#footer {
-    background: #f2f2f2;
+.footer {
+    background: #ebebeb;
+}
+.abcd {
+    border: 1px solid #c2c2c2;
+    background: white;
+}
+.logo {
+    position: relative;
+    display: inline-block;
+    margin-right: 3px;
+    width: 14px;
+    height: 24px;
+    background: url(https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/1sb-general/1sb-number.png?v62994ca4)
+        no-repeat;
 }
 </style>

@@ -60,7 +60,6 @@
                 </v-card>
             </v-slide-item>
         </v-slide-group>
-        <v-divider></v-divider>
     </div>
 </template>
 

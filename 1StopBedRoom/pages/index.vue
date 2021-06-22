@@ -8,6 +8,7 @@
         <ProductSet />
         <div v-for="(products, i) in saleProduct" :key="i">
             <ProductSale :products="products" />
+            <v-divider v-if="saleProduct.length != i+1"></v-divider>
         </div>
     </div>
 </template>
@@ -59,3 +60,9 @@ export default {
     },
 }
 </script>
+
+<style>
+* {
+    font-family: 'Open Sans',sans-serif;
+}
+</style>

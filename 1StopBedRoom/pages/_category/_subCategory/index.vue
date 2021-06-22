@@ -2,7 +2,7 @@
     <div class="mx-16">
 
         <!-- links -->
-        <v-breadcrumbs :items="links" class="mt-n10"></v-breadcrumbs>
+        <v-breadcrumbs :items="links" class="mt-n4 px-0"></v-breadcrumbs>
         
         <v-layout no-gutters>
             <v-flex md3>

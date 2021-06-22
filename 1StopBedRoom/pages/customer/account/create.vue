@@ -118,7 +118,7 @@
 
                         <p class="grey lighten-2 py-8 text-center">
                             Already have an account ?
-                            <nuxt-link class="text-decoration-none" to="/customer/account/create">
+                            <nuxt-link class="text-decoration-none" to="/customer/account/login">
                                 Sign In
                             </nuxt-link>
                         </p>

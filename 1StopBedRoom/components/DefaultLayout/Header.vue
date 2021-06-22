@@ -45,7 +45,7 @@
                             36 Month Financing*
                         </span>
                     </n-link>
-                    <n-link to="/" class="ml-8">
+                    <n-link to="/sales/guest/form" class="ml-8">
                         <span
                             class="
                                 caption
@@ -142,6 +142,7 @@
                                             "
                                             >{{ item.title }}</n-link
                                         >
+                                        <span v-if="cartQuantities && i === 3">({{ cartQuantities }} items)</span>
                                     </v-col>
                                 </v-row>
                                 <v-divider class="my-2"></v-divider>
@@ -425,7 +426,7 @@
 
         <!-- go to top -->
         <v-main>
-            <v-container fluid>
+            <div fluid>
                 <v-fab-transition>
                     <v-btn
                         color="grey lighten-2"
@@ -445,7 +446,7 @@
                         >
                     </v-btn>
                 </v-fab-transition>
-            </v-container>
+            </div>
         </v-main>
     </div>
 </template>
@@ -485,12 +486,12 @@ export default {
                     link: '/customer/account/welcome',
                 },
                 {
-                    icon: 'cart',
+                    icon: 'script',
                     title: 'Order Status',
                     link: '/sales/guest/form',
                 },
                 {
-                    icon: 'account',
+                    icon: 'headset',
                     title: 'Help Center',
                     link: '/shipping-and-delivery',
                 },

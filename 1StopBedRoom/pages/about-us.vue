@@ -262,9 +262,10 @@ export default {
 <style scoped>
 #title {
     font-size: 28px;
-    font-weight: 500;
+    font-weight: 600;
+    line-height: 35px;
 }
 p {
-    font-size: 1.1rem;
+    font-size: 16px;
 }
 </style>

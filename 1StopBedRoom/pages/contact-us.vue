@@ -1,48 +1,27 @@
 <template>
     <div class="mx-16">
         <!-- links -->
-        <v-breadcrumbs :items="links" class="mt-n10"></v-breadcrumbs>
+        <v-breadcrumbs :items="links" class="mt-n4 px-0"></v-breadcrumbs>
 
         <v-row>
-            <v-col md="3">
+            <v-col md="auto">
                 <v-card width="260" flat>
                     <v-expansion-panels flat>
                         <v-expansion-panel
-                            class="grey lighten-2"
-                            v-for="(item, i) in 5"
+                            class="grey lighten-4"
+                            v-for="(item, i) in sidebarLinks"
                             :key="i"
                         >
                             <v-expansion-panel-header
-                                class="body-1 font-weight-bold"
+                                class="body-1 font-weight-bold text-uppercase"
                             >
-                                Shipping & Delivery
+                                {{ item.heading }}
                             </v-expansion-panel-header>
-                            <v-expansion-panel-content>
+                            <v-expansion-panel-content v-for="(ln, i) in item.links" :key="i">
                                 <n-link
-                                    class="text-decoration-none grey--text"
-                                    to="/return-policy"
-                                    >Return Policy</n-link
-                                >
-                            </v-expansion-panel-content>
-                            <v-expansion-panel-content>
-                                <n-link
-                                    class="text-decoration-none grey--text"
-                                    to="/return-policy"
-                                    >Return Policy</n-link
-                                >
-                            </v-expansion-panel-content>
-                            <v-expansion-panel-content>
-                                <n-link
-                                    class="text-decoration-none grey--text"
-                                    to="/return-policy"
-                                    >Return Policy</n-link
-                                >
-                            </v-expansion-panel-content>
-                            <v-expansion-panel-content>
-                                <n-link
-                                    class="text-decoration-none grey--text"
-                                    to="/return-policy"
-                                    >Return Policy</n-link
+                                    class="text-decoration-none grey--text body-2"
+                                    :to="ln.link"
+                                    >{{ ln.title }}</n-link
                                 >
                             </v-expansion-panel-content>
                         </v-expansion-panel>
@@ -53,7 +32,7 @@
             <v-col md="9">
 
                 <!-- contact box -->
-                <v-card class="grey lighten-2 pa-5 mb-10" flat>
+                <v-card class="grey lighten-4 pa-5 mb-10" flat>
                     <v-row>
 
                         <!-- contact box -->
@@ -297,6 +276,102 @@ export default {
                     text: 'Contact Us',
                     disabled: true,
                     href: '/contact-us',
+                },
+            ],
+            sidebarLinks: [
+                {
+                    heading: 'Shipping & Delivery',
+                    links: [
+                        { title: 'Track My Order', link: '/sales/guest/form' },
+                        {
+                            title: 'Shipping Information',
+                            link: '/policy/shipping-and-delivery',
+                        },
+                        {
+                            title: 'Free Shipping',
+                            link: '/policy/free-shipping',
+                        },
+                        {
+                            title: 'Delivery Options',
+                            link: '/policy/white-glove-delivery',
+                        },
+                        {
+                            title: 'International Shipping',
+                            link: '/policy/international-shipping',
+                        },
+                    ],
+                },
+                {
+                    heading: 'Policies',
+                    links: [
+                        { title: 'COVID-19 Policy', link: '/policy/covid19' },
+                        {
+                            title: 'Return Policy',
+                            link: '/policy/return-policy',
+                        },
+                        {
+                            title: 'Cancellation Policy',
+                            link: '/policy/return-policy#cancellation-policy',
+                        },
+                        { title: 'Privacy Policy', link: '/policy/privacy-policy' },
+                        {
+                            title: 'Terms & Conditions',
+                            link: '/policy/terms-and-conditions',
+                        },
+                    ],
+                },
+                {
+                    heading: 'Help With an Order',
+                    links: [
+                        {
+                            title: 'Check My Order Status',
+                            link: '/sales/guest/form',
+                        },
+                        {
+                            title: 'I Received a Incomplete Order',
+                            link: '/policy/order-help#i-received-order',
+                        },
+                        {
+                            title: 'My Item Arrived Damaged',
+                            link: '/policy/order-help#i-received-damaged',
+                        },
+                        { title: 'My Item is Missing Parts', link: '/policy/order-help#missing-parts' },
+                        { title: 'I Received The Wrong Item', link: '/policy/order-help#i-received-item' },
+                    ],
+                },
+                {
+                    heading: 'Payment',
+                    links: [
+                        {
+                            title: 'Payment Methods',
+                            link: '/policy/billing-and-payment',
+                        },
+                        {
+                            title: 'Financing',
+                            link: '/affirm-financing',
+                        },
+                        {
+                            title: 'Sales Tax',
+                            link: '/policy/sales-tax#sales-tax',
+                        },
+                    ],
+                },
+                {
+                    heading: 'Account',
+                    links: [
+                        {
+                            title: 'My Account',
+                            link: '/customer/account/login',
+                        },
+                        {
+                            title: 'My Orders',
+                            link: '/sales/order/history',
+                        },
+                        {
+                            title: 'Unsubscribe From Emails',
+                            link: '/newsletter/manage',
+                        },
+                    ],
                 },
             ],
             rules: {
