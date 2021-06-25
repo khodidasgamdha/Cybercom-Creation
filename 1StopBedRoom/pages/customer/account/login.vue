@@ -52,9 +52,9 @@
 
                             <p class="mt-2 black--text">
                                 <span>By continuing you agree to our</span>
-                                <n-link class="text-decoration-none" to="/terms-and-conditions">Terms and Conditions</n-link>
+                                <n-link class="text-decoration-none" to="/policy/terms-and-conditions">Terms and Conditions</n-link>
                                 <span>and our</span>
-                                <n-link class="text-decoration-none" to="/privacy-policy">Privacy Policy.</n-link>
+                                <n-link class="text-decoration-none" to="/policy/privacy-policy">Privacy Policy.</n-link>
                             </p>
                             <p class="black--text">
                                 <span>Forgot your password?</span>
@@ -101,7 +101,7 @@
                         src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/account-logo.png"
                     ></v-img>
                 </v-col>
-                
+
             </v-row>
         </div>
     </div>
@@ -128,8 +128,28 @@ export default {
         }
     },
     methods: {
-        signIn(email, password) {
-            console.log(email, password);
+        signIn() {
+            if(this.email != '' && this.password != '') {
+                this.$axios
+                    .$post(
+                        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.FIREBASE_KEY}`,
+                        {
+                            email: this.email,
+                            password: this.password,
+                            returnSecureToken: true,
+                        }
+                    )
+                    .then((res) => {
+                        this.handleToken(res)
+                    })
+                    .catch((err) => console.log(err))
+            }
+        },
+        handleToken(user) {
+            this.$cookies.set('token', user.idToken)
+            this.$store.commit('auth/setLoggedIn', true)
+            this.$store.commit('auth/setUserInfo', user)
+            this.$router.push('/')
         },
     },
 }

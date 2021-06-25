@@ -7,7 +7,7 @@
             <v-col>
                 <p class="text-right pt-2 grey--text">Sort by:</p>
             </v-col>
-            <v-col cols="2">
+            <v-col cols="3">
                 <v-select
                     v-model="selectedSortedType"
                     :items="sorts"

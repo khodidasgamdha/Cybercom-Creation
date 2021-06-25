@@ -13,10 +13,7 @@ export default {
 
 <style>
 .col-main {
-    margin-top: 3px;
-    font-family: 'Open Sans', sans-serif;
-    color: #001733;
-    padding: 0 20px 30px;
+    margin-top: 20px;
 }
 .page-title {
     padding: 15px 20px;
@@ -914,5 +911,92 @@ select {
     padding: 0 0 8px 0;
     font-weight: 700;
     color: #003980;
+}
+
+/* brands */
+.brand-title {
+    font-size: 24px;
+    margin: 0 0 25px;
+    color: #0b0b0b;
+    font-weight: 400;
+    background-color: white !important;
+}
+.brandsPage-filter {
+    float: left;
+    padding-right: 30px;
+    position: sticky;
+    top: 70px;
+    width: 21%;
+}
+.brandsPage-search {
+    height: 37px;
+    margin-bottom: 10px;
+    position: relative;
+    width: 100%;
+}
+.brandsPage-search-input {
+    background: url(https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/1sb-svg-icons/1sb-search.svg?v799fc79b) no-repeat left 12px center / 13px 13px;
+    border: solid 1px #aaa;
+    color: #777;
+    font-size: 14px !important;
+    height: 100%;
+    padding: 0 35px;
+    width: 100%;
+}
+.brandsPage-filter-chars {
+    flex-wrap: wrap;
+    font-size: 20px;
+    line-height: 2.1;
+    color: #e4e4e4;
+    display: flex;
+    text-align: center;
+    text-transform: capitalize;
+}
+.brandsPage-filter-char.available {
+    color: #010101;
+    cursor: pointer;
+}
+.brandsPage-filter-char {
+    width: 20%;
+}
+.brandsPage-list {
+    margin-left: 21%;
+}
+.brandsPage-list-char {
+    border-bottom: solid 1px #ebebeb;
+    color: #565656;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+.brandsPage-list-section {
+    display: grid;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    margin-bottom: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.brandsPage-list-item {
+    background-origin: content-box;
+    background-color: #f5f5f5;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 2px solid transparent;
+    font-size: 0;
+    height: 165px;
+    padding: 20px;
+}
+.brandsPage-emptyMessage {
+    color: #000;
+    background: #f8f8f8;
+    padding: 25px;
+}
+.brandsPage-emptyMessage-text {
+    font-weight: bold;
+    font-size: 20px;
+}
+.brandsPage-emptyMessage-extra {
+    margin-top: 5px;
+    font-size: 17px;
 }
 </style>

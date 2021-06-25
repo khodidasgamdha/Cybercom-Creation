@@ -44,6 +44,8 @@ export default {
     '@nuxt/content',
     // graphQl
     '@nuxtjs/apollo',
+    '@nuxtjs/dotenv',
+    'cookie-universal-nuxt'
   ],
 
   apollo: {

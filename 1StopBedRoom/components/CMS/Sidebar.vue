@@ -1,5 +1,5 @@
 <template>
-    <v-navigation-drawer color="grey lighten-4 px-5 py-10" width="100%">
+    <v-navigation-drawer class="grey lighten-4 px-5 py-10" width="100%">
         <div v-for="(item, index) in links" :key="index" class="my-6">
             <nuxt-link :to="item.link" class="text-decoration-none black--text">
                 {{ item.title }}

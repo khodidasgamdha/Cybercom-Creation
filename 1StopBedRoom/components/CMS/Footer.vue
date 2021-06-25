@@ -1,5 +1,5 @@
 <template>
-    <div class="pt-10 pb-16" id="footer">
+    <div class="pt-10 pb-16" id="footerCMS">
         <v-row class="px-16 py-5 justify-space-betwen">
             <!-- image -->
             <v-col>
@@ -75,7 +75,7 @@ export default {
 </script>
 
 <style>
-#footer {
+#footerCMS {
     background: #f2f2f2;
     width: 100%;
 }

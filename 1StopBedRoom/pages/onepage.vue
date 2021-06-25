@@ -338,6 +338,7 @@ import { mapGetters } from 'vuex'
 import OnepageAddress from '../components/OnepageAddress'
 
 export default {
+    middleware: 'onepage',
     components: {
         OnepageAddress,
     },

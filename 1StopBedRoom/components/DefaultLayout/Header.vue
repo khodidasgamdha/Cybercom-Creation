@@ -2,7 +2,8 @@
     <div>
         <!-- 1st header -->
         <v-system-bar color="white" height="45" class="px-16 pt-3" fixed>
-            <p class="subtitle-1 black--text">
+            <span class="homeDelivery"></span>
+            <p class="black--text">
                 SPRING INTO SAVINGS! SAVE UP TO 75% + FREE HOME DELIVERY
             </p>
             <v-spacer></v-spacer>
@@ -34,27 +35,26 @@
             <!-- search -->
             <v-col md="4">
                 <p class="white--text body-2">
-                    <n-link to="/">
-                        <span
-                            class="
+                    <n-link 
+                        to="/affirm-financing"
+                        class="
                                 caption
                                 text-decoration-underline
                                 white--text
                             "
-                        >
-                            36 Month Financing*
-                        </span>
+                    >
+                        36 Month Financing*
                     </n-link>
-                    <n-link to="/sales/guest/form" class="ml-8">
-                        <span
-                            class="
-                                caption
+                    <n-link 
+                        to="/sales/guest/form" 
+                        class="
+                            ml-8
+                            caption
                                 text-decoration-underline
                                 white--text
-                            "
-                        >
-                            Track My Order
-                        </span>
+                        "
+                    >
+                        Track My Order
                     </n-link>
                 </p>
 
@@ -87,20 +87,26 @@
                             <v-btn
                                 to="/customer/account/login"
                                 text
-                                class="ml-5"
+                                class="ml-5 text-capitalize"
                                 v-on="on"
                                 v-bind="attrs"
+                                dark
                             >
                                 <v-icon color="white" large>mdi-account</v-icon>
-                                <span class="white--text text-capitalize ml-2"
+                                
+                                <p v-if="user.displayName" class="caption ml-2 mb-0">
+                                    <span>Hello, {{ user.displayName }}</span><br />
+                                    <span>My Account</span>
+                                </p>
+                                <span v-else class="ml-2"
                                     >Sign In</span
                                 >
                             </v-btn>
                         </template>
 
                         <!-- list -->
-                        <v-card flat width="250" height="285" class="rounded-0">
-                            <div class="grey lighten-2">
+                        <v-card flat width="250" height="294" class="rounded-0">
+                            <div v-if="user.length == 0" class="grey lighten-2">
                                 <v-btn
                                     class="
                                         text-capitalize
@@ -128,7 +134,7 @@
                                     >
                                 </p>
                             </div>
-                            <div v-for="(item, i) in signInMenu" :key="i">
+                            <div class="mt-3" v-for="(item, i) in user.length != 0 ? userSignInMenu : signInMenu" :key="i">
                                 <v-row class="justify-center">
                                     <v-col md="2">
                                         <v-icon>mdi-{{ item.icon }}</v-icon>
@@ -493,19 +499,58 @@ export default {
                 {
                     icon: 'headset',
                     title: 'Help Center',
-                    link: '/shipping-and-delivery',
+                    link: '/policy/shipping-and-delivery',
                 },
                 { icon: 'cart', title: 'My Cart', link: '/checkout/cart' },
             ],
+            userSignInMenu: [
+                {
+                    icon: 'account',
+                    title: 'My Account',
+                    link: '/customer/account/welcome',
+                },
+                { icon: 'cart', title: 'My Cart', link: '/checkout/cart' },
+                {
+                    icon: 'package',
+                    title: 'My Orders',
+                    link: '/sales/order/history',
+                },
+                {
+                    icon: 'book',
+                    title: 'Address Book',
+                    link: '/customer/address',
+                },
+                {
+                    icon: 'tooltip',
+                    title: 'Preferances',
+                    link: '/newsletter/manage',
+                },
+                {
+                    icon: 'logout',
+                    title: 'Sign Out',
+                    link: '/customer/account/logout',
+                },
+            ]
         }
     },
-    computed: mapGetters('cart', ['cartItems', 'cartQuantities', 'cartTotal']),
+    computed: {
+        ...mapGetters('cart', ['cartItems', 'cartQuantities', 'cartTotal']),
+        ...mapGetters('auth', ['user']),
+    },
     methods: {
         ...mapMutations('cart', ['removeItem']),
+        ...mapMutations('auth', ['setUserInfo']),
     },
 }
 </script>
 <style scoped>
+.homeDelivery {
+    color: #000;
+    padding: 35px 0 10px 56px;
+    background-size: 32px 32px;
+    background-image: url(https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/Hand_Truck_blue.png?v8c93e6a3) ;
+    background-repeat: no-repeat;
+}
 .onHoverBtn:hover {
     background-color: white;
 }

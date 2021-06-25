@@ -88,9 +88,9 @@
 
                             <p class="mt-2 black--text">
                                 <span>By continuing you agree to our</span>
-                                <n-link class="text-decoration-none" to="/terms-and-conditions">Terms and Conditions</n-link>
+                                <n-link class="text-decoration-none" to="/policy/terms-and-conditions">Terms and Conditions</n-link>
                                 <span>and our</span>
-                                <n-link class="text-decoration-none" to="/privacy-policy">Privacy Policy.</n-link>
+                                <n-link class="text-decoration-none" to="/policy/privacy-policy">Privacy Policy.</n-link>
                             </p>
 
                             <v-divider class="mb-4"></v-divider>
@@ -172,7 +172,25 @@ export default {
     },
     methods: {
         signUp() {
-            console.log(this.register);
+            if(this.register.firstName != '' && this.register.email != '' && this.register.password != '') {
+                this.$axios
+                    .$post(
+                        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.FIREBASE_KEY}`,
+                        {
+                            displayName: this.register.firstName,
+                            email: this.register.email,
+                            password: this.register.password,
+                            returnSecureToken: true,
+                        }
+                    )
+                    .then((res) => this.handleToken(res.idToken))
+                    .catch((err) => console.log(err))
+            }
+        },
+        handleToken(token) {
+            this.$cookies.set('token', token);
+            this.$store.commit('auth/setLoggedIn', true)
+            this.$router.push('/');
         },
     },
 }

@@ -200,7 +200,10 @@
                             Your Saving :
                         </v-col>
                         <v-col md="3">
-                            <span class="light-green accent-1 font-weight-bold rounded-xl py-1 px-2">-$200.00</span>
+                            <span class="light-green accent-1 font-weight-bold rounded-xl py-1 px-2">
+                                -$200.00
+                                <!-- -$ {{ product.originalPrice.split('$')[1] - product.price.split('$')[1] }} -->
+                            </span>
                         </v-col>
                     </v-row>
 
@@ -411,6 +414,7 @@
                         </v-col>
                         <v-col md="auto" class="red--text">
                             -$200.00
+                            <!-- -$ {{ product.originalPrice.split('$')[1] - product.price.split('$')[1] }} -->
                         </v-col>
                     </v-row>
 
@@ -715,11 +719,11 @@ export default {
 }
 .special-price {
     border: 1px solid red;
-    width: 178px;
+    max-width: 160px;
 }
 #specialPriceLabel {
-    background: url("https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/sprite_v2.png?va8ef6d04") -515px -524px no-repeat;
-    width: 100px;
-    height: 34px;
+    background: url("https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/sprite_v2.png?va8ef6d04") -547px -524px no-repeat;
+    width: 70px;
+    height: 32px;
 }
 </style>

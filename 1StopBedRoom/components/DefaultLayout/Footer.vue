@@ -2,7 +2,7 @@
     <div id="footer">
 
         <!-- 1st footer -->
-        <v-row class="abcd justify-center py-3 mt-2">
+        <v-row class="firstFooter justify-center py-3 mt-2">
             <v-col cols="auto" class="align-self-center">
                 <img
                     src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/1sb-general/mail_icon_blue.png?v2b640889"
@@ -37,7 +37,7 @@
         </v-row>
 
         <!-- 2nd footer -->
-        <v-row class="px-16 footer py-10 justify-space-between">
+        <v-row class="px-16 secondFooter py-10 justify-space-between">
             <!-- image -->
             <v-col>
                 <v-img
@@ -48,7 +48,7 @@
 
             <!-- links -->
             <v-col v-for="(item, i) in footerLinks" :key="i">
-                <p class="headline">{{ item.title }}</p>
+                <p>{{ item.title }}</p>
                 <div v-for="(item, i) in item.links" :key="i" class="my-1">
                     <nuxt-link
                         :to="item.link"
@@ -64,7 +64,7 @@
 
             <!-- buttons -->
             <v-col>
-                <p class="headline">Contact Us</p>
+                <p>Contact Us</p>
                 <v-btn color="primary" class="mt-5 px-16" large to="/contact-us"
                     ><v-icon class="mr-2">mdi-message-processing</v-icon>
                     Message
@@ -149,12 +149,20 @@ export default {
 #footer {
     width: 100%;
 }
-.footer {
+.secondFooter {
     background: #ebebeb;
 }
-.abcd {
+.firstFooter {
     border: 1px solid #c2c2c2;
     background: white;
+}
+.secondFooter a {
+    font-size: 14px;
+}
+.secondFooter p {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
 }
 .logo {
     position: relative;
