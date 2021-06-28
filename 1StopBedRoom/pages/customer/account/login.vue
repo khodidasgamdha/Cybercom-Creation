@@ -3,7 +3,7 @@
         <v-divider class="orange darken-1 pt-5"></v-divider>
         <div class="blue darken-4">
 
-            <v-row class="justify-center py-12">
+            <v-row class="justify-center py-12 mb-3">
                 
                 <!-- form -->
                 <v-col md="auto">
@@ -127,6 +127,9 @@ export default {
             },
         }
     },
+    mounted() {
+        (!!this.$store.state.auth.loggedIn) && this.$router.push('/customer/account/welcome');
+    },
     methods: {
         signIn() {
             if(this.email != '' && this.password != '') {
@@ -139,17 +142,15 @@ export default {
                             returnSecureToken: true,
                         }
                     )
-                    .then((res) => {
-                        this.handleToken(res)
-                    })
+                    .then((res) => this.handleToken(res))
                     .catch((err) => console.log(err))
             }
         },
         handleToken(user) {
-            this.$cookies.set('token', user.idToken)
+            this.$cookies.set('user', user)
             this.$store.commit('auth/setLoggedIn', true)
             this.$store.commit('auth/setUserInfo', user)
-            this.$router.push('/')
+            this.$router.push('/customer/account/welcome')
         },
     },
 }

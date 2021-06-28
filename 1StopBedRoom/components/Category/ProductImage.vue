@@ -48,9 +48,9 @@
                                     class="
                                         font-weight-bold
                                         pt-3
-                                        black--text
                                         text-center
                                     "
+                                    :class="hover ? 'primary--text' : 'black--text'"
                                 >
                                     {{ category.name }}
                                     <span class="body-1 grey--text">(200)</span>

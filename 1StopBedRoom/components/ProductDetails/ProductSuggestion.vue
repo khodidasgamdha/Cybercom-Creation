@@ -5,6 +5,19 @@
         <p class="headline mt-5 ml-10 font-weight-light primary--text">{{ title }}</p>
 
         <v-slide-group show-arrows>
+
+            <!-- custome icon -->
+            <template v-slot:prev="{ on, attrs }">
+                <v-btn v-bind="attrs" v-on="on" fab>
+                    <v-icon x-large color="primary">mdi-chevron-left</v-icon>
+                </v-btn>
+            </template>
+            <template v-slot:next="{ on, attrs }">
+                <v-btn v-bind="attrs" v-on="on" fab>
+                    <v-icon x-large color="primary">mdi-chevron-right</v-icon>
+                </v-btn>
+            </template>
+
             <v-slide-item v-for="(product, i) in products" :key="i" class="mb-10">
                 <v-card class="mx-1 px-4" height="260" width="207" elevation="5">
                     

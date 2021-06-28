@@ -1,5 +1,10 @@
 <template>
-    <div>
+    <v-row>
+
+        <v-col cols="3">
+            <Sidebar />
+        </v-col>
+        <v-col class="my-10 mr-10">
         <p class="display-2 font-weight-bold indigo--text text-uppercase">
             Contact Us
         </p>
@@ -48,16 +53,20 @@
             <v-col>
                 <p class="headline font-weight-bold">Corporate Headquarters</p>
                 <v-divider class="mb-5"></v-divider>
-                <p class="title mx-2">
-                    1716 Coney Island Avenue Brooklyn, NY 11230
+                <p class="title font-weight-light">
+                    1716 Coney Island Avenue <br /> 
+                    Brooklyn, NY 11230
                 </p>
             </v-col>
         </v-row>
-    </div>
+        </v-col>
+    </v-row>
 </template>
 
 <script>
 import GoogleMap from '../components/GoogleMap'
+import Sidebar from '../components/CMS/Sidebar'
+
 export default {
     layout: 'cms',
     head() {
@@ -67,12 +76,13 @@ export default {
     },
     components: {
         GoogleMap,
+        Sidebar
     },
 }
 </script>
 
 <style scoped>
 p {
-    font-size: 1.1rem;
+    font-size: 16px;
 }
 </style>

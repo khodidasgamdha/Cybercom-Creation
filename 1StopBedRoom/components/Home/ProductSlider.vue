@@ -6,6 +6,15 @@
         
         <v-sheet>
             <v-slide-group show-arrows>
+
+                <!-- custome icon -->
+                <template v-slot:prev="{ on, attrs }">
+                    <v-icon v-bind="attrs" v-on="on" color="primary">mdi-chevron-left</v-icon>
+                </template>
+                <template v-slot:next="{ on, attrs }">
+                    <v-icon v-bind="attrs" v-on="on" color="primary">mdi-chevron-right</v-icon>
+                </template>
+
                 <v-slide-item v-for="(item, i) in shopByRoom" :key="i">
                     <v-card class="mx-1" height="434" width="275" tile flat>
                         
@@ -30,9 +39,8 @@
                             <div
                                 v-for="(category, index) in item.subCategory"
                                 :key="index"
-                                class="font-weight-light"
                             >
-                                <nuxt-link :to="category.link" class="text-decoration-none black--text">
+                                <nuxt-link :to="category.link" class="body-2 font-weight-light text-decoration-none black--text">
                                     {{ category.linkTitle }}
                                 </nuxt-link>
                             </div>

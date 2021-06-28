@@ -17,7 +17,7 @@
                         label="First Name"
                         outlined
                         dense
-                        disabled
+                        :disabled="disable"
                     ></v-text-field>
                 </v-col>
                 <v-col md="3" sm="6" cols="12">
@@ -26,7 +26,7 @@
                         label="Last Name"
                         outlined
                         dense
-                        disabled
+                        :disabled="disable"
                     ></v-text-field>
                 </v-col>
             </v-row>
@@ -39,7 +39,26 @@
                         label="Email"
                         outlined
                         dense
-                        disabled
+                        :disabled="disable"
+                    ></v-text-field>
+                </v-col>
+            </v-row>
+
+            <!-- confirm email -->
+            <v-row class="mt-0">
+                <v-col md="3" cols="12">
+                    <v-text-field
+                        v-if="!disable"
+                        v-model="confirmEmail"
+                        label="Confirm Email"
+                        outlined
+                        dense
+                        required
+                        :rules="[
+                            rules.required, 
+                            rules.email, 
+                            rules.emailMatch
+                        ]"
                     ></v-text-field>
                 </v-col>
             </v-row>
@@ -53,7 +72,7 @@
                         type="number"
                         outlined
                         dense
-                        disabled
+                        :disabled="disable"
                     ></v-text-field>
                 </v-col>
             </v-row>
@@ -67,7 +86,7 @@
                         type="date"
                         outlined
                         dense
-                        disabled
+                        :disabled="disable"
                     ></v-text-field>
                 </v-col>
             </v-row>
@@ -76,6 +95,7 @@
             <v-row class="mt-0">
                 <v-col md="3" cols="12">
                     <v-text-field
+                        v-if="disable"
                         v-model="user.password"
                         label="Password"
                         type="password"
@@ -88,11 +108,43 @@
 
             <!-- edit button -->
             <v-btn 
+                v-if="disable"
                 class="grey darken-3 text-capitalize px-16 mb-10" 
                 dark
+                @click="disable = false"
             >
                 Edit
             </v-btn>
+
+            <!-- update button -->
+            <div v-else>
+                <v-row>
+                    <v-col cols="auto">
+                        <v-btn 
+                            class="text-capitalize px-16 mb-10" 
+                            color="grey darken-3"
+                            dark
+                            outlined
+                            @click="disable = true"
+                        >
+                            Cancel
+                        </v-btn>
+                    </v-col>
+                    <v-col cols="auto">
+                        <v-btn 
+                            class="grey darken-3 text-capitalize px-16 mb-10" 
+                            dark
+                        >
+                            Update
+                        </v-btn>
+                    </v-col>
+                </v-row>
+
+                <h3 class="font-weight-regular">Password</h3>
+                <v-btn class="text-capitalize indigo darken-1 mt-5 mb-10" dark>
+                    Reset Password
+                </v-btn>
+            </div>
 
         </div>
 
@@ -122,11 +174,17 @@ export default {
                 dob: '',
                 password: 'abcdef',
             },
+            disable: true,
+            confirmEmail: '',
+            rules: {
+                required: (v) => !!v || 'This field required.',
+                email: (v) => /\S+@\S+\.\S+/.test(v) || 'E-mail must be valid',
+                emailMatch: (v) => this.user.email === v || `Confirm Email doesn't match with Email`,
+            }
         }
-    }
+    },
 }
 </script>
 
 <style>
-
 </style>

@@ -150,8 +150,10 @@
                                 <p class="my-0 red--text caption">
                                     $
                                     {{
-                                        item.product.originalPrice.split('$')[1] -
-                                        item.product.price.split('$')[1]
+                                        Math.round(
+                                            (item.product.originalPrice.split('$')[1] -
+                                            item.product.price.split('$')[1]) 
+                                        * 100) / 100
                                     }}
                                 </p>
                             </v-col>
@@ -421,7 +423,4 @@ export default {
 </script>
 
 <style>
-.v-label {
-    font-size: 13px;
-}
 </style>

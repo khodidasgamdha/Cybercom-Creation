@@ -1,5 +1,5 @@
 <template>
-    <div class="mx-16 mt-5">
+    <div class="container my-5">
         <p class="headline mb-0">You are now signed out</p>
         <p class="body-2">
             You have signed out and will be redirected to our homepage in 5
@@ -18,7 +18,7 @@ export default {
     },
     mounted() {
         setTimeout(() => {
-            this.$cookies.remove('token')
+            this.$cookies.remove('user')
             this.$store.commit('auth/setLoggedIn', false)
             this.$store.commit('auth/setUserInfo', [])
             this.$router.push('/')

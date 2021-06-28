@@ -1,15 +1,20 @@
 <template>
-    <div>
-        <p id="title">A better furniture buying experience</p>
-        <p>
-            At 1StopBedrooms, we focus on furniture, and only furniture. We
-            provide a concierge-like service. Our staff consists of only
-            furniture professionals and specialists, and we provide a level of
-            customer service that is second to none.
-        </p>
+    <v-row>
 
-        <!-- banner -->
-        <v-card class="blue lighten-5 my-12" flat align="center">
+        <v-col cols="3">
+            <Sidebar />
+        </v-col>
+        <v-col class="my-10 mr-10">
+            <p id="title">A better furniture buying experience</p>
+            <p>
+                At 1StopBedrooms, we focus on furniture, and only furniture. We
+                provide a concierge-like service. Our staff consists of only
+                furniture professionals and specialists, and we provide a level of
+                customer service that is second to none.
+            </p>
+    
+            <!-- banner -->
+            <v-card class="blue lighten-5 my-10" flat align="center">
             <img
                 src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/aboutonestop/images/technology-icon.png?v05f099a3"
                 alt="banner"
@@ -24,55 +29,55 @@
                 </p>
                 <p class="mb-0 indigo--text headline">shopping experience.</p>
             </div>
-        </v-card>
-
-        <p>
+            </v-card>
+    
+            <p>
             We think your online furniture buying experience should be
             efficient, simple, and enjoyable. That’s why we’ve built custom
             systems & technologies that allow us to offer just that. When you
             shop with us, you get competitive pricing, predictive tracking and
             superior customer service — all built into an intuitive and
             streamlined site.
-        </p>
-
-        <p id="title">Shop More Save More</p>
-        <p>
+            </p>
+    
+            <p id="title">Shop More Save More</p>
+            <p>
             Here's an industry secret: when it comes to online shopping: the
             “Free Shipping” we all know and love isn’t free. It typically means
             the merchant has built the price of shipping into the price of the
             item itself. We don’t think that’s fair to you.
-        </p>
-        <p>
+            </p>
+            <p>
             Our mission is to provide our customers with the best possible value
             and full transparency, so when you buy more, we recalculate shipping
-            costs—and you save more. This is one of our most innovative systems,
+            costs and you save more. This is one of our most innovative systems,
             built with one goal: saving you money.
-        </p>
-
-        <!-- introduction -->
-        <v-card flat class="py-5 my-14 rounded-0" align="center">
-            <v-row class="justify-space-around">
+            </p>
+    
+            <!-- introduction -->
+            <v-row class="justify-space-around my-10">
                 <v-col
-                    md="3"
+                    md="auto"
                     class="grey lighten-4"
                     v-for="(item, i) in introduction"
                     :key="i"
                 >
-                    <img :src="item.img" :alt="item.title" width="120" />
-                    <p class="title mt-5">{{ item.title }}</p>
-                    <p>{{ item.info }}</p>
+                    <v-card width="330" flat class="grey lighten-4 rounded-0 py-5" align="center">
+                        <img :src="item.img" :alt="item.title" width="120" />
+                        <p class="title mt-5">{{ item.title }}</p>
+                        <p class="body-2 px-5">{{ item.info }}</p>
+                    </v-card>
                 </v-col>
             </v-row>
-        </v-card>
-
-        <p id="title">White Glove Delivery</p>
-        <p>
+    
+            <p id="title">White Glove Delivery</p>
+            <p>
             Furniture can’t be shipped and handled like anything else on the
             market because of size, weight, fragility, packaging needs, and
             assembly.
-        </p>
-
-        <v-card class="grey lighten-3 pa-10 rounded-0 mt-10" flat>
+            </p>
+    
+            <v-card class="grey lighten-3 pa-10 rounded-0 mt-10" flat>
             <p class="headline font-weight-bold mb-10">Here’s how it works:</p>
             <v-row v-for="(item, i) in works" :key="i">
                 <v-col md="2">
@@ -80,15 +85,22 @@
                 </v-col>
                 <v-col>
                     <p class="title">{{ item.title }}</p>
-                    <p>{{ item.info }}</p>
+                    <p class="body-2">{{ item.info }}</p>
                 </v-col>
             </v-row>
-        </v-card>
-    </div>
+            </v-card>
+        </v-col>
+
+    </v-row>
 </template>
 
 <script>
+import Sidebar from '../components/CMS/Sidebar'
+
 export default {
+    components: {
+        Sidebar
+    },
     layout: 'cms',
     head() {
         return {
@@ -144,9 +156,9 @@ export default {
 <style scoped>
 #title {
     font-size: 28px;
-    font-weight: 500;
+    font-weight: 600;
 }
 p {
-    font-size: 1.1rem;
+    font-size: 16px;
 }
 </style>

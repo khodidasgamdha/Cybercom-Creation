@@ -3,21 +3,17 @@
     <v-row class="mx-16 justify-space-between">
 
         <!-- back button -->
-        <v-col
-            v-for="(page, i) in pages"
-            :key="i" 
+        <v-col 
             cols="auto" 
             class="align-self-center d-none d-lg-flex d-xl-flex"
         >
-            <div v-if="page.link === path">
-                <n-link
-                    class="body-2 font-weight-bold text-decoration-none"
-                    :to="page.backLink"
-                >
-                    <v-icon color="primary">mdi-chevron-left</v-icon>
-                    {{ page.backName }}
-                </n-link>
-            </div>
+            <n-link
+                class="body-2 font-weight-bold text-decoration-none"
+                :to="backLink"
+            >
+                <v-icon color="primary">mdi-chevron-left</v-icon>
+                {{ backName }}
+            </n-link>
         </v-col>
 
         <!-- page links -->
@@ -57,40 +53,38 @@ export default {
                 {
                     name: 'My Account',
                     link: '/customer/account/welcome',
-                    backName: 'Back',
-                    backLink: '/',
                 },
                 {
                     name: 'My Orders',
                     link: '/sales/order/history',
-                    backName: 'My Account',
-                    backLink: '/customer/account/welcome',
                 },
                 {
                     name: 'My Details',
                     link: '/customer/account/edit',
-                    backName: 'My Orders',
-                    backLink: '/sales/order/history',
                 },
                 {
                     name: 'Address Book',
                     link: '/customer/address',
-                    backName: 'Back',
-                    backLink: '/customer/account/edit',
                 },
                 {
                     name: 'Preferances',
                     link: '/newsletter/manage',
-                    backName: 'Address Book',
-                    backLink: '/customer/address',
                 },
             ],
-            path: null
+            backName: 'Back',
+            backLink: '/',
         }
     },
     mounted() {
-        this.path = location.pathname
-    },
+        if(this.$nuxt.context.from != undefined) {
+            this.backLink = this.$nuxt.context.from.fullPath
+            this.pages.forEach((page, i) => {
+                if(page.link === this.$nuxt.context.from.fullPath){
+                    this.backName = this.pages[i].name;
+                }
+            })
+        }
+    }
 }
 </script>
 

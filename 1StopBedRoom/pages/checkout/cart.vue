@@ -2,7 +2,7 @@
     <v-container>
         
         <!-- cart header -->
-        <v-row class="mb-n6">
+        <v-row class="mb-n5 mt-5">
             <v-col>
                 <p class="headline">
                     <span class="font-weight-bold">Your Cart</span> 

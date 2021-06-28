@@ -6,7 +6,10 @@
         <!-- cards -->
         <div class="grey lighten-4">
             <h1 class="text-center text-uppercase py-12 indigo--text">
-                Welcome, Ravi!
+                Welcome,
+                <span v-if="user.displayName">{{ user.displayName }}</span>
+                <span v-else>User</span>
+                !
             </h1>
 
             <v-row class="justify-center">
@@ -186,6 +189,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Header from '~/components/Account/Header'
 
 export default {
@@ -197,6 +201,9 @@ export default {
         return {
             title: 'Account Information',
         }
+    },
+    computed: {
+        ...mapGetters('auth', ['user']),
     },
     data() {
         return {

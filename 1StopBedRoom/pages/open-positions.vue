@@ -4,7 +4,7 @@
         <v-flex md3 class="grey lighten-3 pa-5 d-none d-lg-flex d-xl-flex">
             <p>
                 <v-icon color="indigo">mdi-chevron-left</v-icon>
-                <n-link to="/careers" class="text-decoration-none black--text"
+                <n-link to="/careers" class="body-2 text-decoration-none black--text"
                     >Back to Careers</n-link
                 >
             </p>

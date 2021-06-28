@@ -186,10 +186,14 @@ export default {
     methods: {
         sortProducts(type) {
             if (type === 'Price:Low-High') {
-                this.simillarProducts.sort((a, b) => a.price < b.price ? -1 : 1)
+                this.simillarProducts.sort((a, b) => 
+                    parseInt(a.price.split('$')[1]) < parseInt(b.price.split('$')[1]) ? -1 : 1
+                )
             }
             if (type === 'Price:High-Low') {
-                this.simillarProducts.sort((a, b) => a.price > b.price ? -1 : 1)
+                this.simillarProducts.sort((a, b) => 
+                    parseInt(a.price.split('$')[1]) > parseInt(b.price.split('$')[1]) ? -1 : 1
+                )
             }
         },
     },

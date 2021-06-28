@@ -65,4 +65,7 @@ export default {
 * {
     font-family: 'Open Sans',sans-serif;
 }
+.v-label {
+    font-size: 13px;
+}
 </style>

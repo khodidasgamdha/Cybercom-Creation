@@ -14,6 +14,7 @@
                         >
                             <v-expansion-panel-header
                                 class="body-1 font-weight-bold text-uppercase"
+                                expand-icon="mdi-plus"
                             >
                                 {{ item.heading }}
                             </v-expansion-panel-header>

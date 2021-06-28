@@ -7,7 +7,7 @@
                     <v-icon color="indigo">mdi-chevron-left</v-icon>
                     <n-link
                         to="/open-positions"
-                        class="text-decoration-none black--text"
+                        class="body-2 text-decoration-none black--text"
                         >Back to Open Positions</n-link
                     >
                 </p>

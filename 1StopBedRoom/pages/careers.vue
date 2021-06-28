@@ -1,80 +1,92 @@
 <template>
-    <div>
-        <p id="title">Working with us</p>
-        
-        <p>
-            Looking to join a dynamic team that’s always striving to improve
-            their craft? Then you might be a great fit for 1StopBedrooms. As we
-            expand our business and craft the systems and standards that are
-            revolutionizing the furniture industry, we need your help in
-            realizing our vision.
-        </p>
-        
-        <p>
-            As a values-driven company, we’ve worked hard to make 1StopBedrooms
-            an inviting and fulfilling place to work. When you join our team,
-            we’ll work with you to grow professionally and personally.
-        </p>
-        
-        <v-btn
-            class="rounded-xl orange darken-3 text-capitalize px-10"
-            large
-            dark
-            to="/open-positions"
-        >
-            View Open Positions
-        </v-btn>
+    <v-row>
 
-        <p id="title" class="mt-10">Why work at 1Stop</p>
-        
-        <v-row>
-            <v-col md="6" sm="12" v-for="(item, i) in careers" :key="i">
-                <img :src="item.img" :alt="item.title" />
-                <p class="headline font-weight-bold my-2">{{ item.title }}</p>
-                <p>{{ item.info }}</p>
-            </v-col>
-        </v-row>
-
-        <p id="title" class="mt-10">Opportunities to grow</p>
-        
-        <p>
-            We look to hire talented and enthusiastic individuals who want to
-            help us reinvent the furniture shopping experience.
-        </p>
-        
-        <v-row v-for="(item, i) in opportunities" :key="i" class="mt-5">
-            <v-col md="2">
-                <img :src="item.img" :alt="item.title" width="150" />
-            </v-col>
-            <v-col>
-                <p class="headline font-weight-bold">{{ item.title }}</p>
-                <p>{{ item.info }}</p>
-            </v-col>
-        </v-row>
-
-        <v-divider class="my-10"></v-divider>
-        
-        <p id="title">Join the team</p>
-        
-        <p>
-            We continuously look for like-minded people to add to our growing
-            business. Check out the current opportunities at 1StopBedrooms. We
-            look forward to hearing from you.
-        </p>
-        
-        <v-btn
-            class="rounded-xl orange darken-3 text-capitalize px-10"
-            large
-            dark
-            to="/open-positions"
-        >
-            View Open Positions
-        </v-btn>
-    </div>
+        <v-col cols="3">
+            <Sidebar />
+        </v-col>
+        <v-col class="my-10 mr-10">
+            <p id="title">Working with us</p>
+            
+            <p>
+                Looking to join a dynamic team that’s always striving to improve
+                their craft? Then you might be a great fit for 1StopBedrooms. As we
+                expand our business and craft the systems and standards that are
+                revolutionizing the furniture industry, we need your help in
+                realizing our vision.
+            </p>
+            
+            <p>
+                As a values-driven company, we’ve worked hard to make 1StopBedrooms
+                an inviting and fulfilling place to work. When you join our team,
+                we’ll work with you to grow professionally and personally.
+            </p>
+            
+            <v-btn
+                class="rounded-xl orange darken-3 text-capitalize px-10"
+                large
+                dark
+                to="/open-positions"
+            >
+                View Open Positions
+            </v-btn>
+    
+            <p id="title" class="mt-10">Why work at 1Stop</p>
+            
+            <v-row>
+                <v-col md="6" sm="12" v-for="(item, i) in careers" :key="i">
+                    <img :src="item.img" :alt="item.title" />
+                    <p class="headline font-weight-bold my-2">{{ item.title }}</p>
+                    <p>{{ item.info }}</p>
+                </v-col>
+            </v-row>
+    
+            <p id="title" class="mt-10">Opportunities to grow</p>
+            
+            <p>
+                We look to hire talented and enthusiastic individuals who want to
+                help us reinvent the furniture shopping experience.
+            </p>
+            
+            <v-row v-for="(item, i) in opportunities" :key="i" class="mt-5">
+                <v-col md="2">
+                    <img :src="item.img" :alt="item.title" width="150" />
+                </v-col>
+                <v-col>
+                    <h4 class="font-weight-bold">{{ item.title }}</h4>
+                    <p>{{ item.info }}</p>
+                </v-col>
+            </v-row>
+    
+            <v-divider class="my-10"></v-divider>
+            
+            <p id="title">Join the team</p>
+            
+            <p>
+                We continuously look for like-minded people to add to our growing
+                business. Check out the current opportunities at 1StopBedrooms. We
+                look forward to hearing from you.
+            </p>
+            
+            <v-btn
+                class="rounded-xl orange darken-3 text-capitalize px-10"
+                large
+                dark
+                to="/open-positions"
+            >
+                View Open Positions
+            </v-btn>
+        </v-col>
+    
+    </v-row>
 </template>
 
 <script>
+import Sidebar from '../components/CMS/Sidebar'
+
 export default {
+    components: {
+        Sidebar
+    },
     layout: 'cms',
     head() {
         return {
@@ -145,9 +157,9 @@ export default {
 <style scoped>
 #title {
     font-size: 28px;
-    font-weight: 500;
+    font-weight: 600;
 }
 p {
-    font-size: 1.1rem;
+    font-size: 16px;
 }
 </style>

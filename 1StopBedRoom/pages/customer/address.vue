@@ -9,7 +9,7 @@
             
             <v-divider></v-divider>
 
-            <form>
+            <v-form v-model="formValid" ref="myForm">
                 <!-- first name & last name -->
                 <v-row class="mt-2">
                     <v-col md="3" sm="6" cols="12">
@@ -151,7 +151,7 @@
                         </v-btn>
                     </v-col>
                 </v-row>
-            </form>
+            </v-form>
             
 
         </div>
@@ -173,6 +173,7 @@ export default {
     },
     data() {
         return {
+            formValid: false,
             user: {
                 firstName: 'Ravi',
                 lastName: 'Gajera',
@@ -225,7 +226,11 @@ export default {
     },
     methods: {
         saveAddress() {
-            console.log(this.user);
+            if(this.$refs.myForm.validate()) {
+                console.log(this.user);
+            } else {
+                this.$refs.myForm.validate()
+            }
         },
     }
 }

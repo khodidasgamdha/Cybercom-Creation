@@ -2,7 +2,7 @@
     <div>
         <v-divider class="orange darken-1 pt-5"></v-divider>
         <div class="blue darken-4">
-            <v-row class="py-12 justify-center">
+            <v-row class="py-12 mb-3 justify-center">
 
                 <v-col md="5">
                     <v-card tile flat width="530" class="mx-auto">
@@ -86,6 +86,7 @@
                                 >
                             </v-form>
 
+                            <!-- trems & conditions -->
                             <p class="mt-2 black--text">
                                 <span>By continuing you agree to our</span>
                                 <n-link class="text-decoration-none" to="/policy/terms-and-conditions">Terms and Conditions</n-link>
@@ -102,6 +103,7 @@
                                 We'll never post anything without your permission.
                             </p>
 
+                            <!-- facebook -->
                             <div class="my-5">
                                 <v-btn
                                     color="indigo lighten-1"
@@ -116,6 +118,7 @@
 
                         </v-card-text>
 
+                        <!-- sign in -->
                         <p class="grey lighten-2 py-8 text-center">
                             Already have an account ?
                             <nuxt-link class="text-decoration-none" to="/customer/account/login">
@@ -125,6 +128,8 @@
 
                     </v-card>
                 </v-col>
+
+                <!-- logo -->
                 <v-col md="4">
                     <v-img
                         class="mt-10 mx-auto"
@@ -136,7 +141,21 @@
 
                     <p class="title white--text">Create a 1StopBedrooms.com account to get these benefits and more:</p>
 
+                    <!-- benifits -->
+                    <v-row v-for="(item, i) in benifits" :key="i">
+                        <v-col cols="auto">
+                            <img :src="item.icon" :alt="item.info">
+                        </v-col>
+                        <v-col cols="auto">
+                            <p class="white--text title mb-0 font-weight-light">
+                                <span>{{ item.info1 }}</span><br>
+                                <span>{{ item.info2 }}</span>
+                            </p>
+                        </v-col>
+                    </v-row>
+
                 </v-col>
+
             </v-row>
         </div>
     </div>
@@ -161,6 +180,28 @@ export default {
                 password: '',
             },
             rpassword: '',
+            benifits: [
+                {
+                    icon: 'https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/online-store-icon.png?vef656678',
+                    info1: 'Enhanced online and store',
+                    info2: 'purchase information',
+                },
+                {
+                    icon: 'https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/tracking-icon.png?v3819f6f0',
+                    info1: 'Faster checkout & ',
+                    info2: 'easy order tracking',
+                },
+                {
+                    icon: 'https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/protection-plans-icon.png?ved34c8ea',
+                    info1: 'Access to your protection',
+                    info2: 'plans and services',
+                },
+                {
+                    icon: 'https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/exclusive-offer.png?v3857f736',
+                    info1: 'Exclusive member-only',
+                    info2: 'offers',
+                },
+            ],
             rules: {
                 required: (v) => !!v || 'This field required.',
                 minLenght: (v) => v.length >= 6 || 'Min 6 characters required',
@@ -169,6 +210,9 @@ export default {
                     this.register.password === v || `Confirm Password doesn't match with Password`,
             },
         }
+    },
+    mounted() {
+        (!!this.$store.state.auth.loggedIn) && this.$router.push('/customer/account/welcome');
     },
     methods: {
         signUp() {
@@ -183,14 +227,15 @@ export default {
                             returnSecureToken: true,
                         }
                     )
-                    .then((res) => this.handleToken(res.idToken))
+                    .then((res) => this.handleToken(res))
                     .catch((err) => console.log(err))
             }
         },
-        handleToken(token) {
-            this.$cookies.set('token', token);
+        handleToken(user) {
+            this.$cookies.set('user', user)
             this.$store.commit('auth/setLoggedIn', true)
-            this.$router.push('/');
+            this.$store.commit('auth/setUserInfo', user)
+            this.$router.push('/customer/account/welcome')
         },
     },
 }

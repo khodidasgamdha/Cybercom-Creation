@@ -7,7 +7,7 @@
                 SPRING INTO SAVINGS! SAVE UP TO 75% + FREE HOME DELIVERY
             </p>
             <v-spacer></v-spacer>
-            <p class="subtitle-1">
+            <p class="subtitle-1 d-none d-lg-flex d-xl-flex">
                 Question? Non-commissioned consultants are here to help!
             </p>
             <a
@@ -20,9 +20,9 @@
         </v-system-bar>
 
         <!-- 2nd header -->
-        <v-row class="secondHeader mt-10 px-14 justify-space-around">
+        <v-row class="secondHeader mt-10 px-16 justify-space-around">
             <!-- image -->
-            <v-col md="3">
+            <v-col md="2">
                 <nuxt-link to="/">
                     <v-img
                         width="200"
@@ -69,11 +69,11 @@
             </v-col>
 
             <!-- other -->
-            <v-col md="4">
+            <v-col lg="4" md="5">
                 <span class="caption white--text"
                     >FREE HOME DELIVERY AVAILABLE NATIONWIDE*</span
                 >
-                <div class="mt-3">
+                <div class="mt-3" align="center">
                     <!-- review -->
                     <img
                         src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/1sb-general/1sb-testimonials-stars.png?va49360aa"
@@ -105,7 +105,7 @@
                         </template>
 
                         <!-- list -->
-                        <v-card flat width="250" height="294" class="rounded-0">
+                        <v-card flat width="250" :height="user.length == 0 ? 294 : 282" class="rounded-0">
                             <div v-if="user.length == 0" class="grey lighten-2">
                                 <v-btn
                                     class="
@@ -148,10 +148,13 @@
                                             "
                                             >{{ item.title }}</n-link
                                         >
-                                        <span v-if="cartQuantities && i === 3">({{ cartQuantities }} items)</span>
+                                        <span 
+                                            class="body-2" 
+                                            v-if="cartQuantities && item.icon === 'cart'"
+                                        >({{ cartQuantities }} items)</span>
                                     </v-col>
                                 </v-row>
-                                <v-divider class="my-2" v-if="signInMenu.length != i+1"></v-divider>
+                                <v-divider class="my-2" v-if="userSignInMenu.length != i+1"></v-divider>
                             </div>
                         </v-card>
                     </v-menu>
@@ -215,12 +218,13 @@
                                 >
                                 <span class="orange--text">123456</span>
                             </p>
-                            <p class="ml-4 mt-2 mb-0">RECENTLY ADDED ITEM(S)</p>
+                            <p class="body-2 ml-4 mt-2 mb-0">RECENTLY ADDED ITEM(S)</p>
 
                             <!-- products -->
                             <v-list
                                 class="overflow-y-auto ml-4"
                                 max-height="400"
+                                width="100%"
                             >
                                 <div v-for="(item, i) in cartItems" :key="i">
                                     <v-row>
@@ -254,7 +258,7 @@
                                                 </p>
                                             </n-link>
                                             <v-row class="mb-n8">
-                                                <v-col cols="auto">
+                                                <v-col cols="auto" class="mt-2">
                                                     <span class="caption">Qty: </span>
                                                 </v-col>
                                                 <v-col cols="3">
@@ -264,7 +268,7 @@
                                                         outlined
                                                     ></v-text-field>
                                                 </v-col>
-                                                <v-col>
+                                                <v-col cols="auto" class="mt-2">
                                                     <v-icon @click="removeItem(item)"
                                                         >mdi-delete</v-icon
                                                     >
@@ -283,6 +287,7 @@
                                             </p>
                                         </v-col>
                                     </v-row>
+                                    
                                     <v-divider
                                         v-if="cartItems.length != i + 1"
                                         class="my-2 mr-2"
@@ -294,14 +299,14 @@
                             <p
                                 class="
                                     mb-0
+                                    body-2
                                     indigo--text
-                                    grey
-                                    lighten-2
-                                    pl-4
+                                    grey lighten-3
+                                    text-center
                                     py-1
                                 "
                             >
-                                CART SUB TOTAL: ${{ cartTotal }}
+                                CART SUBTOTAL: ${{ cartTotal }}
                             </p>
 
                             <!-- view cart & checkout button -->
@@ -335,12 +340,13 @@
                             </v-row>
                         </v-card>
                     </v-menu>
+
                 </div>
             </v-col>
         </v-row>
 
         <!-- 3rd header -->
-        <v-app-bar class="px-8 thirdHeader" height="45">
+        <v-app-bar class="thirdHeader px-16" height="45">
             <div v-for="(link, index) in navbarLinks" :key="index">
                 <v-menu rounded="0" open-on-hover offset-y>
                     <!-- main links -->
@@ -355,7 +361,7 @@
                         >
                             <nuxt-link
                                 :to="`/${link.link}`"
-                                class="text-decoration-none"
+                                class="body-1 text-decoration-none text-capitalize"
                             >
                                 {{ link.linkTitle }}
                             </nuxt-link>
@@ -365,7 +371,7 @@
                     <!-- sublinks -->
                     <v-card
                         :max-width="
-                            link.subCategoryLinks.length > 10 ? 700 : 500
+                            link.subCategoryLinks.length > 10 ? 600 : 450
                         "
                         flat
                     >
@@ -391,6 +397,7 @@
                                                     black--text
                                                     caption
                                                     text-decoration-none
+                                                    text-capitalize
                                                 "
                                             >
                                                 {{ item.linkTitle }}

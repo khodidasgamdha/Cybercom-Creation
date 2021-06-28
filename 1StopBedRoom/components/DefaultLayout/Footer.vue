@@ -2,38 +2,38 @@
     <div id="footer">
 
         <!-- 1st footer -->
-        <v-row class="firstFooter justify-center py-3 mt-2">
-            <v-col cols="auto" class="align-self-center">
-                <img
-                    src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/1sb-general/mail_icon_blue.png?v2b640889"
-                    alt=""
-                />
-            </v-col>
-            <v-col cols="auto">
-                <p class="headline font-weight-bold text-center mb-0">
-                    Be the <span class="logo"></span>st to know
-                </p>
-                <p class="mb-0 body-2">Get updates about our sales and more</p>
-            </v-col>
-            <v-col cols="3">
-                <v-text-field
-                    v-model="email"
-                    label="Email Address"
-                    outlined
-                    dense
-                    class="mb-n4 pt-2"
-                    :rules="[rules.required]"
-                ></v-text-field>
-            </v-col>
-            <v-col cols="auto" class="align-self-center">
-                <v-btn 
-                    class="text-capitalize primary px-10" 
-                    dark 
-                    large
-                    @click="submit()"
-                    >Sign Up</v-btn
-                >
-            </v-col>
+        <v-row class=" justify-center firstFooter py-3">
+                <v-col cols="auto" class="align-self-center">
+                    <img
+                        src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/1sb-general/mail_icon_blue.png?v2b640889"
+                        alt=""
+                    />
+                </v-col>
+                <v-col cols="auto">
+                    <p class="be-the-first font-weight-bold text-center mb-0">
+                        Be the <span class="logo"></span>st to know
+                    </p>
+                    <p class="mb-0 body-2">Get updates about our sales and more</p>
+                </v-col>
+                <v-col cols="3">
+                    <v-text-field
+                        v-model="email"
+                        label="Email Address"
+                        outlined
+                        dense
+                        class="mb-n4 pt-2"
+                        :rules="[rules.required]"
+                    ></v-text-field>
+                </v-col>
+                <v-col cols="auto" class="align-self-center">
+                    <v-btn 
+                        class="text-capitalize primary px-10" 
+                        dark 
+                        large
+                        @click="submit()"
+                        >Sign Up</v-btn
+                    >
+                </v-col>
         </v-row>
 
         <!-- 2nd footer -->
@@ -48,7 +48,7 @@
 
             <!-- links -->
             <v-col v-for="(item, i) in footerLinks" :key="i">
-                <p>{{ item.title }}</p>
+                <p class="title">{{ item.title }}</p>
                 <div v-for="(item, i) in item.links" :key="i" class="my-1">
                     <nuxt-link
                         :to="item.link"
@@ -79,6 +79,7 @@
                 </v-btn>
             </v-col>
         </v-row>
+        <v-divider></v-divider>
 
         <!-- 3rd footer -->
         <v-card flat tile class="white lighten-1 text-center">
@@ -89,10 +90,16 @@
             </v-btn>
 
             <v-card-text class="font-weight-bold">
-                <a href="" class="text-decoration-none">Privacy Policy</a> |
-                <a href="" class="text-decoration-none">Terms of Use </a>
-                <span class="black--text ml-10"
-                    ><v-icon color="black" size="17">mdi-copyright</v-icon>2021
+                <n-link 
+                    to="/policy/privacy-policy" 
+                    class="text-decoration-none body-2"
+                >Privacy Policy</n-link> |
+                <n-link 
+                    to="/policy/terms-and-conditions" 
+                    class="text-decoration-none body-2"
+                >Terms of Use </n-link>
+                <span class="black--text body-2 ml-10"
+                    ><v-icon color="black" size="17">mdi-copyright</v-icon>Copyright 2021
                     1StopBedrooms Inc.</span
                 >
             </v-card-text>
@@ -146,15 +153,15 @@ export default {
 </script>
 
 <style>
-#footer {
-    width: 100%;
+.firstFooter {
+    border-top: 1px solid #888;
+}
+.firstFooter .be-the-first {
+    font-size: 28px;
 }
 .secondFooter {
     background: #ebebeb;
-}
-.firstFooter {
-    border: 1px solid #c2c2c2;
-    background: white;
+    border-top: 1px solid #888;
 }
 .secondFooter a {
     font-size: 14px;

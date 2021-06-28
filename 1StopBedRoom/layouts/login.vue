@@ -25,9 +25,7 @@
             <Nuxt />
         </v-main>
 
-        <v-footer>
-            <Footer />
-        </v-footer>
+        <Footer />
 
     </v-app>
 </template>

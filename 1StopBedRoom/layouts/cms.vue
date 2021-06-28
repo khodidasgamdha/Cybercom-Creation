@@ -5,17 +5,10 @@
             v-if="banners[$route.name]"
             :src="banners[$route.name].src"
         ></v-img>
-
-        <v-row>
-            <v-col cols="3">
-                <Sidebar />
-            </v-col>
-            <v-col class="my-10">
-                <v-main>
-                    <Nuxt />
-                </v-main>
-            </v-col>
-        </v-row>
+        
+        <v-main>
+            <Nuxt />
+        </v-main>
 
         <v-footer>
             <Footer />
@@ -26,13 +19,11 @@
 <script>
 import Header from '../components/CMS/Header'
 import Footer from '../components/CMS/Footer'
-import Sidebar from '../components/CMS/Sidebar'
 
 export default {
     components: {
         Header,
         Footer,
-        Sidebar,
     },
     data() {
         return {
@@ -49,7 +40,7 @@ export default {
                 'onestop-cares': {
                     src: 'https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/aboutonestop/images/1SB_onestop_cares.jpg',
                 },
-                careers: {
+                'careers': {
                     src: 'https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/aboutonestop/images/1SB_careers.jpg',
                 },
                 'partner-with-us': {

@@ -1,56 +1,68 @@
 <template>
-    <div>
-        <p id="title">Transforming homes & communities</p>
-        <p>
-            Our communities and the people within them make us who we are.
-            Tight-knit communities support us when we struggle and celebrate
-            with us when we succeed. We recognize that a community can only
-            thrive if people invest and give back.
-        </p>
+    <v-row>
 
-        <p id="title" class="mt-10">Our causes and partnerships</p>
-        <p>
-            We are honored to partner with these incredible organizations whose
-            missions are close to our heart and who play a vital role in our
-            charitable initiatives. The wonderful volunteers and staff at these
-            organizations share our mission and dedication to furthering
-            progress in underserved communities, promoting public good, and
-            serving the less fortunate among us.
-        </p>
+        <v-col cols="3">
+            <Sidebar />
+        </v-col>
+        <v-col class="my-10 mr-10">
+            <p id="title">Transforming homes & communities</p>
+            <p>
+                Our communities and the people within them make us who we are.
+                Tight-knit communities support us when we struggle and celebrate
+                with us when we succeed. We recognize that a community can only
+                thrive if people invest and give back.
+            </p>
+    
+            <p id="title" class="mt-10">Our causes and partnerships</p>
+            <p>
+                We are honored to partner with these incredible organizations whose
+                missions are close to our heart and who play a vital role in our
+                charitable initiatives. The wonderful volunteers and staff at these
+                organizations share our mission and dedication to furthering
+                progress in underserved communities, promoting public good, and
+                serving the less fortunate among us.
+            </p>
+    
+            <v-row v-for="(item, i) in partnerships" :key="i" class="mt-5">
+                <v-col md="2" sm="12">
+                    <img :src="item.img" :alt="item.linkName" />
+                </v-col>
+                <v-col>
+                    <p>{{ item.info }}</p>
+                    <a
+                        :href="item.link"
+                        class="text-decoration-none font-weight-bold indigo--text"
+                        >{{ item.linkName }}</a
+                    >
+                    <v-icon color="orange darken-2">mdi-arrow-right</v-icon>
+                </v-col>
+            </v-row>
+    
+            <p id="title" class="mt-10">Giving back by donating returns</p>
+            <p>
+                When a customer makes a return, we donate a portion of these
+                returns. We locate families in need and provide them with beds,
+                tables, chairs, and more. We’re able to help families make their
+                house a home, and offer them a chance to make their living spaces
+                more comfortable.
+            </p>
+            <img
+                src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/aboutonestop/images/donating-img.png"
+                alt="cares"
+                width="100%"
+            />
+        </v-col>
 
-        <v-row v-for="(item, i) in partnerships" :key="i" class="mt-5">
-            <v-col md="2" sm="12">
-                <img :src="item.img" :alt="item.linkName" />
-            </v-col>
-            <v-col>
-                <p>{{ item.info }}</p>
-                <a
-                    :href="item.link"
-                    class="text-decoration-none font-weight-bold indigo--text"
-                    >{{ item.linkName }}</a
-                >
-                <v-icon color="orange darken-2">mdi-arrow-right</v-icon>
-            </v-col>
-        </v-row>
-
-        <p id="title" class="mt-10">Giving back by donating returns</p>
-        <p>
-            When a customer makes a return, we donate a portion of these
-            returns. We locate families in need and provide them with beds,
-            tables, chairs, and more. We’re able to help families make their
-            house a home, and offer them a chance to make their living spaces
-            more comfortable.
-        </p>
-        <img
-            src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/aboutonestop/images/donating-img.png"
-            alt="cares"
-            width="100%"
-        />
-    </div>
+    </v-row>
 </template>
 
 <script>
+import Sidebar from '../components/CMS/Sidebar'
+
 export default {
+    components: {
+        Sidebar
+    },
     layout: 'cms',
     head() {
         return {
@@ -105,9 +117,9 @@ export default {
 <style scoped>
 #title {
     font-size: 28px;
-    font-weight: 500;
+    font-weight: 600;
 }
 p {
-    font-size: 1.1rem;
+    font-size: 16px;
 }
 </style>

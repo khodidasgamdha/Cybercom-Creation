@@ -258,6 +258,7 @@
                         <v-col md="2" class="pb-0">
                             <v-text-field
                                 v-model="productQuantity"
+                                value="productQuantity"
                                 dense
                                 outlined
                             ></v-text-field>
@@ -438,6 +439,7 @@
                         <v-col md="2" class="pb-0">
                             <v-text-field
                                 v-model="productQuantity"
+                                value="productQuantity"
                                 dense
                                 outlined
                             ></v-text-field>

@@ -7,7 +7,7 @@
                     <v-icon>mdi-chevron-left</v-icon>
                     <n-link
                         to="/partner-with-us"
-                        class="text-decoration-none black--text"
+                        class="body-2 text-decoration-none black--text"
                         >Back to Partner with Us</n-link
                     >
                 </p>
@@ -15,14 +15,14 @@
 
             <!-- form -->
             <v-flex md6 class="ml-10 my-14">
-                <p class="display-1">Welcome to 1StopBedrooms!</p>
-                <p class="title font-weight-light">
+                <p class="headline font-weight-bold">Welcome to 1StopBedrooms!</p>
+                <p class="subtitle-1">
                     Thanks for your interest in partnering with us. We’re
                     excited to learn more about you, your business, and your
                     products.
                 </p>
 
-                <p class="headline font-weight-bold">Primary Contact</p>
+                <p class="title font-weight-bold">Primary Contact</p>
 
                 <!-- first name -->
                 <v-col>
@@ -79,7 +79,7 @@
                 <v-divider class="mb-7 grey"></v-divider>
 
                 <!-- Business -->
-                <p class="headline font-weight-bold">Business</p>
+                <p class="title font-weight-bold">Business</p>
 
                 <!-- company name -->
                 <v-col>
