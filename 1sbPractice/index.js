@@ -7,6 +7,7 @@ const navbarLinks = require("./dataSource/Home/navbar-link");
 const footerLinks = require("./dataSource/Home/footer-link");
 const category = require("./dataSource/product-category");
 const policy = require("./dataSource/policy");
+const brands = require("./dataSource/brands");
 
 const typeDefs = gql`
     type Product {
@@ -179,6 +180,7 @@ const typeDefs = gql`
         footerLinks: [FooterLinks!]!
         category(type: String!): Category!
         policy(url: String!): Policy
+        brands: Policy
     }
 `;
 
@@ -220,6 +222,9 @@ const resolvers = {
             });
             return result;
         },
+        brands: () => {
+            return brands;
+        }
     },
 };
 

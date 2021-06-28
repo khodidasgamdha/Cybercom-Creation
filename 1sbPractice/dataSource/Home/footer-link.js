@@ -3,10 +3,10 @@ module.exports = [
         title: 'Get to Know Us',
         links: [
             { linkTitle: "About Us", link: "/about-us" },
-            { linkTitle: "The 1Stop Advantage", link: "/advantages" },
+            { linkTitle: "The 1Stop Advantage", link: "/the-onestop-advantages" },
             {
                 linkTitle: "Sell on 1StopBedrooms",
-                link: "/sell-on-1stepbedrooms",
+                link: "/partner-with-us",
             },
             { linkTitle: "Careers", link: "/careers" },
             {
@@ -14,24 +14,24 @@ module.exports = [
                 link: "/onestop-cares",
             },
             { linkTitle: "Reviews", link: "/reviews" },
-            { linkTitle: "A Note on COVID-19", link: "/covid-19" },
+            { linkTitle: "A Note on COVID-19", link: "/policy/covid19" },
         ],
     },
     {
         title: 'Customer Service',
         links: [
             { linkTitle: "My Account", link: "/customer/account/login" },
-            { linkTitle: "My Orders", link: "/my-orders" },
+            { linkTitle: "My Orders", link: "/sales/order/history" },
             { linkTitle: "Track My Order", link: "/sales/guest/form" },
-            { linkTitle: "Help Center", link: "/help-center" },
+            { linkTitle: "Help Center", link: "/policy/help-center" },
             { linkTitle: "Return Policy", link: "/policy/return-policy" },
             {
                 linkTitle: "Shipping & Delivery",
                 link: "/policy/shipping-and-delivery",
             },
             { linkTitle: "Coupons", link: "/coupons" },
-            { linkTitle: "Price Match", link: "/price-match" },
-            { linkTitle: "Financing", link: "/financing" },
+            { linkTitle: "Price Match", link: "/policy/price-match-guarantee" },
+            { linkTitle: "Financing", link: "/affirm-financing" },
         ],
     },
 ];
