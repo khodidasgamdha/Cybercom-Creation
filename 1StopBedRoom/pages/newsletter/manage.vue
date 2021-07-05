@@ -10,7 +10,7 @@
             <v-divider></v-divider>
 
             <v-row>
-                <v-col md="6" cols="12">
+                <v-col md="6" cols="12" class="py-0">
                     <v-checkbox v-model="offers">
                         <template v-slot:label>
                             <p class="mb-0 mt-7 font-weight-bold">Exclusive invitations and offers</p>
@@ -18,7 +18,7 @@
                         </template>
                     </v-checkbox>
                 </v-col>
-                <v-col md="6" cols="12">
+                <v-col md="6" cols="12" class="py-0">
                     <v-checkbox v-model="style">
                         <template v-slot:label>
                             <p class="mb-0 mt-7 font-weight-bold">Style Updates</p>
@@ -26,7 +26,7 @@
                     </template>
                     </v-checkbox>
                 </v-col>
-                <v-col md="6" cols="12" class="pt-0">
+                <v-col md="6" cols="12" class="pb-0">
                     <v-checkbox v-model="roundup">
                         <template v-slot:label>
                             <p class="mb-0 mt-7 font-weight-bold">Editorial Roundup</p>
@@ -34,7 +34,7 @@
                         </template>
                     </v-checkbox>
                 </v-col>
-                <v-col md="6" cols="12" class="pt-0">
+                <v-col md="6" cols="12" class="pb-0">
                     <v-checkbox v-model="all">
                         <template v-slot:label>
                             <p class="mb-0 mt-7 font-weight-bold">Unsubscribe from all</p>

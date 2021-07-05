@@ -2,15 +2,15 @@
     <v-container>
         
         <!-- cart header -->
-        <v-row class="mb-n5 mt-5">
-            <v-col>
+        <v-row class="mb-n5">
+            <v-col cols="auto">
                 <p class="headline">
                     <span class="font-weight-bold">Your Cart</span> 
                     <span v-if="cartItems.length != 0">({{ cartQuantities }} items)</span>
                 </p>
             </v-col>
             <v-spacer></v-spacer>
-            <v-col cols="3" v-if="cartItems.length != 0">
+            <v-col lg="3" md="4" sm="5" cols="12" v-if="cartItems.length != 0">
                 <v-btn
                     class="text-capitalize orange darken-3 rounded-0"
                     large
@@ -70,17 +70,17 @@
         </v-card>
 
         <!-- if cart have products -->
-        <div v-if="cartItems.length != 0">
+        <div class="prod" v-if="cartItems.length != 0">
             <!-- total -->
-            <v-card  class="grey lighten-3 rounded-0 pl-10 mt-5" flat>
-                <v-row>
+            <v-card class="grey lighten-3 rounded-0 pl-10 mt-5" flat>
+                <v-row class="d-none d-xl-flex d-lg-flex d-md-flex">
                     <v-col cols="4">
                         <v-btn class="text-capitalize rounded-0" to="/">
                             Back to Shopping
                         </v-btn>
                     </v-col>
                     <v-spacer></v-spacer>
-                    <v-col cols="3">
+                    <v-col lg="3" md="4">
                         <p class="headline mb-0">Subtotal ${{ Math.round(cartTotal * 100) / 100 }}</p>
                     </v-col>
                 </v-row>
@@ -90,16 +90,16 @@
             <!-- products -->
             <div v-for="(item, i) in cartItems" :key="i">
                 <p class="font-weight-bold my-6">Shipment {{ i+1 }} of {{ cartItems.length }} - {{ item.product.brand }}</p>
-                <v-card class="grey lighten-3 rounded-0" flat>
-                    <v-row>
-                        <v-col cols="1" class="ml-5">
+                <v-card class="grey lighten-3 rounded-0 px-5" flat>
+                    <v-row class="justify-space-between">
+                        <v-col cols="auto">
                             <img
                                 :src="item.product.imageUrl"
                                 :alt="item.product.title"
                                 width="100"
                             />
                         </v-col>
-                        <v-col cols="5" class="ml-5">
+                        <v-col cols="auto" class="ml-5">
                             <p class="title font-weight-light mb-0">
                                 {{ item.product.description }}
                             </p>
@@ -121,7 +121,7 @@
                                                 Qty: {{ item.quantity }}
                                             </p>
                                         </v-col>
-                                        <v-col cols="2">
+                                        <v-col cols="3">
                                             <p class="mb-n2">
                                                 {{ item.product.price }}
                                             </p>
@@ -160,18 +160,79 @@
                 </v-card>
             </div>
 
+            <!-- guardians -->
+            <p class="mb-3 mt-5 subtitle-1 font-weight-bold">Recommended</p>
+            <v-row class="mx-0 mb-7 guardian">
+                <v-col
+                    cols="2"
+                    align="center"
+                    class="green darken-2"
+                >
+                    <img
+                        src="https://cdn.1stopbedrooms.com/media/catalog/product/cache/1/thumbnail/cc0ec2d91bc4dd8becc1b9167d5c2be1/g/u/guardian.png"
+                        alt="guardian"
+                        class="mt-3"
+                    />
+                </v-col>
+                <v-col
+                    cols="auto"
+                    class="align-self-center"
+                >
+                    <p class="mb-0 title">
+                        Guardian 5 Year Warranty
+                    </p>
+                    <p
+                        class="
+                            mb-0
+                            body-2
+                            font-weight-light
+                            grey--text
+                        "
+                    >
+                        Covers entire purchase
+                    </p>
+                    <a
+                        to="https://www.1stopbedrooms.com/guardian-5-year-protection-plan"
+                        class="mb-0 caption text-decoration-underline"
+                        >Learn More</a
+                    >
+                </v-col>
+                <v-spacer></v-spacer>
+                <v-col cols="auto" class="align-self-center">
+                    <span
+                        class="
+                            grey-text
+                            text-decoration-line-through
+                            subtitle-1
+                        "
+                    >
+                        $199.00
+                    </span>
+                    <span class="ml-5 green--text headline">$99.00</span>
+                </v-col>
+                <v-col cols="auto" class="align-self-center">
+                    <v-btn
+                        class="text-capitalize px-10"
+                        outlined
+                        color="primary"
+                    >
+                        Add Plan
+                    </v-btn>
+                </v-col>
+            </v-row>
+
             <!-- final bill -->
-            <v-card class="grey lighten-3 rounded-0 my-10" flat>
+            <v-card class="grey lighten-3 rounded-0 mb-10" flat>
                 <v-row class="mx-0">
                     <!-- quotas -->
-                    <v-col md="6">
+                    <v-col md="6" cols="12">
                         <!-- coupon code -->
                         <v-card class="pa-4 rounded-0" flat>
                             <v-row class="mb-n10 justify-space-around">
-                                <v-col md="auto">
+                                <v-col lg="auto" md="5">
                                     <p class="mb-0 title">Coupon Code:</p>
                                 </v-col>
-                                <v-col md="6">
+                                <v-col lg="6" md="4">
                                     <v-text-field
                                         label="Coupon Code"
                                         outlined
@@ -265,7 +326,7 @@
                     </v-col>
 
                     <!-- total bill -->
-                    <v-col md="6">
+                    <v-col md="6" cols="12">
                         <v-card class="rounded-0 pa-4" flat>
                             <p class="headline mb-0">Order Summery</p>
                             <v-divider class="mt-2"></v-divider>
@@ -346,4 +407,8 @@ export default {
 </script>
 
 <style>
+.prod .guardian {
+    border: 1px solid #c2c2c2;
+    height: 120px;
+}
 </style>

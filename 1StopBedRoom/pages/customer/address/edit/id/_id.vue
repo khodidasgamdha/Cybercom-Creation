@@ -1,20 +1,18 @@
 <template>
-    <div>
-
+    <div class="mb-10">
         <!-- header -->
         <Header />
 
         <div class="mx-16">
-            <h2 class="font-weight-medium mt-5 mb-1">Add New Address</h2>
-            
-            <v-divider></v-divider>
+            <h2 class="font-weight-medium mt-5 mb-1">Edit Address</h2>
 
-            <v-form v-model="formValid" ref="myForm">
+            <v-divider></v-divider>
+            <v-form v-if="editAddress" v-model="formValid" ref="myForm">
                 <!-- first name & last name -->
                 <v-row class="mt-2">
                     <v-col md="3" sm="6" cols="12">
                         <v-text-field
-                            v-model="user.firstName"
+                            :value="editAddress.firstName"
                             label="First Name"
                             outlined
                             dense
@@ -23,7 +21,7 @@
                     </v-col>
                     <v-col md="3" sm="6" cols="12">
                         <v-text-field
-                            v-model="user.lastName"
+                            :value="editAddress.lastName"
                             label="Last Name"
                             outlined
                             dense
@@ -35,7 +33,7 @@
                 <v-row class="mt-0">
                     <v-col md="6" cols="12">
                         <v-text-field
-                            v-model="user.company"
+                            :value="editAddress.company"
                             label="Company"
                             outlined
                             dense
@@ -47,7 +45,7 @@
                 <v-row class="mt-0">
                     <v-col md="3" cols="12">
                         <v-text-field
-                            v-model.number="user.phoneNumber"
+                            :value="editAddress.phoneNumber"
                             label="Phone Number"
                             type="number"
                             outlined
@@ -57,7 +55,7 @@
                     </v-col>
                     <v-col md="3" cols="12">
                         <v-text-field
-                            v-model.number="user.alternatePhoneNumber"
+                            :value="editAddress.alternatePhoneNumber"
                             label="Alternate Phone Number"
                             type="number"
                             outlined
@@ -70,7 +68,7 @@
                 <v-row class="mt-0">
                     <v-col md="6" cols="12">
                         <v-text-field
-                            v-model="user.address1"
+                            :value="editAddress.address1"
                             label="Street Address 1"
                             outlined
                             dense
@@ -83,7 +81,7 @@
                 <v-row class="mt-0">
                     <v-col md="6" cols="12">
                         <v-text-field
-                            v-model="user.address2"
+                            :value="editAddress.address2"
                             label="Street Address 2"
                             outlined
                             dense
@@ -95,7 +93,7 @@
                 <v-row class="mt-0">
                     <v-col md="3" cols="12">
                         <v-text-field
-                            v-model="user.city"
+                            :value="editAddress.city"
                             label="City"
                             outlined
                             dense
@@ -104,7 +102,7 @@
                     </v-col>
                     <v-col md="3" cols="12">
                         <v-select
-                            v-model="user.state"
+                            :value="editAddress.state"
                             :items="states"
                             label="State"
                             outlined
@@ -118,7 +116,7 @@
                 <v-row class="mt-0">
                     <v-col md="3" cols="12">
                         <v-text-field
-                            v-model.number="user.zipcode"
+                            :value="editAddress.zipcode"
                             label="Zip/Postal Code"
                             type="number"
                             outlined
@@ -131,34 +129,33 @@
                 <!-- cancle & save address button -->
                 <v-row class="mt-0">
                     <v-col cols="auto">
-                        <v-btn 
-                            class="text-capitalize px-16 mb-10" 
+                        <v-btn
+                            class="text-capitalize px-16"
                             dark
                             outlined
                             type="reset"
                             color="grey darken-3"
-                    >
+                        >
                             Cancel
                         </v-btn>
                     </v-col>
                     <v-col cols="auto">
-                        <v-btn 
-                            class="grey darken-3 text-capitalize px-16 mb-10" 
+                        <v-btn
+                            class="grey darken-3 text-capitalize px-16"
                             dark
-                            @click="saveAddress()"
+                            @click="saveAddress(address)"
                         >
                             Save Address
                         </v-btn>
                     </v-col>
                 </v-row>
             </v-form>
-            
-
         </div>
     </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Header from '~/components/Account/Header'
 
 export default {
@@ -168,74 +165,67 @@ export default {
     },
     head() {
         return {
-            title: 'Add New Address',
+            title: 'Edit Address',
         }
     },
     data() {
         return {
             formValid: false,
-            user: {
-                firstName: 'Ravi',
-                lastName: 'Gajera',
-                company: '',
-                phoneNumber: '',
-                alternatePhoneNumber: '',
-                address1: '',
-                address2: '',
-                city: '',
-                state: '',
-                zipcode: '',
-            },
             states: [
                 'Andhra Pradesh',
-                'Assam', 
-                'Arunachal Pradesh', 
-                'Bihar', 
+                'Assam',
+                'Arunachal Pradesh',
+                'Bihar',
                 'Chhattisgarh',
-                'Goa', 
-                'Gujarat', 
-                'Jammu and Kashmir', 
-                'Jharkhand', 
-                'Haryana', 
-                'Himachal Pradesh', 
-                'Karnataka', 
-                'Kerala', 
-                'Madhya Pradesh', 
-                'Maharashtra', 
-                'Manipur', 
-                'Meghalaya', 
-                'Mizoram', 
-                'Nagaland', 
-                'Orissa', 
-                'Punjab', 
-                'Rajasthan', 
-                'Sikkim', 
-                'Tamil Nadu', 
-                'Tripura', 
-                'Uttaranchal', 
-                'Uttar Pradesh', 
-                'West Bengal', 
+                'Goa',
+                'Gujarat',
+                'Jammu and Kashmir',
+                'Jharkhand',
+                'Haryana',
+                'Himachal Pradesh',
+                'Karnataka',
+                'Kerala',
+                'Madhya Pradesh',
+                'Maharashtra',
+                'Manipur',
+                'Meghalaya',
+                'Mizoram',
+                'Nagaland',
+                'Orissa',
+                'Punjab',
+                'Rajasthan',
+                'Sikkim',
+                'Tamil Nadu',
+                'Tripura',
+                'Uttaranchal',
+                'Uttar Pradesh',
+                'West Bengal',
             ],
             rules: {
                 required: (v) => !!v || 'This field required.',
                 minLenght: (v) => v.length >= 3 || 'Min 3 characters required',
                 zipcode: (v) => /^\d{6}$/.test(v) || 'Zipcode must be valid',
-                phoneNumber: (v) => /^[6789]\d{9}$/.test(v) || 'Phone Number must be valid',
+                phoneNumber: (v) =>
+                    /^[6789]\d{9}$/.test(v) || 'Phone Number must be valid',
             },
         }
     },
+    computed: mapGetters('address', ['editAddress']),
+    mounted() {
+        this.$store.commit('address/perticularAddress', this.$route.params.id)
+    },
     methods: {
-        saveAddress() {
-            if(this.$refs.myForm.validate()) {
-                console.log(this.user);
-            } else {
-                this.$refs.myForm.validate()
-            }
+        saveAddress(value) {
+            // if (this.$refs.myForm.validate()) {
+            //     this.$store.commit('address/updateAddress', value)
+            //     this.$router.push('/customer/address')
+            // } else {
+            //     this.$refs.myForm.validate()
+            // }
         },
-    }
+    },
 }
 </script>
 
 <style>
-
 </style>

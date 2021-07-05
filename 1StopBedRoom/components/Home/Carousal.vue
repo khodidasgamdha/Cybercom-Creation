@@ -4,6 +4,7 @@
         cycle
         hide-delimiter-background
         show-arrows-on-hover
+        height="auto"
     >
         <v-carousel-item v-for="(image, i) in images" :key="i">
             <v-img :src="image.imgUrl" :alt="image.alt" width="100%"></v-img>

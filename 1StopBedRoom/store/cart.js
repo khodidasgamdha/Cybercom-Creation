@@ -1,24 +1,31 @@
-// import Vue from 'vue'
-
 export const state = () => ({
   cartItems: [],
 })
 
-export const mutations = {
-  addToCart(state, { product, quantity }) {
+export const actions = {
+  addToCart({ commit, state }, { product, quantity }) {
     const qntty = parseInt(quantity)
     let productInCart = state.cartItems.find((item) => {
       return item.product.sku === product.sku
     })
-
     if (productInCart) {
-      productInCart.quantity += qntty;
+      commit('incrementQuantity', { productInCart, qntty })
     } else {
-      state.cartItems.push({
-        product,
-        quantity: qntty
-      })
+      commit('addProduct', { product, qntty })
     }
+  }
+}
+
+export const mutations = {
+  addProduct(state, { product, qntty }) {
+    state.cartItems.push({
+      product,
+      quantity: qntty
+    })
+  },
+
+  incrementQuantity(state, { productInCart, qntty }) {
+    productInCart.quantity += qntty;
   },
 
   changeQuantity(state, { product, quantity }) {

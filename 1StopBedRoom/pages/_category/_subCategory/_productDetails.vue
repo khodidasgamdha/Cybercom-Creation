@@ -448,7 +448,7 @@
                             <v-btn 
                                 dark 
                                 class="orange darken-4 body-2 text-capitalize rounded-0 px-12"
-                                @click="addToCart(product, product, productQuantity)"
+                                @click="addToCart(product, productQuantity)"
                             >
                                 Add to Cart
                             </v-btn>
@@ -704,7 +704,7 @@ export default {
     },
     methods: {
         addToCart(product, quantity) {
-            this.$store.commit('cart/addToCart', { product, quantity })
+            this.$store.dispatch('cart/addToCart', { product, quantity })
         },
     },
 }

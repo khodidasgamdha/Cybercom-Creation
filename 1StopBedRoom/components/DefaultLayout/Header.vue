@@ -306,7 +306,7 @@
                                     py-1
                                 "
                             >
-                                CART SUBTOTAL: ${{ cartTotal }}
+                                CART SUBTOTAL: ${{ Math.round(cartTotal * 100) / 100 }}
                             </p>
 
                             <!-- view cart & checkout button -->
