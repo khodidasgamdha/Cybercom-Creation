@@ -75,10 +75,12 @@
                 >
                 <div class="mt-3" align="center">
                     <!-- review -->
-                    <img
-                        src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/1sb-general/1sb-testimonials-stars.png?va49360aa"
-                        alt="review"
-                    />
+                    <n-link to="/testimonials">
+                        <img
+                            src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/1sb-general/1sb-testimonials-stars.png?va49360aa"
+                            alt="review"
+                        />
+                    </n-link>
 
                     <!-- sign in -->
                     <v-menu rounded="0" open-on-hover offset-y>
