@@ -3,7 +3,7 @@ module.exports = [
         title: 'Get to Know Us',
         links: [
             { linkTitle: "About Us", link: "/about-us" },
-            { linkTitle: "The 1Stop Advantage", link: "/the-onestop-advantages" },
+            { linkTitle: "The 1Stop Advantage", link: "/the-onestop-advantage" },
             {
                 linkTitle: "Sell on 1StopBedrooms",
                 link: "/partner-with-us",
@@ -13,7 +13,7 @@ module.exports = [
                 linkTitle: "Social Responsibility",
                 link: "/onestop-cares",
             },
-            { linkTitle: "Reviews", link: "/reviews" },
+            { linkTitle: "Reviews", link: "/testimonials" },
             { linkTitle: "A Note on COVID-19", link: "/policy/covid19" },
         ],
     },
